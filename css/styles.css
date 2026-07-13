@@ -1498,6 +1498,7 @@ img {
 @media (max-width: 768px) {
   .header__logo { height: 54px; }
   .hero { padding-top: 80px; }
+  .projects__grid { gap: 44px; }
   .hero__visual { display: none; }
   .hero__inner { display: block; }
   .hero__title { font-size: 28px; }
