@@ -1497,7 +1497,7 @@ img {
 
 @media (max-width: 768px) {
   body { overflow-x: hidden; }
-  .header__logo { height: 54px; }
+  .header__logo { height: 70px; }
   .hero { padding-top: 80px; }
   .projects__grid { gap: 44px; }
   .hero__visual { display: none; }
@@ -1527,5 +1527,5 @@ img {
   .footer__nav { flex-direction: column; align-items: center; gap: 16px; }
   .footer__logo-ms { display: none; }
   .footer__logo-texto { display: block; margin: 0 auto; }
-  .footer__aside { display: flex; align-items: center; justify-content: center; width: 100%; justify-self: center; }
+  .footer__aside { display: flex; align-items: center; justify-content: center; width: 100%; grid-column: 1 / -1; }
 }
