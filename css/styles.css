@@ -1527,5 +1527,5 @@ img {
   .footer__nav { flex-direction: column; align-items: center; gap: 16px; }
   .footer__logo-ms { display: none; }
   .footer__logo-texto { display: block; margin: 0 auto; }
-  .footer__aside { display: flex; align-items: center; justify-content: center; width: 100%; }
+  .footer__aside { display: flex; align-items: center; justify-content: center; width: 100%; justify-self: center; }
 }
