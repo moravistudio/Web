@@ -1484,6 +1484,8 @@ img {
   display: none;
 }
 
+.hero__devices-mobile { display: none; }
+
 .hamburger {
   display: none;
   background: none;
@@ -1505,6 +1507,7 @@ img {
   .hero__title { font-size: 28px; }
   .hero__content { text-align: center; }
   .hero__actions { justify-content: center; }
+  .hero__devices-mobile { display: block; width: 100vw; margin-left: -24px; margin-top: 32px; max-width: none; }
   .nav__link { color: white; }
   .nav {
     display: none;
