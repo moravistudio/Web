@@ -1521,6 +1521,9 @@ img {
   .nav.is-open { display: flex; }
   .nav__link { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); width: 100%; }
   .hamburger { display: flex; }
-  .footer__nav { flex-wrap: wrap; justify-content: center; gap: 8px 24px; }
-  .footer__nav-link { width: auto; }
+  .footer__top { flex-direction: column; align-items: center; text-align: center; gap: 24px; }
+  .footer__brand { align-items: center; text-align: center; }
+  .footer__tagline { text-align: center; max-width: 280px; }
+  .footer__nav { flex-direction: column; align-items: center; gap: 16px; }
+  .footer__aside { justify-content: center; }
 }
