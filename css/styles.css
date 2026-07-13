@@ -1483,3 +1483,11 @@ img {
 .projects__card.is-hidden {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .header__logo { height: 36px; }
+  .nav { display: none; }
+  .hero__visual { display: none; }
+  .hero__inner { display: block; }
+  .hero__title { font-size: 28px; }
+}
