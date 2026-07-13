@@ -1505,9 +1505,13 @@ img {
   .hero__visual { display: none; }
   .hero__inner { display: block; }
   .hero__title { font-size: 28px; }
-  .hero__content { text-align: center; }
+  .hero__content { text-align: center; overflow: hidden; }
   .hero__actions { justify-content: center; }
   .hero__devices-mobile { display: block; width: 100vw; margin-left: -24px; margin-top: 32px; max-width: none; }
+  .methodology { padding: 28px 0; }
+  .projects { padding: 30px 0; }
+  .services { padding: 28px 0; }
+  .contact { padding: 35px 0; }
   .nav__link { color: white; }
   .nav {
     display: none;
