@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "moravi-studio",
+      "runtimeExecutable": "php",
+      "runtimeArgs": ["-S", "localhost:4173", "-t", "C:\\Users\\saram\\Projects\\moravi-studio"],
+      "port": 4173
+    }
+  ]
+}

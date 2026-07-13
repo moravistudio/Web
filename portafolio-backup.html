@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portafolio — Moravi Studio</title>
+  <meta name="description" content="Proyectos reales de diseño web desarrollados por Moravi Studio: landing pages, sitios web y tiendas online.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- ============ HEADER (idéntico a index.html; hrefs ajustados para cruzar de página) ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="index.html" class="header__brand">
+        <img src="assets/img/logo-moravi.webp" alt="Moravi Studio" class="header__logo">
+      </a>
+      <nav class="nav">
+        <a href="index.html" class="nav__link">Inicio</a>
+        <a href="index.html#proyectos" class="nav__link nav__link--active">Proyectos</a>
+        <a href="index.html#servicios" class="nav__link">Servicios</a>
+        <a href="index.html#contacto" class="nav__link">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ============ PORTAFOLIO — INTRO DE LA PÁGINA ============ -->
+  <section class="portfolio-hero">
+    <div class="container portfolio-hero__inner">
+      <h1 class="portfolio__title">Proyectos que ayudan a las marcas a <span class="accent">destacar</span></h1>
+      <p class="portfolio__subtitle">Algunas muestras de sitios web diseñados para diferentes tipos de negocios.</p>
+
+      <div class="portfolio__filters">
+        <button type="button" class="portfolio__filter-btn is-active" data-filter="todo">Todo</button>
+        <button type="button" class="portfolio__filter-btn" data-filter="landing">Landing Pages</button>
+        <button type="button" class="portfolio__filter-btn" data-filter="sitio-web">Sitios Web</button>
+        <button type="button" class="portfolio__filter-btn" data-filter="tienda-online">Tiendas Online</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GRILLA DE PROYECTOS (mismo patrón .projects__card de index.html) ============ -->
+  <section class="portfolio-grid">
+    <div class="container">
+      <div class="projects__grid" id="portfolio-grid">
+        <article class="projects__card" data-category="landing">
+          <span class="projects__badge"><span class="projects__badge-dot"></span>Landing Page</span>
+          <div class="projects__media">
+            <img src="assets/img/lash-atelier-hero.webp" alt="Captura del sitio web de Lash Atelier" class="projects__media-img">
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__card-title">Lash Atelier</h3>
+            <div class="projects__card-row">
+              <p class="projects__card-text">Landing page moderna para negocio de pestañas y laminado de cejas.</p>
+              <a href="https://moravistudio.github.io/pesta-as/" class="projects__link" target="_blank" rel="noopener noreferrer">
+                Ver proyecto
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="projects__card" data-category="tienda-online">
+          <span class="projects__badge"><span class="projects__badge-dot"></span>Tienda Online</span>
+          <div class="projects__media">
+            <img src="assets/img/pagina-uno-hero.webp" alt="Captura del sitio web de Página Uno" class="projects__media-img">
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__card-title">Página Uno</h3>
+            <div class="projects__card-row">
+              <p class="projects__card-text">Tienda online de libros seleccionados para cada tipo de lector.</p>
+              <a href="https://moravistudio.github.io/tiendaonlinelibros/" class="projects__link" target="_blank" rel="noopener noreferrer">
+                Ver proyecto
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="projects__card" data-category="sitio-web">
+          <span class="projects__badge"><span class="projects__badge-dot"></span>Sitio Web</span>
+          <div class="projects__media">
+            <img src="assets/img/libraica-hero.webp" alt="Captura del sitio web de Libraica" class="projects__media-img">
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__card-title">Libraica</h3>
+            <div class="projects__card-row">
+              <p class="projects__card-text">Sitio web de libros con recomendaciones literarias</p>
+              <a href="https://www.libraica.com" class="projects__link" target="_blank" rel="noopener noreferrer">
+                Ver proyecto
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="projects__cta">
+        <a href="index.html" class="projects__btn-all">
+          Volver al inicio
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (idéntico a index.html; hrefs ajustados para cruzar de página) ============ -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo-wrap">
+          <img src="assets/img/logo-ms-footer.webp" alt="MS" class="footer__logo-ms">
+          <img src="assets/img/logo-texto-footer.webp" alt="Moravi Studio" class="footer__logo-texto">
+        </div>
+        <p class="footer__tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
+      </div>
+
+      <nav class="footer__nav">
+        <a href="index.html" class="footer__nav-link">Inicio</a>
+        <a href="index.html#proyectos" class="footer__nav-link">Proyectos</a>
+        <a href="index.html#servicios" class="footer__nav-link">Servicios</a>
+        <a href="index.html#contacto" class="footer__nav-link">Contacto</a>
+      </nav>
+
+      <div class="footer__aside">
+        <div class="footer__social">
+          <a href="https://www.instagram.com/moravistudiolab" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--instagram" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.3" cy="6.7" r="0.6" fill="white" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/51940284018" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--whatsapp" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.94 14.47L2 22l5.66-1.48A10 10 0 1 0 12 2zm5.29 14.34c-.22.62-1.09 1.14-1.79 1.29-.49.1-1.12.18-3.26-.7-2.73-1.13-4.49-3.9-4.63-4.08-.14-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.94-2.25.24-.27.53-.34.71-.34h.5c.16 0 .38-.02.58.44.22.5.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.15-.28.33-.4.45-.13.13-.27.27-.12.53.16.27.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.19 1.36.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.87.27.13.45.2.51.31.07.11.07.62-.15 1.24z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2026 Moravi Studio. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/portafolio.js" defer></script>
+</body>
+</html>

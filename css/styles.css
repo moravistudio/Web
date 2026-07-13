@@ -1,0 +1,1485 @@
+/* ============================================================
+   MORAVI STUDIO — Sistema de diseño
+   Colores y tipografía definidos en Claude Design (Sydney)
+   ============================================================ */
+
+:root {
+  /* Colores */
+  --bg: #FBFCFE;
+  --bg-alt: #F2F6FC;
+  --brand-blue: #1E8CFF;
+  --navy: #0A1B3C;
+  --navy-light: #15356C;
+  --heading: #0E1A2D;
+  --body: #5C6A7E;
+  --border: #E5EBF3;
+  --white: #FFFFFF;
+
+  /* Tipografía */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Contenedor ancho, como el prototipo: el texto arranca a ~6% del
+   borde de la pantalla, dejando el resto para los dispositivos */
+.container {
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 4.5vw, 80px);
+}
+
+/* ============ HEADER ============ */
+
+/* z-index agregado (2026-07-07): .header y .hero son hermanos
+   directos de <body> con position propio y z-index:auto — sin esto,
+   .hero (que viene después en el HTML) ganaba el stacking por orden
+   de DOM y tapaba el menú para los clics, aunque se viera bien
+   (fondo transparente de .hero). El comentario viejo sobre
+   mix-blend-mode ya no aplica: el logo dejó de usar blend-mode hace
+   tiempo (tiene alfa real), así que no hay ningún efecto que dependa
+   de que .header comparta el stacking context raíz. */
+.header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 22px 0;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  /* Con alfa real ya no necesita blend. El archivo trae mucho margen
+     interno (contenido: 8.8%–90.3% × 28.8%–71.2%), así que se agranda
+     a proporción del prototipo (~24vw visibles) y los márgenes negativos
+     mantienen 64px de alto de layout en el header */
+  /* -12.5% respecto al tamaño anterior (clamp 120/14.7vw/240) */
+  --logo-h: clamp(105px, 12.9vw, 210px);
+  height: var(--logo-h);
+  width: auto;
+  margin-top: calc((64px - var(--logo-h)) / 2);
+  margin-bottom: calc((64px - var(--logo-h)) / 2);
+  /* El archivo trae ~8.8% de margen transparente a la izquierda de la
+     esfera: translateX en % es relativo al ancho propio de la imagen,
+     así que esto alinea el borde de la esfera con la barra del título
+     en cualquier tamaño, sin recalcular píxeles */
+  transform: translateX(-8.8%);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+
+.nav__link {
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.2vw, 19px);
+  font-weight: 500;
+  color: var(--heading);
+  text-decoration: none;
+  padding-bottom: 8px;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav__link:hover {
+  color: var(--brand-blue);
+}
+
+.nav__link--active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--brand-blue);
+}
+
+/* ============ HERO ============ */
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 140px 0 60px;
+  /* Fondo transparente (el color lo da el body): si el hero pintara
+     su propio fondo taparía al header, que ya no tiene z-index */
+}
+
+.hero__inner {
+  display: grid;
+  /* minmax(0,…) evita que la imagen sobredimensionada ensanche su
+     columna y aplaste la del texto. Ratio 5.9:6.7 (antes 5:7): medido
+     con canvas.measureText, la línea "convierte visitantes" (al 14%
+     de crecimiento) necesita 643px reales — la columna anterior solo
+     daba 598px de texto (tras el padding-left:28 de .hero__content),
+     por eso se envolvía sola en 5 líneas. 5.9fr da ~669px de texto,
+     con margen. La imagen (hero__devices) es position:absolute sobre
+     .hero, NO usa esta grilla para su tamaño/posición — no se toca. */
+  grid-template-columns: minmax(0, 5.9fr) minmax(0, 6.1fr);
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+}
+
+/* Barra vertical azul a la izquierda del titular */
+.hero__content {
+  position: relative;
+  padding-left: 28px;
+}
+
+.hero__content::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 3px;
+  /* Escala con el texto: cubre titular + subtítulo como el prototipo */
+  height: clamp(230px, 36vh, 330px);
+  background: linear-gradient(180deg, var(--brand-blue), rgba(30, 140, 255, 0.25));
+  border-radius: 2px;
+}
+
+/* +14% respecto al tamaño anterior (36/3.45vw/58): medido por canal
+   alfa, la línea más ajustada ("convierte visitantes") tenía 97px de
+   margen real sobre 555px (17.5%) antes de tocar contenido opaco de
+   la imagen — 14% deja ~20px de colchón de seguridad. Las otras 2
+   líneas tienen aún más margen (128px y 264px), así que no son el
+   límite. La imagen de dispositivos no se tocó en absoluto. */
+.hero__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(41px, 3.93vw, 66px);
+  line-height: 1.15;
+  color: var(--heading);
+  letter-spacing: -0.5px;
+}
+
+/* Como el prototipo: la primera línea del titular es ~18% mayor */
+.hero__title-lead {
+  font-size: 1.18em;
+}
+
+.hero__title .accent {
+  color: var(--brand-blue);
+}
+
+/* Tamaño de fuente SIN cambios (era el elemento más topado del Hero:
+   solo 10px de margen real medido por canal alfa en su línea más
+   baja — crecerlo tocaría la imagen). margin-top baja de 28 a 17px
+   para compensar los ~11px que el título (ahora +14%) empuja hacia
+   abajo a todo el bloque — así el subtítulo vuelve a su posición Y
+   original exacta y conserva su margen real ya verificado. */
+.hero__subtitle {
+  margin-top: 8px;
+  font-size: clamp(17px, 1.4vw, 22px);
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--body);
+  max-width: clamp(390px, 30vw, 490px);
+}
+
+.hero__actions {
+  margin-top: 33px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* ============ BOTONES ============ */
+
+/* +3% (antes 15/1.15vw/19 + padding 14/1.1vw/18 y 24/2vw/34): margen
+   real medido de 12px sobre 185px (6.5%) en "Hablemos" — 3% deja
+   colchón de ~6px. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-body);
+  font-size: clamp(15px, 1.15vw, 19px);
+  font-weight: 600;
+  text-decoration: none;
+  padding: clamp(14px, 1.1vw, 18px) clamp(24px, 2vw, 34px);
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.btn__arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--white);
+  box-shadow: 0 10px 24px rgba(10, 27, 60, 0.25);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(10, 27, 60, 0.32);
+}
+
+.btn--secondary {
+  background: var(--white);
+  color: var(--heading);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 14px rgba(14, 26, 45, 0.06);
+}
+
+.btn--secondary:hover {
+  transform: translateY(-2px);
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+}
+
+/* ============ VISUAL (dispositivos) ============ */
+
+/* Sin position: el ancla de la imagen absoluta debe ser .hero,
+   no esta columna (que queda vacía en escritorio) */
+.hero__visual {
+}
+
+/* La imagen (con alfa real) se posiciona como capa sobre el hero.
+   Geometría por CONTENIDO, no por caja (el archivo trae márgenes
+   transparentes: el contenido visible va del 14.45% al 96.28% del
+   alto de la caja, medido sobre el canal alfa):
+   - Tamaño: manda el ancho. El tope de 1600px que había (heredado
+     de una versión anterior) cortaba el crecimiento en pantallas
+     más anchas que ~1700px, dejando un margen blanco a la derecha
+     que delataba "una foto pegada". Se quita ese tope (99vw, sin
+     límite práctico) para que siempre sangre hasta el borde. El
+     término (100vh - 135px) * 2.171 sigue siendo una RED DE
+     SEGURIDAD que solo actúa en ventanas muy bajas (< ~815px de
+     alto a 1600 de ancho): achica la imagen lo justo para que el
+     contenido COMPLETO quepa entre el menú y el borde del hero,
+     sin recortes. 2.171 = aspecto 1.777 / fracción visible 0.8183.
+   - right: el CONTENIDO visible termina al 99.88% de la caja (alfa);
+     right:-0.0012*W extiende la caja ese sliver transparente más
+     allá del borde, de modo que el borde FÍSICO de la tablet
+     coincida exacto con el borde visible del viewport (el ancla %
+     de .hero ya excluye la scrollbar — nada queda cortado bajo
+     ella ni genera scroll horizontal; el exceso es transparente y
+     body ya recorta overflow-x).
+     LECCIÓN: right calc(100% - 100vw) fue un error — 100vw incluye
+     la scrollbar, así que empujaba el filo de la tablet 15px MÁS
+     ALLÁ del área visible (quedaba cortado bajo la scrollbar).
+   - Posición: top ancla el CONTENIDO visible (no la caja) a 115px
+     del borde superior, bajo el menú: 0.0813 = 0.1445 (margen
+     transparente superior) / 1.777 (aspecto), así el cálculo usa
+     el ancho, que es lo que conocemos.
+   - Tamaño: 97vw es el máximo que no roza el subtítulo en 1600px
+     (verificado por muestreo alfa fila a fila). La reserva de la
+     red de altura baja de 135 a 125px (deja 10px visibles bajo la
+     base del portátil) para que en ventanas anchas-y-bajas la
+     imagen crezca lo máximo físicamente posible sin chocar ni
+     recortarse. */
+.hero__devices {
+  --dev-w: min(95vw, calc((100vh - 135px) * 2.171));
+  position: absolute;
+  right: 0;
+  /* Ancla del contenido a 130px: es la cota del prototipo original
+     (14.45% de 941 ≈ 136) y además hace que las filas de los
+     botones crucen la base del portátil por su zona angosta */
+  top: calc(130px - 0.0813 * var(--dev-w));
+  width: var(--dev-w);
+  max-width: none;
+  pointer-events: none;
+}
+
+@media (max-width: 1240px) {
+  .hero__devices {
+    --dev-w: min(90vw, calc((100vh - 135px) * 2.171));
+  }
+}
+
+/* ============ RESPONSIVE ============ */
+
+@media (max-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .hero {
+    padding-top: 160px;
+    min-height: auto;
+  }
+
+  .hero__devices {
+    position: static;
+    width: 100%;
+    /* transform sigue aplicando aunque position sea static: hay que
+       anularlo explícitamente o la imagen quedaría corrida hacia arriba */
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 24px;
+  }
+
+  .header__logo {
+    --logo-h: 110px;
+    height: var(--logo-h);
+    margin-top: calc((48px - var(--logo-h)) / 2 + 8px);
+    margin-bottom: calc((48px - var(--logo-h)) / 2 - 8px);
+  }
+
+  .nav {
+    gap: 24px;
+  }
+
+  .nav__link {
+    font-size: 15px;
+  }
+
+  .hero__content {
+    padding-left: 20px;
+  }
+
+  .hero__content::before {
+    height: 160px;
+  }
+
+  .hero__subtitle {
+    font-size: 17px;
+  }
+
+  .btn {
+    padding: 15px 26px;
+    font-size: 16px;
+  }
+}
+
+/* ============ METODOLOGÍA (bloque visual, sin enlace en el menú) ============ */
+/* Sección nueva: hereda 100% de las variables de color/tipografía
+   definidas arriba para el Hero. No se reutilizan clases .hero__*
+   ni se edita nada de la sección HERO. */
+
+/* Escala 0.8 uniforme sobre toda la sección (título, subtítulo,
+   espaciados y tarjetas) para que el conjunto quepa en 1600x900
+   sin scroll, igual que en la referencia — antes medía 1048px de
+   alto total contra 900px de viewport disponible. */
+.methodology {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 8vh, 96px) 0;
+}
+
+
+.methodology__header {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* font-size unificado con .services__title (única sección sin
+   escalar) — no cambia line-height (no pedido) ni el número de
+   líneas (siguen siendo los mismos <br> manuales de siempre). */
+.methodology__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(30px, 3.2vw, 48px);
+  line-height: 1.2;
+  color: var(--heading);
+  letter-spacing: -0.5px;
+}
+
+.methodology__title .accent {
+  color: var(--brand-blue);
+}
+
+/* <br> manual en el HTML entre "tecnología" y "para" fuerza el corte
+   en 2 líneas (no depende del max-width). */
+/* font-size unificado con .services__subtitle (referencia explícita
+   de Moravi) + margin-top igual a Servicios (20px) para que el
+   espacio título→subtítulo coincida en las 3 secciones. line-height
+   ya era 1.6 en las 3 — al igualar el font-size, el espaciado real
+   entre líneas queda igual también. max-width ampliado a 570px (antes
+   480px, calibrado para la fuente chica anterior): a 19px la línea 2
+   ("para...clientes.") mide 549px, más ancha que el max-width viejo,
+   lo que rompía el salto forzado en una 3ra línea. */
+.methodology__subtitle {
+  margin: 20px auto 0;
+  max-width: 570px;
+  font-size: clamp(16px, 1.15vw, 19px);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--body);
+}
+
+/* max-width nuevo: antes la grilla ocupaba el ancho completo del
+   .container (hasta 1720px) y las 4 tarjetas dominaban casi todo el
+   viewport. 960px (escalado 0.8 desde 1200px) deja margen visible a
+   los lados, como en la referencia, sin llegar a los bordes. */
+/* margin-top medido directo sobre la referencia: gap subtítulo→
+   tarjeta = 42px sobre una tarjeta de 274px de alto ahí (proporción
+   0.153). Aplicado a nuestra tarjeta actual (207px) da ~32px — antes
+   había 58px, notoriamente más grande que la referencia. */
+.methodology__grid {
+  position: relative;
+  max-width: 900px;
+  margin: clamp(24px, 3vw, 32px) auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* aspect-ratio: 2.02/1 EXACTO — igualado a .services__card a pedido
+   de Moravi (antes 2.27/1, medida propia de Metodología). max-width
+   de la grilla bajado de 960px a 900px (mismo valor que .services__grid)
+   para producir el mismo ancho de tarjeta (441px) con 2 columnas y
+   gap 18px, igual que Servicios. */
+.methodology__card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 2.02 / 1;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 17.6px 20.8px;
+  box-shadow: 0 4px 14px rgba(14, 26, 45, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.methodology__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(14, 26, 45, 0.1);
+}
+
+/* Tarjeta 01: imagen única que ya trae fondo, ícono, número, título
+   y texto integrados (generada por Moravi a 2.27:1) — sin padding
+   propio, la imagen llena el 100% y el redondeo/sombra los sigue
+   dando .methodology__card (overflow:hidden ya está arriba). */
+.methodology__card--image {
+  padding: 0;
+}
+
+.methodology__card-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Ícono con presencia real: alto y con ancho comparable al bloque
+   de texto, como en la referencia (no un cuadrado chico). Ya no es
+   1:1 — es más alto que ancho, igual que el ícono de referencia. */
+/* Reducido para caber dentro de la tarjeta, ahora bastante más baja
+   (aspect-ratio 2.27/1 sobre un ancho de grilla menor). Tamaño fijo,
+   no vw, porque ya no depende del ancho de ventana sino del alto
+   disponible dentro de la tarjeta. */
+.methodology__card-icon {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 88px;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.methodology__card-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.methodology__card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.methodology__card-number {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(11.2px, 0.8vw, 12.8px);
+  color: var(--brand-blue);
+  margin-bottom: 5px;
+}
+
+.methodology__card-title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(14.4px, 1.08vw, 17.6px);
+  line-height: 1.3;
+  color: var(--heading);
+  margin-bottom: 8px;
+}
+
+.methodology__card-text {
+  font-size: clamp(11.6px, 0.8vw, 12.8px);
+  line-height: 1.6;
+  color: var(--body);
+}
+
+/* Número decorativo, chico y contenido (no toca los bordes de la
+   tarjeta): medido sobre la referencia, ronda ~25% del alto de la
+   tarjeta con margen real de esquina, nunca pegado ni recortado */
+.methodology__card-index {
+  position: absolute;
+  right: 16px;
+  bottom: 11px;
+  z-index: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(17.6px, 1.92vw, 25.6px);
+  line-height: 1;
+  color: var(--bg-alt);
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 1024px) {
+  .methodology__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .methodology__card {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .methodology__card-icon {
+    width: 100px;
+  }
+}
+
+/* ============ PROYECTOS ============ */
+/* Sección nueva: hereda variables de color/tipografía. No reutiliza
+   .btn, .accent, .hero__ ni .methodology__ — clases 100% propias. */
+
+/* Escala 0.85 uniforme (título, subtítulo, espaciados, tarjetas y
+   CTA) para que la sección completa quepa en 1600x900 sin scroll,
+   igual que en la referencia — antes medía 962px de alto total
+   contra 900px de viewport, y el botón final quedaba fuera. */
+.projects {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(59.5px, 8.5vh, 102px) 0;
+}
+
+.projects__header {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* font-size unificado con .services__title — no cambia line-height
+   ni el número/distribución de líneas. */
+.projects__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(30px, 3.2vw, 48px);
+  line-height: 1.2;
+  color: var(--heading);
+  letter-spacing: -0.5px;
+}
+
+.projects__title .accent {
+  color: var(--brand-blue);
+}
+
+/* <br> manual en el HTML entre "diseñados" y "para" fuerza el corte
+   en 2 líneas (no depende del max-width). */
+/* font-size + margin-top unificados con .services__subtitle.
+   max-width ampliado a 390px (antes 330px, calibrado para la fuente
+   chica anterior): a 19px la línea 1 ("Algunas...diseñados") mide
+   370px, más ancha que el max-width viejo, lo que rompía el salto
+   forzado en una 3ra línea. */
+.projects__subtitle {
+  margin: 20px auto 0;
+  max-width: 390px;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.6;
+  color: var(--body);
+}
+
+/* max-width nuevo (antes sin límite, dependía solo del .container):
+   1240px (escalado 0.85 desde el ancho efectivo anterior, ~1456px)
+   para que las tarjetas sean más chicas, como en la referencia. */
+.projects__grid {
+  position: relative;
+  max-width: 1240px;
+  margin: clamp(28px, 4vw, 42px) auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 2.04vw, 27px);
+}
+
+/* Sin overflow:hidden en la tarjeta a propósito: el badge sobresale
+   por encima con position:absolute + top negativo, y necesita que
+   nada lo recorte. El redondeo de esquinas de .projects__media es
+   propio (no depende del overflow del padre). */
+.projects__card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  padding: 13.6px 13.6px 24px;
+  box-shadow: 0 4px 14px rgba(14, 26, 45, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.projects__card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(14, 26, 45, 0.1);
+}
+
+.projects__badge {
+  position: absolute;
+  top: -13.6px;
+  left: 20px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(30, 140, 255, 0.1);
+  color: var(--brand-blue);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  box-shadow: 0 4px 10px rgba(14, 26, 45, 0.08);
+}
+
+.projects__badge-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--brand-blue);
+  flex-shrink: 0;
+}
+
+/* Placeholder gris: el contenido real (capturas de proyectos) se
+   integra después — instrucción explícita de Moravi */
+.projects__media {
+  aspect-ratio: 16 / 10;
+  border-radius: 14px;
+  background: var(--bg-alt);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--body);
+  font-size: 12px;
+  overflow: hidden;
+}
+
+/* La imagen de portada ahora es clicable (envuelta en <a>): display:
+   contents saca al link del árbol de layout, para que el <img> siga
+   comportándose exactamente igual (100% ancho/alto dentro del flex
+   de .projects__media) sin que el wrapper afecte nada visualmente. */
+.projects__media > a {
+  display: contents;
+}
+
+/* Captura real del proyecto Libraica (unica tarjeta con imagen por ahora) */
+.projects__media-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.projects__body {
+  padding: 19px 7px 3px;
+}
+
+.projects__card-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(16px, 1.275vw, 18.7px);
+  color: var(--heading);
+  margin-bottom: 8px;
+}
+
+.projects__card-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+/* El texto de VESTIA ("Tienda online elegante y minimalista") mide
+   219px y solo había 211px disponibles en la fila — por eso se
+   partía en 3 líneas. Se achicó el gap y el padding del botón de al
+   lado (abajo) para liberar ~14px y que quepan las 2 líneas de la
+   referencia. */
+.projects__card-text {
+  flex: 1;
+  font-size: 12.75px;
+  line-height: 1.6;
+  color: var(--body);
+}
+
+.projects__link {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1.5px solid var(--brand-blue);
+  color: var(--brand-blue);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8.5px 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.projects__link:hover {
+  background: var(--brand-blue);
+  color: var(--white);
+}
+
+.projects__cta {
+  margin-top: clamp(34px, 4.25vw, 54px);
+  text-align: center;
+}
+
+.projects__btn-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 15.3px 30.6px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 10px 24px rgba(10, 27, 60, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.projects__btn-all:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(10, 27, 60, 0.32);
+}
+
+@media (max-width: 1100px) {
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ SERVICIOS ============ */
+/* Sección real de Servicios (el id="servicios" antes lo tenía por
+   error el bloque de Metodología). Clases 100% propias, prefijo
+   .services__ liberado tras el renombre a .methodology__. */
+
+/* Título y subtítulo NO se tocan (instrucción explícita). El resto
+   (padding de sección, gap y tarjetas) se reduce para que el
+   conjunto quepa en 1600x900 sin scroll — antes medía 1077px de
+   alto total. */
+.services {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 7vh, 72px) 0;
+}
+
+.services__header {
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.services__eyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+  margin-bottom: 14px;
+}
+
+.services__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(30px, 3.2vw, 48px);
+  line-height: 1.25;
+  color: var(--heading);
+  letter-spacing: -0.5px;
+}
+
+.services__title .accent {
+  color: var(--brand-blue);
+}
+
+.services__subtitle {
+  margin: 20px auto 0;
+  max-width: 560px;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.6;
+  color: var(--body);
+}
+
+/* max-width nuevo (antes sin límite, dependía solo del .container).
+   900px con gap 18px da tarjetas de ~441x218px, ratio 2.02:1 medido
+   directo sobre 4_-_Servicios.png en Photoshop/edge-detection —
+   distinto al 2.27:1 de Metodología, no se reutiliza ese valor.
+   margin-top: gap subtítulo→grilla medido en la referencia = 32px
+   sobre una tarjeta de 347px ahí (proporción 0.092); aplicado a la
+   tarjeta nueva (~218px) da ~20px. */
+.services__grid {
+  position: relative;
+  max-width: 900px;
+  margin: 20px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+/* aspect-ratio 2.02/1 EXACTO — medido directo sobre 4_-_Servicios.png
+   (702x347px de tarjeta real, ratio 2.0231; distinto al 2.27/1 de
+   Metodología, no se reutiliza ese valor). Sin esto la altura salía
+   del contenido y variaba levemente entre filas (207 vs 212px). */
+.services__card {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 2.02 / 1;
+  border-radius: 18px;
+  display: flex;
+  align-items: stretch;
+  box-shadow: 0 4px 14px rgba(14, 26, 45, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.services__card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(14, 26, 45, 0.1);
+}
+
+.services__card--light {
+  background: var(--white);
+  border: 1px solid var(--border);
+}
+
+.services__card--dark {
+  background: linear-gradient(135deg, var(--navy), var(--brand-blue));
+  border: none;
+}
+
+/* Solo la tarjeta 01 tiene la imagen a la izquierda y el texto a la
+   derecha (así en la referencia); las otras 3 van texto-izq/imagen-der */
+.services__card--reverse {
+  flex-direction: row-reverse;
+}
+
+.services__card-body {
+  flex: 1 1 50%;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.services__card-number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(12px, 1vw, 14px);
+  color: var(--brand-blue);
+  margin-bottom: 1px;
+}
+
+.services__card-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(15.5px, 1.3vw, 19.5px);
+  line-height: 1.3;
+  color: var(--heading);
+  margin-bottom: 5px;
+}
+
+.services__card--dark .services__card-title {
+  color: var(--white);
+}
+
+.services__card-text {
+  font-size: clamp(11.5px, 0.82vw, 13px);
+  line-height: 1.55;
+  color: var(--body);
+}
+
+.services__card--dark .services__card-text {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+/* Placeholder gris: las ilustraciones reales se integran después —
+   instrucción explícita de Moravi */
+.services__media {
+  flex: 1 1 50%;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-alt);
+  color: var(--body);
+}
+
+.services__card--dark .services__media {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Tarjeta 01: imagen única (fondo+mockups+número+título+texto ya
+   integrados), mismo patrón que .methodology__card-full — el
+   border-radius/overflow:hidden de .services__card (ya existían)
+   recortan la imagen automáticamente, sin necesitar padding:0 porque
+   .services__card nunca tuvo padding propio. */
+.services__card-full {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (max-width: 1024px) {
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .services__card,
+  .services__card--reverse {
+    flex-direction: column;
+  }
+
+  .services__media {
+    min-height: 160px;
+  }
+}
+
+/* ============ CONTACTO ============ */
+/* Sección nueva: clases 100% propias, prefijo .contact__ */
+
+.contact {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(70px, 10vh, 120px) 0;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 0.75fr);
+  align-items: center;
+  gap: 8px;
+}
+
+/* Mismo tratamiento que .services__eyebrow (mayúsculas, color de
+   marca, misma tipografía/tamaño) pero alineado a la izquierda —
+   esta sección tiene layout de 2 columnas, no centrado. Reemplaza
+   el diseño anterior de línea+punto por consistencia entre secciones. */
+.contact__eyebrow {
+  display: block;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--brand-blue);
+}
+
+.contact__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(34px, 3.4vw, 54px);
+  line-height: 1.15;
+  color: var(--heading);
+  letter-spacing: -0.5px;
+  margin: 20px 0 24px;
+}
+
+.contact__title .accent {
+  color: var(--brand-blue);
+}
+
+.contact__text {
+  max-width: 460px;
+  font-size: clamp(16px, 1.1vw, 18px);
+  line-height: 1.7;
+  color: var(--body);
+  margin-bottom: 32px;
+}
+
+.contact__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: 1.5px solid var(--navy);
+  color: var(--navy);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.contact__btn:hover {
+  background: var(--navy);
+  color: var(--white);
+}
+
+.contact__form {
+  position: relative;
+  background: var(--white);
+  border-radius: 24px;
+  padding: 28px;
+  box-shadow: 0 24px 50px rgba(14, 26, 45, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact__form-title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(19px, 1.6vw, 23px);
+  color: var(--heading);
+  padding-bottom: 16px;
+}
+
+.contact__form-line {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 40px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--brand-blue);
+}
+
+.contact__field input,
+.contact__field textarea {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--heading);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 11px 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact__field textarea {
+  resize: vertical;
+  min-height: 88px;
+  font-family: var(--font-body);
+}
+
+.contact__field input::placeholder,
+.contact__field textarea::placeholder {
+  color: var(--body);
+  opacity: 0.7;
+}
+
+.contact__field input:focus,
+.contact__field textarea:focus {
+  outline: none;
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 3px rgba(30, 140, 255, 0.12);
+}
+
+.contact__submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: linear-gradient(135deg, var(--navy), var(--navy-light));
+  color: var(--white);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(10, 27, 60, 0.25);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(10, 27, 60, 0.32);
+}
+
+@media (max-width: 900px) {
+  .contact__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ============ FOOTER ============ */
+/* Rediseño 2026-07-06: fondo oscuro (var(--navy), mismo tono que los
+   botones sólidos del sitio) en vez del fondo claro anterior. El
+   wordmark del logo viene horneado en navy oscuro sobre el archivo —
+   con brightness(0)+invert(1) se convierte en una silueta blanca
+   (icono esfera incluido) para que tenga contraste sobre el fondo
+   oscuro, sin necesitar un archivo de logo aparte. */
+
+.footer {
+  background: var(--navy);
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding-top: 16px;
+  padding-bottom: clamp(16px, 2vw, 22px);
+}
+
+.footer__logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  margin-top: -16px;
+}
+
+.footer__logo-ms {
+  height: 38px;
+  width: auto;
+}
+
+.footer__logo-texto {
+  height: 145px;
+  width: auto;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wordmark de texto (no la imagen del header): el logo real trae el
+   ícono de esfera horneado en detalle de color, y un filtro
+   brightness(0)+invert(1) lo aplana a una mancha blanca sin forma
+   reconocible. Texto propio garantiza contraste nítido sobre el
+   fondo oscuro sin depender de un archivo aparte. */
+.footer__wordmark {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 3px;
+  line-height: 1.35;
+  color: var(--white);
+}
+
+.footer__wordmark-sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  color: var(--brand-blue);
+}
+
+.footer__tagline {
+  margin-top: -30px;
+  max-width: 280px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer__nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.2vw, 32px);
+}
+
+.footer__nav-link {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__nav-link:hover {
+  color: var(--brand-blue);
+}
+
+.footer__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  justify-self: end;
+  padding-right: 24px;
+}
+
+.footer__email {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__email:hover {
+  color: var(--white);
+}
+
+.footer__social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer__social-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.footer__social-icon:hover {
+  transform: translateY(-2px);
+}
+
+.footer__social-icon--instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.footer__social-icon--whatsapp {
+  background: #25d366;
+}
+
+.footer__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.footer__privacy-link {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  margin-top: 10px;
+  transition: color 0.2s;
+}
+
+.footer__privacy-link:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 18px 0;
+}
+
+.footer__bottom-inner {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 720px) {
+  .footer__top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__brand {
+    align-items: center;
+  }
+
+  .footer__aside {
+    align-items: center;
+  }
+}
+
+/* ============ PÁGINA PORTAFOLIO (portafolio.html) ============ */
+/* Reglas exclusivas de portafolio.html — reutilizan integramente el
+   sistema de diseño ya existente (variables de color/tipografía,
+   patrones de eyebrow/título/subtítulo/botón ya usados en Servicios/
+   Proyectos/Contacto). No modifican ninguna clase compartida con
+   index.html; son aditivas. */
+
+/* padding-top clamp(100px,12vw,140px): se topa en 140px en pantallas
+   anchas, igual que el padding-top fijo de .hero (140px) — antes era
+   clamp(140px,16vw,180px), 40px más que el Hero. Sin padding-bottom:
+   el espacio hacia la grilla lo controla únicamente el margin-top de
+   #portfolio-grid (ver más abajo), para tener una sola fuente de
+   verdad y poder igualarlo al gap subtítulo→pestañas. */
+.portfolio-hero {
+  padding: clamp(100px, 12vw, 140px) 0 0;
+}
+
+/* max-width igual a .projects__grid (1240px) para que el bloque de
+   texto quede alineado exactamente con la grilla de tarjetas de abajo
+   (mismo max-width + margin:auto = mismo offset izquierdo). El corte
+   de línea del título YA NO depende de este valor — se controla
+   directo en .portfolio__title (ver más abajo), para que ambas
+   responsabilidades (alineación vs. salto de línea) no choquen entre
+   sí como pasó en la ronda anterior. */
+.portfolio-hero__inner {
+  max-width: 1240px;
+}
+
+/* Mismo tamaño/peso que .projects__title/.services__title */
+/* max-width 625px: medido palabra por palabra en el DOM real (no
+   canvas puro, para que el letter-spacing se aplique) — el corte
+   "ideal" en balance puro (tras "ayudan") solo tiene una ventana
+   válida de 2px (584-586px) y se rompe a 3 líneas con cualquier
+   variación de renderizado (probado en vivo). El corte elegido, tras
+   la 4ª palabra ("a"), da "Proyectos que ayudan a" (586px) / "las
+   marcas a destacar" (542px) — casi tan parejo (44px de diferencia)
+   pero con una ventana robusta de 82px (586-668px). 625px cae cómodo
+   en el medio. */
+.portfolio__title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(30px, 3.2vw, 48px);
+  line-height: 1.2;
+  color: var(--heading);
+  letter-spacing: -0.5px;
+  max-width: 625px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.portfolio__title .accent {
+  color: var(--brand-blue);
+}
+
+.portfolio__subtitle {
+  margin: 16px auto 0;
+  max-width: 460px;
+  font-size: clamp(16px, 1.15vw, 19px);
+  line-height: 1.6;
+  color: var(--body);
+  text-align: center;
+}
+
+.portfolio__filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: clamp(28px, 3.5vw, 36px);
+}
+
+.portfolio__filter-btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  color: var(--heading);
+  background: var(--white);
+  border: 1px solid var(--border);
+  padding: 11px 22px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.portfolio__filter-btn:hover {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+}
+
+.portfolio__filter-btn.is-active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--white);
+}
+
+/* Mismo valor que .portfolio__filters margin-top (misma fórmula
+   clamp), para que el gap subtítulo→pestañas y pestañas→grilla
+   queden idénticos en cualquier ancho de pantalla. Selector por id
+   (exclusivo de portafolio.html) para no tocar la regla compartida
+   .projects__grid, que también usa index.html. */
+#portfolio-grid {
+  margin-top: clamp(28px, 3.5vw, 36px);
+}
+
+.portfolio-grid {
+  padding: 0 0 clamp(59.5px, 8.5vh, 102px);
+}
+
+/* Estado de filtrado (JS de portafolio.html). .projects__card ya
+   existe en index.html — este selector compuesto no afecta a esa
+   página porque ninguna tarjeta ahí recibe la clase .is-hidden. */
+.projects__card.is-hidden {
+  display: none;
+}
