@@ -1496,11 +1496,14 @@ img {
 }
 
 @media (max-width: 768px) {
-  .header__logo { height: 44px; }
+  .header__logo { height: 54px; }
   .hero { padding-top: 80px; }
   .hero__visual { display: none; }
   .hero__inner { display: block; }
   .hero__title { font-size: 28px; }
+  .hero__content { text-align: center; }
+  .hero__actions { justify-content: center; }
+  .nav__link { color: white; }
   .nav {
     display: none;
     flex-direction: column;
