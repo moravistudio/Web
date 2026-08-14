@@ -783,6 +783,17 @@ img {
   color: var(--white);
 }
 
+.projects__link--disabled {
+  border-color: var(--border);
+  color: var(--body);
+  cursor: default;
+}
+
+.projects__link--disabled:hover {
+  background: none;
+  color: var(--body);
+}
+
 .projects__cta {
   margin-top: clamp(34px, 4.25vw, 54px);
   text-align: center;

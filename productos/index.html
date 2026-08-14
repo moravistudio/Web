@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos — Moravi Studio</title>
+  <meta name="description" content="Productos digitales creados por Moravi Studio: generador de códigos QR, catálogo online y más herramientas para negocios.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/styles.css?v=3">
+</head>
+<body>
+
+  <!-- ============ HEADER (idéntico al patrón de portafolio.html; hrefs ajustados con ../) ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="header__brand">
+        <img src="../assets/img/logo-moravi.webp" alt="Moravi Studio" class="header__logo">
+      </a>
+      <nav class="nav">
+        <a href="../index.html" class="nav__link">Inicio</a>
+        <a href="../index.html#proyectos" class="nav__link">Proyectos</a>
+        <a href="../index.html#servicios" class="nav__link">Servicios</a>
+        <a href="./" class="nav__link nav__link--active">Productos</a>
+        <a href="../index.html#contacto" class="nav__link">Contacto</a>
+      </nav>
+      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <!-- ============ PRODUCTOS — INTRO DE LA PÁGINA ============ -->
+  <section class="portfolio-hero">
+    <div class="container portfolio-hero__inner">
+      <h1 class="portfolio__title">Productos digitales que <span class="accent">simplifican</span> tu trabajo</h1>
+      <p class="portfolio__subtitle">Herramientas, aplicaciones y soluciones creadas por Moravi Studio — desde recursos gratuitos hasta productos Premium.</p>
+    </div>
+  </section>
+
+  <!-- ============ GRILLA DE PRODUCTOS (mismo patrón .projects__card de portafolio.html) ============ -->
+  <section class="portfolio-grid">
+    <div class="container">
+      <div class="projects__grid">
+        <article class="projects__card">
+          <span class="projects__badge"><span class="projects__badge-dot"></span>Herramienta gratuita</span>
+          <div class="projects__media">
+            <img src="../assets/img/qr-generator-mockup.webp" alt="Interfaz del Generador de Códigos QR de Moravi Studio" class="projects__media-img">
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__card-title">Generador de Códigos QR</h3>
+            <div class="projects__card-row">
+              <p class="projects__card-text">Crea códigos QR personalizados para URLs, WhatsApp, WiFi y más, gratis y sin registro.</p>
+              <span class="projects__link projects__link--disabled">Próximamente</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="projects__card">
+          <span class="projects__badge"><span class="projects__badge-dot"></span>Herramienta para negocios</span>
+          <div class="projects__media">
+            <img src="../assets/img/catalogo-online-mockup.webp" alt="Interfaz del Catálogo Online de Moravi Studio" class="projects__media-img">
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__card-title">Catálogo Online</h3>
+            <div class="projects__card-row">
+              <p class="projects__card-text">Publica tu catálogo de productos y recibe pedidos directo por WhatsApp, sin comisiones.</p>
+              <span class="projects__link projects__link--disabled">Próximamente</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="projects__cta">
+        <a href="../index.html" class="projects__btn-all">
+          Volver al inicio
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER (idéntico al patrón de portafolio.html; hrefs ajustados con ../) ============ -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo-wrap">
+          <img src="../assets/img/logo-ms-footer.webp" alt="MS" class="footer__logo-ms">
+          <img src="../assets/img/logo-texto-footer.webp" alt="Moravi Studio" class="footer__logo-texto">
+        </div>
+        <p class="footer__tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
+      </div>
+
+      <div class="footer__center">
+        <nav class="footer__nav">
+          <a href="../index.html" class="footer__nav-link">Inicio</a>
+          <a href="../index.html#proyectos" class="footer__nav-link">Proyectos</a>
+          <a href="../index.html#servicios" class="footer__nav-link">Servicios</a>
+          <a href="./" class="footer__nav-link">Productos</a>
+          <a href="../index.html#contacto" class="footer__nav-link">Contacto</a>
+        </nav>
+        <a href="../privacidad.html" class="footer__privacy-link">Política de privacidad</a>
+      </div>
+
+      <div class="footer__aside">
+        <div class="footer__social">
+          <a href="https://www.instagram.com/moravistudiolab" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--instagram" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.3" cy="6.7" r="0.6" fill="white" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/51940284018" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--whatsapp" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.94 14.47L2 22l5.66-1.48A10 10 0 1 0 12 2zm5.29 14.34c-.22.62-1.09 1.14-1.79 1.29-.49.1-1.12.18-3.26-.7-2.73-1.13-4.49-3.9-4.63-4.08-.14-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.94-2.25.24-.27.53-.34.71-.34h.5c.16 0 .38-.02.58.44.22.5.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.15-.28.33-.4.45-.13.13-.27.27-.12.53.16.27.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.19 1.36.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.87.27.13.45.2.51.31.07.11.07.62-.15 1.24z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2026 Moravi Studio. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/menu-mobile.js" defer></script>
+  <script src="../js/chatbot.js" defer></script>
+</body>
+</html>
