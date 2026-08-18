@@ -20,14 +20,20 @@
       <a href="#" class="header__brand">
         <img src="assets/img/logo-moravi.webp" alt="Moravi Studio" class="header__logo">
       </a>
-      <nav class="nav">
-        <a href="#" class="nav__link nav__link--active">Inicio</a>
-        <a href="#proyectos" class="nav__link">Proyectos</a>
-        <a href="#servicios" class="nav__link">Servicios</a>
-        <a href="productos/" class="nav__link">Productos</a>
-        <a href="#contacto" class="nav__link">Contacto</a>
-      </nav>
-      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <div class="header__right">
+        <nav class="nav">
+          <a href="#" class="nav__link nav__link--active" data-i18n="nav.inicio">Inicio</a>
+          <a href="#proyectos" class="nav__link" data-i18n="nav.proyectos">Proyectos</a>
+          <a href="#servicios" class="nav__link" data-i18n="nav.servicios">Servicios</a>
+          <a href="productos/" class="nav__link" data-i18n="nav.productos">Productos</a>
+          <a href="#contacto" class="nav__link" data-i18n="nav.contacto">Contacto</a>
+        </nav>
+        <div class="lang-selector" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn lang-btn--active" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      </div>
     </div>
   </header>
 
@@ -36,11 +42,11 @@
     <div class="container hero__inner">
       <div class="hero__content">
         <h1 class="hero__title">
-          <span class="hero__title-lead">Diseño Web que</span><br>
-          <span class="accent">convierte</span> visitantes<br>
-          en clientes.
+          <span class="hero__title-lead" data-i18n="hero.title.lead">Diseño Web que</span><br>
+          <span class="accent" data-i18n="hero.title.accent">convierte</span> <span data-i18n="hero.title.mid">visitantes</span><br>
+          <span data-i18n="hero.title.end">en clientes.</span>
         </h1>
-        <p class="hero__subtitle">
+        <p class="hero__subtitle" data-i18n="hero.subtitle">
           Landing Pages, sitios web y tiendas&nbsp;online
           diseñadas para ayudarte a destacar y
           vender&nbsp;más.
@@ -48,11 +54,11 @@
         <img src="assets/img/hero-devices-mobile.webp" alt="Dispositivos Moravi Studio" class="hero__devices-mobile">
         <div class="hero__actions">
           <a href="#proyectos" class="btn btn--primary">
-            Ver proyectos
+            <span data-i18n="hero.btnPrimary">Ver proyectos</span>
             <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
           <a href="#contacto" class="btn btn--secondary">
-            Hablemos
+            <span data-i18n="hero.btnSecondary">Hablemos</span>
             <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
           </a>
         </div>
@@ -71,11 +77,11 @@
     <div class="container">
       <div class="methodology__header">
         <h2 class="methodology__title">
-          Diseñamos sitios web<br>
-          pensados para<br>
-          <span class="accent">hacer crecer</span> tu negocio.
+          <span data-i18n="methodology.title.lead">Diseñamos sitios web</span><br>
+          <span data-i18n="methodology.title.mid">pensados para</span><br>
+          <span class="accent" data-i18n="methodology.title.accent">hacer crecer</span> <span data-i18n="methodology.title.end">tu negocio.</span>
         </h2>
-        <p class="methodology__subtitle">
+        <p class="methodology__subtitle" data-i18n="methodology.subtitle">
           Cada proyecto combina diseño, estrategia y tecnología<br>
           para ayudarte a destacar y convertir más visitantes en clientes.
         </p>
@@ -105,13 +111,13 @@
   <section class="projects" id="proyectos">
     <div class="container">
       <div class="projects__header">
-        <h2 class="projects__title">Proyectos <span class="accent">destacados</span></h2>
-        <p class="projects__subtitle">Algunas muestras de sitios web diseñados para diferentes tipos de negocios.</p>
+        <h2 class="projects__title"><span data-i18n="projects.title.lead">Proyectos</span> <span class="accent" data-i18n="projects.title.accent">destacados</span></h2>
+        <p class="projects__subtitle" data-i18n="projects.subtitle">Algunas muestras de sitios web diseñados para diferentes tipos de negocios.</p>
       </div>
 
       <div class="projects__grid">
         <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span>Landing Page</span>
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="projects.badge.landing">Landing Page</span></span>
           <div class="projects__media">
             <a href="portafolio.html">
               <img src="assets/img/lash-atelier-hero.webp" alt="Captura del sitio web de Lash Atelier" class="projects__media-img">
@@ -120,9 +126,9 @@
           <div class="projects__body">
             <h3 class="projects__card-title">Lash Atelier</h3>
             <div class="projects__card-row">
-              <p class="projects__card-text">Landing page moderna para negocio de pestañas y laminado de cejas.</p>
+              <p class="projects__card-text" data-i18n="projects.card.lashAtelier">Landing page moderna para negocio de pestañas y laminado de cejas.</p>
               <a href="portafolio.html" class="projects__link">
-                Ver proyecto
+                <span data-i18n="projects.verProyecto">Ver proyecto</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
@@ -130,7 +136,7 @@
         </article>
 
         <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span>Tienda Online</span>
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="projects.badge.tienda">Tienda Online</span></span>
           <div class="projects__media">
             <a href="portafolio.html">
               <img src="assets/img/pagina-uno-hero.webp" alt="Captura del sitio web de Página Uno" class="projects__media-img">
@@ -139,9 +145,9 @@
           <div class="projects__body">
             <h3 class="projects__card-title">Página Uno</h3>
             <div class="projects__card-row">
-              <p class="projects__card-text">Tienda online de libros seleccionados para cada tipo de lector.</p>
+              <p class="projects__card-text" data-i18n="projects.card.paginaUno">Tienda online de libros seleccionados para cada tipo de lector.</p>
               <a href="portafolio.html" class="projects__link">
-                Ver proyecto
+                <span data-i18n="projects.verProyecto">Ver proyecto</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
@@ -149,7 +155,7 @@
         </article>
 
         <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span>Sitio Web</span>
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="projects.badge.sitio">Sitio Web</span></span>
           <div class="projects__media">
             <a href="portafolio.html">
               <img src="assets/img/libraica-hero.webp" alt="Captura del sitio web de Libraica" class="projects__media-img">
@@ -158,9 +164,9 @@
           <div class="projects__body">
             <h3 class="projects__card-title">Libraica</h3>
             <div class="projects__card-row">
-              <p class="projects__card-text">Sitio web de libros con recomendaciones literarias</p>
+              <p class="projects__card-text" data-i18n="projects.card.libraica">Sitio web de libros con recomendaciones literarias</p>
               <a href="portafolio.html" class="projects__link">
-                Ver proyecto
+                <span data-i18n="projects.verProyecto">Ver proyecto</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
               </a>
             </div>
@@ -170,7 +176,7 @@
 
       <div class="projects__cta">
         <a href="portafolio.html" class="projects__btn-all">
-          Ver todos los proyectos
+          <span data-i18n="projects.verTodos">Ver todos los proyectos</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -181,9 +187,9 @@
   <section class="services" id="servicios">
     <div class="container">
       <div class="services__header">
-        <span class="services__eyebrow">• Servicios •</span>
-        <h2 class="services__title">Soluciones para potenciar<br>tu <span class="accent">presencia digital</span></h2>
-        <p class="services__subtitle">Más que una página web, te ayudamos a construir una presencia digital coherente, profesional y preparada para crecer.</p>
+        <span class="services__eyebrow" data-i18n="services.eyebrow">• Servicios •</span>
+        <h2 class="services__title"><span data-i18n="services.title.lead">Soluciones para potenciar</span><br><span data-i18n="services.title.mid">tu</span> <span class="accent" data-i18n="services.title.accent">presencia digital</span></h2>
+        <p class="services__subtitle" data-i18n="services.subtitle">Más que una página web, te ayudamos a construir una presencia digital coherente, profesional y preparada para crecer.</p>
       </div>
 
       <div class="services__grid">
@@ -210,28 +216,28 @@
   <section class="contact" id="contacto">
     <div class="container contact__inner">
       <div class="contact__content">
-        <span class="contact__eyebrow">• Contacto •</span>
-        <h2 class="contact__title">Hagamos que<br>tu negocio<br><span class="accent">destaque.</span></h2>
-        <p class="contact__text">Diseñamos sitios web modernos y experiencias digitales que transmiten confianza, destacan tu marca y ayudan a hacer crecer tu negocio.</p>
+        <span class="contact__eyebrow" data-i18n="contact.eyebrow">• Contacto •</span>
+        <h2 class="contact__title"><span data-i18n="contact.title.lead">Hagamos que</span><br><span data-i18n="contact.title.mid">tu negocio</span><br><span class="accent" data-i18n="contact.title.accent">destaque.</span></h2>
+        <p class="contact__text" data-i18n="contact.text">Diseñamos sitios web modernos y experiencias digitales que transmiten confianza, destacan tu marca y ayudan a hacer crecer tu negocio.</p>
         <a href="#proyectos" class="contact__btn">
-          Ver proyectos
+          <span data-i18n="hero.btnPrimary">Ver proyectos</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
 
       <form class="contact__form" action="https://formspree.io/f/mykqqgad" method="POST">
-        <h3 class="contact__form-title">Cuéntame sobre tu proyecto<i class="contact__form-line" aria-hidden="true"></i></h3>
+        <h3 class="contact__form-title"><span data-i18n="contact.form.title">Cuéntame sobre tu proyecto</span><i class="contact__form-line" aria-hidden="true"></i></h3>
         <label class="contact__field">
-          <input type="text" name="nombre" placeholder="Nombre" required>
+          <input type="text" name="nombre" placeholder="Nombre" data-i18n-placeholder="contact.form.name" required>
         </label>
         <label class="contact__field">
-          <input type="email" name="correo" placeholder="Correo electrónico" required>
+          <input type="email" name="correo" placeholder="Correo electrónico" data-i18n-placeholder="contact.form.email" required>
         </label>
         <label class="contact__field">
-          <textarea name="mensaje" rows="4" placeholder="Cuéntame sobre tu proyecto" required></textarea>
+          <textarea name="mensaje" rows="4" placeholder="Cuéntame sobre tu proyecto" data-i18n-placeholder="contact.form.title" required></textarea>
         </label>
         <button type="submit" class="contact__submit">
-          Enviar mensaje
+          <span data-i18n="contact.form.submit">Enviar mensaje</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </button>
       </form>
@@ -246,18 +252,18 @@
           <img src="assets/img/logo-ms-footer.webp" alt="MS" class="footer__logo-ms">
           <img src="assets/img/logo-texto-footer.webp" alt="Moravi Studio" class="footer__logo-texto">
         </div>
-        <p class="footer__tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
+        <p class="footer__tagline" data-i18n="footer.tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
       </div>
 
       <div class="footer__center">
         <nav class="footer__nav">
-          <a href="#" class="footer__nav-link">Inicio</a>
-          <a href="#proyectos" class="footer__nav-link">Proyectos</a>
-          <a href="#servicios" class="footer__nav-link">Servicios</a>
-          <a href="productos/" class="footer__nav-link">Productos</a>
-          <a href="#contacto" class="footer__nav-link">Contacto</a>
+          <a href="#" class="footer__nav-link" data-i18n="nav.inicio">Inicio</a>
+          <a href="#proyectos" class="footer__nav-link" data-i18n="nav.proyectos">Proyectos</a>
+          <a href="#servicios" class="footer__nav-link" data-i18n="nav.servicios">Servicios</a>
+          <a href="productos/" class="footer__nav-link" data-i18n="nav.productos">Productos</a>
+          <a href="#contacto" class="footer__nav-link" data-i18n="nav.contacto">Contacto</a>
         </nav>
-        <a href="privacidad.html" class="footer__privacy-link">Política de privacidad</a>
+        <a href="privacidad.html" class="footer__privacy-link" data-i18n="footer.privacy">Política de privacidad</a>
       </div>
 
       <div class="footer__aside">
@@ -278,11 +284,12 @@
 
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p>© 2026 Moravi Studio. Todos los derechos reservados.</p>
+        <p data-i18n="footer.copyright">© 2026 Moravi Studio. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
 
+  <script src="js/i18n.js" defer></script>
   <script src="js/menu-mobile.js" defer></script>
 
   <!-- Chatbot -->

@@ -76,6 +76,15 @@ img {
   justify-content: space-between;
 }
 
+/* Agrupa nav + selector de idioma + hamburguesa en un solo bloque, para
+   que .header__inner conserve exactamente 2 hijos directos (logo |
+   bloque-derecho) y el space-between no se desbalancee al añadir ES/EN. */
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
 .header__logo {
   /* Con alfa real ya no necesita blend. El archivo trae mucho margen
      interno (contenido: 8.8%–90.3% × 28.8%–71.2%), así que se agranda
@@ -1496,6 +1505,39 @@ img {
 }
 
 .hero__devices-mobile { display: none; }
+
+.lang-selector {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px;
+  flex-shrink: 0;
+}
+
+.lang-btn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--body);
+  padding: 5px 11px;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.lang-btn:hover {
+  color: var(--brand-blue);
+}
+
+.lang-btn--active,
+.lang-btn--active:hover {
+  background: var(--brand-blue);
+  color: var(--white);
+}
 
 .hamburger {
   display: none;

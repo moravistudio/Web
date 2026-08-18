@@ -20,22 +20,28 @@
       <a href="../index.html" class="header__brand">
         <img src="../assets/img/logo-moravi.webp" alt="Moravi Studio" class="header__logo">
       </a>
-      <nav class="nav">
-        <a href="../index.html" class="nav__link">Inicio</a>
-        <a href="../index.html#proyectos" class="nav__link">Proyectos</a>
-        <a href="../index.html#servicios" class="nav__link">Servicios</a>
-        <a href="./" class="nav__link nav__link--active">Productos</a>
-        <a href="../index.html#contacto" class="nav__link">Contacto</a>
-      </nav>
-      <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <div class="header__right">
+        <nav class="nav">
+          <a href="../index.html" class="nav__link" data-i18n="nav.inicio">Inicio</a>
+          <a href="../index.html#proyectos" class="nav__link" data-i18n="nav.proyectos">Proyectos</a>
+          <a href="../index.html#servicios" class="nav__link" data-i18n="nav.servicios">Servicios</a>
+          <a href="./" class="nav__link nav__link--active" data-i18n="nav.productos">Productos</a>
+          <a href="../index.html#contacto" class="nav__link" data-i18n="nav.contacto">Contacto</a>
+        </nav>
+        <div class="lang-selector" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn lang-btn--active" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      </div>
     </div>
   </header>
 
   <!-- ============ PRODUCTOS — INTRO DE LA PÁGINA ============ -->
   <section class="portfolio-hero">
     <div class="container portfolio-hero__inner">
-      <h1 class="portfolio__title">Productos digitales que <span class="accent">simplifican</span> tu trabajo</h1>
-      <p class="portfolio__subtitle">Herramientas, aplicaciones y soluciones creadas por Moravi Studio — desde recursos gratuitos hasta productos Premium.</p>
+      <h1 class="portfolio__title"><span data-i18n="productos.hero.lead">Productos digitales que</span> <span class="accent" data-i18n="productos.hero.accent">simplifican</span> <span data-i18n="productos.hero.tail">tu trabajo</span></h1>
+      <p class="portfolio__subtitle" data-i18n="productos.hero.subtitle">Herramientas, aplicaciones y soluciones creadas por Moravi Studio — desde recursos gratuitos hasta productos Premium.</p>
     </div>
   </section>
 
@@ -44,63 +50,63 @@
     <div class="container">
       <div class="projects__grid">
         <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span>Herramienta gratuita</span>
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="productos.badge.gratis">Herramienta gratuita</span></span>
           <div class="projects__media">
             <a href="https://qr.moravistudio.com" target="_blank" rel="noopener noreferrer">
               <img src="../assets/img/qr-generator-mockup.webp" alt="Interfaz del Generador de Códigos QR de Moravi Studio" class="projects__media-img">
             </a>
           </div>
           <div class="projects__body">
-            <h3 class="projects__card-title">Generador de Códigos QR</h3>
+            <h3 class="projects__card-title" data-i18n="productos.qr.title">Generador de Códigos QR</h3>
             <div class="projects__card-row">
-              <p class="projects__card-text">Crea códigos QR personalizados para URLs, WhatsApp, WiFi y más, gratis y sin registro.</p>
-              <a href="https://qr.moravistudio.com" class="projects__link" target="_blank" rel="noopener noreferrer">Usar herramienta →</a>
+              <p class="projects__card-text" data-i18n="productos.qr.text">Crea códigos QR personalizados para URLs, WhatsApp, WiFi y más, gratis y sin registro.</p>
+              <a href="https://qr.moravistudio.com" class="projects__link" target="_blank" rel="noopener noreferrer" data-i18n="productos.usarHerramienta">Usar herramienta →</a>
             </div>
           </div>
         </article>
 
         <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span>Herramienta para negocios</span>
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="productos.badge.negocios">Herramienta para negocios</span></span>
           <div class="projects__media">
             <img src="../assets/img/catalogo-online-mockup.webp" alt="Interfaz del Catálogo Online de Moravi Studio" class="projects__media-img">
           </div>
           <div class="projects__body">
-            <h3 class="projects__card-title">Catálogo Online</h3>
+            <h3 class="projects__card-title" data-i18n="productos.catalogo.title">Catálogo Online</h3>
             <div class="projects__card-row">
-              <p class="projects__card-text">Publica tu catálogo de productos y recibe pedidos directo por WhatsApp, sin comisiones.</p>
-              <span class="projects__link projects__link--disabled">Próximamente</span>
+              <p class="projects__card-text" data-i18n="productos.catalogo.text">Publica tu catálogo de productos y recibe pedidos directo por WhatsApp, sin comisiones.</p>
+              <span class="projects__link projects__link--disabled" data-i18n="productos.proximamente">Próximamente</span>
             </div>
           </div>
         </article>
 
         <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span>Herramienta gratuita</span>
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="productos.badge.gratis">Herramienta gratuita</span></span>
           <div class="projects__media">
             <a href="https://calculadoraprecioventa.moravistudio.com/" target="_blank" rel="noopener noreferrer">
               <img src="../assets/img/calculadora-precio-rentabilidad-hero.webp" alt="Interfaz de la Calculadora de Precio y Rentabilidad de Moravi Studio" class="projects__media-img">
             </a>
           </div>
           <div class="projects__body">
-            <h3 class="projects__card-title">Calculadora de Precio y Rentabilidad</h3>
+            <h3 class="projects__card-title" data-i18n="productos.calcPrecio.title">Calculadora de Precio y Rentabilidad</h3>
             <div class="projects__card-row">
-              <p class="projects__card-text">Calcula cuánto debes cobrar para cubrir tus costos y alcanzar la ganancia que buscas.</p>
-              <a href="https://calculadoraprecioventa.moravistudio.com/" class="projects__link" target="_blank" rel="noopener noreferrer">Usar herramienta →</a>
+              <p class="projects__card-text" data-i18n="productos.calcPrecio.text">Calcula cuánto debes cobrar para cubrir tus costos y alcanzar la ganancia que buscas.</p>
+              <a href="https://calculadoraprecioventa.moravistudio.com/" class="projects__link" target="_blank" rel="noopener noreferrer" data-i18n="productos.usarHerramienta">Usar herramienta →</a>
             </div>
           </div>
         </article>
 
         <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span>Herramienta gratuita</span>
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="productos.badge.gratis">Herramienta gratuita</span></span>
           <div class="projects__media">
             <a href="https://breakeven.moravistudio.com/" target="_blank" rel="noopener noreferrer">
               <img src="../assets/img/calculadora-punto-equilibrio-hero.webp" alt="Interfaz de la Calculadora de Punto de Equilibrio de Moravi Studio" class="projects__media-img">
             </a>
           </div>
           <div class="projects__body">
-            <h3 class="projects__card-title">Calculadora de Punto de Equilibrio</h3>
+            <h3 class="projects__card-title" data-i18n="productos.calcEquilibrio.title">Calculadora de Punto de Equilibrio</h3>
             <div class="projects__card-row">
-              <p class="projects__card-text">Calcula cuántas unidades necesitas vender para cubrir tus costos y alcanzar tu meta de ganancia.</p>
-              <a href="https://breakeven.moravistudio.com/" class="projects__link" target="_blank" rel="noopener noreferrer">Usar calculadora →</a>
+              <p class="projects__card-text" data-i18n="productos.calcEquilibrio.text">Calcula cuántas unidades necesitas vender para cubrir tus costos y alcanzar tu meta de ganancia.</p>
+              <a href="https://breakeven.moravistudio.com/" class="projects__link" target="_blank" rel="noopener noreferrer" data-i18n="productos.usarCalculadora">Usar calculadora →</a>
             </div>
           </div>
         </article>
@@ -108,7 +114,7 @@
 
       <div class="projects__cta">
         <a href="../index.html" class="projects__btn-all">
-          Volver al inicio
+          <span data-i18n="productos.volverInicio">Volver al inicio</span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
         </a>
       </div>
@@ -123,18 +129,18 @@
           <img src="../assets/img/logo-ms-footer.webp" alt="MS" class="footer__logo-ms">
           <img src="../assets/img/logo-texto-footer.webp" alt="Moravi Studio" class="footer__logo-texto">
         </div>
-        <p class="footer__tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
+        <p class="footer__tagline" data-i18n="footer.tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
       </div>
 
       <div class="footer__center">
         <nav class="footer__nav">
-          <a href="../index.html" class="footer__nav-link">Inicio</a>
-          <a href="../index.html#proyectos" class="footer__nav-link">Proyectos</a>
-          <a href="../index.html#servicios" class="footer__nav-link">Servicios</a>
-          <a href="./" class="footer__nav-link">Productos</a>
-          <a href="../index.html#contacto" class="footer__nav-link">Contacto</a>
+          <a href="../index.html" class="footer__nav-link" data-i18n="nav.inicio">Inicio</a>
+          <a href="../index.html#proyectos" class="footer__nav-link" data-i18n="nav.proyectos">Proyectos</a>
+          <a href="../index.html#servicios" class="footer__nav-link" data-i18n="nav.servicios">Servicios</a>
+          <a href="./" class="footer__nav-link" data-i18n="nav.productos">Productos</a>
+          <a href="../index.html#contacto" class="footer__nav-link" data-i18n="nav.contacto">Contacto</a>
         </nav>
-        <a href="../privacidad.html" class="footer__privacy-link">Política de privacidad</a>
+        <a href="../privacidad.html" class="footer__privacy-link" data-i18n="footer.privacy">Política de privacidad</a>
       </div>
 
       <div class="footer__aside">
@@ -155,11 +161,12 @@
 
     <div class="footer__bottom">
       <div class="container footer__bottom-inner">
-        <p>© 2026 Moravi Studio. Todos los derechos reservados.</p>
+        <p data-i18n="footer.copyright">© 2026 Moravi Studio. Todos los derechos reservados.</p>
       </div>
     </div>
   </footer>
 
+  <script src="../js/i18n.js" defer></script>
   <script src="../js/menu-mobile.js" defer></script>
   <script src="../js/chatbot.js" defer></script>
 </body>
