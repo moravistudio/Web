@@ -253,6 +253,11 @@
       if (value !== null) el.setAttribute('placeholder', value);
     });
 
+    document.querySelectorAll('[data-img-es][data-img-en]').forEach(function (el) {
+      var src = lang === 'en' ? el.getAttribute('data-img-en') : el.getAttribute('data-img-es');
+      if (src) el.setAttribute('src', src);
+    });
+
     document.documentElement.setAttribute('lang', lang);
 
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
