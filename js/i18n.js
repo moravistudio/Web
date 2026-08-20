@@ -103,6 +103,26 @@
           title: 'Calculadora de Punto de Equilibrio',
           text: 'Calcula cuántas unidades necesitas vender para cubrir tus costos y alcanzar tu meta de ganancia.'
         },
+        crm: {
+          title: 'CRM',
+          text: 'Gestiona clientes, contactos y oportunidades de negocio desde una herramienta simple y organizada.'
+        },
+        dashboardVentas: {
+          title: 'Dashboard de Ventas',
+          text: 'Visualiza ventas, ingresos, productos y rendimiento comercial con un dashboard diseñado para Excel.'
+        },
+        menuDigitalQr: {
+          title: 'Menú Digital QR',
+          text: 'Crea un menú digital accesible mediante QR y permite a tus clientes consultarlo fácilmente desde cualquier dispositivo.'
+        },
+        videoDownloader: {
+          title: 'Video Downloader',
+          text: 'Descarga vídeos desde URLs compatibles y elige entre los formatos y calidades disponibles.'
+        },
+        videoDetector: {
+          title: 'Video Detector & Downloader',
+          text: 'Detecta los vídeos disponibles en una página, identifica sus formatos y permite elegir cuál descargar.'
+        },
         usarHerramienta: 'Usar herramienta →',
         usarCalculadora: 'Usar calculadora →',
         proximamente: 'Próximamente',
@@ -208,6 +228,26 @@
         calcEquilibrio: {
           title: 'Break-Even Calculator',
           text: 'Calculate how many units you need to sell to cover your costs and reach your profit goal.'
+        },
+        crm: {
+          title: 'CRM',
+          text: 'Manage customers, contacts, and business opportunities from one simple, organized tool.'
+        },
+        dashboardVentas: {
+          title: 'Sales Dashboard',
+          text: 'Visualize sales, revenue, products, and business performance with an Excel-powered sales dashboard.'
+        },
+        menuDigitalQr: {
+          title: 'QR Digital Menu',
+          text: 'Create a digital menu accessible through a QR code and let customers browse it easily from any device.'
+        },
+        videoDownloader: {
+          title: 'Video Downloader',
+          text: 'Download videos from supported URLs and choose from the available formats and qualities.'
+        },
+        videoDetector: {
+          title: 'Video Detector & Downloader',
+          text: 'Detect videos available on a webpage, identify their formats, and choose which one to download.'
         },
         usarHerramienta: 'Use tool →',
         usarCalculadora: 'Use calculator →',
