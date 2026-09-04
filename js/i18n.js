@@ -76,6 +76,14 @@
         privacy: 'Política de privacidad',
         copyright: '© 2026 Moravi Studio. Todos los derechos reservados.'
       },
+      auth: {
+        modal: {
+          title: 'Cuenta Moravi Studio',
+          subtitle: 'Inicia sesión para continuar al producto seleccionado.',
+          btnGoogle: 'Continuar con Google',
+          footer: 'Tu información se mantendrá segura y privada.'
+        }
+      },
       productos: {
         hero: {
           lead: 'Productos digitales que',
@@ -201,6 +209,14 @@
         tagline: 'Web design and landing pages built to help you stand out and sell more.',
         privacy: 'Privacy policy',
         copyright: '© 2026 Moravi Studio. All rights reserved.'
+      },
+      auth: {
+        modal: {
+          title: 'Moravi Studio Account',
+          subtitle: 'Sign in to continue to the selected product.',
+          btnGoogle: 'Continue with Google',
+          footer: 'Your information will be kept safe and private.'
+        }
       },
       productos: {
         hero: {
