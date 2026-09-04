@@ -78,7 +78,7 @@
       },
       auth: {
         modal: {
-          title: 'Cuenta Moravi Studio',
+          title: 'Iniciar sesión',
           subtitle: 'Inicia sesión para continuar al producto seleccionado.',
           btnGoogle: 'Continuar con Google',
           footer: 'Tu información se mantendrá segura y privada.'
@@ -212,7 +212,7 @@
       },
       auth: {
         modal: {
-          title: 'Moravi Studio Account',
+          title: 'Sign in',
           subtitle: 'Sign in to continue to the selected product.',
           btnGoogle: 'Continue with Google',
           footer: 'Your information will be kept safe and private.'
