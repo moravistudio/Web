@@ -154,7 +154,7 @@
             <h3 class="projects__card-title" data-i18n="productos.videoDownloader.title">Video Downloader</h3>
             <div class="projects__card-row">
               <p class="projects__card-text" data-i18n="productos.videoDownloader.text">Descarga vídeos desde URLs compatibles y elige entre los formatos y calidades disponibles.</p>
-              <span class="projects__link projects__link--disabled" data-i18n="productos.proximamente">Próximamente</span>
+              <a href="#" class="projects__link" data-product-url="https://downloader.moravistudio.com/auth/moravi-session" data-i18n="productos.usarHerramienta">Usar herramienta →</a>
             </div>
           </div>
         </article>
@@ -226,8 +226,21 @@
     </div>
   </footer>
 
+  <!-- ── AUTH MODAL ──────────────────────────────────────────────────────────── -->
+  <dialog id="moravi-auth-modal" class="auth-modal" aria-modal="true" aria-labelledby="moravi-auth-modal-title">
+    <div class="auth-modal__card">
+      <button id="moravi-auth-btn-close" class="auth-modal__close" aria-label="Cerrar">&#x2715;</button>
+      <img src="../assets/img/logo-moravi.webp" alt="Moravi Studio" class="auth-modal__logo">
+      <h2 id="moravi-auth-modal-title" class="auth-modal__title" data-i18n="auth.modal.title">Cuenta Moravi Studio</h2>
+      <p class="auth-modal__subtitle" data-i18n="auth.modal.subtitle">Inicia sesión para continuar al producto seleccionado.</p>
+      <a id="moravi-auth-btn-google" href="#" class="auth-modal__btn-google" data-i18n="auth.modal.btnGoogle">Continuar con Google</a>
+      <p class="auth-modal__footer" data-i18n="auth.modal.footer">Tu información se mantendrá segura y privada.</p>
+    </div>
+  </dialog>
+
   <script src="../js/i18n.js" defer></script>
   <script src="../js/menu-mobile.js" defer></script>
   <script src="../js/chatbot.js" defer></script>
+  <script src="../js/auth-gate.js" defer></script>
 </body>
 </html>
