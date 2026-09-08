@@ -94,7 +94,10 @@
           btn.dataset.logoutBound = '1';
           btn.addEventListener('click', function () {
             var returnTo = btn.getAttribute('data-return-to') || '';
-            var logoutUrl = 'https://catalogonline.moravistudio.com/api/auth/moravi-logout';
+            // Pasamos por la página /logout (dentro del origen catalogonline)
+            // para que el propio origen pueda limpiar Zustand/localStorage antes
+            // de que el Edge Function limpie la cookie moravi_session.
+            var logoutUrl = 'https://catalogonline.moravistudio.com/logout';
             if (returnTo) logoutUrl += '?returnTo=' + encodeURIComponent(returnTo);
             window.location.href = logoutUrl;
           });
