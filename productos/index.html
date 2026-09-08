@@ -11,6 +11,26 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/styles.css?v=3">
+  <style>
+    .nav__salir-btn {
+      display: none; /* auth-gate.js lo revela si hay sesión activa */
+      padding: 4px 14px;
+      height: 32px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--body);
+      font-family: var(--font-body);
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav__salir-btn:hover {
+      background: var(--bg-alt);
+      color: var(--heading);
+    }
+  </style>
 </head>
 <body>
 
@@ -32,6 +52,14 @@
           <button type="button" class="lang-btn lang-btn--active" data-lang="es" aria-pressed="true">ES</button>
           <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
         </div>
+        <button
+          class="nav__salir-btn"
+          data-moravi-logout
+          data-return-to="https://www.moravistudio.com/productos/"
+          type="button"
+        >
+          Salir
+        </button>
         <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
       </div>
     </div>

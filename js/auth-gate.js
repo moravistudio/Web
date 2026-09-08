@@ -81,8 +81,29 @@
     });
   }
 
+  // ── Botones [data-moravi-logout] — revelar si hay sesión activa ────────────
+  // Páginas que necesiten un botón «Salir» solo deben añadir un elemento con
+  // el atributo data-moravi-logout (oculto por defecto) y opcionalmente
+  // data-return-to para indicar a dónde redirigir tras el logout.
+  function updateLogoutButtons() {
+    document.querySelectorAll('[data-moravi-logout]').forEach(function (btn) {
+      if (sessionUser) {
+        btn.style.display = '';
+        if (!btn.dataset.logoutBound) {
+          btn.dataset.logoutBound = '1';
+          btn.addEventListener('click', function () {
+            var returnTo = btn.getAttribute('data-return-to') || '';
+            var logoutUrl = 'https://catalogonline.moravistudio.com/api/auth/moravi-logout';
+            if (returnTo) logoutUrl += '?returnTo=' + encodeURIComponent(returnTo);
+            window.location.href = logoutUrl;
+          });
+        }
+      }
+    });
+  }
+
   // ── Precheck en background (no bloquea el render) ─────────────────────────
-  checkSession();
+  checkSession().then(updateLogoutButtons);
 
   // ── API para pruebas en DevTools ──────────────────────────────────────────
   // Uso: moraviAuthGate.testModal('http://localhost:3010/health')
