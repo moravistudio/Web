@@ -88,7 +88,8 @@
   function updateLogoutButtons() {
     document.querySelectorAll('[data-moravi-logout]').forEach(function (btn) {
       if (sessionUser) {
-        btn.style.display = '';
+        // 'inline-flex' reemplaza la regla CSS que oculta el botón por defecto
+        btn.style.display = 'inline-flex';
         if (!btn.dataset.logoutBound) {
           btn.dataset.logoutBound = '1';
           btn.addEventListener('click', function () {
