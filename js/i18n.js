@@ -93,7 +93,8 @@
         },
         badge: {
           gratis: 'Herramienta gratuita',
-          negocios: 'Herramienta para negocios'
+          negocios: 'Herramienta para negocios',
+          digital: 'Herramienta digital'
         },
         qr: {
           title: 'Generador de Códigos QR',
@@ -227,7 +228,8 @@
         },
         badge: {
           gratis: 'Free tool',
-          negocios: 'Business tool'
+          negocios: 'Business tool',
+          digital: 'Digital tool'
         },
         qr: {
           title: 'QR Code Generator',
