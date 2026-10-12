@@ -74,6 +74,9 @@
       footer: {
         tagline: 'Diseño web y landing pages pensadas para ayudarte a destacar y vender más.',
         privacy: 'Política de privacidad',
+        terms: 'Términos y condiciones',
+        subs: 'Suscripciones y reembolsos',
+        catalogTerms: 'Condiciones de Catálogo Online',
         copyright: '© 2026 Moravi Studio. Todos los derechos reservados.'
       },
       auth: {
@@ -209,6 +212,9 @@
       footer: {
         tagline: 'Web design and landing pages built to help you stand out and sell more.',
         privacy: 'Privacy policy',
+        terms: 'Terms and conditions',
+        subs: 'Subscriptions and refunds',
+        catalogTerms: 'Online Catalog terms',
         copyright: '© 2026 Moravi Studio. All rights reserved.'
       },
       auth: {

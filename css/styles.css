@@ -1860,3 +1860,16 @@ img {
 @media (max-width: 480px) {
   .auth-modal__card { padding: 28px 20px 24px; }
 }
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+  margin-top: 10px;
+}
+
+.footer__legal .footer__privacy-link {
+  display: inline;
+  margin-top: 0;
+}
