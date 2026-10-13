@@ -322,6 +322,11 @@
       if (src) el.setAttribute('src', src);
     });
 
+    document.querySelectorAll('[data-href-en]').forEach(function (el) {
+      if (!el.hasAttribute('data-href-es')) el.setAttribute('data-href-es', el.getAttribute('href'));
+      el.setAttribute('href', lang === 'en' ? el.getAttribute('data-href-en') : el.getAttribute('data-href-es'));
+    });
+
     document.documentElement.setAttribute('lang', lang);
 
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
