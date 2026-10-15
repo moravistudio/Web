@@ -77,6 +77,7 @@
         terms: 'Términos y condiciones',
         subs: 'Suscripciones y reembolsos',
         catalogTerms: 'Condiciones de Catálogo Online',
+        videoTerms: 'Condiciones de Video Downloader',
         copyright: '© 2026 Moravi Studio. Todos los derechos reservados.'
       },
       auth: {
@@ -215,6 +216,7 @@
         terms: 'Terms and conditions',
         subs: 'Subscriptions and refunds',
         catalogTerms: 'Online Catalog terms',
+        videoTerms: 'Video Downloader terms',
         copyright: '© 2026 Moravi Studio. All rights reserved.'
       },
       auth: {
