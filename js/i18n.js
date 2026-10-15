@@ -77,6 +77,7 @@
         terms: 'Términos y condiciones',
         subs: 'Suscripciones y reembolsos',
         catalogTerms: 'Condiciones de Catálogo Online',
+        videoTerms: 'Condiciones de MS Video Downloader',
         copyright: '© 2026 Moravi Studio. Todos los derechos reservados.'
       },
       auth: {
@@ -128,7 +129,7 @@
           text: 'Crea un menú digital accesible mediante QR y permite a tus clientes consultarlo fácilmente desde cualquier dispositivo.'
         },
         videoDownloader: {
-          title: 'Video Downloader',
+          title: 'MS Video Downloader',
           text: 'Descarga vídeos desde URLs compatibles y elige entre los formatos y calidades disponibles.'
         },
         videoDetector: {
@@ -215,6 +216,7 @@
         terms: 'Terms and conditions',
         subs: 'Subscriptions and refunds',
         catalogTerms: 'Online Catalog terms',
+        videoTerms: 'MS Video Downloader terms',
         copyright: '© 2026 Moravi Studio. All rights reserved.'
       },
       auth: {
@@ -266,7 +268,7 @@
           text: 'Create a digital menu accessible through a QR code and let customers browse it easily from any device.'
         },
         videoDownloader: {
-          title: 'Video Downloader',
+          title: 'MS Video Downloader',
           text: 'Download videos from supported URLs and choose from the available formats and qualities.'
         },
         videoDetector: {
