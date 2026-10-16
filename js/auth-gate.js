@@ -18,6 +18,35 @@
   var btnClose  = document.getElementById('moravi-auth-btn-close');
   var btnText   = document.getElementById('moravi-auth-btn-text');
 
+  // ── Textos de la ventana según el producto que la abrió ───────────────────
+  // (antes decía siempre «Catálogo», también al entrar a MS Video Downloader)
+  var COPY = {
+    catalog: {
+      title:    'Acceder al Catálogo',
+      login:    'Acceder a mi catálogo existente.',
+      register: 'Crear mi catálogo con Google.'
+    },
+    downloader: {
+      title:    'Acceder a MS Video Downloader',
+      login:    'Acceder a mi cuenta de MS Video Downloader.',
+      register: 'Crear mi cuenta con Google.'
+    }
+  };
+
+  function copyFor(productUrl) {
+    return String(productUrl || '').indexOf('//downloader.moravistudio.com') !== -1 ? COPY.downloader : COPY.catalog;
+  }
+
+  function applyCopy() {
+    var c = copyFor(currentProduct);
+    var title = document.getElementById('moravi-auth-modal-title');
+    var login = document.getElementById('auth-mode-login-desc');
+    var reg   = document.getElementById('auth-mode-register-desc');
+    if (title) title.textContent = c.title;
+    if (login) login.textContent = c.login;
+    if (reg)   reg.textContent   = c.register;
+  }
+
   // ── Verificación de sesión ────────────────────────────────────────────────
   function checkSession() {
     return fetch(MORAVI_AUTH_URL + '/auth/session', {
@@ -85,6 +114,7 @@
     currentProduct = productUrl || window.location.href;
     // Resetear a modo login al abrir
     selectedMode = 'login';
+    applyCopy();
     updateModeCards();
     updateGoogleButton();
     dialog.showModal();
