@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Interfaz de MS Video Downloader: pega el enlace de un video, analízalo y elige la calidad para descargar">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0E2A5C"/>
+      <stop offset="1" stop-color="#0A1633"/>
+    </linearGradient>
+    <linearGradient id="btn" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1E8CFF"/>
+      <stop offset="1" stop-color="#3FA2FF"/>
+    </linearGradient>
+    <linearGradient id="thumb" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2A4A86"/>
+      <stop offset="1" stop-color="#16305E"/>
+    </linearGradient>
+    <filter id="sombra" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.35"/>
+    </filter>
+  </defs>
+
+  <rect width="1600" height="1000" fill="url(#bg)"/>
+  <circle cx="1450" cy="120" r="260" fill="#1E8CFF" opacity="0.10"/>
+  <circle cx="120" cy="900" r="300" fill="#1E8CFF" opacity="0.08"/>
+
+  <!-- Ventana de la aplicación -->
+  <g filter="url(#sombra)">
+    <rect x="170" y="110" width="1260" height="780" rx="34" fill="#0F1B36"/>
+  </g>
+  <rect x="170" y="110" width="1260" height="780" rx="34" fill="none" stroke="#2B4272" stroke-width="2"/>
+
+  <!-- Barra superior -->
+  <rect x="170" y="110" width="1260" height="92" rx="34" fill="#12224A"/>
+  <rect x="170" y="170" width="1260" height="32" fill="#12224A"/>
+  <text x="228" y="170" font-family="Poppins, Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#FFFFFF">MS</text>
+  <text x="298" y="168" font-family="Inter, Arial, sans-serif" font-size="26" fill="#9FB3D9">by Moravi Studio</text>
+  <rect x="1160" y="134" width="118" height="44" rx="12" fill="#1B3566"/>
+  <text x="1219" y="164" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#7DB8FF">Planes</text>
+  <circle cx="1332" cy="156" r="22" fill="#1E8CFF"/>
+  <text x="1332" y="165" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="700" fill="#FFFFFF">S</text>
+
+  <!-- Título -->
+  <text x="800" y="296" text-anchor="middle" font-family="Poppins, Inter, Arial, sans-serif" font-size="58" font-weight="700" fill="#FFFFFF">MS Video Downloader</text>
+  <text x="800" y="344" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="27" fill="#9FB3D9">Descarga cualquier video en el formato que necesites.</text>
+
+  <!-- Pestañas de motor -->
+  <g font-family="Inter, Arial, sans-serif" font-size="25" font-weight="600">
+    <rect x="552" y="380" width="152" height="52" rx="26" fill="#1E8CFF"/>
+    <text x="628" y="414" text-anchor="middle" fill="#FFFFFF">Estándar</text>
+    <rect x="718" y="380" width="120" height="52" rx="26" fill="#1B2D55"/>
+    <text x="778" y="414" text-anchor="middle" fill="#9FB3D9">KVS</text>
+    <rect x="852" y="380" width="196" height="52" rx="26" fill="#1B2D55"/>
+    <text x="950" y="414" text-anchor="middle" fill="#9FB3D9">Alternativo</text>
+  </g>
+
+  <!-- Campo del enlace + botón -->
+  <rect x="300" y="462" width="780" height="82" rx="20" fill="#0A1530" stroke="#2B4272" stroke-width="2"/>
+  <!-- icono de enlace -->
+  <g transform="translate(330 485)" fill="none" stroke="#6F8FC9" stroke-width="5" stroke-linecap="round">
+    <path d="M18 14 l-8 8 a9 9 0 0 0 13 13 l8 -8"/>
+    <path d="M34 30 l8 -8 a9 9 0 0 0 -13 -13 l-8 8"/>
+    <path d="M20 28 l16 -16"/>
+  </g>
+  <text x="400" y="515" font-family="Inter, Arial, sans-serif" font-size="27" fill="#7C93BF">Pega aquí el enlace de tu video…</text>
+  <rect x="1100" y="462" width="200" height="82" rx="20" fill="url(#btn)"/>
+  <text x="1200" y="514" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="29" font-weight="700" fill="#FFFFFF">Analizar</text>
+
+  <!-- Resultado -->
+  <rect x="300" y="580" width="1000" height="250" rx="24" fill="#12224A" stroke="#2B4272" stroke-width="2"/>
+  <rect x="332" y="612" width="300" height="186" rx="16" fill="url(#thumb)"/>
+  <circle cx="482" cy="705" r="42" fill="#FFFFFF" opacity="0.92"/>
+  <path d="M470 682 L470 728 L508 705 Z" fill="#1E8CFF"/>
+  <text x="668" y="650" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#FFFFFF">Mi video de ejemplo</text>
+  <text x="668" y="688" font-family="Inter, Arial, sans-serif" font-size="23" fill="#9FB3D9">Elige la calidad disponible</text>
+
+  <!-- Calidades -->
+  <g font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600">
+    <rect x="668" y="716" width="124" height="52" rx="14" fill="#1E8CFF"/>
+    <text x="730" y="750" text-anchor="middle" fill="#FFFFFF">480p</text>
+    <rect x="806" y="716" width="124" height="52" rx="14" fill="#1B2D55" stroke="#2B4272" stroke-width="2"/>
+    <text x="868" y="750" text-anchor="middle" fill="#CFE1FF">720p</text>
+    <rect x="944" y="716" width="140" height="52" rx="14" fill="#1B2D55" stroke="#2B4272" stroke-width="2"/>
+    <text x="1014" y="750" text-anchor="middle" fill="#CFE1FF">1080p</text>
+    <rect x="1098" y="716" width="140" height="52" rx="14" fill="#1B2D55" stroke="#2B4272" stroke-width="2"/>
+    <text x="1168" y="750" text-anchor="middle" fill="#CFE1FF">Audio</text>
+  </g>
+</svg>
