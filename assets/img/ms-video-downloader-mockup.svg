@@ -31,7 +31,7 @@
   <rect x="170" y="110" width="1260" height="92" rx="34" fill="#12224A"/>
   <rect x="170" y="170" width="1260" height="32" fill="#12224A"/>
   <text x="228" y="170" font-family="Poppins, Inter, Arial, sans-serif" font-size="40" font-weight="700" fill="#FFFFFF">MS</text>
-  <text x="298" y="168" font-family="Inter, Arial, sans-serif" font-size="26" fill="#9FB3D9">by Moravi Studio</text>
+  <text x="298" y="168" font-family="Poppins, Inter, Arial, sans-serif" font-size="30" font-weight="700" fill="#FFFFFF">Video Downloader</text>
   <rect x="1160" y="134" width="118" height="44" rx="12" fill="#1B3566"/>
   <text x="1219" y="164" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#7DB8FF">Planes</text>
   <circle cx="1332" cy="156" r="22" fill="#1E8CFF"/>
