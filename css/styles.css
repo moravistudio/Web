@@ -1996,6 +1996,13 @@ img {
   }
   .home-products__grid::-webkit-scrollbar { display: none; }
   .home-products__grid > .projects__card { flex: 0 0 82%; max-width: 360px; scroll-snap-align: center; }
+  /* Dentro del carrusel: el texto va de corrido, a todo el ancho, debajo del título, y el botón («Usar herramienta» / «Próximamente») queda abajo,
+     a la misma altura en las 3 tarjetas (antes el texto quedaba en una columna angosta con el botón a la derecha y la tarjeta se alargaba). */
+  .home-products__grid > .projects__card { display: flex; flex-direction: column; }
+  .home-products__grid .projects__body { display: flex; flex-direction: column; flex: 1; }
+  .home-products__grid .projects__card-row { display: flex; flex-direction: column; align-items: flex-start; gap: 16px; flex: 1; }
+  .home-products__grid .projects__card-text { flex: 1; width: 100%; }
+  .home-products__grid .projects__link { align-self: flex-start; }
   .home-products__dots { display: flex; justify-content: center; gap: 10px; margin-top: 2px; }
   .home-products__dot {
     position: relative;

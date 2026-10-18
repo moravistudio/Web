@@ -132,7 +132,7 @@
         },
         menuDigitalQr: {
           title: 'Menú Digital QR',
-          text: 'Crea un menú digital accesible mediante QR y permite a tus clientes consultarlo fácilmente desde cualquier dispositivo.'
+          text: 'Crea un menú digital accesible mediante QR y permite a tus clientes consultarlo desde cualquier dispositivo.'
         },
         videoDownloader: {
           title: 'MS Video Downloader',
@@ -277,7 +277,7 @@
         },
         menuDigitalQr: {
           title: 'QR Digital Menu',
-          text: 'Create a digital menu accessible through a QR code and let customers browse it easily from any device.'
+          text: 'Create a digital menu accessible through a QR code and let customers browse it from any device.'
         },
         videoDownloader: {
           title: 'MS Video Downloader',
