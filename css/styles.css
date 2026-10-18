@@ -858,7 +858,8 @@ img {
 
 .services__header {
   position: relative;
-  max-width: 720px;
+  /* 900px = mismo ancho que la grilla de tarjetas de abajo; con el título nuevo («Soluciones digitales pensadas / para hacer crecer tu negocio») cabe en 2 líneas */
+  max-width: 900px;
   margin: 0 auto;
   text-align: center;
 }
@@ -889,7 +890,8 @@ img {
 
 .services__subtitle {
   margin: 20px auto 0;
-  max-width: 560px;
+  /* subtítulo nuevo (más largo): 700px para que quede en 2 líneas en PC */
+  max-width: 700px;
   font-size: clamp(16px, 1.15vw, 19px);
   line-height: 1.6;
   color: var(--body);
@@ -1913,4 +1915,9 @@ img {
 /* Teléfonos muy angostos (≤ 340 px): solo la MS, para no tocar el selector ES/EN. */
 @media (max-width: 340px) {
   .header__word { display: none; }
+}
+
+/* Servicios en celular: sin el salto de línea forzado del título (con él quedaba en 4 líneas); el texto fluye en 3. */
+@media (max-width: 640px) {
+  .services__title br { display: none; }
 }
