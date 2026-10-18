@@ -1891,8 +1891,9 @@ img {
   flex-shrink: 0;
 }
 /* Tamaño visible equivalente al del logo anterior (≈21vw de ancho, con tope), para que no choque con el menú en pantallas medianas */
-.header__mark { height: clamp(21px, calc(2.5vw - 1.7px), 40px); }
-.header__word { height: clamp(24px, calc(2.9vw - 2px), 46px); }
+/* El nombre (MORAVI STUDIO) va contenido dentro de la altura de la MS: su alto es ~72 % del alto de la MS, para que no compita con el logo. */
+.header__mark { height: clamp(28px, calc(2.5vw - 1.7px), 40px); }
+.header__word { height: clamp(20px, calc(1.8vw - 1.2px), 29px); }
 
 /* Entre 769 y 940 px el menú completo ocupa casi todo el ancho: se deja solo la MS (sin el nombre) para que nada se encime. */
 @media (min-width: 769px) and (max-width: 940px) {
