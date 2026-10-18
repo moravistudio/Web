@@ -31,6 +31,11 @@
         },
         subtitle: 'Cada proyecto combina diseño, estrategia y tecnología para ayudarte a destacar y convertir más visitantes en clientes.'
       },
+      homeProducts: {
+        title: { lead: 'Productos', accent: 'listos para usar' },
+        subtitle: 'Creadas por Moravi Studio. Entra con tu cuenta de Google y empieza hoy.',
+        verTodos: 'Ver todos los productos'
+      },
       projects: {
         title: { lead: 'Proyectos', accent: 'destacados' },
         subtitle: 'Algunas muestras de sitios web diseñados para diferentes tipos de negocios.',
@@ -170,6 +175,11 @@
           end: 'your business.'
         },
         subtitle: 'Every project combines design, strategy, and technology to help you stand out and turn more visitors into customers.'
+      },
+      homeProducts: {
+        title: { lead: 'Ready-to-use', accent: 'products' },
+        subtitle: 'Built by Moravi Studio. Sign in with your Google account and start today.',
+        verTodos: 'View all products'
       },
       projects: {
         title: { lead: 'Featured', accent: 'projects' },

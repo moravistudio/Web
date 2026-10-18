@@ -1969,3 +1969,45 @@ img {
   /* la línea azul acompaña al título y al subtítulo (no a la imagen): arranca debajo de la imagen (alto = ancho × 9/16) */
   .hero__content::before { top: calc(100vw * 0.5628 + 22px); height: 150px; }
 }
+
+/* ── Productos en el inicio (2026-10-18): 3 tarjetas ──────────────────────────────────────────────────────────────────────
+   PC: las 3 tarjetas en una fila (misma grilla que «Proyectos destacados»). 769–1100 px: dos columnas y la tercera centrada abajo.
+   Teléfonos y tablets chicas (≤ 768 px): carrusel horizontal que se desliza con el dedo, con puntitos y avance automático (js/productos-carrusel.js). */
+.home-products .projects__title { text-wrap: balance; }
+.home-products .projects__cta { margin-top: clamp(28px, 3.5vw, 42px); }
+.home-products__dots { display: none; }
+
+@media (min-width: 769px) and (max-width: 1100px) {
+  .home-products__grid > .projects__card:last-child:nth-child(odd) { grid-column: 1 / -1; width: calc(50% - 14px); justify-self: center; }
+}
+
+@media (max-width: 768px) {
+  .home-products__grid {
+    display: flex;
+    gap: 16px;
+    margin: 28px 0 0;
+    padding: 24px 0 14px; /* arriba: lugar para la etiqueta que sobresale de cada tarjeta */
+    max-width: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .home-products__grid::-webkit-scrollbar { display: none; }
+  .home-products__grid > .projects__card { flex: 0 0 82%; max-width: 360px; scroll-snap-align: center; }
+  .home-products__dots { display: flex; justify-content: center; gap: 10px; margin-top: 2px; }
+  .home-products__dot {
+    position: relative;
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #C5D3EA;
+    cursor: pointer;
+    transition: width 0.25s ease, background 0.25s ease;
+  }
+  .home-products__dot::before { content: ''; position: absolute; inset: -10px; } /* área de toque más grande */
+  .home-products__dot.is-active { width: 22px; border-radius: 6px; background: var(--brand-blue); }
+}
