@@ -1897,6 +1897,11 @@ img {
 .header__mark { height: clamp(28px, calc(2.5vw - 1.7px), 40px); }
 .header__word { height: clamp(20px, calc(1.8vw - 1.2px), 29px); }
 
+/* Entre 641 y 768 px (menú de hamburguesa): la misma altura de encabezado que tenía con el logo anterior (49 px), para que el menú desplegable quede pegado debajo del encabezado */
+@media (min-width: 641px) and (max-width: 768px) {
+  .header__brand { min-height: 49px; }
+}
+
 /* Entre 769 y 940 px el menú completo ocupa casi todo el ancho: se deja solo la MS (sin el nombre) para que nada se encime. */
 @media (min-width: 769px) and (max-width: 940px) {
   .header__word { display: none; }
@@ -1905,7 +1910,7 @@ img {
 /* Celular: igual que en PC, el nombre es ~72 % del alto de la MS (queda contenido dentro de ella) y todo se escala con el ancho de pantalla,
    para no tocar el selector ES/EN ni el botón del menú (de 341 a 640 px). */
 @media (max-width: 640px) {
-  .header__brand { gap: 8px; min-height: 48px; }
+  .header__brand { gap: 8px; min-height: 0; } /* sin altura mínima: el encabezado mide lo mismo que antes (78 px) y el menú desplegable queda pegado debajo */
   .header__mark { height: clamp(18px, 6.15vw, 26px); }
   .header__word { height: clamp(13px, 4.43vw, 18.7px); }
   /* Con sesión iniciada aparece el botón «Salir» y el espacio no alcanza: solo la MS (el estilo en línea lo pone js/auth-gate.js). */
