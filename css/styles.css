@@ -1926,3 +1926,46 @@ img {
 @media (max-width: 640px) {
   .services__title br { display: none; }
 }
+
+/* ── Portada en celular (2026-10-18, solo teléfonos ≤ 640 px) ─────────────────────────────────────────────────────────────
+   Orden nuevo: imagen (a todo el ancho) → título → subtítulo. El botón «Hablemos» pasa a ser pequeño y va DENTRO de la imagen, arriba a la izquierda, en su
+   espacio vacío (con un área de toque invisible más grande); «Ver proyectos» se quita en celular. La portada baja de ~725 a ~515 px y asoma «Proyectos destacados».
+   PC (> 768 px) y tablets chicas (641–768 px) NO cambian: ahí el contenedor es transparente (display: contents) y el botón nuevo no se ve. */
+.hero__mobile-visual { display: contents; }
+.hero__talk { display: none; }
+
+@media (max-width: 640px) {
+  .hero { padding: 70px 0 28px; overflow-x: clip; }
+  .hero__content { display: flex; flex-direction: column; overflow: visible; }
+  .hero__actions { display: none; }
+  .hero__mobile-visual {
+    display: block;
+    order: -1;
+    position: relative;
+    margin: 0 0 14px -44px; /* -44 = 24 de margen de la página + 20 de relleno del bloque: arranca en el borde izquierdo de la pantalla */
+    width: 100vw;
+  }
+  .hero__mobile-visual .hero__devices-mobile { display: block; width: 100vw; max-width: 100vw; height: auto; margin: 0; }
+  .hero__talk {
+    position: absolute;
+    left: 18px;
+    top: 14px;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1.2;
+    text-decoration: none;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--navy), var(--navy-light));
+    border-radius: 7px;
+    box-shadow: 0 4px 10px rgba(10, 27, 60, 0.22);
+  }
+  .hero__talk::before { content: ''; position: absolute; inset: -9px; } /* área de toque invisible más grande que el botón */
+  /* la línea azul acompaña al título y al subtítulo (no a la imagen): arranca debajo de la imagen (alto = ancho × 9/16) */
+  .hero__content::before { top: calc(100vw * 0.5628 + 22px); height: 150px; }
+}
