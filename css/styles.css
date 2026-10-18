@@ -1900,11 +1900,14 @@ img {
   .header__word { display: none; }
 }
 
-/* Celular: el logo se escala con el ancho para no tocar el selector ES/EN ni el botón del menú (de 320 a 640 px). */
+/* Celular: igual que en PC, el nombre es ~72 % del alto de la MS (queda contenido dentro de ella) y todo se escala con el ancho de pantalla,
+   para no tocar el selector ES/EN ni el botón del menú (de 341 a 640 px). */
 @media (max-width: 640px) {
   .header__brand { gap: 8px; min-height: 48px; }
-  .header__mark { height: clamp(15px, calc(5.63vw - 2.4px), 23px); }
-  .header__word { height: clamp(17px, calc(6.55vw - 2.8px), 26px); }
+  .header__mark { height: clamp(18px, 6.15vw, 26px); }
+  .header__word { height: clamp(13px, 4.43vw, 18.7px); }
+  /* Con sesión iniciada aparece el botón «Salir» y el espacio no alcanza: solo la MS (el estilo en línea lo pone js/auth-gate.js). */
+  .header__inner:has(.nav__salir-btn[style*="inline-flex"]) .header__word { display: none; }
 }
 
 /* Teléfonos muy angostos (≤ 340 px): solo la MS, para no tocar el selector ES/EN. */
