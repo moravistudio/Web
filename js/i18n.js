@@ -50,11 +50,12 @@
       services: {
         eyebrow: '• Servicios •',
         title: {
-          lead: 'Soluciones para potenciar',
-          mid: 'tu',
-          accent: 'presencia digital'
+          lead: 'Soluciones digitales pensadas',
+          mid: 'para',
+          accent: 'hacer crecer',
+          end: 'tu negocio'
         },
-        subtitle: 'Más que una página web, te ayudamos a construir una presencia digital coherente, profesional y preparada para crecer.'
+        subtitle: 'Más que una página web: combinamos diseño, estrategia y tecnología para construir una presencia digital coherente y lista para crecer.'
       },
       contact: {
         eyebrow: '• Contacto •',
@@ -189,11 +190,12 @@
       services: {
         eyebrow: '• Services •',
         title: {
-          lead: 'Solutions to boost',
-          mid: 'your',
-          accent: 'digital presence'
+          lead: 'Digital solutions built',
+          mid: 'to',
+          accent: 'grow',
+          end: 'your business'
         },
-        subtitle: 'More than just a website — we help you build a cohesive, professional digital presence ready to grow.'
+        subtitle: "More than a website: we combine design, strategy and technology to build a coherent digital presence that's ready to grow."
       },
       contact: {
         eyebrow: '• Contact •',
