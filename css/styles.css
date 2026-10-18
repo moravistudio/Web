@@ -1995,7 +1995,8 @@ img {
     scrollbar-width: none;
   }
   .home-products__grid::-webkit-scrollbar { display: none; }
-  .home-products__grid > .projects__card { flex: 0 0 82%; max-width: 360px; scroll-snap-align: center; }
+  /* Cada tarjeta ocupa todo el ancho (igual que en la página de productos), así el texto y el botón quedan con la misma distribución que allá. */
+  .home-products__grid > .projects__card { flex: 0 0 100%; max-width: none; scroll-snap-align: center; }
   .home-products__dots { display: flex; justify-content: center; gap: 10px; margin-top: 2px; }
   .home-products__dot {
     position: relative;
