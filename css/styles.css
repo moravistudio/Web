@@ -1926,3 +1926,11 @@ img {
 @media (max-width: 640px) {
   .services__title br { display: none; }
 }
+
+/* Encabezado compacto en celular y tablet chica (los que tienen menú de hamburguesa): con el logo anterior (la esfera, grande) el espacio sobrante
+   del encabezado no se notaba; con la MS pequeña sí, y el menú desplegable parecía abrirse lejos del logo. Padding vertical menor y sin altura mínima:
+   el encabezado mide ~58 px y el menú queda pegado justo debajo de la fila del logo, el selector de idioma y el botón. PC no cambia. */
+@media (max-width: 768px) {
+  .header { padding: 12px 0; }
+  .header__brand { min-height: 0; }
+}
