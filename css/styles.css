@@ -1873,3 +1873,40 @@ img {
   display: inline;
   margin-top: 0;
 }
+
+/* ── Logo del encabezado (2026-10-17): MS minimalista + MORAVI STUDIO, en el azul de la página ──
+   Reemplaza a la imagen única con la esfera. min-height conserva la misma altura de antes (64px PC / 48px celular)
+   para que el menú de la derecha quede exactamente donde estaba. .header__logo se deja para las páginas de respaldo. */
+.header__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 64px;
+  text-decoration: none;
+}
+.header__mark,
+.header__word {
+  display: block;
+  width: auto;
+  flex-shrink: 0;
+}
+/* Tamaño visible equivalente al del logo anterior (≈21vw de ancho, con tope), para que no choque con el menú en pantallas medianas */
+.header__mark { height: clamp(21px, calc(2.5vw - 1.7px), 40px); }
+.header__word { height: clamp(24px, calc(2.9vw - 2px), 46px); }
+
+/* Entre 769 y 940 px el menú completo ocupa casi todo el ancho: se deja solo la MS (sin el nombre) para que nada se encime. */
+@media (min-width: 769px) and (max-width: 940px) {
+  .header__word { display: none; }
+}
+
+/* Celular: el logo se escala con el ancho para no tocar el selector ES/EN ni el botón del menú (de 320 a 640 px). */
+@media (max-width: 640px) {
+  .header__brand { gap: 8px; min-height: 48px; }
+  .header__mark { height: clamp(15px, calc(5.63vw - 2.4px), 23px); }
+  .header__word { height: clamp(17px, calc(6.55vw - 2.8px), 26px); }
+}
+
+/* Teléfonos muy angostos (≤ 340 px): solo la MS, para no tocar el selector ES/EN. */
+@media (max-width: 340px) {
+  .header__word { display: none; }
+}
