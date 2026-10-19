@@ -44,6 +44,14 @@
     var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer'; im.alt = ''; im.draggable = false; im.src = IMG + l.f; im.style.zIndex = String(L.length - L.indexOf(l)); stage.appendChild(im); return im; });
 
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, embers = [], ctx = cv.getContext('2d');
+    var smoke = [], lastS = 0;
+    var smokeSprite = (function () { var c = document.createElement('canvas'); c.width = c.height = 128; var g = c.getContext('2d'), gr = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+      gr.addColorStop(0, 'rgba(225,205,190,.55)'); gr.addColorStop(0.35, 'rgba(190,160,140,.28)'); gr.addColorStop(0.7, 'rgba(150,120,105,.09)'); gr.addColorStop(1, 'rgba(120,95,85,0)');
+      g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return c; })();
+    function newSmoke(anywhere) {
+      var life = 6 + Math.random() * 4;
+      return { x: cx + (Math.random() * 2 - 1) * W * 0.34, y: anywhere ? H * (0.2 + Math.random() * 0.8) : H * (1.0 + Math.random() * 0.08), r: 38 + Math.random() * 40, g: 22 + Math.random() * 26, vy: 16 + Math.random() * 16, age: anywhere ? Math.random() * life : 0, life: life, a: 0.5 + Math.random() * 0.5, p: Math.random() * 6.28 };
+    }
     var px = 0, tx = 0, hover = false, e = 0, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000, vis = true, running = false, raf = 0;
 
     function layout() {
@@ -55,6 +63,8 @@
       cx = W * 0.675;
       top0 = (H - EXPL_H * k) / 2 + H * 0.03;
       imgs.forEach(function (im, n) { im.style.width = (L[n].w * k) + 'px'; });
+      smoke = [];
+      for (var q = 0; q < 16; q++) smoke.push(newSmoke(true));
       embers = [];
       for (var n = 0; n < 34; n++) embers.push({ x: Math.random() * W, y: Math.random() * H, v: 0.15 + Math.random() * 0.55, r: 0.6 + Math.random() * 1.8, p: Math.random() * 6.28, a: 0.35 + Math.random() * 0.6 });
     }
@@ -89,6 +99,17 @@
 
     function drawEmbers(now) {
       ctx.clearRect(0, 0, W, H);
+      // Humo suave: nubes tibias y difusas que suben despacio, se ensanchan y se desvanecen (detrás de la hamburguesa)
+      var us = Math.min(W, H) / 430, ds = lastS ? Math.min(0.05, (now - lastS) / 1000) : 0.016; lastS = now;
+      ctx.globalCompositeOperation = 'source-over';
+      for (var sm = 0; sm < smoke.length; sm++) {
+        var f = smoke[sm];
+        if (!reduce) { f.age += ds; f.y -= f.vy * us * ds * (1 + 0.5 * clamp(e, 0, 1)); f.x += Math.sin(f.age * 0.8 + f.p) * 14 * us * ds + 5 * us * ds; if (f.age > f.life) { smoke[sm] = f = newSmoke(false); } }
+        var fr = f.age / f.life, size = (f.r + f.g * fr) * us * 2.6;
+        ctx.globalAlpha = clamp(Math.pow(Math.sin(Math.PI * clamp(fr, 0, 1)), 1.3) * 0.65 * f.a * (0.75 + 0.5 * clamp(e, 0, 1)), 0, 1);
+        ctx.drawImage(smokeSprite, f.x - size / 2, f.y - size / 2, size, size);
+      }
+      ctx.globalAlpha = 1;
       ctx.globalCompositeOperation = 'lighter';
       for (var n = 0; n < embers.length; n++) {
         var m = embers[n];
