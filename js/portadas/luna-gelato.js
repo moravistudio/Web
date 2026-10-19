@@ -53,7 +53,9 @@
       stage.appendChild(pc); return pc;
     });
 
-    var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, drops = [], dacc = 0, lastD = 0;
+    var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, drops = [], dacc = 0, lastD = 0, mist = [], macc = 0;
+    var mistSprite = (function () { var c = document.createElement('canvas'); c.width = c.height = 96; var g = c.getContext('2d'), gr = g.createRadialGradient(48, 48, 0, 48, 48, 48);
+      gr.addColorStop(0, 'rgba(170,205,235,.55)'); gr.addColorStop(0.45, 'rgba(190,215,238,.28)'); gr.addColorStop(1, 'rgba(200,222,242,0)'); g.fillStyle = gr; g.fillRect(0, 0, 96, 96); return c; })();
     var px = 0, tx = 0, hover = false, e = 0, alt = false, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
     var vis = true, running = false, raf = 0, lastCycle = -1;
 
@@ -110,6 +112,20 @@
       if (reduce) return;
       var dt = lastD ? Math.min(0.05, (now - lastD) / 1000) : 0.016; lastD = now;
       var u = H / 436;
+      // Vapor frío: sube desde el cono y entre las bolas cuando el helado se abre (muy tenue)
+      if (st.open > 0.35 && st.t > 3) {
+        macc += dt * 3.2 * st.open;
+        while (macc >= 1) { macc -= 1;
+          mist.push({ x: cx + (Math.random() - 0.5) * W * 0.32, y: top0 + (L[3].y - EXPL_TOP + L[3].h * (0.7 + Math.random() * 0.9)) * k, vy: -(12 + Math.random() * 18) * u, vx: (Math.random() - 0.5) * 6 * u, age: 0, life: 2.6 + Math.random() * 1.8, r: (22 + Math.random() * 26) * u, g: 28 * u, p: Math.random() * 6.28 }); }
+      }
+      for (var mi = mist.length - 1; mi >= 0; mi--) {
+        var m = mist[mi]; m.age += dt; m.y += m.vy * dt; m.x += (m.vx + Math.sin(m.age * 1.1 + m.p) * 7 * u) * dt;
+        if (m.age > m.life) { mist.splice(mi, 1); continue; }
+        var fr = m.age / m.life, sz = (m.r + m.g * fr) * 2.2;
+        ctx.globalAlpha = clamp(Math.sin(Math.PI * fr) * 0.62, 0, 1);
+        ctx.drawImage(mistSprite, m.x - sz / 2, m.y - sz / 2, sz, sz);
+      }
+      ctx.globalAlpha = 1;
       if (st.open > 0.45 && st.t > 3) {
         dacc += dt * 7 * st.open;
         while (dacc >= 1) {
