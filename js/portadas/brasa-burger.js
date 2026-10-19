@@ -43,12 +43,6 @@
     var stage = el.querySelector('.cv__stage'), glow = el.querySelector('.cv__glow'), cv = el.querySelector('.cv__embers');
     var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer'; im.alt = ''; im.draggable = false; im.src = IMG + l.f; im.style.zIndex = String(L.length - L.indexOf(l)); stage.appendChild(im); return im; });
 
-    var sprite = (function () { var c = document.createElement('canvas'); c.width = c.height = 64; var g = c.getContext('2d'), gr = g.createRadialGradient(32, 32, 0, 32, 32, 32);
-      gr.addColorStop(0, 'rgba(255,250,215,1)'); gr.addColorStop(0.1, 'rgba(255,205,90,1)'); gr.addColorStop(0.24, 'rgba(255,120,25,.7)'); gr.addColorStop(0.55, 'rgba(255,70,10,.18)'); gr.addColorStop(1, 'rgba(255,60,0,0)');
-      g.fillStyle = gr; g.fillRect(0, 0, 64, 64); return c; })();
-    function spawn(anywhere) {
-      return { x: Math.random() * W, y: anywhere ? Math.random() * H : H + 8 + Math.random() * 30, v: 0.25 + Math.random() * 0.95, r: 1.2 + Math.random() * 3.2, p: Math.random() * 6.28, s: 0.6 + Math.random() * 1.6, a: 0.45 + Math.random() * 0.55 };
-    }
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, embers = [], ctx = cv.getContext('2d');
     var px = 0, tx = 0, hover = false, e = 0, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000, vis = true, running = false, raf = 0;
 
@@ -62,7 +56,7 @@
       top0 = (H - EXPL_H * k) / 2 + H * 0.03;
       imgs.forEach(function (im, n) { im.style.width = (L[n].w * k) + 'px'; });
       embers = [];
-      for (var n = 0; n < 64; n++) embers.push(spawn(true));
+      for (var n = 0; n < 34; n++) embers.push({ x: Math.random() * W, y: Math.random() * H, v: 0.15 + Math.random() * 0.55, r: 0.6 + Math.random() * 1.8, p: Math.random() * 6.28, a: 0.35 + Math.random() * 0.6 });
     }
 
     function place(now) {
@@ -96,20 +90,14 @@
     function drawEmbers(now) {
       ctx.clearRect(0, 0, W, H);
       ctx.globalCompositeOperation = 'lighter';
-      var u = Math.min(W, H) / 430; // las brasas escalan con el tamaño de la portada
       for (var n = 0; n < embers.length; n++) {
         var m = embers[n];
-        if (!reduce) {
-          m.y -= m.v * u * 1.1; m.x += Math.sin(now / 700 * m.s + m.p) * 0.35 * u;
-          if (m.y < -10) embers[n] = m = spawn(false);
-        }
-        var life = clamp(m.y / (H * 0.85), 0, 1);               // se apagan al subir
-        var flick = 0.65 + 0.35 * Math.sin(now / 160 * m.s + m.p); // parpadean
-        var size = m.r * u * 4.6;
-        ctx.globalAlpha = clamp(m.a * life * flick, 0, 1);
-        ctx.drawImage(sprite, m.x - size / 2, m.y - size / 2, size, size);
+        if (!reduce) { m.y -= m.v; m.x += Math.sin(now / 900 + m.p) * 0.25; if (m.y < -6) { m.y = H + 6; m.x = Math.random() * W; } }
+        var a = m.a * clamp(m.y / (H * 0.5), 0, 1) * (0.6 + 0.4 * Math.sin(now / 300 + m.p));
+        ctx.fillStyle = 'rgba(255,' + (110 + Math.round(m.a * 70)) + ',30,' + a.toFixed(2) + ')';
+        ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, 6.2832); ctx.fill();
       }
-      ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+      ctx.globalCompositeOperation = 'source-over';
     }
 
     function frame(now) { raf = 0; if (!running) return; place(now); drawEmbers(now); raf = requestAnimationFrame(frame); }
