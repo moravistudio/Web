@@ -69,3 +69,25 @@
 .cv-gelato .cv__tag-t.swap { opacity: 0; }
 .cv-gelato .cv__btn { position: absolute; z-index: 5; left: 50%; bottom: 3.4cqh; transform: translateX(-50%); white-space: nowrap; background: #e0558f; color: #fff; font: 700 5cqw/1 'Poppins', sans-serif; padding: 1.5cqh 7cqw; border-radius: 99px; box-shadow: 0 .8cqh 2cqh rgba(224, 85, 143, .4); pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .cv-gelato .cv__blob { animation: none; } .cv-gelato .cv__f, .cv-gelato .cv__tag-t { transition: none; } }
+
+/* ---------- 3 · Origen Café (cafetería) — portada cuadrada ---------- */
+.cv-cafe { background: radial-gradient(90% 80% at 50% 62%, #5a3722 0%, #2c1a10 52%, #130b07 100%); color: #f6e9d8; }
+.cv-cafe .cv__glow { position: absolute; z-index: 0; left: 50%; top: 66%; width: 92cqmin; height: 92cqmin; margin: -46cqmin 0 0 -46cqmin; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 168, 70, .38), rgba(255, 140, 40, .12) 48%, transparent 70%); animation: cvCafeGlow 6s ease-in-out infinite alternate; }
+@keyframes cvCafeGlow { from { opacity: .65; transform: scale(.96); } to { opacity: 1; transform: scale(1.05); } }
+.cv-cafe .cv__logo { position: absolute; z-index: 6; top: 5.4cqmin; left: 0; right: 0; text-align: center; font: 800 5.6cqmin/1 'Poppins', sans-serif; letter-spacing: .18em; color: #f6e9d8; pointer-events: none; }
+.cv-cafe .cv__logo b { color: #e8a45a; font-weight: 800; }
+.cv-cafe .cv__beans { position: absolute; inset: 0; pointer-events: none; }
+.cv-cafe .cv__beans--back { z-index: 1; }
+.cv-cafe .cv__beans--back .cv__bean { filter: brightness(.62) blur(.25cqmin) drop-shadow(0 1cqmin 1.4cqmin rgba(0, 0, 0, .5)); }
+.cv-cafe .cv__beans--front { z-index: 5; }
+.cv-cafe .cv__beans--front .cv__bean { filter: drop-shadow(0 1.4cqmin 1.8cqmin rgba(0, 0, 0, .55)); }
+.cv-cafe .cv__bean { position: absolute; left: 0; top: 0; display: block; max-width: none; height: auto; opacity: 0; will-change: transform; }
+.cv-cafe .cv__cup { position: absolute; z-index: 2; display: block; max-width: none; opacity: 0; will-change: transform; filter: drop-shadow(0 2.4cqmin 2.6cqmin rgba(0, 0, 0, .5)); }
+.cv-cafe .cv__ripple { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+.cv-cafe .cv__steam { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+.cv-cafe .cv__drop { position: absolute; left: 0; top: 0; z-index: 4; display: block; max-width: none; height: auto; opacity: 0; pointer-events: none; will-change: transform; filter: drop-shadow(0 .8cqmin 1cqmin rgba(0, 0, 0, .5)); }
+.cv-cafe .cv__copy { position: absolute; z-index: 6; left: 0; right: 0; bottom: 3.6cqmin; text-align: center; pointer-events: none; }
+.cv-cafe .cv__h { display: block; font: 700 6.4cqmin/1.12 'Poppins', sans-serif; color: #f6e9d8; }
+.cv-cafe .cv__h em { font-style: normal; color: #e8a45a; }
+@media (prefers-reduced-motion: reduce) { .cv-cafe .cv__glow { animation: none; } }
