@@ -2156,8 +2156,8 @@ html.scene-wait .scene .dev, html.scene-wait .scene .dev__screen, html.scene-wai
 .scene .dev--laptop { animation: devUp 1s cubic-bezier(.2, .7, .2, 1) .1s both; }
 .scene .dev--tablet { animation: devRight 1s cubic-bezier(.2, .7, .2, 1) .5s both; }
 .scene .dev--phone { animation: devUp 1s cubic-bezier(.2, .7, .2, 1) .8s both; }
-.scene .dev__screen { animation: screenOn .85s ease .8s both; }
-.scene .dev__bloom { animation: bloom .85s ease .8s both; }
+.scene .dev__screen { animation: screenOn .45s ease .35s both; }
+.scene .dev__bloom { animation: bloom .45s ease .35s both; }
 /* Barrido de luz sobre cada dispositivo */
 @keyframes sweep { 0% { -webkit-mask-position: 100% 0; mask-position: 100% 0; } 38%, 100% { -webkit-mask-position: 0% 0; mask-position: 0% 0; } }
 .scene .dev__sheen {
