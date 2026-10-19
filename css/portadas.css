@@ -26,7 +26,15 @@
 .cv-burger .cv__links { display: flex; gap: 3.2cqw; font-size: 2.5cqw; font-weight: 500; opacity: .75; }
 .cv-burger .cv__copy { position: absolute; z-index: 4; left: 6cqw; bottom: 8cqh; width: 33cqw; pointer-events: none; }
 .cv-burger .cv__h { font: 800 8.4cqw/.98 'Poppins', sans-serif; letter-spacing: -.02em; }
-.cv-burger .cv__h em { font-style: normal; color: #ff7a1a; }
+.cv-burger .cv__h em { font-style: normal; color: #ff7a1a; transition: color .45s ease; }
+.cv-burger .cv__fuego { position: relative; z-index: 0; isolation: isolate; display: inline-block; }
+/* Encendida: las letras siguen nítidas, con color de brasa (más claro abajo) y un resplandor; las llamas salen por detrás */
+.cv-burger .cv__fw { display: inline-block; }
+.cv-burger .cv__fuego.is-lit .cv__fw {
+  color: transparent; background: linear-gradient(to top, #ffe27a 0%, #ffab2e 38%, #ff6a12 78%, #ff5208 100%);
+  -webkit-background-clip: text; background-clip: text; filter: drop-shadow(0 0 .7cqw rgba(255, 120, 20, .75));
+}
+.cv-burger .cv__fcv { position: absolute; pointer-events: none; opacity: 0; z-index: -1; filter: drop-shadow(0 0 1.1cqw rgba(255, 110, 10, .85)); }
 .cv-burger .cv__p { margin-top: 2.2cqh; font-size: 2.7cqw; line-height: 1.4; color: #fff; opacity: .82; }
 .cv-burger .cv__btn {
   display: inline-block; margin-top: 3cqh; background: #ff7a1a; color: #1a0b05; font: 700 2.9cqw/1 'Poppins', sans-serif;

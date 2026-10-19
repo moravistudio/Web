@@ -38,13 +38,66 @@
     el.innerHTML =
       '<canvas class="cv__embers" aria-hidden="true"></canvas><div class="cv__glow"></div>' +
       '<div class="cv__bar"><span class="cv__logo"><b>BRASA</b> BURGER</span><span class="cv__links"><span>Menú</span><span>Locales</span><span>Pedir</span></span></div>' +
-      '<div class="cv__copy"><div class="cv__h">Sabor<br>a <em>fuego</em></div><p class="cv__p">Hamburguesas a la parrilla, hechas al momento.</p><span class="cv__btn">Pedir ahora</span></div>' +
+      '<div class="cv__copy"><div class="cv__h">Sabor<br>a <em class="cv__fuego"><canvas class="cv__fcv" aria-hidden="true"></canvas><span class="cv__fw">fuego</span></em></div><p class="cv__p">Hamburguesas a la parrilla, hechas al momento.</p><span class="cv__btn">Pedir ahora</span></div>' +
       '<div class="cv__stage"></div><canvas class="cv__smokefront" aria-hidden="true"></canvas>';
     var stage = el.querySelector('.cv__stage'), glow = el.querySelector('.cv__glow'), cv = el.querySelector('.cv__embers'), cf = el.querySelector('.cv__smokefront'), cfx = cf.getContext('2d');
     var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer'; im.alt = ''; im.draggable = false; im.src = IMG + l.f; im.style.zIndex = String(L.length - L.indexOf(l)); stage.appendChild(im); return im; });
 
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, embers = [], ctx = cv.getContext('2d');
     var smoke = [], fsmoke = [], lastS = 0;
+    // --- Palabra «fuego»: llamas reales que suben (sin girar) por dentro de las letras y se escapan hacia arriba ---
+    var fuego = el.querySelector('.cv__fuego'), fcv = el.querySelector('.cv__fcv'), fctx = fcv.getContext('2d');
+    var fireImg = new Image(); fireImg.src = IMG + 'fuego.webp';
+    var maskC = document.createElement('canvas'), mctx = maskC.getContext('2d'), fireC = document.createElement('canvas'), fxc = fireC.getContext('2d');
+    var wsparks = [], wacc = 0;
+    var FD = { ox: 0, oy: 0, tw: 0, th: 0, w: 0, h: 0, pad: 0, base: 0, fs: 0, xs: [], word: 'fuego', ok: false }, Lf = 0, wasLit = false;
+    function layoutFire() {
+      var cs = getComputedStyle(fuego), fs = parseFloat(cs.fontSize), r = fuego.getBoundingClientRect();
+      if (!r.width || !fs) return;
+      var d = Math.min(window.devicePixelRatio || 1, 2), pad = fs * 0.3, head = fs * 2.3, tail = fs * 0.4;
+      var w = r.width + pad * 2, h = head + r.height + tail;
+      [fcv, maskC, fireC].forEach(function (c) { c.width = Math.round(w * d); c.height = Math.round(h * d); });
+      [fctx, mctx, fxc].forEach(function (c) { c.setTransform(d, 0, 0, d, 0, 0); });
+      fcv.style.cssText = 'left:' + (-pad) + 'px;top:' + (-head) + 'px;width:' + w + 'px;height:' + h + 'px;';
+      mctx.font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily; mctx.textBaseline = 'alphabetic';
+      if ('letterSpacing' in mctx) mctx.letterSpacing = cs.letterSpacing === 'normal' ? '0px' : cs.letterSpacing;
+      var m = mctx.measureText('fuego'), asc = m.fontBoundingBoxAscent || fs * 0.98, dsc = m.fontBoundingBoxDescent || fs * 0.3;
+      var er = el.getBoundingClientRect(); FD.ox = r.left - er.left; FD.oy = r.top - er.top; FD.tw = r.width; FD.th = r.height;
+      FD.w = w; FD.h = h; FD.pad = pad; FD.fs = fs; FD.base = head + (r.height - (asc + dsc)) / 2 + asc;
+      FD.xs = []; for (var i = 0; i < FD.word.length; i++) FD.xs.push(mctx.measureText(FD.word.slice(0, i)).width);
+      FD.ok = true;
+    }
+    function drawFire(t) {
+      if (!FD.ok || !fireImg.complete || !fireImg.naturalWidth) return;
+      if (Lf < 0.01) { if (fcv.style.opacity !== '0') { fcv.style.opacity = '0'; } return; }
+      var w = FD.w, h = FD.h, fs = FD.fs, i, k;
+      // 1) Forma: las letras, más una estela hacia arriba que se mece (la lengua de fuego de cada letra tiene su propia altura)
+      mctx.clearRect(0, 0, w, h); mctx.globalCompositeOperation = 'lighter';
+      for (i = 0; i < FD.word.length; i++) {
+        var hf = clamp((0.6 + 0.4 * Math.sin(t * 2.3 + i * 1.9) * Math.sin(t * 0.9 + i)) * Lf, 0, 1.2);
+        for (k = 0; k <= 16; k++) {
+          var fr = k / 16, yoff = fr * fs * 1.25 * hf, sway = (0.11 + 0.05 * Math.sin(t * 1.3 + i * 1.7) + 0.035 * Math.sin(t * 4.1 + k * 0.45 + i * 1.3)) * fs * fr;
+          mctx.fillStyle = 'rgba(255,255,255,' + (Math.pow(1 - fr, 1.8) * 0.34).toFixed(3) + ')';
+          mctx.fillText(FD.word[i], FD.pad + FD.xs[i] + sway, FD.base - yoff);
+        }
+      }
+      mctx.globalCompositeOperation = 'source-over'; mctx.fillStyle = '#fff'; mctx.fillText(FD.word, FD.pad, FD.base);
+      // 2) Llamas: la imagen sube siempre hacia arriba; tres copias desfasadas que se funden entre sí (nunca baja ni gira)
+      fxc.globalCompositeOperation = 'source-over'; fxc.globalAlpha = 1; fxc.clearRect(0, 0, w, h);
+      var bg = fxc.createLinearGradient(0, 0, 0, h); bg.addColorStop(0, '#c2410c'); bg.addColorStop(0.55, '#e8590c'); bg.addColorStop(1, '#ff9a1f'); fxc.fillStyle = bg; fxc.fillRect(0, 0, w, h);
+      var Wi = Math.max(w * 2.3, h * 2.6), Hi = Wi * 2 / 3, D = Hi * 0.4, iw = fireImg.naturalWidth, ih = fireImg.naturalHeight;
+      for (i = 0; i < 3; i++) {
+        var ph = ((t * 0.34 + i / 3) % 1), a = Math.sin(Math.PI * ph);
+        var y = (h - Hi) + D * (1 - ph), x = -(Wi - w) * (0.5 + 0.12 * Math.sin(t * 0.45 + i * 2.1));
+        fxc.globalAlpha = Math.min(1, a * 1.25);
+        fxc.drawImage(fireImg, 0, ih * 0.3, iw, ih * 0.7, x, y + Hi * 0.18, Wi, Hi * 0.82);
+      }
+      fxc.globalAlpha = 1; fxc.globalCompositeOperation = 'source-over';
+      // 3) Llamas recortadas con la forma
+      fctx.clearRect(0, 0, w, h); fctx.globalCompositeOperation = 'source-over'; fctx.drawImage(fireC, 0, 0, w, h);
+      fctx.globalCompositeOperation = 'destination-in'; fctx.drawImage(maskC, 0, 0, w, h); fctx.globalCompositeOperation = 'source-over';
+      fcv.style.opacity = Math.min(1, Lf * 1.2).toFixed(2);
+    }
     var smokeSprite = (function () { var c = document.createElement('canvas'); c.width = c.height = 128; var g = c.getContext('2d'), gr = g.createRadialGradient(64, 64, 0, 64, 64, 64);
       gr.addColorStop(0, 'rgba(225,205,190,.55)'); gr.addColorStop(0.35, 'rgba(190,160,140,.28)'); gr.addColorStop(0.7, 'rgba(150,120,105,.09)'); gr.addColorStop(1, 'rgba(120,95,85,0)');
       g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return c; })();
@@ -101,6 +154,10 @@
         imgs[n].style.opacity = drop > 0 ? Math.min(1, drop * 3) : 0;
       }
       glow.style.opacity = (0.3 + 0.5 * clamp(e, 0, 1.1)).toFixed(2);
+      // «fuego» se enciende por momentos
+      var lit = !reduce && t > 2.8 && ((t - 2.8) % 7) < 3.4;
+      Lf += ((lit ? 1 : 0) - Lf) * 0.07;
+      if (lit !== wasLit) { wasLit = lit; fuego.classList.toggle('is-lit', lit); }
       return t;
     }
 
@@ -134,10 +191,23 @@
         ctx.fillStyle = 'rgba(255,' + (110 + Math.round(m.a * 70)) + ',30,' + a.toFixed(2) + ')';
         ctx.beginPath(); ctx.arc(m.x, m.y, m.r, 0, 6.2832); ctx.fill();
       }
+      // Brasitas que se desprenden de las llamas de «fuego» mientras está encendida (las empuja el mismo viento)
+      if (!reduce && FD.ok && Lf > 0.4) {
+        wacc += ds * 15 * Lf;
+        while (wacc >= 1) { wacc -= 1;
+          wsparks.push({ x: FD.ox + FD.tw * (0.05 + Math.random() * 0.9), y: FD.oy + FD.th * (0.05 + Math.random() * 0.3), vx: (16 + Math.random() * 30) * us, vy: -(38 + Math.random() * 90) * us, age: 0, life: 0.9 + Math.random() * 1.1, r: 0.9 + Math.random() * 1.6, p: Math.random() * 6.28 }); }
+      }
+      for (var ws = wsparks.length - 1; ws >= 0; ws--) {
+        var w1 = wsparks[ws]; w1.age += ds; w1.vx += Math.sin(now / 200 + w1.p) * 10 * us * ds; w1.x += w1.vx * ds; w1.y += w1.vy * ds; w1.vy *= (1 - 0.25 * ds);
+        if (w1.age > w1.life) { wsparks.splice(ws, 1); continue; }
+        var lf1 = 1 - w1.age / w1.life;
+        ctx.fillStyle = 'rgba(255,' + (150 + Math.round(90 * lf1)) + ',40,' + (lf1 * (0.7 + 0.3 * Math.sin(now / 90 + w1.p))).toFixed(2) + ')';
+        ctx.beginPath(); ctx.arc(w1.x, w1.y, w1.r * us * (0.6 + 0.4 * lf1), 0, 6.2832); ctx.fill();
+      }
       ctx.globalCompositeOperation = 'source-over';
     }
 
-    function frame(now) { raf = 0; if (!running) return; place(now); drawEmbers(now); raf = requestAnimationFrame(frame); }
+    function frame(now) { raf = 0; if (!running) return; var tt = place(now); drawEmbers(now); drawFire(tt); raf = requestAnimationFrame(frame); }
     function sync() {
       var go = vis && !document.hidden && !reduce;
       if (go && !running) { running = true; if (!raf) raf = requestAnimationFrame(frame); }
@@ -154,7 +224,9 @@
     el.addEventListener('pointercancel', function () { hover = false; tx = 0; });
 
     layout();
-    if (global.ResizeObserver) new ResizeObserver(layout).observe(el); else window.addEventListener('resize', layout);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layoutFire(); }); else layoutFire();
+    layoutFire();
+    if (global.ResizeObserver) new ResizeObserver(function () { layout(); layoutFire(); }).observe(el); else window.addEventListener('resize', layout);
     if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { vis = en[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(el); else sync();
     document.addEventListener('visibilitychange', sync);
     if (reduce) { place(t0 + 5000); drawEmbers(t0); }
