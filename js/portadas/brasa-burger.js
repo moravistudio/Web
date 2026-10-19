@@ -39,18 +39,22 @@
       '<canvas class="cv__embers" aria-hidden="true"></canvas><div class="cv__glow"></div>' +
       '<div class="cv__bar"><span class="cv__logo"><b>BRASA</b> BURGER</span><span class="cv__links"><span>Menú</span><span>Locales</span><span>Pedir</span></span></div>' +
       '<div class="cv__copy"><div class="cv__h">Sabor<br>a <em>fuego</em></div><p class="cv__p">Hamburguesas a la parrilla, hechas al momento.</p><span class="cv__btn">Pedir ahora</span></div>' +
-      '<div class="cv__stage"></div>';
-    var stage = el.querySelector('.cv__stage'), glow = el.querySelector('.cv__glow'), cv = el.querySelector('.cv__embers');
+      '<div class="cv__stage"></div><canvas class="cv__smokefront" aria-hidden="true"></canvas>';
+    var stage = el.querySelector('.cv__stage'), glow = el.querySelector('.cv__glow'), cv = el.querySelector('.cv__embers'), cf = el.querySelector('.cv__smokefront'), cfx = cf.getContext('2d');
     var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer'; im.alt = ''; im.draggable = false; im.src = IMG + l.f; im.style.zIndex = String(L.length - L.indexOf(l)); stage.appendChild(im); return im; });
 
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, embers = [], ctx = cv.getContext('2d');
-    var smoke = [], lastS = 0;
+    var smoke = [], fsmoke = [], lastS = 0;
     var smokeSprite = (function () { var c = document.createElement('canvas'); c.width = c.height = 128; var g = c.getContext('2d'), gr = g.createRadialGradient(64, 64, 0, 64, 64, 64);
       gr.addColorStop(0, 'rgba(225,205,190,.55)'); gr.addColorStop(0.35, 'rgba(190,160,140,.28)'); gr.addColorStop(0.7, 'rgba(150,120,105,.09)'); gr.addColorStop(1, 'rgba(120,95,85,0)');
       g.fillStyle = gr; g.fillRect(0, 0, 128, 128); return c; })();
     function newSmoke(anywhere) {
       var life = 6 + Math.random() * 4;
       return { x: cx + (Math.random() * 2 - 1) * W * 0.34, y: anywhere ? H * (0.2 + Math.random() * 0.8) : H * (1.0 + Math.random() * 0.08), r: 38 + Math.random() * 40, g: 22 + Math.random() * 26, vy: 16 + Math.random() * 16, age: anywhere ? Math.random() * life : 0, life: life, a: 0.5 + Math.random() * 0.5, p: Math.random() * 6.28 };
+    }
+    function newFront(anywhere) {
+      var life = 4.5 + Math.random() * 3;
+      return { x: cx + (Math.random() * 2 - 1) * W * 0.2, y: H * (0.5 + Math.random() * 0.2), r: 26 + Math.random() * 26, g: 20 + Math.random() * 24, vy: 14 + Math.random() * 14, age: anywhere ? Math.random() * life : 0, life: life, a: 0.4 + Math.random() * 0.6, p: Math.random() * 6.28 };
     }
     var px = 0, tx = 0, hover = false, e = 0, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000, vis = true, running = false, raf = 0;
 
@@ -63,6 +67,9 @@
       cx = W * 0.675;
       top0 = (H - EXPL_H * k) / 2 + H * 0.03;
       imgs.forEach(function (im, n) { im.style.width = (L[n].w * k) + 'px'; });
+      cf.width = Math.round(W * dpr); cf.height = Math.round(H * dpr); cfx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      fsmoke = [];
+      for (var q2 = 0; q2 < 9; q2++) fsmoke.push(newFront(true));
       smoke = [];
       for (var q = 0; q < 16; q++) smoke.push(newSmoke(true));
       embers = [];
@@ -110,6 +117,15 @@
         ctx.drawImage(smokeSprite, f.x - size / 2, f.y - size / 2, size, size);
       }
       ctx.globalAlpha = 1;
+      cfx.clearRect(0, 0, W, H);
+      for (var fm = 0; fm < fsmoke.length; fm++) {
+        var q = fsmoke[fm];
+        if (!reduce) { q.age += ds; q.y -= q.vy * us * ds * (1 + 0.6 * clamp(e, 0, 1)); q.x += Math.sin(q.age * 0.9 + q.p) * 12 * us * ds; if (q.age > q.life) { fsmoke[fm] = q = newFront(false); } }
+        var fq = q.age / q.life, sq = (q.r + q.g * fq) * us * 2.4;
+        cfx.globalAlpha = clamp(Math.pow(Math.sin(Math.PI * clamp(fq, 0, 1)), 1.4) * 0.34 * q.a * (0.5 + 0.7 * clamp(e, 0, 1)), 0, 1);
+        cfx.drawImage(smokeSprite, q.x - sq / 2, q.y - sq / 2, sq, sq);
+      }
+      cfx.globalAlpha = 1;
       ctx.globalCompositeOperation = 'lighter';
       for (var n = 0; n < embers.length; n++) {
         var m = embers[n];
