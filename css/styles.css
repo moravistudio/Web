@@ -2098,3 +2098,22 @@ html.intro-on .intro.is-leaving { opacity: 0; visibility: hidden; pointer-events
   backface-visibility: hidden; box-shadow: 0 16px 36px rgba(14, 26, 45, .22);
 }
 @media (max-width: 640px) { .projects-ring { --item-w: clamp(170px, 56vw, 260px); } }
+
+/* ===== Productos del inicio en celular: giro 3D al deslizar el carrusel + inclinación al tocar ===== */
+@media (max-width: 768px) {
+  .home-products.cf-ready .projects__card {
+    transform: perspective(900px) rotateY(calc(var(--cf, 0deg) + var(--ty, 0deg))) rotateX(var(--tx, 0deg)) scale(var(--cs, 1));
+    transform-style: preserve-3d;
+    transition: transform .14s ease-out, box-shadow .3s ease;
+  }
+  .home-products.cf-ready .projects__card.is-tilting { transition: transform .05s linear, box-shadow .3s ease; }
+  .home-products.cf-ready .projects__media,
+  .home-products.cf-ready .projects__body { transform: translateZ(22px); }
+  .home-products.cf-ready .projects__badge { transform: translateZ(28px); }
+  .home-products.cf-ready .projects__card::after {
+    content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; opacity: 0;
+    background: radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255, 255, 255, .5), transparent 55%);
+    transition: opacity .3s ease;
+  }
+  .home-products.cf-ready .projects__card.is-tilting::after { opacity: 1; }
+}
