@@ -19,7 +19,7 @@
     { f: 'capa-5-cono.webp', x: 373, y: 1031, w: 273, h: 460, cls: '' }
   ];
   // Posición «armada»: cada bola descansa sobre la de abajo, tapando un poco con sus goteos
-  var OVER = [0, 20, 125, 125, 80]; // solape con la pieza de arriba
+  var OVER = [0, 20, 125, 125, 142]; // solape con la pieza de arriba
   var T = [], i;
   T[0] = L[0].y;
   for (i = 1; i < L.length; i++) T[i] = T[i - 1] + L[i - 1].h - OVER[i];
