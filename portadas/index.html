@@ -24,6 +24,7 @@
     .browser__bar i{width:10px;height:10px;border-radius:50%;background:#cbd5e3}
     .browser__bar span{margin-left:10px;font-size:12px;color:#8a97ab}
     .browser__body{aspect-ratio:1/1;border-radius:0}
+    .browser__body--tall{aspect-ratio:210/436;max-width:360px;margin:0 auto}
     .card h2{font:700 20px 'Poppins',sans-serif;margin-top:16px}
     .card .tag{display:inline-block;margin-top:6px;font-size:12px;font-weight:600;color:#1E8CFF;background:rgba(30,140,255,.1);padding:4px 10px;border-radius:99px}
     .card p{margin-top:10px;color:#5C6A7E;font-size:15px;line-height:1.5}
@@ -41,10 +42,17 @@
         <h2>Brasa Burger</h2><span class="tag">Hamburguesería</span>
         <p>La hamburguesa se arma capa por capa y se abre sola, o cuando pasas el cursor. Las brasas suben de fondo.</p>
       </article>
+      <article class="card" id="luna-gelato">
+        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>lunagelato.com</span></div><div class="browser__body browser__body--tall"><div class="cv cv-gelato" id="gelato"></div></div></div>
+        <h2>Luna Gelato</h2><span class="tag">Heladería</span>
+        <p>El helado se arma sobre el cono, bola por bola. Cada cierto tiempo, o cuando pasas el cursor, se abre, gotea y cambia de sabor.</p>
+      </article>
     </div>
     <p class="soon">Pronto habrá más portadas.</p>
   </div>
   <script src="../js/portadas/brasa-burger.js"></script>
-  <script>BrasaBurger.init(document.getElementById('burger'));</script>
+  <script src="../js/portadas/luna-gelato.js"></script>
+  <script>BrasaBurger.init(document.getElementById('burger'));
+  LunaGelato.init(document.getElementById('gelato'));</script>
 </body>
 </html>
