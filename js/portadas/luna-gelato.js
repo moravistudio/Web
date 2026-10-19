@@ -30,6 +30,7 @@
   var ASM_TOP = T[0], ASM_H = (T[4] + L[4].h) - T[0];
   var DEPTH = [1, 0.7, 0.5, 0.35, 0.15];
   var DROP_ORDER = [4, 3, 2, 1, 0]; // cae primero el cono, la cereza al final
+  var NAMES = [null, ['Fresa', 'Chocolate', 'Arándano'], ['Pistacho', 'Mango', 'Limón'], ['Vainilla', 'Dulce de leche', 'Oreo']]; // por bola (1 = arriba)
   var FLAVORS = [['#ffb3c8', '#c9df9a', '#fff0cf'], ['#6b3f2a', '#ffc83d', '#c98a55'], ['#c9a2d6', '#f1f06a', '#d8d2cc']];
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
   var ease = function (t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
@@ -43,7 +44,7 @@
       '<div class="cv__blob cv__blob--1"></div><div class="cv__blob cv__blob--2"></div><div class="cv__blob cv__blob--3"></div>' +
       '<div class="cv__logo"><b>LUNA</b> GELATO</div>' +
       '<div class="cv__stage"></div><canvas class="cv__drops" aria-hidden="true"></canvas>' +
-      '<div class="cv__tag"><span class="cv__tag-a">Fresa · Pistacho · Vainilla</span><span class="cv__tag-b">Chocolate · Mango · Dulce de leche</span><span class="cv__tag-c">Arándano · Limón · Oreo</span></div>' +
+      '<div class="cv__tag"><span class="cv__tag-t">Fresa · Pistacho · Vainilla</span></div>' +
       '<span class="cv__btn">Elegir sabor</span>';
     var stage = el.querySelector('.cv__stage'), cv = el.querySelector('.cv__drops'), ctx = cv.getContext('2d');
     var imgs = L.map(function (l) {
@@ -56,7 +57,7 @@
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, drops = [], dacc = 0, lastD = 0, mist = [], macc = 0;
     var mistSprite = (function () { var c = document.createElement('canvas'); c.width = c.height = 96; var g = c.getContext('2d'), gr = g.createRadialGradient(48, 48, 0, 48, 48, 48);
       gr.addColorStop(0, 'rgba(170,205,235,.55)'); gr.addColorStop(0.45, 'rgba(190,215,238,.28)'); gr.addColorStop(1, 'rgba(200,222,242,0)'); g.fillStyle = gr; g.fillRect(0, 0, 96, 96); return c; })();
-    var px = 0, tx = 0, hover = false, e = 0, setIdx = 0, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
+    var px = 0, tx = 0, hover = false, e = 0, flav = [0, 0, 0, 0, 0], lastUser = -1e9, lastHit = -1, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
     var vis = true, running = false, raf = 0, lastCycle = -1;
 
     function layout() {
@@ -74,7 +75,28 @@
       });
     }
 
-    function setSet(v) { v = ((v % 3) + 3) % 3; if (setIdx !== v) { setIdx = v; el.setAttribute('data-set', String(v)); } }
+    var tagEl = el.querySelector('.cv__tag-t'), tagTimer = 0;
+    function updateTag() {
+      var txt = [1, 2, 3].map(function (n) { return NAMES[n][flav[n]]; }).join(' · ');
+      if (tagEl.textContent === txt) return;
+      tagEl.classList.add('swap'); clearTimeout(tagTimer);
+      tagTimer = setTimeout(function () { tagEl.textContent = txt; tagEl.classList.remove('swap'); }, 220);
+    }
+    function setFlav(n, v) { v = ((v % 3) + 3) % 3; if (flav[n] !== v) { flav[n] = v; imgs[n].setAttribute('data-f', String(v)); updateTag(); } }
+    function setAll(v) { for (var n = 1; n <= 3; n++) setFlav(n, v); }
+    // ¿Qué bola está bajo el cursor? (de arriba hacia abajo; se achica un poco el rectángulo para no contar los bordes vacíos)
+    function scoopAt(x, y) {
+      for (var n = 1; n <= 3; n++) {
+        var r = imgs[n].querySelector('.cv__f0').getBoundingClientRect(), mx = r.width * 0.12, my = r.height * 0.1;
+        if (x >= r.left + mx && x <= r.right - mx && y >= r.top + my && y <= r.bottom - my) return n;
+      }
+      return -1;
+    }
+    function touchScoop(ev, advance) {
+      var hit = scoopAt(ev.clientX, ev.clientY);
+      if (advance) { if (hit > 0 && hit !== lastHit) { setFlav(hit, flav[hit] + 1); lastUser = performance.now(); } }
+      lastHit = hit; el.style.cursor = hit > 0 ? 'pointer' : '';
+    }
 
     function place(now) {
       var t = (now - t0) / 1000;
@@ -83,7 +105,7 @@
       if (!reduce && t >= 3.4) {
         var c = (t - 3.4) % 8;
         auto = c < 2.2 ? 0 : c < 3.4 ? ease((c - 2.2) / 1.2) : c < 5.4 ? 1 : c < 6.6 ? 1 - ease((c - 5.4) / 1.2) : 0;
-        if (!hover) setSet(cyc + (c >= 2.2 ? 1 : 0));
+        if (!hover && now - lastUser > 10000) setAll(cyc + (c >= 2.2 ? 1 : 0));
       }
       var target = hover ? 1 : auto;
       e += (target - e) * 0.09;
@@ -133,14 +155,13 @@
           var s = 1 + Math.floor(Math.random() * 3);          // bola 1, 2 ó 3
           var n = s, y = top0 + (T[n] - ASM_TOP + (DELTA[n] + (ASM_TOP - EXPL_TOP)) * clamp(e, 0, 1)) * k + 0;
           var bottom = y + L[n].h * k * 0.9;
-          drops.push({ x: cx + (Math.random() - 0.5) * L[n].w * k * 0.7 + px * W * 0.04 * DEPTH[n], y: bottom, vy: 10 * u, s: s - 1, r: (1.6 + Math.random() * 1.8) * u, a: 1 });
+          drops.push({ x: cx + (Math.random() - 0.5) * L[n].w * k * 0.7 + px * W * 0.04 * DEPTH[n], y: bottom, vy: 10 * u, s: s - 1, c: FLAVORS[flav[n]][n - 1], r: (1.6 + Math.random() * 1.8) * u, a: 1 });
         }
       }
-      var set = FLAVORS[setIdx];
       for (var d = drops.length - 1; d >= 0; d--) {
         var p = drops[d]; p.vy += 520 * u * dt; p.y += p.vy * dt; p.a -= dt * 0.95;
         if (p.a <= 0 || p.y > H + 10) { drops.splice(d, 1); continue; }
-        ctx.globalAlpha = clamp(p.a, 0, 1); ctx.fillStyle = set[p.s];
+        ctx.globalAlpha = clamp(p.a, 0, 1); ctx.fillStyle = p.c;
         var len = p.r * (1.6 + p.vy / (160 * u));
         ctx.beginPath(); ctx.ellipse(p.x, p.y, p.r, len, 0, 0, 6.2832); ctx.fill();
         ctx.globalAlpha = clamp(p.a, 0, 1) * 0.55; ctx.fillStyle = '#fff';
@@ -156,12 +177,13 @@
       else if (!go) { running = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } }
     }
 
-    el.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') { hover = true; setSet(setIdx + 1); } });
-    el.addEventListener('pointerleave', function () { hover = false; tx = 0; });
+    el.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') { hover = true; } });
+    el.addEventListener('pointerleave', function () { hover = false; tx = 0; lastHit = -1; el.style.cursor = ''; });
     el.addEventListener('pointermove', function (ev) {
       var r = el.getBoundingClientRect(); tx = clamp((ev.clientX - r.left) / r.width * 2 - 1, -1, 1);
+      if (ev.pointerType === 'mouse') touchScoop(ev, true);
     }, { passive: true });
-    el.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse') { hover = true; setSet(setIdx + 1); } });
+    el.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse') { hover = true; lastHit = -1; touchScoop(ev, true); } });
     el.addEventListener('pointerup', function (ev) { if (ev.pointerType !== 'mouse') { hover = false; tx = 0; } });
     el.addEventListener('pointercancel', function () { hover = false; tx = 0; });
 
