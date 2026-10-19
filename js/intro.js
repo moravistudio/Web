@@ -118,5 +118,4 @@
   window.addEventListener('resize', onResize);
 
   if (ctx) { build(); if (reduce) drawStatic(); sync(); }
-  try { btn.focus({ preventScroll: true }); } catch (e) { /* sin foco automático */ }
 })();
