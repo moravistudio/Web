@@ -2117,3 +2117,59 @@ html.intro-on .intro.is-leaving { opacity: 0; visibility: hidden; pointer-events
   }
   .home-products.cf-ready .projects__card.is-tilting::after { opacity: 1; }
 }
+
+/* ===== Portada: laptop, tablet y celular como imágenes separadas, cada una con su propio movimiento =====
+   Entrada escalonada, pantalla de la laptop que se enciende, flotación (js/portada-escena.js) y barrido de luz.
+   Si la pantalla de entrada está abierta (html.scene-wait), la escena espera oculta y arranca al cerrarla. */
+.scene { position: relative; pointer-events: none; }
+.scene .dev { position: absolute; }
+.scene .dev__img { display: block; width: 100%; height: auto; filter: drop-shadow(0 26px 28px rgba(10, 40, 100, .2)); }
+.scene .dev__sheen, .scene .dev__screen, .scene .dev__bloom { position: absolute; left: 0; top: 0; width: 100%; height: 100%; pointer-events: none; }
+html.scene-wait .scene { visibility: hidden; }
+/* Mientras la entrada está abierta las animaciones no corren: arrancan desde cero al cerrarla */
+html.scene-wait .scene .dev, html.scene-wait .scene .dev__screen, html.scene-wait .scene .dev__bloom { animation: none; }
+/* PC: mismo ancla que tenía la imagen anterior (derecha, bajo el menú) */
+.scene--pc { position: absolute; right: 0; width: var(--dev-w); aspect-ratio: 1 / .46; top: 130px; }
+.scene--pc .dev--laptop { left: 27%; top: 2%; width: 62%; z-index: 1; }
+.scene--pc .dev--tablet { left: 77%; top: 3%; width: 22%; z-index: 2; }
+.scene--pc .dev--phone { left: 62%; top: 38%; width: 16%; z-index: 3; }
+/* Tablet (769–1024): la escena va debajo del texto, a todo el ancho */
+@media (min-width: 769px) and (max-width: 1024px) { .scene--pc { position: relative; top: 0; right: auto; width: 100%; } }
+/* Celular */
+.hero__scene-m { display: none; }
+@media (max-width: 768px) {
+  .hero__scene-m { display: block; width: 100vw; max-width: 100vw; margin: 0; aspect-ratio: 1 / .6; }
+  .scene--m .dev--laptop { left: 20%; top: 6%; width: 70%; z-index: 1; }
+  .scene--m .dev--tablet { left: 72%; top: 8%; width: 26%; z-index: 2; }
+  .scene--m .dev--phone { left: 55%; top: 40%; width: 20%; z-index: 3; }
+}
+/* Pantalla de la laptop: capa negra con el contorno del cristal (cae dentro del marco negro, así no se nota el borde) */
+.dev__screen { background: #030813; clip-path: polygon(33.59% 4.3%, 90.89% 9.47%, 86.98% 70.51%, 28.13% 59.18%); }
+.dev__bloom {
+  clip-path: polygon(33.59% 4.3%, 90.89% 9.47%, 86.98% 70.51%, 28.13% 59.18%); opacity: 0;
+  background: radial-gradient(ellipse at 55% 40%, rgba(120, 190, 255, .9), rgba(30, 140, 255, .35) 45%, transparent 70%);
+}
+@keyframes devUp { from { opacity: 0; translate: 0 70px; scale: .94; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes devRight { from { opacity: 0; translate: 140px 0; scale: .94; } to { opacity: 1; translate: 0 0; scale: 1; } }
+@keyframes screenOn { 0%, 12% { opacity: 1; } 18% { opacity: .82; } 24% { opacity: 1; } 32% { opacity: .55; } 100% { opacity: 0; } }
+@keyframes bloom { 0%, 12% { opacity: 0; } 30% { opacity: .85; } 100% { opacity: 0; } }
+.scene .dev--laptop { animation: devUp 1s cubic-bezier(.2, .7, .2, 1) .1s both; }
+.scene .dev--tablet { animation: devRight 1s cubic-bezier(.2, .7, .2, 1) .5s both; }
+.scene .dev--phone { animation: devUp 1s cubic-bezier(.2, .7, .2, 1) .8s both; }
+.scene .dev__screen { animation: screenOn .85s ease .8s both; }
+.scene .dev__bloom { animation: bloom .85s ease .8s both; }
+/* Barrido de luz sobre cada dispositivo */
+@keyframes sweep { 0% { -webkit-mask-position: 100% 0; mask-position: 100% 0; } 38%, 100% { -webkit-mask-position: 0% 0; mask-position: 0% 0; } }
+.scene .dev__sheen {
+  filter: brightness(1.9) saturate(.4); opacity: .6;
+  -webkit-mask-image: linear-gradient(100deg, transparent 44%, #000 50%, transparent 56%); mask-image: linear-gradient(100deg, transparent 44%, #000 50%, transparent 56%);
+  -webkit-mask-size: 300% 100%; mask-size: 300% 100%; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: 100% 0; mask-position: 100% 0; animation: sweep 7s ease-in-out infinite;
+}
+.scene .dev--laptop .dev__sheen { animation-delay: 3s; }
+.scene .dev--tablet .dev__sheen { animation-delay: 3.6s; }
+.scene .dev--phone .dev__sheen { animation-delay: 4.2s; }
+@media (prefers-reduced-motion: reduce) {
+  .scene .dev, .scene .dev__screen, .scene .dev__bloom, .scene .dev__sheen { animation: none; }
+  .scene .dev__screen, .scene .dev__bloom, .scene .dev__sheen { opacity: 0; }
+}

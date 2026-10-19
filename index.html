@@ -10,10 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=6">
+  <link rel="stylesheet" href="css/styles.css?v=8">
 </head>
 <body>
-  <script>try{if(!sessionStorage.getItem('moravi-intro-visto'))document.documentElement.classList.add('intro-on');}catch(e){document.documentElement.classList.add('intro-on');}</script>
+  <script>try{if(!sessionStorage.getItem('moravi-intro-visto'))document.documentElement.classList.add('intro-on','scene-wait');}catch(e){document.documentElement.classList.add('intro-on','scene-wait');}</script>
 
   <!-- ============ PANTALLA DE ENTRADA (a pantalla completa; una vez por visita) ============ -->
   <section class="intro" id="intro" aria-label="Introducción">
@@ -71,7 +71,7 @@
           vender&nbsp;más.
         </p>
         <div class="hero__mobile-visual">
-          <img src="assets/img/hero-devices-mobile.webp" alt="Dispositivos Moravi Studio" class="hero__devices-mobile">
+          <div class="hero__scene-m scene scene--m" role="img" aria-label="Sitios web diseñados por Moravi Studio en laptop, tablet y celular"><div class="dev dev--laptop" data-dev="laptop"><img class="dev__img" src="assets/img/dev-laptop.webp" alt="" width="1536" height="1024" loading="lazy"><img class="dev__sheen" src="assets/img/dev-laptop.webp" alt="" aria-hidden="true"><span class="dev__screen"></span><span class="dev__bloom"></span></div><div class="dev dev--tablet" data-dev="tablet"><img class="dev__img" src="assets/img/dev-tablet.webp" alt="" width="1024" height="1536" loading="lazy"><img class="dev__sheen" src="assets/img/dev-tablet.webp" alt="" aria-hidden="true"></div><div class="dev dev--phone" data-dev="phone"><img class="dev__img" src="assets/img/dev-celular.webp" alt="" width="1024" height="1536" loading="lazy"><img class="dev__sheen" src="assets/img/dev-celular.webp" alt="" aria-hidden="true"></div></div>
           <a href="#contacto" class="hero__talk">
             <span data-i18n="hero.btnSecondary">Hablemos</span>
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -90,9 +90,7 @@
       </div>
 
       <div class="hero__visual">
-        <img src="assets/img/hero-devices.webp"
-             alt="Sitios web diseñados por Moravi Studio en laptop, tablet y celular"
-             class="hero__devices">
+        <div class="hero__devices scene scene--pc" role="img" aria-label="Sitios web diseñados por Moravi Studio en laptop, tablet y celular"><div class="dev dev--laptop" data-dev="laptop"><img class="dev__img" src="assets/img/dev-laptop.webp" alt="" width="1536" height="1024" loading="lazy"><img class="dev__sheen" src="assets/img/dev-laptop.webp" alt="" aria-hidden="true"><span class="dev__screen"></span><span class="dev__bloom"></span></div><div class="dev dev--tablet" data-dev="tablet"><img class="dev__img" src="assets/img/dev-tablet.webp" alt="" width="1024" height="1536" loading="lazy"><img class="dev__sheen" src="assets/img/dev-tablet.webp" alt="" aria-hidden="true"></div><div class="dev dev--phone" data-dev="phone"><img class="dev__img" src="assets/img/dev-celular.webp" alt="" width="1024" height="1536" loading="lazy"><img class="dev__sheen" src="assets/img/dev-celular.webp" alt="" aria-hidden="true"></div></div>
       </div>
     </div>
   </section>
@@ -379,7 +377,8 @@
   </dialog>
 
   <script src="js/i18n.js" defer></script>
-  <script src="js/intro.js?v=2" defer></script>
+  <script src="js/intro.js?v=3" defer></script>
+  <script src="js/portada-escena.js?v=1" defer></script>
   <script src="js/menu-mobile.js" defer></script>
   <script src="js/auth-gate.js" defer></script>
   <script src="js/productos-carrusel.js" defer></script>

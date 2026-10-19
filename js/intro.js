@@ -95,7 +95,7 @@
     try { sessionStorage.setItem('moravi-intro-visto', '1'); } catch (e) { /* sin almacenamiento: se mostrará de nuevo */ }
     sync();
     box.classList.add('is-leaving');
-    root.classList.remove('intro-on');
+    root.classList.remove('intro-on', 'scene-wait');
     document.removeEventListener('visibilitychange', onVisibility);
     document.removeEventListener('keydown', onKey);
     window.removeEventListener('resize', onResize);
