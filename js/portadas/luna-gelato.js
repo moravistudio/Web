@@ -13,9 +13,9 @@
   // Posición de cada pieza en la imagen original (1024×1536): x, y, ancho, alto  (de arriba hacia abajo)
   var L = [
     { f: 'capa-1-cereza.webp', x: 434, y: 18, w: 206, h: 211, cls: '' },
-    { f: 'capa-2-bola-fresa.webp', x: 333, y: 219, w: 361, h: 309, cls: 's1' },
-    { f: 'capa-3-bola-pistacho.webp', x: 326, y: 490, w: 366, h: 318, cls: 's2' },
-    { f: 'capa-4-bola-vainilla.webp', x: 328, y: 765, w: 374, h: 305, cls: 's3' },
+    { f: 'capa-2-bola-fresa.webp', x: 333, y: 219, w: 361, h: 309, cls: 's1', b: { f: 'capab-2-bola-chocolate.webp', x: 330, y: 225, w: 368, h: 303 } },
+    { f: 'capa-3-bola-pistacho.webp', x: 326, y: 490, w: 366, h: 318, cls: 's2', b: { f: 'capab-3-bola-mango.webp', x: 321, y: 493, w: 381, h: 320 } },
+    { f: 'capa-4-bola-vainilla.webp', x: 328, y: 765, w: 374, h: 305, cls: 's3', b: { f: 'capab-4-bola-dulce.webp', x: 323, y: 773, w: 379, h: 304 } },
     { f: 'capa-5-cono.webp', x: 373, y: 1031, w: 273, h: 460, cls: '' }
   ];
   // Posición «armada»: cada bola descansa sobre la de abajo, tapando un poco con sus goteos
@@ -30,7 +30,7 @@
   var ASM_TOP = T[0], ASM_H = (T[4] + L[4].h) - T[0];
   var DEPTH = [1, 0.7, 0.5, 0.35, 0.15];
   var DROP_ORDER = [4, 3, 2, 1, 0]; // cae primero el cono, la cereza al final
-  var FLAVORS = [['#ff9db8', '#c9df9a', '#fff0cf'], ['#9d98ff', '#ffb04a', '#7a4a33']];
+  var FLAVORS = [['#ffb3c8', '#c9df9a', '#fff0cf'], ['#6b3f2a', '#ffc83d', '#c98a55']];
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
   var ease = function (t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
   var outBack = function (t) { var c1 = 1.4, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
@@ -43,10 +43,15 @@
       '<div class="cv__blob cv__blob--1"></div><div class="cv__blob cv__blob--2"></div><div class="cv__blob cv__blob--3"></div>' +
       '<div class="cv__logo"><b>LUNA</b> GELATO</div>' +
       '<div class="cv__stage"></div><canvas class="cv__drops" aria-hidden="true"></canvas>' +
-      '<div class="cv__tag"><span class="cv__tag-a">Fresa · Pistacho · Vainilla</span><span class="cv__tag-b">Arándano · Mango · Chocolate</span></div>' +
+      '<div class="cv__tag"><span class="cv__tag-a">Fresa · Pistacho · Vainilla</span><span class="cv__tag-b">Chocolate · Mango · Dulce de leche</span></div>' +
       '<span class="cv__btn">Elegir sabor</span>';
     var stage = el.querySelector('.cv__stage'), cv = el.querySelector('.cv__drops'), ctx = cv.getContext('2d');
-    var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer' + (l.cls ? ' cv__' + l.cls : ''); im.alt = ''; im.draggable = false; im.src = IMG + l.f; im.style.zIndex = String(L.length - L.indexOf(l)); stage.appendChild(im); return im; });
+    var imgs = L.map(function (l) {
+      var pc = document.createElement('div'); pc.className = 'cv__piece'; pc.style.zIndex = String(L.length - L.indexOf(l));
+      var ia = new Image(); ia.className = 'cv__a'; ia.alt = ''; ia.draggable = false; ia.src = IMG + l.f; pc.appendChild(ia);
+      if (l.b) { var ib = new Image(); ib.className = 'cv__b'; ib.alt = ''; ib.draggable = false; ib.src = IMG + l.b.f; pc.appendChild(ib); }
+      stage.appendChild(pc); return pc;
+    });
 
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, drops = [], dacc = 0, lastD = 0;
     var px = 0, tx = 0, hover = false, e = 0, alt = false, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
@@ -60,7 +65,11 @@
       k = Math.min((H * 0.72) / EXPL_H, (W * 0.6) / 374);
       cx = W * 0.5;
       top0 = H * 0.105;
-      imgs.forEach(function (im, n) { im.style.width = (L[n].w * k) + 'px'; });
+      imgs.forEach(function (pc, n) {
+        var a = pc.querySelector('.cv__a'), b = pc.querySelector('.cv__b');
+        a.style.width = (L[n].w * k) + 'px';
+        if (b) { b.style.width = (L[n].b.w * k) + 'px'; b.style.left = ((L[n].b.x - L[n].x) * k) + 'px'; b.style.top = ((L[n].b.y - L[n].y) * k) + 'px'; }
+      });
     }
 
     function setAlt(v) { if (alt !== v) { alt = v; el.classList.toggle('is-alt', alt); } }

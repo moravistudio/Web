@@ -57,15 +57,17 @@
 .cv-gelato .cv__logo b { color: #e0558f; font-weight: 800; }
 .cv-gelato .cv__stage { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
 .cv-gelato .cv__drops { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
-.cv-gelato .cv__layer { position: absolute; left: 0; top: 0; display: block; max-width: none; height: auto; will-change: transform; filter: drop-shadow(0 1.2cqh 1.4cqh rgba(130, 40, 90, .22)); transition: filter 1s ease; }
-/* Sabores: se cambian los colores de las bolas con filtros (A: fresa, pistacho, vainilla → B: arándano, mango, chocolate) */
-.cv-gelato.is-alt .cv__s1 { filter: hue-rotate(228deg) saturate(1.1) drop-shadow(0 1.2cqh 1.4cqh rgba(60, 40, 130, .25)); }
-.cv-gelato.is-alt .cv__s2 { filter: hue-rotate(-32deg) saturate(2.4) brightness(1.1) contrast(1.05) drop-shadow(0 1.2cqh 1.4cqh rgba(150, 70, 10, .25)); }
-.cv-gelato.is-alt .cv__s3 { filter: sepia(.6) saturate(1.8) brightness(.55) hue-rotate(-12deg) contrast(1.1) drop-shadow(0 1.2cqh 1.4cqh rgba(60, 30, 15, .3)); }
+.cv-gelato .cv__piece { position: absolute; left: 0; top: 0; width: 0; height: 0; will-change: transform; }
+.cv-gelato .cv__piece img { position: absolute; left: 0; top: 0; display: block; max-width: none; height: auto; filter: drop-shadow(0 1.2cqh 1.4cqh rgba(130, 40, 90, .22)); }
+/* Cambio de sabor: la imagen B (otro helado real) aparece sobre la A y luego la A se retira, sin dejar rastro de goteos */
+.cv-gelato .cv__a { opacity: 1; transition: opacity .6s ease 0s; }
+.cv-gelato .cv__b { opacity: 0; transition: opacity .4s ease .45s; }
+.cv-gelato.is-alt .cv__b { opacity: 1; transition: opacity .6s ease 0s; }
+.cv-gelato.is-alt .cv__piece .cv__b ~ .cv__a, .cv-gelato.is-alt .cv__a:not(:only-child) { opacity: 0; transition: opacity .4s ease .45s; }
 .cv-gelato .cv__tag { position: absolute; z-index: 5; left: 0; right: 0; bottom: 10.4cqh; height: 5cqh; text-align: center; font: 600 4.1cqw/1.2 'Inter', sans-serif; color: #7a3d63; pointer-events: none; }
 .cv-gelato .cv__tag span { position: absolute; left: 0; right: 0; transition: opacity .8s ease; }
 .cv-gelato .cv__tag-b { opacity: 0; }
 .cv-gelato.is-alt .cv__tag-a { opacity: 0; }
 .cv-gelato.is-alt .cv__tag-b { opacity: 1; }
 .cv-gelato .cv__btn { position: absolute; z-index: 5; left: 50%; bottom: 3.4cqh; transform: translateX(-50%); white-space: nowrap; background: #e0558f; color: #fff; font: 700 5cqw/1 'Poppins', sans-serif; padding: 1.5cqh 7cqw; border-radius: 99px; box-shadow: 0 .8cqh 2cqh rgba(224, 85, 143, .4); pointer-events: none; }
-@media (prefers-reduced-motion: reduce) { .cv-gelato .cv__blob { animation: none; } .cv-gelato .cv__layer, .cv-gelato .cv__tag span { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .cv-gelato .cv__blob { animation: none; } .cv-gelato .cv__a, .cv-gelato .cv__b, .cv-gelato .cv__tag span { transition: none; } }
