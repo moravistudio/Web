@@ -10,9 +10,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=3">
+  <link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
+  <script>try{if(!sessionStorage.getItem('moravi-intro-visto'))document.documentElement.classList.add('intro-on');}catch(e){document.documentElement.classList.add('intro-on');}</script>
+
+  <!-- ============ PANTALLA DE ENTRADA (a pantalla completa; una vez por visita) ============ -->
+  <section class="intro" id="intro" aria-label="Introducción">
+    <div class="intro__lang" role="group" aria-label="Seleccionar idioma">
+      <button type="button" class="lang-btn lang-btn--active" data-lang="es" aria-pressed="true">ES</button>
+      <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <canvas class="intro__canvas" id="intro-net" aria-hidden="true"></canvas>
+    <div class="intro__content">
+      <h2 class="intro__title"><span data-i18n="hero.intro.lead">Páginas que</span><span class="intro__accent" data-i18n="hero.intro.accent">se sienten vivas</span></h2>
+      <p class="intro__hint" data-i18n="hero.intro.hint">Mueve el cursor o desliza el dedo sobre el fondo.</p>
+      <button type="button" class="intro__btn" id="intro-enter">
+        <span data-i18n="hero.intro.btn">Conoce Moravi Studio</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </button>
+    </div>
+  </section>
 
   <!-- ============ HEADER ============ -->
   <header class="header">
@@ -400,6 +418,7 @@
   </dialog>
 
   <script src="js/i18n.js" defer></script>
+  <script src="js/intro.js" defer></script>
   <script src="js/menu-mobile.js" defer></script>
   <script src="js/auth-gate.js" defer></script>
   <script src="js/productos-carrusel.js" defer></script>

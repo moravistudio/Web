@@ -20,7 +20,13 @@
         },
         subtitle: 'Landing Pages, sitios web y tiendas online diseñadas para ayudarte a destacar y vender más.',
         btnPrimary: 'Ver proyectos',
-        btnSecondary: 'Hablemos'
+        btnSecondary: 'Hablemos',
+        intro: {
+          lead: 'Páginas que',
+          accent: 'se sienten vivas',
+          hint: 'Mueve el cursor o desliza el dedo sobre el fondo.',
+          btn: 'Conoce Moravi Studio'
+        }
       },
       methodology: {
         title: {
@@ -165,7 +171,13 @@
         },
         subtitle: 'Landing pages, websites, and online stores designed to help you stand out and sell more.',
         btnPrimary: 'View projects',
-        btnSecondary: "Let's talk"
+        btnSecondary: "Let's talk",
+        intro: {
+          lead: 'Websites that',
+          accent: 'feel alive',
+          hint: 'Move your cursor or swipe over the background.',
+          btn: 'Meet Moravi Studio'
+        }
       },
       methodology: {
         title: {
