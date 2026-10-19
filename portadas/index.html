@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Catálogo de portadas interactivas — Moravi Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/portadas.css">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
+    .wrap{width:min(1180px,calc(100vw - 48px));margin:0 auto;padding:40px 0 80px}
+    .back{color:#1E8CFF;text-decoration:none;font-weight:600;font-size:14px}
+    h1{font:700 clamp(30px,4vw,48px)/1.12 'Poppins',sans-serif;margin-top:18px;letter-spacing:-.01em}
+    h1 em{font-style:normal;color:#1E8CFF}
+    .lead{margin-top:12px;color:#5C6A7E;font-size:18px;max-width:640px;line-height:1.5}
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(520px,100%),1fr));gap:34px;margin-top:40px}
+    .card{background:#fff;border:1px solid #dde5f0;border-radius:20px;padding:18px 18px 22px;box-shadow:0 8px 28px rgba(14,26,45,.07)}
+    .browser{border-radius:14px;overflow:hidden;border:1px solid #d5deea;background:#fff}
+    .browser__bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;background:#eef2f8;border-bottom:1px solid #d5deea}
+    .browser__bar i{width:10px;height:10px;border-radius:50%;background:#cbd5e3}
+    .browser__bar span{margin-left:10px;font-size:12px;color:#8a97ab}
+    .browser__body{aspect-ratio:1/1;border-radius:0}
+    .card h2{font:700 20px 'Poppins',sans-serif;margin-top:16px}
+    .card .tag{display:inline-block;margin-top:6px;font-size:12px;font-weight:600;color:#1E8CFF;background:rgba(30,140,255,.1);padding:4px 10px;border-radius:99px}
+    .card p{margin-top:10px;color:#5C6A7E;font-size:15px;line-height:1.5}
+    .soon{margin-top:34px;color:#8a97ab;font-size:14px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../">← Volver a Moravi Studio</a>
+    <h1>Catálogo de portadas <em>interactivas</em></h1>
+    <p class="lead">La primera pantalla de un negocio, con vida propia. Cada portada se mueve: pasa el cursor o tócala.</p>
+    <div class="grid">
+      <article class="card" id="brasa-burger">
+        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>brasaburger.com</span></div><div class="browser__body"><div class="cv cv-burger" id="burger"></div></div></div>
+        <h2>Brasa Burger</h2><span class="tag">Hamburguesería</span>
+        <p>La hamburguesa se arma capa por capa y se abre sola, o cuando pasas el cursor. Las brasas suben de fondo.</p>
+      </article>
+    </div>
+    <p class="soon">Pronto habrá más portadas.</p>
+  </div>
+  <script src="../js/portadas/brasa-burger.js"></script>
+  <script>BrasaBurger.init(document.getElementById('burger'));</script>
+</body>
+</html>
