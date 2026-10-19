@@ -183,7 +183,13 @@
       var r = el.getBoundingClientRect(); tx = clamp((ev.clientX - r.left) / r.width * 2 - 1, -1, 1);
       if (ev.pointerType === 'mouse') touchScoop(ev, true);
     }, { passive: true });
-    el.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse') { hover = true; lastHit = -1; touchScoop(ev, true); } });
+    // Cada clic (o toque) cambia SIEMPRE el sabor de la bola que está debajo, aunque el cursor ya estuviera encima
+    el.addEventListener('pointerdown', function (ev) {
+      if (ev.pointerType !== 'mouse') hover = true;
+      var hit = scoopAt(ev.clientX, ev.clientY);
+      if (hit > 0) { setFlav(hit, flav[hit] + 1); lastUser = performance.now(); }
+      lastHit = hit; el.style.cursor = hit > 0 ? 'pointer' : '';
+    });
     el.addEventListener('pointerup', function (ev) { if (ev.pointerType !== 'mouse') { hover = false; tx = 0; } });
     el.addEventListener('pointercancel', function () { hover = false; tx = 0; });
 
