@@ -13,9 +13,9 @@
   // Posición de cada pieza en la imagen original (1024×1536): x, y, ancho, alto  (de arriba hacia abajo)
   var L = [
     { f: 'capa-1-cereza.webp', x: 434, y: 18, w: 206, h: 211, cls: '' },
-    { f: 'capa-2-bola-fresa.webp', x: 333, y: 219, w: 361, h: 309, cls: 's1', b: { f: 'capab-2-bola-chocolate.webp', x: 330, y: 225, w: 368, h: 303 } },
-    { f: 'capa-3-bola-pistacho.webp', x: 326, y: 490, w: 366, h: 318, cls: 's2', b: { f: 'capab-3-bola-mango.webp', x: 321, y: 493, w: 381, h: 320 } },
-    { f: 'capa-4-bola-vainilla.webp', x: 328, y: 765, w: 374, h: 305, cls: 's3', b: { f: 'capab-4-bola-dulce.webp', x: 323, y: 773, w: 379, h: 304 } },
+    { f: 'capa-2-bola-fresa.webp', x: 333, y: 219, w: 361, h: 309, cls: 's1', alts: [{ f: 'capab-2-bola-chocolate.webp', x: 330, y: 225, w: 368, h: 303 }, { f: 'capac-2-bola-arandano.webp', x: 328, y: 222, w: 373, h: 305 }] },
+    { f: 'capa-3-bola-pistacho.webp', x: 326, y: 490, w: 366, h: 318, cls: 's2', alts: [{ f: 'capab-3-bola-mango.webp', x: 321, y: 493, w: 381, h: 320 }, { f: 'capac-3-bola-limon.webp', x: 321, y: 492, w: 382, h: 316 }] },
+    { f: 'capa-4-bola-vainilla.webp', x: 328, y: 765, w: 374, h: 305, cls: 's3', alts: [{ f: 'capab-4-bola-dulce.webp', x: 323, y: 773, w: 379, h: 304 }, { f: 'capac-4-bola-oreo.webp', x: 323, y: 772, w: 382, h: 306 }] },
     { f: 'capa-5-cono.webp', x: 373, y: 1031, w: 273, h: 460, cls: '' }
   ];
   // Posición «armada»: cada bola descansa sobre la de abajo, tapando un poco con sus goteos
@@ -30,7 +30,7 @@
   var ASM_TOP = T[0], ASM_H = (T[4] + L[4].h) - T[0];
   var DEPTH = [1, 0.7, 0.5, 0.35, 0.15];
   var DROP_ORDER = [4, 3, 2, 1, 0]; // cae primero el cono, la cereza al final
-  var FLAVORS = [['#ffb3c8', '#c9df9a', '#fff0cf'], ['#6b3f2a', '#ffc83d', '#c98a55']];
+  var FLAVORS = [['#ffb3c8', '#c9df9a', '#fff0cf'], ['#6b3f2a', '#ffc83d', '#c98a55'], ['#c9a2d6', '#f1f06a', '#d8d2cc']];
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
   var ease = function (t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; };
   var outBack = function (t) { var c1 = 1.4, c3 = c1 + 1; return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2); };
@@ -43,20 +43,20 @@
       '<div class="cv__blob cv__blob--1"></div><div class="cv__blob cv__blob--2"></div><div class="cv__blob cv__blob--3"></div>' +
       '<div class="cv__logo"><b>LUNA</b> GELATO</div>' +
       '<div class="cv__stage"></div><canvas class="cv__drops" aria-hidden="true"></canvas>' +
-      '<div class="cv__tag"><span class="cv__tag-a">Fresa · Pistacho · Vainilla</span><span class="cv__tag-b">Chocolate · Mango · Dulce de leche</span></div>' +
+      '<div class="cv__tag"><span class="cv__tag-a">Fresa · Pistacho · Vainilla</span><span class="cv__tag-b">Chocolate · Mango · Dulce de leche</span><span class="cv__tag-c">Arándano · Limón · Oreo</span></div>' +
       '<span class="cv__btn">Elegir sabor</span>';
     var stage = el.querySelector('.cv__stage'), cv = el.querySelector('.cv__drops'), ctx = cv.getContext('2d');
     var imgs = L.map(function (l) {
       var pc = document.createElement('div'); pc.className = 'cv__piece'; pc.style.zIndex = String(L.length - L.indexOf(l));
-      var ia = new Image(); ia.className = 'cv__a'; ia.alt = ''; ia.draggable = false; ia.src = IMG + l.f; pc.appendChild(ia);
-      if (l.b) { var ib = new Image(); ib.className = 'cv__b'; ib.alt = ''; ib.draggable = false; ib.src = IMG + l.b.f; pc.appendChild(ib); }
+      var ia = new Image(); ia.className = 'cv__f cv__f0'; ia.alt = ''; ia.draggable = false; ia.src = IMG + l.f; pc.appendChild(ia);
+      (l.alts || []).forEach(function (al, ai) { var ib = new Image(); ib.className = 'cv__f cv__f' + (ai + 1); ib.alt = ''; ib.draggable = false; ib.src = IMG + al.f; pc.appendChild(ib); });
       stage.appendChild(pc); return pc;
     });
 
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, drops = [], dacc = 0, lastD = 0, mist = [], macc = 0;
     var mistSprite = (function () { var c = document.createElement('canvas'); c.width = c.height = 96; var g = c.getContext('2d'), gr = g.createRadialGradient(48, 48, 0, 48, 48, 48);
       gr.addColorStop(0, 'rgba(170,205,235,.55)'); gr.addColorStop(0.45, 'rgba(190,215,238,.28)'); gr.addColorStop(1, 'rgba(200,222,242,0)'); g.fillStyle = gr; g.fillRect(0, 0, 96, 96); return c; })();
-    var px = 0, tx = 0, hover = false, e = 0, alt = false, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
+    var px = 0, tx = 0, hover = false, e = 0, setIdx = 0, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
     var vis = true, running = false, raf = 0, lastCycle = -1;
 
     function layout() {
@@ -68,13 +68,13 @@
       cx = W * 0.5;
       top0 = H * 0.105;
       imgs.forEach(function (pc, n) {
-        var a = pc.querySelector('.cv__a'), b = pc.querySelector('.cv__b');
+        var a = pc.querySelector('.cv__f0');
         a.style.width = (L[n].w * k) + 'px';
-        if (b) { b.style.width = (L[n].b.w * k) + 'px'; b.style.left = ((L[n].b.x - L[n].x) * k) + 'px'; b.style.top = ((L[n].b.y - L[n].y) * k) + 'px'; }
+        (L[n].alts || []).forEach(function (al, ai) { var im = pc.querySelector('.cv__f' + (ai + 1)); im.style.width = (al.w * k) + 'px'; im.style.left = ((al.x - L[n].x) * k) + 'px'; im.style.top = ((al.y - L[n].y) * k) + 'px'; });
       });
     }
 
-    function setAlt(v) { if (alt !== v) { alt = v; el.classList.toggle('is-alt', alt); } }
+    function setSet(v) { v = ((v % 3) + 3) % 3; if (setIdx !== v) { setIdx = v; el.setAttribute('data-set', String(v)); } }
 
     function place(now) {
       var t = (now - t0) / 1000;
@@ -83,7 +83,7 @@
       if (!reduce && t >= 3.4) {
         var c = (t - 3.4) % 8;
         auto = c < 2.2 ? 0 : c < 3.4 ? ease((c - 2.2) / 1.2) : c < 5.4 ? 1 : c < 6.6 ? 1 - ease((c - 5.4) / 1.2) : 0;
-        if (!hover) setAlt(((cyc + (c >= 2.2 ? 1 : 0)) % 2) === 1);
+        if (!hover) setSet(cyc + (c >= 2.2 ? 1 : 0));
       }
       var target = hover ? 1 : auto;
       e += (target - e) * 0.09;
@@ -136,7 +136,7 @@
           drops.push({ x: cx + (Math.random() - 0.5) * L[n].w * k * 0.7 + px * W * 0.04 * DEPTH[n], y: bottom, vy: 10 * u, s: s - 1, r: (1.6 + Math.random() * 1.8) * u, a: 1 });
         }
       }
-      var set = FLAVORS[alt ? 1 : 0];
+      var set = FLAVORS[setIdx];
       for (var d = drops.length - 1; d >= 0; d--) {
         var p = drops[d]; p.vy += 520 * u * dt; p.y += p.vy * dt; p.a -= dt * 0.95;
         if (p.a <= 0 || p.y > H + 10) { drops.splice(d, 1); continue; }
@@ -156,12 +156,12 @@
       else if (!go) { running = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } }
     }
 
-    el.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') { hover = true; setAlt(!alt); } });
+    el.addEventListener('pointerenter', function (ev) { if (ev.pointerType === 'mouse') { hover = true; setSet(setIdx + 1); } });
     el.addEventListener('pointerleave', function () { hover = false; tx = 0; });
     el.addEventListener('pointermove', function (ev) {
       var r = el.getBoundingClientRect(); tx = clamp((ev.clientX - r.left) / r.width * 2 - 1, -1, 1);
     }, { passive: true });
-    el.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse') { hover = true; setAlt(!alt); } });
+    el.addEventListener('pointerdown', function (ev) { if (ev.pointerType !== 'mouse') { hover = true; setSet(setIdx + 1); } });
     el.addEventListener('pointerup', function (ev) { if (ev.pointerType !== 'mouse') { hover = false; tx = 0; } });
     el.addEventListener('pointercancel', function () { hover = false; tx = 0; });
 
