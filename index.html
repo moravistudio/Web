@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=4">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 </head>
 <body>
   <script>try{if(!sessionStorage.getItem('moravi-intro-visto'))document.documentElement.classList.add('intro-on');}catch(e){document.documentElement.classList.add('intro-on');}</script>
@@ -172,63 +172,24 @@
         <p class="projects__subtitle" data-i18n="projects.subtitle">Algunas muestras de sitios web diseñados para diferentes tipos de negocios.</p>
       </div>
 
-      <div class="projects__grid">
-        <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="projects.badge.landing">Landing Page</span></span>
-          <div class="projects__media">
-            <a href="portafolio.html">
-              <img src="assets/img/lash-atelier-hero.webp" alt="Captura del sitio web de Lash Atelier" class="projects__media-img">
-            </a>
-          </div>
-          <div class="projects__body">
-            <h3 class="projects__card-title">Lash Atelier</h3>
-            <div class="projects__card-row">
-              <p class="projects__card-text" data-i18n="projects.card.lashAtelier">Landing page moderna para negocio de pestañas y laminado de cejas.</p>
-              <a href="portafolio.html" class="projects__link">
-                <span data-i18n="projects.verProyecto">Ver proyecto</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-            </div>
-          </div>
-        </article>
+      <div class="projects-ring" id="proyectos-anillo" aria-label="Proyectos destacados">
+        <div class="projects-ring__spin">
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/lash-atelier-hero.webp" alt="Captura del sitio web de Lash Atelier" width="1082" height="676" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/pagina-uno-hero.webp" alt="Captura del sitio web de Página Uno" width="1037" height="648" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/libraica-hero.webp" alt="Captura del sitio web de Libraica" width="1066" height="666" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/synapse-ai-hero.webp" alt="Captura del sitio web de Synapse AI" width="1280" height="800" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/landing-serum-hero.webp" alt="Captura del sitio web de Landing Serum" width="1280" height="800" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/maison-dulce-hero.webp" alt="Captura del sitio web de Maison Dulce" width="1280" height="800" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/maison-veda-hero.webp" alt="Captura del sitio web de MAISON VEDA" width="1280" height="800" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/lumen-studio-hero.webp" alt="Captura del sitio web de Lumen Studio" width="1280" height="800" loading="lazy" draggable="false"></a>
+        </div>
+      </div>
 
-        <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="projects.badge.tienda">Tienda Online</span></span>
-          <div class="projects__media">
-            <a href="portafolio.html">
-              <img src="assets/img/pagina-uno-hero.webp" alt="Captura del sitio web de Página Uno" class="projects__media-img">
-            </a>
-          </div>
-          <div class="projects__body">
-            <h3 class="projects__card-title">Página Uno</h3>
-            <div class="projects__card-row">
-              <p class="projects__card-text" data-i18n="projects.card.paginaUno">Tienda online de libros seleccionados para cada tipo de lector.</p>
-              <a href="portafolio.html" class="projects__link">
-                <span data-i18n="projects.verProyecto">Ver proyecto</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <article class="projects__card">
-          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="projects.badge.sitio">Sitio Web</span></span>
-          <div class="projects__media">
-            <a href="portafolio.html">
-              <img src="assets/img/libraica-hero.webp" alt="Captura del sitio web de Libraica" class="projects__media-img">
-            </a>
-          </div>
-          <div class="projects__body">
-            <h3 class="projects__card-title">Libraica</h3>
-            <div class="projects__card-row">
-              <p class="projects__card-text" data-i18n="projects.card.libraica">Sitio web de libros con recomendaciones literarias</p>
-              <a href="portafolio.html" class="projects__link">
-                <span data-i18n="projects.verProyecto">Ver proyecto</span>
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-              </a>
-            </div>
-          </div>
-        </article>
+      <div class="projects__cta">
+        <a href="portafolio.html" class="projects__btn-all">
+          <span data-i18n="projects.verTodos">Ver todos los proyectos</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
       </div>
     </div>
   </section>
@@ -422,6 +383,8 @@
   <script src="js/menu-mobile.js" defer></script>
   <script src="js/auth-gate.js" defer></script>
   <script src="js/productos-carrusel.js" defer></script>
+  <script src="js/tarjetas-efecto.js" defer></script>
+  <script src="js/proyectos-anillo.js" defer></script>
 
   <!-- Chatbot -->
   <button class="chatbot__toggle" aria-label="Abrir chat" aria-expanded="false">
