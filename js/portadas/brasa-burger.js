@@ -41,7 +41,7 @@
       '<div class="cv__copy"><div class="cv__h">Sabor<br>a <em>fuego</em></div><p class="cv__p">Hamburguesas a la parrilla, hechas al momento.</p><span class="cv__btn">Pedir ahora</span></div>' +
       '<div class="cv__stage"></div>';
     var stage = el.querySelector('.cv__stage'), glow = el.querySelector('.cv__glow'), cv = el.querySelector('.cv__embers');
-    var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer'; im.alt = ''; im.draggable = false; im.src = IMG + l.f; stage.appendChild(im); return im; });
+    var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer'; im.alt = ''; im.draggable = false; im.src = IMG + l.f; im.style.zIndex = String(L.length - L.indexOf(l)); stage.appendChild(im); return im; });
 
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, embers = [], ctx = cv.getContext('2d');
     var px = 0, tx = 0, hover = false, e = 0, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000, vis = true, running = false, raf = 0;
