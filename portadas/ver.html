@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,300;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/portadas.css?v=3">
-  <link rel="stylesheet" href="../css/portadas-wide.css?v=5">
+  <link rel="stylesheet" href="../css/portadas-wide.css?v=29">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
@@ -29,20 +29,21 @@
   <div class="stage" id="stage"></div>
   <div class="info"><h1 id="name"></h1><span class="tag" id="tag"></span><p id="about"></p></div>
   <script src="../js/portadas/brasa-burger.js?v=2"></script>
-  <script src="../js/portadas/luna-gelato.js?v=2"></script>
+  <script src="../js/portadas/luna-gelato.js?v=12"></script>
   <script src="../js/portadas/origen-cafe.js?v=4"></script>
   <script src="../js/portadas/pulse-fit.js?v=2"></script>
   <script src="../js/portadas/aurea.js?v=2"></script>
   <script src="../js/portadas/zapatilla.js?v=2"></script>
   <script src="../js/portadas/ramo.js?v=2"></script>
-  <script src="../js/portadas/montar.js?v=7"></script>
+  <script src="../js/portadas/montar.js?v=35"></script>
   <script>
     (function () {
-      var L = PortadasAnchas.list, key = (/[?&]c=([a-z]+)/.exec(location.search) || [])[1];
+      var key = (/[?&]c=([a-z]+)/.exec(location.search) || [])[1];
+      var L = PortadasAnchas.list.filter(function (q) { return !q.hidden || q.key === key; });
       var i = L.findIndex(function (p) { return p.key === key; }); if (i < 0) i = 0;
       var p = L[i];
       document.title = p.name + ' — portada interactiva · Moravi Studio';
-      document.getElementById('name').textContent = p.name; document.getElementById('tag').textContent = p.tag; document.getElementById('about').textContent = p.about;
+      document.getElementById('name').textContent = p.name; document.getElementById('tag').textContent = p.tag; document.getElementById('about').textContent = p.about; document.getElementById('about').style.display = p.about ? '' : 'none';
       document.getElementById('prev').href = 'ver.html?c=' + L[(i + L.length - 1) % L.length].key;
       document.getElementById('next').href = 'ver.html?c=' + L[(i + 1) % L.length].key;
       PortadasAnchas.mount(document.getElementById('stage'), p.key);

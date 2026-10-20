@@ -125,3 +125,27 @@
 .pw--escaparate .pw__btn--gold:hover { transform: translateY(-.35cqw); filter: none; box-shadow: 0 0 2.6cqw color-mix(in srgb, var(--pw-accent) 70%, transparent), 0 1cqw 2.4cqw rgba(0, 0, 0, .4); }
 @media (prefers-reduced-motion: reduce) { .pw--escaparate .pw__tabs button, .pw--escaparate .pw__btn--gold { transition: none; } }
 
+
+/* ===== Polar Gelato · salpicón: celeste y amarillo; cada toque a una bola salpica una mancha de su sabor por la portada ===== */
+.pw--polar { --pw-ink: #0e4b5c; --pw-accent: #e8567f; --pw-btn-ink: #0e4b5c; --pw-bg: linear-gradient(160deg, #b9e6ee 0%, #cfeef3 55%, #e5f6f8 100%); }
+.pw--polar .cv__logo, .pw--polar .cv__btn, .pw--polar .cv__tag, .pw--polar .cv__blob { display: none; }
+.pw--polar .pw__splash { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.pw--polar .pw__stage { left: 51%; right: auto; width: 42%; top: -20%; bottom: auto; height: 140%; transform: rotate(-12deg); transform-origin: 50% 55%; }
+.pw--polar .pw__copy { left: 4.5%; top: 25%; width: 30%; }
+.pw--polar .pw__copy h2 { font-size: 3.5cqw; line-height: 1.05; color: var(--pw-ink); }
+.pw--polar .pw__copy p { font-size: 1.4cqw; max-width: 24cqw; color: var(--pw-ink); opacity: .85; }
+.pw--polar .pw__brand { color: var(--pw-ink); }
+.pw--polar .pw__brand b { color: var(--pw-accent); }
+.pw--polar .pw__links { color: var(--pw-ink); opacity: .85; }
+.pw--polar .pw__btn { background: #ffd84a; color: var(--pw-btn-ink); box-shadow: 0 .8cqw 2.2cqw rgba(14, 75, 92, .2); }
+.pw--polar .pw__btn:hover { box-shadow: 0 1.1cqw 3cqw rgba(255, 190, 0, .6), 0 .6cqw 1.6cqw rgba(14, 75, 92, .2); }
+.pw--polar .pw__navbtn { color: var(--pw-ink); border-color: var(--pw-ink); }
+.pw--polar .pw__navbtn:hover { background: var(--pw-ink); color: #fff; }
+.pw .pw__extra { position: absolute; pointer-events: none; }
+.pw--v-f { --pw-bg: linear-gradient(72deg, #bfe8f0 0, #bfe8f0 64%, #ffe48a 64%, #ffe48a 100%); }
+.pw--v-f .pw__copy { top: 17cqh; }
+.pw--v-f .pw__extra--bs { z-index: 2; left: 28cqw; bottom: 0.5cqh; width: 42cqw; pointer-events: auto; }
+.pw--v-f .pw__extra--bs img { display: block; }
+.pw--v-f .pw__extra--bs img.bs { position: relative; z-index: 2; width: 100%; filter: drop-shadow(0 1.4cqh 1.8cqh rgba(14, 75, 92, .28)); transition: transform .16s ease; }
+.pw--v-f .pw__extra--bs img.w1 { position: absolute; z-index: 1; left: 8%; top: 9%; width: 24%; }
+.pw--v-f .pw__extra--bs img.w2 { position: absolute; z-index: 1; left: 71%; top: 13%; width: 19%; }
