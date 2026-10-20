@@ -33,3 +33,6 @@
 .pw--gelato .cv__tag { bottom: 4cqh; }
 .pw--pulse .pw__stage > .cv { inset: 0 auto 0 50%; width: auto; aspect-ratio: 1 / 1; transform: translateX(-50%); border-radius: 50%; }
 .pw--pulse .pw__stage > .cv { background: radial-gradient(circle at 50% 46%, #262b27 0%, #121513 52%, #060807 100%); }
+
+/* Café: la pieza ocupa TODA la portada (sin marco), así el vapor y los granos nunca se cortan en un borde */
+.pw--cafe .pw__stage { left: 0; right: 0; top: 0; bottom: 0; }

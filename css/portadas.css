@@ -72,7 +72,7 @@
 
 /* ---------- 3 · Origen Café (cafetería) — portada cuadrada ---------- */
 .cv-cafe { background: radial-gradient(90% 80% at 50% 62%, #5a3722 0%, #2c1a10 52%, #130b07 100%); color: #f6e9d8; }
-.cv-cafe .cv__glow { position: absolute; z-index: 0; left: 50%; top: 66%; width: 92cqmin; height: 92cqmin; margin: -46cqmin 0 0 -46cqmin; border-radius: 50%; pointer-events: none;
+.cv-cafe .cv__glow { position: absolute; z-index: 0; left: calc(var(--cxf, .5) * 100%); top: 66%; width: 92cqmin; height: 92cqmin; margin: -46cqmin 0 0 -46cqmin; border-radius: 50%; pointer-events: none;
   background: radial-gradient(circle, rgba(255, 168, 70, .38), rgba(255, 140, 40, .12) 48%, transparent 70%); animation: cvCafeGlow 6s ease-in-out infinite alternate; }
 @keyframes cvCafeGlow { from { opacity: .65; transform: scale(.96); } to { opacity: 1; transform: scale(1.05); } }
 .cv-cafe .cv__logo { position: absolute; z-index: 6; top: 5.4cqmin; left: 0; right: 0; text-align: center; font: 800 5.6cqmin/1 'Poppins', sans-serif; letter-spacing: .18em; color: #f6e9d8; pointer-events: none; }

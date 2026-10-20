@@ -12,13 +12,13 @@
       brand: '<b>LUNA</b> GELATO', links: ['Sabores', 'Locales', 'Pedidos'], navBtn: 'Pedir', h: 'Arma tu helado,<br><em>bola por bola</em>', p: 'Toca cada bola para cambiar de sabor y mira cómo se transforma.', btn: 'Elegir sabor',
       about: 'El helado se arma sobre el cono. Cada bola cambia de sabor por separado al pasar el cursor o tocarla: nueve sabores reales, con goteos y vapor frío.' },
     { key: 'cafe', name: 'Origen Café', tag: 'Cafetería', kind: 'wide', cls: 'cv cv-cafe', api: 'OrigenCafe', theme: 'cafe',
-      brand: '<b>ORIGEN</b> CAFÉ', links: ['Menú', 'Granos', 'Visítanos'], navBtn: 'Reservar', h: 'Despierta<br><em>tus sentidos</em>', p: 'Café de origen, tostado cada mañana. Haz clic y mira caer un grano.', btn: 'Pedir ahora',
+      brand: '<b>ORIGEN</b> CAFÉ', links: ['Menú', 'Granos', 'Suscripción', 'Visítanos'], navBtn: 'Reservar', cx: 0.74, h: 'Despierta<br><em>tus sentidos</em>', p: 'Café de origen, tostado cada mañana.<br>Haz clic y mira caer un grano.', btn: 'Pedir ahora',
       about: 'El vapor se aparta cuando pasas el cursor, los granos flotan con profundidad y cada clic sirve café: ondas en la taza, un grano que cae y gotitas.' },
     { key: 'pulse', name: 'Pulse Fit', tag: 'Gimnasio', kind: 'wide', cls: 'cv cv-pulse', api: 'PulseFit', theme: 'pulse',
-      brand: '<b>PULSE</b> FIT', links: ['Clases', 'Planes', 'Entrenadores'], navBtn: 'Únete', h: 'Supera<br><em>tu límite</em>', p: 'Cada clic es una repetición. Llega al trofeo y empieza de nuevo.', btn: 'Prueba una clase gratis',
+      brand: '<b>PULSE</b> FIT', links: ['Clases', 'Planes', 'Entrenadores'], navBtn: 'Únete', h: 'Supera<br><em>tu límite</em>', p: 'Cada clic es una repetición.<br>Llega al trofeo y empieza de nuevo.', btn: 'Prueba una clase gratis',
       about: 'Un anillo de actividad: cada clic cambia el objeto (pesa rusa, balón, guante, trofeo) y llena el anillo como un reloj hasta la meta.' },
     { key: 'aurea', name: 'Aurea', tag: 'Joyería', kind: 'wide', cls: 'cv cv-aurea', api: 'Aurea', theme: 'aurea',
-      brand: 'AUREA', links: ['Colección', 'Novias', 'Contacto'], navBtn: 'Reservar cita', h: 'Joyas con<br><em>luz propia</em>', p: 'Pasa el cursor: la luz hace brillar el oro y la piedra. Un clic cambia la gema.', btn: 'Ver colección',
+      brand: 'AUREA', links: ['Colección', 'Novias', 'Contacto'], navBtn: 'Reservar cita', h: 'Joyas con<br><em>luz propia</em>', p: 'Pasa el cursor: la luz hace brillar el oro y la piedra.<br>Un clic cambia la gema.', btn: 'Ver colección',
       about: 'El cursor es una linterna que hace brillar la joya con destellos. Cada clic lanza polvo dorado y cambia la piedra: diamante, zafiro y esmeralda.' },
     { key: 'kicks', name: 'Kicks', tag: 'Zapatillas', kind: 'direct', cls: 'cv cv-kicks', api: 'Kicks',
       about: 'Una zapatilla sobre un fondo de color con una palabra gigante detrás. El cursor la inclina; cada clic lanza una onda de color y trae otra zapatilla.' },
@@ -41,6 +41,7 @@
     }
     el.appendChild(frame);
     var piece = frame.querySelector('.cv');
+    if (p.cx) piece.setAttribute('data-cx', p.cx);
     var api = global[p.api];
     if (api && api.init) { try { api.init(piece); } catch (e) { /* una portada con problema no debe romper las demás */ } }
     return frame;
