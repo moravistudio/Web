@@ -88,21 +88,40 @@
       addRipple(tx, ty, 0.4);
     }
 
-    // Salpicadura: 5 gotitas oscuras de café saltan hacia arriba al caer el grano y vuelven a caer sobre la superficie
+    // Salpicadura de café: gotas translúcidas del color del líquido, con cola y brillo, y una corona fina en el punto de impacto
     function spawnSplash(x, y) {
-      for (var i = 0; i < 7; i++) {
-        var a = -Math.PI / 2 + (Math.random() - 0.5) * 1.1, v = U * (0.62 + Math.random() * 0.42);
-        splash.push({ x: x + (Math.random() - 0.5) * U * 0.02, y: y, vx: Math.cos(a) * v * 0.6, vy: Math.sin(a) * v, y0: y, r: U * (0.007 + Math.random() * 0.008), a: 1 });
+      for (var i = 0; i < 9; i++) {
+        var a = -Math.PI / 2 + (Math.random() - 0.5) * 1.5, v = U * (0.55 + Math.random() * 0.5);
+        splash.push({ x: x + (Math.random() - 0.5) * U * 0.015, y: y, vx: Math.cos(a) * v * 0.7, vy: Math.sin(a) * v, y0: y, r: U * (0.0035 + Math.random() * 0.005), kind: 'drop' });
       }
+      splash.push({ x: x, y: y, age: 0, kind: 'crown' });
     }
     function drawSplash(dt) {
+      sctx.lineCap = 'round';
       for (var i = splash.length - 1; i >= 0; i--) {
-        var p = splash[i]; p.vy += U * 2.1 * dt; p.x += p.vx * dt; p.y += p.vy * dt;
-        if (p.vy > 0 && p.y >= p.y0) { addRipple(p.x, p.y0, 0.18); splash.splice(i, 1); continue; }
-        sctx.globalAlpha = 0.95;
-        var st = 1 + Math.min(1.6, Math.abs(p.vy) / (U * 1.1)); // se alarga con la velocidad, como una gota de líquido
-        sctx.fillStyle = '#3a1c0b'; sctx.beginPath(); sctx.ellipse(p.x, p.y, p.r, p.r * st, 0, 0, 6.2832); sctx.fill();
-        sctx.globalAlpha = 0.55; sctx.fillStyle = '#e9c08a'; sctx.beginPath(); sctx.ellipse(p.x - p.r * 0.3, p.y - p.r * st * 0.35, p.r * 0.3, p.r * 0.42, 0, 0, 6.2832); sctx.fill();
+        var p = splash[i];
+        if (p.kind === 'crown') {
+          p.age += dt; if (p.age > 0.42) { splash.splice(i, 1); continue; }
+          var f = p.age / 0.42, rad = U * (0.012 + f * 0.05), al = (1 - f) * 0.8;
+          sctx.strokeStyle = 'rgba(205,140,70,' + al.toFixed(2) + ')'; sctx.lineWidth = Math.max(1, U * 0.006 * (1 - f));
+          for (var k = 0; k < 11; k++) {
+            var ang = k / 11 * 6.2832, c = Math.cos(ang), sn = Math.sin(ang), h = U * 0.045 * Math.sin(f * 3.14159) * (0.6 + 0.4 * Math.abs(Math.sin(k * 2.3)));
+            sctx.beginPath(); sctx.moveTo(p.x + c * rad, p.y + sn * rad * 0.45); sctx.lineTo(p.x + c * rad * 1.15, p.y + sn * rad * 0.52 - h); sctx.stroke();
+          }
+          continue;
+        }
+        p.vy += U * 2.1 * dt; p.x += p.vx * dt; p.y += p.vy * dt;
+        if (p.vy > 0 && p.y >= p.y0) { addRipple(p.x, p.y0, 0.15); splash.splice(i, 1); continue; }
+        var sp = Math.sqrt(p.vx * p.vx + p.vy * p.vy), tl = Math.min(U * 0.05, sp * 0.045), nx = sp ? p.vx / sp : 0, ny = sp ? p.vy / sp : 1;
+        // cola: un trazo fino, translúcido, detrás de la gota
+        var g = sctx.createLinearGradient(p.x, p.y, p.x - nx * tl, p.y - ny * tl);
+        g.addColorStop(0, 'rgba(150,84,32,.65)'); g.addColorStop(1, 'rgba(150,84,32,0)');
+        sctx.strokeStyle = g; sctx.lineWidth = p.r * 1.5; sctx.beginPath(); sctx.moveTo(p.x, p.y); sctx.lineTo(p.x - nx * tl, p.y - ny * tl); sctx.stroke();
+        // cuerpo de la gota: ámbar translúcido con borde más oscuro y un brillo
+        var gr = sctx.createRadialGradient(p.x - p.r * 0.3, p.y - p.r * 0.3, 0, p.x, p.y, p.r * 1.25);
+        gr.addColorStop(0, 'rgba(214,150,80,.9)'); gr.addColorStop(1, 'rgba(110,58,22,.8)');
+        sctx.fillStyle = gr; sctx.beginPath(); sctx.arc(p.x, p.y, p.r * 1.2, 0, 6.2832); sctx.fill();
+        sctx.fillStyle = 'rgba(255,236,200,.85)'; sctx.beginPath(); sctx.arc(p.x - p.r * 0.35, p.y - p.r * 0.4, p.r * 0.32, 0, 6.2832); sctx.fill();
       }
       sctx.globalAlpha = 1;
     }
