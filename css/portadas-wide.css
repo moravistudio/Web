@@ -6,22 +6,22 @@
 .pw--direct > .cv { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; }
 
 /* Portadas armadas: menú arriba, texto a la izquierda y la parte interactiva a la derecha */
-.pw__nav { position: absolute; z-index: 5; left: 0; right: 0; top: 0; height: 15%; padding: 0 4.5%; display: flex; align-items: center; justify-content: space-between; gap: 3cqw; pointer-events: none; }
-.pw__brand { font: 800 2.5cqw/1 'Poppins', sans-serif; letter-spacing: .14em; white-space: nowrap; }
-.pw__brand b { color: var(--pw-accent); font-weight: 800; }
-.pw__links { display: flex; gap: 3cqw; font-size: 1.55cqw; font-weight: 500; opacity: .78; white-space: nowrap; }
-.pw__right { display: flex; align-items: center; gap: 1.8cqw; }
-.pw__cart { position: relative; display: inline-flex; width: 2.3cqw; height: 2.3cqw; color: var(--pw-ink); opacity: .9; }
-.pw__cart svg { width: 100%; height: 100%; }
-.pw__cart i { position: absolute; right: -.7cqw; top: -.7cqw; min-width: 1.2cqw; height: 1.2cqw; padding: 0 .25cqw; border-radius: 99px; background: var(--pw-accent); color: var(--pw-btn-ink, #111); font: 700 .85cqw/1.2cqw 'Inter', sans-serif; text-align: center; font-style: normal; }
-.pw__navbtn { font: 700 1.5cqw/1 'Poppins', sans-serif; padding: 1cqw 2cqw; border-radius: 99px; border: .2cqw solid var(--pw-accent); color: var(--pw-accent); white-space: nowrap; }
-.pw__copy { position: absolute; z-index: 5; left: 4.5%; top: 25%; width: 41%; pointer-events: none; }
-.pw__copy h2 { font: 800 5.1cqw/1.04 'Poppins', sans-serif; letter-spacing: -.02em; }
-.pw__copy h2 em { font-style: normal; color: var(--pw-accent); }
-.pw__copy p { margin-top: 1.6cqw; font-size: 1.75cqw; line-height: 1.5; opacity: .82; max-width: 90%; }
-.pw__btn { display: inline-block; margin-top: 2.2cqw; padding: 1.35cqw 3cqw; border-radius: 99px; background: var(--pw-accent); color: var(--pw-btn-ink, #111); font: 700 1.75cqw/1 'Poppins', sans-serif; box-shadow: 0 .8cqw 2.2cqw rgba(0, 0, 0, .25); }
-.pw__stage { position: absolute; z-index: 3; left: 47%; right: 2%; top: 13%; bottom: 3%; }
-.pw__stage > .cv { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border-radius: 0; }
+.pw .pw__nav { position: absolute; z-index: 5; left: 0; right: 0; top: 0; height: 15%; padding: 0 4.5%; display: flex; align-items: center; justify-content: space-between; gap: 3cqw; pointer-events: none; }
+.pw .pw__brand { font: 800 2.5cqw/1 'Poppins', sans-serif; letter-spacing: .14em; white-space: nowrap; }
+.pw .pw__brand b { color: var(--pw-accent); font-weight: 800; }
+.pw .pw__links { display: flex; gap: 3cqw; font-size: 1.55cqw; font-weight: 500; opacity: .78; white-space: nowrap; }
+.pw .pw__right { display: flex; align-items: center; gap: 1.8cqw; }
+.pw .pw__cart { position: relative; display: inline-flex; width: 2.3cqw; height: 2.3cqw; color: var(--pw-ink); opacity: .9; }
+.pw .pw__cart svg { width: 100%; height: 100%; }
+.pw .pw__cart i { position: absolute; right: -.7cqw; top: -.7cqw; min-width: 1.2cqw; height: 1.2cqw; padding: 0 .25cqw; border-radius: 99px; background: var(--pw-accent); color: var(--pw-btn-ink, #111); font: 700 .85cqw/1.2cqw 'Inter', sans-serif; text-align: center; font-style: normal; }
+.pw .pw__navbtn { font: 700 1.5cqw/1 'Poppins', sans-serif; padding: 1cqw 2cqw; border-radius: 99px; border: .2cqw solid var(--pw-accent); color: var(--pw-accent); white-space: nowrap; }
+.pw .pw__copy { position: absolute; z-index: 5; left: 4.5%; top: 25%; width: 41%; pointer-events: none; }
+.pw .pw__copy h2 { font: 800 5.1cqw/1.04 'Poppins', sans-serif; letter-spacing: -.02em; }
+.pw .pw__copy h2 em { font-style: normal; color: var(--pw-accent); }
+.pw .pw__copy p { margin-top: 1.6cqw; font-size: 1.75cqw; line-height: 1.5; opacity: .82; max-width: 90%; }
+.pw .pw__btn { display: inline-block; margin-top: 2.2cqw; padding: 1.35cqw 3cqw; border-radius: 99px; background: var(--pw-accent); color: var(--pw-btn-ink, #111); font: 700 1.75cqw/1 'Poppins', sans-serif; box-shadow: 0 .8cqw 2.2cqw rgba(0, 0, 0, .25); }
+.pw .pw__stage { position: absolute; z-index: 3; left: 47%; right: 2%; top: 13%; bottom: 3%; }
+.pw .pw__stage > .cv { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border-radius: 0; }
 
 /* Cada una con su paleta */
 .pw--gelato { --pw-ink: #3b1c3b; --pw-accent: #e0558f; --pw-btn-ink: #fff; --pw-bg: linear-gradient(120deg, #ffe2ee 0%, #fff4e8 55%, #e2f5ec 100%); }
