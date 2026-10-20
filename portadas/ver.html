@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Portada — Moravi Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/portadas.css?v=3">
+  <link rel="stylesheet" href="../css/portadas-wide.css?v=5">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(16px,3vw,40px)}
+    .top a{color:#1E8CFF;text-decoration:none;font-weight:600;font-size:14px}
+    .top__nav{display:flex;gap:18px}
+    .stage{width:min(calc(100vw - 2 * clamp(16px,3vw,40px)),calc((100vh - 150px) * 2.2),1900px);margin:6px auto 0}
+    .stage .pw{border-radius:20px;box-shadow:0 20px 60px rgba(14,26,45,.18)}
+    .info{width:min(calc(100vw - 2 * clamp(16px,3vw,40px)),1100px);margin:22px auto 60px;text-align:center}
+    .info h1{font:700 clamp(24px,3vw,34px)/1.15 'Poppins',sans-serif}
+    .info .tag{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;color:#1E8CFF;background:rgba(30,140,255,.1);padding:4px 10px;border-radius:99px}
+    .info p{margin-top:12px;color:#5C6A7E;font-size:16px;line-height:1.55}
+  </style>
+</head>
+<body>
+  <div class="top"><a href="./">← Catálogo de portadas</a><span class="top__nav"><a id="prev" href="#">‹ Anterior</a><a id="next" href="#">Siguiente ›</a></span></div>
+  <div class="stage" id="stage"></div>
+  <div class="info"><h1 id="name"></h1><span class="tag" id="tag"></span><p id="about"></p></div>
+  <script src="../js/portadas/brasa-burger.js?v=2"></script>
+  <script src="../js/portadas/luna-gelato.js?v=2"></script>
+  <script src="../js/portadas/origen-cafe.js?v=4"></script>
+  <script src="../js/portadas/pulse-fit.js?v=2"></script>
+  <script src="../js/portadas/aurea.js?v=2"></script>
+  <script src="../js/portadas/zapatilla.js?v=2"></script>
+  <script src="../js/portadas/ramo.js?v=2"></script>
+  <script src="../js/portadas/montar.js?v=5"></script>
+  <script>
+    (function () {
+      var L = PortadasAnchas.list, key = (/[?&]c=([a-z]+)/.exec(location.search) || [])[1];
+      var i = L.findIndex(function (p) { return p.key === key; }); if (i < 0) i = 0;
+      var p = L[i];
+      document.title = p.name + ' — portada interactiva · Moravi Studio';
+      document.getElementById('name').textContent = p.name; document.getElementById('tag').textContent = p.tag; document.getElementById('about').textContent = p.about;
+      document.getElementById('prev').href = 'ver.html?c=' + L[(i + L.length - 1) % L.length].key;
+      document.getElementById('next').href = 'ver.html?c=' + L[(i + 1) % L.length].key;
+      PortadasAnchas.mount(document.getElementById('stage'), p.key);
+    })();
+  </script>
+</body>
+</html>

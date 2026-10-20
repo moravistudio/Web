@@ -35,6 +35,8 @@
       '<canvas class="cv__fx" aria-hidden="true"></canvas>' +
       '<div class="cv__shoes"></div>' +
       '<div class="cv__logo">KICKS</div>' +
+      '<div class="cv__nav"><span class="cv__links"><span>Hombre</span><span>Mujer</span><span>Novedades</span><span>Ofertas</span></span>' +
+        '<span class="cv__cart" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.2L21 8H6"/></svg></span></div>' +
       '<div class="cv__sub">Nueva colección</div>' +
       '<span class="cv__btn">Comprar ahora</span>';
     var bg = el.querySelector('.cv__bg'), bctx = bg.getContext('2d'), fx = el.querySelector('.cv__fx'), fctx = fx.getContext('2d'),

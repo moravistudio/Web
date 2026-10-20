@@ -1,8 +1,8 @@
 /*
  * Alterna los dos headers del inicio (laptop/tablet/celular ↔ mosaico de portadas interactivas) y arranca las portadas.
- * - Empieza en el Header 1. Cuando se cierra la pantalla de entrada, a los 9 s pasa al Header 2 y ahí se queda 16 s.
+ * - Empieza en el Header 1. Cuando se cierra la pantalla de entrada, cada header se queda 6 s y pasa al otro.
  * - No cambia mientras la persona toca o tiene el cursor sobre el Header 2 (ni 10 s después), ni con la pestaña oculta,
- *   ni si el header no se ve en pantalla. Con «reducir movimiento» no cambia solo: solo con los puntitos.
+ *   ni si el header no se ve en pantalla. Con «reducir movimiento» no cambia solo: solo con las flechas de los costados.
  * - Las portadas se inician la primera vez que se muestra el Header 2 (para no gastar nada antes).
  */
 (function () {
@@ -10,11 +10,12 @@
   var wrap = document.querySelector('.hero-slides');
   if (!wrap) return;
   var hero2 = wrap.querySelector('.hero2');
-  var dots = Array.prototype.slice.call(wrap.querySelectorAll('.hero-dots button'));
+  var arrows = Array.prototype.slice.call(wrap.querySelectorAll('.hero-arrow'));
+  wrap.classList.add('js-on');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
   var cur = 0, timer = 0, lastTouch = -1e9, hovering = false, visible = true, started = false, covers = false;
-  var STAY1 = 9000, STAY2 = 16000, QUIET = 10000;
+  var STAY1 = 6000, STAY2 = 6000, QUIET = 6000, RETRY = 300;
 
   function initCovers() {
     if (covers) return; covers = true;
@@ -28,23 +29,25 @@
     cur = i;
     if (i === 1) { wrap.classList.add('has-2'); void hero2.offsetWidth; initCovers(); }
     wrap.classList.toggle('is-2', i === 1);
-    dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i); d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
     if (i === 0) setTimeout(function () { if (cur === 0) wrap.classList.remove('has-2'); }, 800);
     schedule();
   }
   function canRun() { return started && !reduce && !document.hidden && visible && !hovering && (Date.now() - lastTouch > QUIET); }
-  function schedule() {
+  // Si en ese momento no toca cambiar (cursor encima, pestaña oculta...), vuelve a mirar enseguida: no espera otros 6 s completos
+  function tick() { if (canRun()) show(cur === 0 ? 1 : 0); else schedule(RETRY); }
+  function schedule(wait) {
     clearTimeout(timer);
     if (!started || reduce) return;
-    timer = setTimeout(function () { if (canRun()) show(cur === 0 ? 1 : 0); else schedule(); }, cur === 0 ? STAY1 : STAY2);
+    timer = setTimeout(tick, wait === undefined ? (cur === 0 ? STAY1 : STAY2) : wait);
   }
   function touched() { lastTouch = Date.now(); }
 
-  dots.forEach(function (d, k) { d.addEventListener('click', function () { touched(); show(k); }); });
+  // Con dos portadas, la flecha de cada lado lleva a la otra
+  arrows.forEach(function (a) { a.addEventListener('click', function () { show(cur === 0 ? 1 : 0); }); });
   hero2.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { hovering = true; } });
   hero2.addEventListener('pointerleave', function () { hovering = false; touched(); });
   ['pointerdown', 'touchstart', 'keydown'].forEach(function (ev) { hero2.addEventListener(ev, touched, { passive: true }); });
-  document.addEventListener('visibilitychange', schedule);
+  document.addEventListener('visibilitychange', function () { schedule(); });
   if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { visible = en[0].isIntersecting; }, { threshold: 0.2 }).observe(wrap);
 
   // Arranca cuando se cierra la pantalla de entrada (si no hay, de inmediato)

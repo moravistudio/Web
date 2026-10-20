@@ -34,6 +34,11 @@
     if (!el || el.__cafe) return;
     el.__cafe = true;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // Centro horizontal de la taza como fracción del ancho (0.5 por defecto). En una portada ancha, la pieza ocupa TODO el ancho y la taza se coloca a la derecha.
+    var cxf = parseFloat(el.getAttribute('data-cx')) || 0.5;
+    el.style.setProperty('--cxf', cxf);
+    // Escala de los elementos (1 por defecto). En la portada ancha la pieza ocupa todo el alto, así que se reduce para que la taza y los granos midan lo mismo que antes.
+    var usc = parseFloat(el.getAttribute('data-usc')) || 1;
     el.innerHTML =
       '<div class="cv__glow"></div>' +
       '<div class="cv__logo"><b>ORIGEN</b> CAFÉ</div>' +
@@ -65,12 +70,12 @@
     function layout() {
       var r = el.getBoundingClientRect(); W = r.width; H = r.height;
       if (!W || !H) return;
-      U = Math.min(W, H); dpr = Math.min(window.devicePixelRatio || 1, 2);
+      U = Math.min(W, H) * usc; dpr = Math.min(window.devicePixelRatio || 1, 2);
       [rip, stm].forEach(function (c) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); });
       rctx.setTransform(dpr, 0, 0, dpr, 0, 0); sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       // La taza: su contenido (73 % del ancho de la imagen) ocupa ~58 % del lado menor; se apoya en la parte baja
       cupS = U * 0.54 / 0.735;
-      cupX = W / 2 - cupS * 0.5 + U * 0.01;
+      cupX = W * cxf - cupS * 0.5 + U * 0.01;
       cupY = H * 0.775 - cupS * (1085 / 1254);
       cup.style.cssText = 'width:' + cupS + 'px;height:' + cupS + 'px;left:' + cupX + 'px;top:' + cupY + 'px;';
       sx = cupX + cupS * S.cx; sy = cupY + cupS * S.cy; srx = cupS * S.rx; sry = cupS * S.ry;
@@ -189,7 +194,7 @@
       // granos que flotan
       floaters.forEach(function (o, n) {
         var f = o.f, st = reduce ? 1 : clamp((t - 0.3 - n * 0.12) / 0.8, 0, 1);
-        var bx = W / 2 + f.x * U + par.x * U * 0.06 * f.d + Math.sin(t * 0.8 + o.ph) * U * 0.012;
+        var bx = W * cxf + f.x * U * clamp(W / H * 0.55, 1, 1.9) + par.x * U * 0.06 * f.d + Math.sin(t * 0.8 + o.ph) * U * 0.012;
         var by = H / 2 + f.y * U + par.y * U * 0.04 * f.d + Math.sin(t * 0.6 + o.ph * 1.7) * U * 0.018 - (1 - ease(st)) * U * 0.2;
         o.el.style.opacity = st;
         o.el.style.transform = 'translate3d(' + (bx - f.s * U / 2).toFixed(1) + 'px,' + (by - f.s * U * 0.4).toFixed(1) + 'px,0) rotate(' + (f.r + Math.sin(t * 0.5 + o.ph) * 14 + par.x * 10 * f.d).toFixed(1) + 'deg)';

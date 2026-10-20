@@ -40,7 +40,8 @@
       header2: {
         title: { lead: 'Experiencias web', accent: 'interactivas' },
         subtitle: 'La primera pantalla de tu negocio, con vida propia',
-        hint: 'Toca una portada para ver más →'
+        hint: 'Juega con cada portada · toca «Ver» para verla completa',
+        back: 'Volver'
       },
       homeProducts: {
         title: { lead: 'Productos', accent: 'listos para usar' },
@@ -196,7 +197,8 @@
       header2: {
         title: { lead: 'Interactive', accent: 'web experiences' },
         subtitle: "Your business's first screen, with a life of its own",
-        hint: 'Tap a cover to see more →'
+        hint: 'Play with each cover · tap “View” to see it in full',
+        back: 'Back'
       },
       homeProducts: {
         title: { lead: 'Ready-to-use', accent: 'products' },

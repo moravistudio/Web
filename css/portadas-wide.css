@@ -1,0 +1,51 @@
+/* ===== Portada ancha (horizontal): así se ve una portada completa, con su menú, su título, su botón y la parte interactiva ===== */
+.pw { position: relative; width: 100%; aspect-ratio: 2.2 / 1; overflow: hidden; container-type: size; color: var(--pw-ink, #fff); background: var(--pw-bg, #111); border-radius: 18px; isolation: isolate; font-family: 'Inter', system-ui, sans-serif; }
+.pw *, .pw *::before, .pw *::after { box-sizing: border-box; }
+
+/* Portadas que ya nacieron horizontales: la parte interactiva ES la portada */
+.pw--direct > .cv { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 0; }
+
+/* Portadas armadas: menú arriba, texto a la izquierda y la parte interactiva a la derecha */
+.pw .pw__nav { position: absolute; z-index: 5; left: 0; right: 0; top: 0; height: 15%; padding: 0 4.5%; display: flex; align-items: center; justify-content: space-between; gap: 3cqw; pointer-events: none; }
+.pw .pw__brand { font: 800 2.5cqw/1 'Poppins', sans-serif; letter-spacing: .14em; white-space: nowrap; }
+.pw .pw__brand b { color: var(--pw-accent); font-weight: 800; }
+.pw .pw__links { display: flex; gap: 3cqw; font-size: 1.55cqw; font-weight: 500; opacity: .78; white-space: nowrap; }
+.pw .pw__right { display: flex; align-items: center; gap: 1.8cqw; }
+.pw .pw__cart { position: relative; display: inline-flex; width: 2.3cqw; height: 2.3cqw; color: var(--pw-ink); opacity: .9; }
+.pw .pw__cart svg { width: 100%; height: 100%; }
+.pw .pw__cart i { position: absolute; right: -.7cqw; top: -.7cqw; min-width: 1.2cqw; height: 1.2cqw; padding: 0 .25cqw; border-radius: 99px; background: var(--pw-accent); color: var(--pw-btn-ink, #111); font: 700 .85cqw/1.2cqw 'Inter', sans-serif; text-align: center; font-style: normal; }
+.pw .pw__navbtn { font: 700 1.5cqw/1 'Poppins', sans-serif; padding: 1cqw 2cqw; border-radius: 99px; border: .2cqw solid var(--pw-accent); color: var(--pw-accent); white-space: nowrap; }
+.pw .pw__copy { position: absolute; z-index: 5; left: 4.5%; top: 25%; width: 41%; pointer-events: none; }
+.pw .pw__copy h2 { font: 800 5.1cqw/1.04 'Poppins', sans-serif; letter-spacing: -.02em; }
+.pw .pw__copy h2 em { font-style: normal; color: var(--pw-accent); }
+.pw .pw__copy p { margin-top: 1.6cqw; font-size: 1.75cqw; line-height: 1.5; opacity: .82; max-width: 90%; }
+.pw .pw__btn { display: inline-block; margin-top: 2.2cqw; padding: 1.35cqw 3cqw; border-radius: 99px; background: var(--pw-accent); color: var(--pw-btn-ink, #111); font: 700 1.75cqw/1 'Poppins', sans-serif; box-shadow: 0 .8cqw 2.2cqw rgba(0, 0, 0, .25); }
+.pw .pw__stage { position: absolute; z-index: 3; left: 47%; right: 2%; top: 13%; bottom: 3%; }
+.pw .pw__stage > .cv { position: absolute; inset: 0; width: 100%; height: 100%; background: transparent; border-radius: 0; }
+
+/* Cada una con su paleta */
+.pw--gelato { --pw-ink: #3b1c3b; --pw-accent: #e0558f; --pw-btn-ink: #fff; --pw-bg: linear-gradient(120deg, #ffe2ee 0%, #fff4e8 55%, #e2f5ec 100%); }
+.pw--cafe { --pw-ink: #f6e9d8; --pw-accent: #e8a45a; --pw-btn-ink: #1c0f08; --pw-bg: radial-gradient(90% 120% at 75% 55%, #5a3722 0%, #2c1a10 55%, #130b07 100%); }
+.pw--pulse { --pw-ink: #ffffff; --pw-accent: #b8ff3c; --pw-btn-ink: #0a0d08; --pw-bg: radial-gradient(90% 120% at 75% 50%, #26301f 0%, #121513 55%, #060807 100%); }
+.pw--aurea { --pw-ink: #f4e9d2; --pw-accent: #e8c987; --pw-btn-ink: #1a1408; --pw-bg: radial-gradient(90% 120% at 75% 50%, #1c2748 0%, #0d1428 58%, #060914 100%); }
+
+/* Dentro de la portada ancha, los textos propios de la pieza se ocultan (ya los pone la portada) */
+.pw--gelato .cv__logo, .pw--gelato .cv__btn,
+.pw--cafe .cv__logo, .pw--cafe .cv__copy,
+.pw--aurea .cv__logo, .pw--aurea .cv__tag, .pw--aurea .cv__btn { display: none; }
+.pw--gelato .cv-gelato .cv__blob { display: none; }
+.pw--gelato .cv__tag { bottom: 4cqh; }
+.pw--pulse .pw__stage > .cv { inset: 0 auto 0 50%; width: auto; aspect-ratio: 1 / 1; transform: translateX(-50%); border-radius: 50%; }
+.pw--pulse .pw__stage > .cv { background: radial-gradient(circle at 50% 46%, #262b27 0%, #121513 52%, #060807 100%); }
+
+/* Café: la pieza ocupa TODA la portada (sin marco), así el vapor y los granos nunca se cortan en un borde */
+.pw--cafe .pw__stage { left: 0; right: 0; top: 0; bottom: 0; }
+
+/* Los botones de la portada reaccionan al pasar el mouse (no llevan a ningún lado: es parte de la experiencia de una web de verdad).
+   El resto del texto deja pasar el mouse hacia la parte interactiva; los botones sí lo reciben. */
+.pw .pw__btn, .pw .pw__navbtn { pointer-events: auto; cursor: pointer; transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease, color .22s ease, filter .22s ease; }
+.pw .pw__btn:hover { transform: translateY(-.35cqw); filter: brightness(1.1); box-shadow: 0 1.1cqw 3cqw color-mix(in srgb, var(--pw-accent) 55%, transparent), 0 .6cqw 1.6cqw rgba(0, 0, 0, .3); }
+.pw .pw__btn:active { transform: translateY(0); filter: brightness(.96); }
+.pw .pw__navbtn:hover { background: var(--pw-accent); color: var(--pw-btn-ink, #111); transform: translateY(-.2cqw); box-shadow: 0 .8cqw 2.2cqw color-mix(in srgb, var(--pw-accent) 45%, transparent); }
+.pw .pw__navbtn:active { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .pw .pw__btn, .pw .pw__navbtn { transition: none; } .pw .pw__btn:hover, .pw .pw__navbtn:hover { transform: none; } }
