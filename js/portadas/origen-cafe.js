@@ -57,7 +57,7 @@
       gr.addColorStop(0, 'rgba(255,246,235,.45)'); gr.addColorStop(0.4, 'rgba(255,240,225,.22)'); gr.addColorStop(0.75, 'rgba(255,235,220,.06)'); gr.addColorStop(1, 'rgba(255,235,220,0)'); g.fillStyle = gr; g.fillRect(0, 0, 96, 96); return c; })();
 
     var W = 0, H = 0, U = 0, dpr = 1, cupX = 0, cupY = 0, cupS = 0, sx = 0, sy = 0, srx = 0, sry = 0;
-    var puffs = [], ripples = [], drops = [], pacc = 0, lastT = 0, bounce = 0;
+    var puffs = [], ripples = [], drops = [], splash = [], pacc = 0, lastT = 0, bounce = 0;
     var ptr = { x: -999, y: -999, vx: 0, vy: 0, in: false, px: 0, py: 0 }, par = { x: 0, y: 0, tx: 0, ty: 0 };
     var t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
     var vis = true, running = false, raf = 0, lastAuto = -1, lastAutoDrop = 0;
@@ -86,6 +86,25 @@
       if (!inSurface(tx, ty)) { var a = Math.random() * 6.28, rr = Math.sqrt(Math.random()) * 0.7; tx = sx + Math.cos(a) * srx * rr; ty = sy + Math.sin(a) * sry * rr; }
       drops.push({ x: tx, y: ty, age: 0, fall: 0.5, bean: Math.floor(Math.random() * BEANS.length), rot: (Math.random() - 0.5) * 220 });
       addRipple(tx, ty, 0.4);
+    }
+
+    // Salpicadura: 5 gotitas oscuras de café saltan hacia arriba al caer el grano y vuelven a caer sobre la superficie
+    function spawnSplash(x, y) {
+      for (var i = 0; i < 7; i++) {
+        var a = -Math.PI / 2 + (Math.random() - 0.5) * 1.1, v = U * (0.62 + Math.random() * 0.42);
+        splash.push({ x: x + (Math.random() - 0.5) * U * 0.02, y: y, vx: Math.cos(a) * v * 0.6, vy: Math.sin(a) * v, y0: y, r: U * (0.007 + Math.random() * 0.008), a: 1 });
+      }
+    }
+    function drawSplash(dt) {
+      for (var i = splash.length - 1; i >= 0; i--) {
+        var p = splash[i]; p.vy += U * 2.1 * dt; p.x += p.vx * dt; p.y += p.vy * dt;
+        if (p.vy > 0 && p.y >= p.y0) { addRipple(p.x, p.y0, 0.18); splash.splice(i, 1); continue; }
+        sctx.globalAlpha = 0.95;
+        var st = 1 + Math.min(1.6, Math.abs(p.vy) / (U * 1.1)); // se alarga con la velocidad, como una gota de líquido
+        sctx.fillStyle = '#3a1c0b'; sctx.beginPath(); sctx.ellipse(p.x, p.y, p.r, p.r * st, 0, 0, 6.2832); sctx.fill();
+        sctx.globalAlpha = 0.55; sctx.fillStyle = '#e9c08a'; sctx.beginPath(); sctx.ellipse(p.x - p.r * 0.3, p.y - p.r * st * 0.35, p.r * 0.3, p.r * 0.42, 0, 0, 6.2832); sctx.fill();
+      }
+      sctx.globalAlpha = 1;
     }
 
     function drawRipples(dt) {
@@ -165,7 +184,7 @@
       var dd = dropEl.style;
       if (drops.length) {
         var dr = drops[0]; dr.age += dt; var f2 = dr.age / dr.fall;
-        if (f2 >= 1) { addRipple(dr.x, dr.y, 1.15); bounce = 1; drops.shift(); dd.opacity = 0; }
+        if (f2 >= 1) { addRipple(dr.x, dr.y, 1.15); bounce = 1; spawnSplash(dr.x, dr.y); drops.shift(); dd.opacity = 0; }
         else {
           if (!dropEl.__b || dropEl.__b !== dr.bean) { dropEl.__b = dr.bean; dropEl.src = IMG + 'grano-' + BEANS[dr.bean] + '.webp'; }
           var e2 = f2 * f2, yy = (sy - U * 0.62) + (dr.y - (sy - U * 0.62)) * e2, sc = 1 - f2 * 0.35;
@@ -178,7 +197,7 @@
       raf = 0; if (!running) return;
       var dt = lastT ? Math.min(0.05, (now - lastT) / 1000) : 0.016; lastT = now;
       ptr.vx *= (1 - Math.min(1, dt * 6)); ptr.vy *= (1 - Math.min(1, dt * 6));
-      place(now, dt); drawRipples(dt); drawSteam(now, dt);
+      place(now, dt); drawRipples(dt); drawSteam(now, dt); drawSplash(dt);
       raf = requestAnimationFrame(frame);
     }
     function sync() {
