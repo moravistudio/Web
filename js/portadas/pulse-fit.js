@@ -12,11 +12,13 @@
   var BASE = (document.currentScript && document.currentScript.src) ? document.currentScript.src.replace(/js\/portadas\/[^/]*$/, '') : '';
   var DIR = BASE + 'assets/portadas/pulse-fit/';
   // Objetos: archivo y zona visible de cada imagen (fracciones de la imagen cuadrada). Todos se ajustan al mismo recuadro.
+  // «ax, ay» = punto de la imagen donde cae el número (zona lisa del objeto); «w» = ancho que ocupa el objeto, en fracción del diámetro.
+  // El número va SIEMPRE en el mismo sitio de la portada: cada objeto se coloca para que su zona lisa quede debajo de él.
   var OBJS = [
-    { f: 'pesa.webp', x0: 0.1435, x1: 0.8804, y0: 0.0478, y1: 0.9705 },
-    { f: 'mancuerna.webp', x0: 0.0048, x1: 0.996, y0: 0.114, y1: 0.9242 },
-    { f: 'guantes.webp', x0: 0.0566, x1: 0.9553, y0: 0.0925, y1: 0.9418 },
-    { f: 'trofeo.webp', x0: 0.0797, x1: 0.9195, y0: 0.0542, y1: 0.9633 }
+    { f: 'pesa.webp', x0: 0.1435, x1: 0.8804, y0: 0.0478, y1: 0.9705, ax: 0.512, ay: 0.665, w: 0.43 },
+    { f: 'mancuerna.webp', x0: 0.0048, x1: 0.996, y0: 0.114, y1: 0.9242, ax: 0.74, ay: 0.66, w: 0.42 },
+    { f: 'guantes.webp', x0: 0.0566, x1: 0.9553, y0: 0.0925, y1: 0.9418, ax: 0.4, ay: 0.58, w: 0.5 },
+    { f: 'trofeo.webp', x0: 0.0797, x1: 0.9195, y0: 0.0542, y1: 0.9633, ax: 0.5, ay: 0.42, w: 0.385 }
   ];
   var LAST = OBJS.length - 1;
   var LIME = '184,255,60';
@@ -32,15 +34,14 @@
       '<canvas class="cv__ring" aria-hidden="true"></canvas>' +
       '<div class="cv__objs"></div>' +
       '<canvas class="cv__fx" aria-hidden="true"></canvas>' +
-      '<div class="cv__steps"><span>1</span><span>2</span><span>3</span><span class="cv__star">★</span></div>' +
-      '<div class="cv__meta">¡META!</div>' +
-      '<div class="cv__logo"><b>PULSE</b> FIT</div>';
+      '<div class="cv__count"><span class="cv__num">1</span></div>' +
+      '<div class="cv__logo"><span class="cv__logo-t"><b>PULSE</b> FIT</span><span class="cv__logo-m">¡META!</span></div>';
     var light = el.querySelector('.cv__light'), ring = el.querySelector('.cv__ring'), rctx = ring.getContext('2d'),
         box = el.querySelector('.cv__objs'), fx = el.querySelector('.cv__fx'), fctx = fx.getContext('2d'),
-        stepsBox = el.querySelector('.cv__steps'), stepEls = stepsBox.querySelectorAll('span'), metaEl = el.querySelector('.cv__meta');
+        countBox = el.querySelector('.cv__count'), numEl = el.querySelector('.cv__num'), logoEl = el.querySelector('.cv__logo');
     var objs = OBJS.map(function (o) { var im = new Image(); im.className = 'cv__obj'; im.alt = ''; im.draggable = false; im.src = DIR + o.f; box.appendChild(im); return { o: o, el: im }; });
 
-    var W = 0, H = 0, U = 0, dpr = 1, cx = 0, cy = 0, ocx = 0, ocy = 0;
+    var W = 0, H = 0, U = 0, dpr = 1, cx = 0, cy = 0, ocx = 0, ocy = 0, nx = 0, ny = 0;
     var step = 0, prev = -1, changeT = -1e9, shown = 0.25, flash = 0, ringFlash = 0, metaT = -1e9;
     var lastTap = -1e9, lastAutoStart = 0, autoLeft = 0, autoNext = 0;
     var waves = [], sparks = [], lastT = 0;
@@ -55,18 +56,16 @@
       [ring, fx].forEach(function (c) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); });
       rctx.setTransform(dpr, 0, 0, dpr, 0, 0); fctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       cx = W / 2; cy = H / 2; ocx = cx; ocy = H * 0.395;
-      // recuadro común: todos los objetos se ajustan a él y se centran en él
-      var maxW = U * 0.48, maxH = U * 0.47;
+      // el número queda siempre en este punto; cada objeto se coloca con su zona lisa justo debajo
+      nx = cx; ny = H * 0.515;
       objs.forEach(function (ob) {
-        var o = ob.o, cw = o.x1 - o.x0, chh = o.y1 - o.y0;
-        var s = Math.min(maxW / cw, maxH / chh);            // lado de la imagen cuadrada
-        ob.size = s;
-        ob.left = ocx - s * (o.x0 + cw / 2);
-        ob.top = ocy - s * (o.y0 + chh / 2);
-        ob.el.style.cssText = 'width:' + s + 'px;height:' + s + 'px;left:' + ob.left + 'px;top:' + ob.top + 'px;transform-origin:' + ((o.x0 + cw / 2) * 100) + '% ' + (o.y1 * 100) + '%;';
+        var o = ob.o, cw = o.x1 - o.x0;
+        var side = U * o.w / cw;                              // lado de la imagen cuadrada
+        ob.left = nx - side * o.ax; ob.top = ny - side * o.ay;
+        ob.el.style.cssText = 'width:' + side + 'px;height:' + side + 'px;left:' + ob.left + 'px;top:' + ob.top + 'px;transform-origin:' + (o.ax * 100) + '% ' + (o.ay * 100) + '%;';
       });
-      stepsBox.style.cssText = 'left:' + cx + 'px;top:' + (H * 0.712) + 'px;';
-      metaEl.style.cssText = 'left:' + cx + 'px;top:' + (H * 0.712) + 'px;';
+      ocx = cx; ocy = ny;
+      countBox.style.cssText = 'left:' + nx + 'px;top:' + ny + 'px;';
     }
 
     function burst(n, power) {
@@ -76,11 +75,9 @@
       }
     }
     function setStepUI() {
-      for (var i = 0; i < stepEls.length; i++) {
-        stepEls[i].className = (i === LAST ? 'cv__star ' : '') + (i === step ? 'on' : (i < step ? 'done' : ''));
-      }
-      var meta = step === LAST;
-      stepsBox.classList.toggle('hide', meta); metaEl.classList.toggle('show', meta);
+      numEl.textContent = String(step + 1);
+      numEl.classList.remove('pop'); void numEl.offsetWidth; numEl.classList.add('pop');
+      logoEl.classList.toggle('meta', step === LAST);
     }
     function go(now, to) {
       prev = step; step = to; changeT = now; ringFlash = 1;
@@ -175,7 +172,7 @@
       var gx = cx + (ptr.in ? clamp(px, -1, 1) * U * 0.3 : Math.sin(t * 0.7) * U * 0.12), gy = cy + (ptr.in ? clamp(py, -1, 1) * U * 0.3 : Math.cos(t * 0.5) * U * 0.1);
       light.style.transform = 'translate3d(' + (gx - cx).toFixed(1) + 'px,' + (gy - cy).toFixed(1) + 'px,0)';
       light.style.opacity = (0.55 + 0.25 * Math.sin(t * 2.1) + 0.35 * flash + 0.25 * ringFlash).toFixed(2);
-      stepsBox.style.opacity = enter;
+      countBox.style.opacity = enter;
       // meta: a los 2,2 s vuelve a empezar; sin toques, a los 5,5 s vuelve al primer paso
       if (step === LAST && now - metaT > 2200) go(now, 0);
       else if (!reduce && step > 0 && step < LAST && now - lastTap > 5500) go(now, 0);

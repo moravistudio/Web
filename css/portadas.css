@@ -99,15 +99,16 @@
 .cv-pulse .cv__ring { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
 .cv-pulse .cv__objs { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
 .cv-pulse .cv__obj { position: absolute; display: block; max-width: none; opacity: 0; will-change: transform; filter: drop-shadow(0 2.4cqmin 2.2cqmin rgba(0, 0, 0, .6)); pointer-events: none; }
-/* Indicador fijo de pasos: 1 · 2 · 3 · ★ (el actual brilla y es más grande) */
-.cv-pulse .cv__steps { position: absolute; z-index: 3; transform: translate(-50%, -50%); display: flex; align-items: center; gap: 4.4cqmin; pointer-events: none; transition: opacity .25s ease; }
-.cv-pulse .cv__steps.hide { opacity: 0 !important; }
-.cv-pulse .cv__steps span { font: 800 6.4cqmin/1 'Poppins', sans-serif; color: rgba(255, 255, 255, .3); transition: color .25s ease, transform .3s cubic-bezier(.2, 1.5, .4, 1), text-shadow .25s ease; }
-.cv-pulse .cv__steps span.done { color: rgba(184, 255, 60, .62); }
-.cv-pulse .cv__steps span.on { color: rgb(184, 255, 60); transform: scale(1.7); text-shadow: 0 0 3cqmin rgba(184, 255, 60, .9); }
-.cv-pulse .cv__meta { position: absolute; z-index: 3; transform: translate(-50%, -50%) scale(.6); opacity: 0; font: 800 9.4cqmin/1 'Poppins', sans-serif; letter-spacing: .02em; color: #f4ffd2; text-shadow: 0 0 4.4cqmin rgba(184, 255, 60, 1), 0 0 .8cqmin rgba(0, 0, 0, .8); pointer-events: none; white-space: nowrap; transition: opacity .2s ease, transform .35s cubic-bezier(.2, 1.5, .4, 1); }
-.cv-pulse .cv__meta.show { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+/* Número del paso: siempre en el mismo punto; cada objeto se coloca con su zona lisa debajo */
+.cv-pulse .cv__count { position: absolute; z-index: 3; transform: translate(-50%, -50%); pointer-events: none; text-align: center; }
+.cv-pulse .cv__num { display: inline-block; font: 800 17cqmin/1 'Poppins', sans-serif; color: rgb(184, 255, 60); text-shadow: 0 0 3.4cqmin rgba(184, 255, 60, .85), 0 0 .8cqmin rgba(0, 0, 0, .85); }
+.cv-pulse .cv__num.pop { animation: cvPulsePop .38s cubic-bezier(.2, 1.4, .4, 1); }
+@keyframes cvPulsePop { 0% { transform: scale(1.7); } 100% { transform: scale(1); } }
 .cv-pulse .cv__fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
-.cv-pulse .cv__logo { position: absolute; z-index: 5; left: 0; right: 0; bottom: 14.2cqmin; text-align: center; font: 800 6.6cqmin/1 'Poppins', sans-serif; letter-spacing: .2em; color: #fff; pointer-events: none; }
+.cv-pulse .cv__logo { position: absolute; z-index: 5; left: 0; right: 0; bottom: 14.2cqmin; height: 7cqmin; text-align: center; font: 800 6.6cqmin/1 'Poppins', sans-serif; letter-spacing: .2em; color: #fff; pointer-events: none; }
 .cv-pulse .cv__logo b { color: rgb(184, 255, 60); font-weight: 800; }
-@media (prefers-reduced-motion: reduce) { .cv-pulse .cv__steps span, .cv-pulse .cv__meta { transition: none; } }
+.cv-pulse .cv__logo span { position: absolute; left: 0; right: 0; transition: opacity .25s ease; }
+.cv-pulse .cv__logo-m { opacity: 0; color: #f4ffd2; text-shadow: 0 0 3.6cqmin rgba(184, 255, 60, 1); }
+.cv-pulse .cv__logo.meta .cv__logo-t { opacity: 0; }
+.cv-pulse .cv__logo.meta .cv__logo-m { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .cv-pulse .cv__num.pop { animation: none; } .cv-pulse .cv__logo span { transition: none; } }
