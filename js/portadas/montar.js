@@ -13,7 +13,7 @@
       about: 'El helado se arma sobre el cono. Cada bola cambia de sabor por separado al pasar el cursor o tocarla: nueve sabores reales, con goteos y vapor frío.' },
     { key: 'cafe', name: 'Origen Café', tag: 'Cafetería', kind: 'wide', cls: 'cv cv-cafe', api: 'OrigenCafe', theme: 'cafe',
       brand: '<b>ORIGEN</b> CAFÉ', links: ['Menú', 'Granos', 'Suscripción', 'Visítanos'], navBtn: 'Reservar', cart: true, cx: 0.74, usc: 0.84, h: 'Despierta<br><em>tus sentidos</em>', p: 'Café de origen, tostado cada mañana.<br>Haz clic y mira caer un grano.', btn: 'Pedir ahora',
-      about: 'El vapor se aparta cuando pasas el cursor, los granos flotan con profundidad y cada clic sirve café: ondas en la taza, un grano que cae y gotitas.' },
+      about: 'El vapor se aparta cuando pasas el cursor, los granos flotan con profundidad y cada clic hace caer un grano en el café.' },
     { key: 'pulse', name: 'Pulse Fit', tag: 'Gimnasio', kind: 'wide', cls: 'cv cv-pulse', api: 'PulseFit', theme: 'pulse',
       brand: '<b>PULSE</b> FIT', links: ['Clases', 'Planes', 'Entrenadores'], navBtn: 'Únete', h: 'Supera<br><em>tu límite</em>', p: 'Cada clic es una repetición.<br>Llega al trofeo y empieza de nuevo.', btn: 'Prueba una clase gratis',
       about: 'Un anillo de actividad: cada clic cambia el objeto (pesa rusa, balón, guante, trofeo) y llena el anillo como un reloj hasta la meta.' },
