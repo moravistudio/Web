@@ -80,6 +80,7 @@
     }
     function go(now, to, burst) {
       prev = cur; cur = ((to % STONES.length) + STONES.length) % STONES.length; changeT = now; flash = 1;
+      el.dispatchEvent(new CustomEvent('aurea:gem', { detail: { index: cur } }));
       setName(STONES[cur].name);
       if (burst) {
         for (var i = 0; i < 9; i++) { var a = Math.random() * 6.2832, d = Math.random() * gr * 0.9; newStar(gx + Math.cos(a) * d, gy + Math.sin(a) * d * 0.9, U * (0.04 + Math.random() * 0.07), 0.6 + Math.random() * 0.6); }
@@ -191,6 +192,8 @@
     el.addEventListener('pointermove', setPtr, { passive: true });
     el.addEventListener('pointerleave', function () { ptr.in = false; });
     el.addEventListener('pointerdown', function (ev) { setPtr(ev); var now = performance.now(); lastTap = now; lastAuto = now; go(now, cur + 1, true); });
+    // La portada que rodea la pieza puede pedir una gema concreta (selector de gemas)
+    el.addEventListener('aurea:set', function (ev) { var now = performance.now(); lastTap = now; lastAuto = now; if (ev.detail.index !== cur) go(now, ev.detail.index, true); });
     el.addEventListener('pointerup', function (ev) { if (ev.pointerType !== 'mouse') ptr.in = false; });
     el.addEventListener('pointercancel', function () { ptr.in = false; });
 

@@ -99,3 +99,29 @@
 .pw--simetrica .cv-burger .cv__info { position: absolute; z-index: 4; right: 6cqw; top: 62cqh; width: 24cqw; text-align: right; font-size: 1.55cqw; line-height: 1.45; color: #fff; opacity: .82; pointer-events: none; }
 .pw--simetrica .cv-burger .cv__info span { display: block; }
 .pw--simetrica .cv-burger .cv__info span:first-child::before { content: ''; display: inline-block; width: .7cqw; height: .7cqw; margin-right: .8cqw; border-radius: 50%; background: #ff7a1a; box-shadow: 0 0 1cqw rgba(255, 122, 26, .9); vertical-align: .08em; }
+
+/* ===== Aurea · cada gema, su propio mundo: menú normal, la joya a la izquierda, columna editorial; el fondo y el dorado cambian con la gema ===== */
+.pw--escaparate { --pw-muted: #8f8a78; background: var(--pw-bg); }
+.pw--escaparate .pw__wave { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.pw--escaparate .pw__ghost { position: absolute; z-index: 1; left: 3cqw; bottom: -3cqh; font: italic 600 40cqh/1 'Cormorant Garamond', 'Playfair Display', Georgia, serif; font-variant-numeric: lining-nums; font-feature-settings: 'lnum' 1; color: var(--pw-ink); opacity: .07; pointer-events: none; transition: color .6s ease; }
+.pw--escaparate .pw__nav2 { position: absolute; z-index: 5; left: 4.5cqw; right: 4.5cqw; top: 0; height: 15cqh; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid color-mix(in srgb, var(--pw-accent) 40%, transparent); pointer-events: none; }
+.pw--escaparate .pw__logo2 { font: italic 600 2.5cqw/1 'Cormorant Garamond', 'Playfair Display', Georgia, serif; letter-spacing: .02em; color: var(--pw-ink); transition: color .6s ease; }
+.pw--escaparate .pw__links2 { display: flex; align-items: center; gap: 2.6cqw; font: 500 1.25cqw/1 'Inter', sans-serif; letter-spacing: .08em; color: var(--pw-ink); opacity: .85; transition: color .6s ease; }
+.pw--escaparate .pw__links2-cta { color: var(--pw-accent); transition: color .6s ease; }
+.pw--escaparate .pw__stage { left: 3%; right: auto; width: 50%; top: 14%; bottom: 0; }
+.pw--escaparate .cv-aurea .cv__name-t { color: var(--pw-accent); transition: opacity .22s ease, color .6s ease; }
+.pw--escaparate .pw__col { position: absolute; z-index: 5; left: 56cqw; top: 27cqh; width: 38cqw; }
+.pw--escaparate .pw__col h2 { margin-top: 1.3cqw; font: italic 600 4.9cqw/1.02 'Cormorant Garamond', 'Playfair Display', Georgia, 'Times New Roman', serif; letter-spacing: -.01em; pointer-events: none; }
+.pw--escaparate .pw__shine { display: block; --lx: -999px; --ly: -999px; color: transparent; -webkit-background-clip: text; background-clip: text; background-image: radial-gradient(circle 11cqw at var(--lx) var(--ly), #ffffff 0%, rgba(255, 255, 255, 0) 100%), linear-gradient(color-mix(in srgb, var(--pw-ink) 78%, transparent), color-mix(in srgb, var(--pw-ink) 78%, transparent)); }
+.pw--escaparate .pw__shine--acc { background-image: radial-gradient(circle 11cqw at var(--lx) var(--ly), #fffbe8 0%, rgba(255, 251, 232, 0) 100%), linear-gradient(color-mix(in srgb, var(--pw-accent) 78%, transparent), color-mix(in srgb, var(--pw-accent) 78%, transparent)); }
+.pw--escaparate .pw__rule { display: block; width: 4.5cqw; height: 0; margin-top: 1.5cqw; border-top: 1px solid var(--pw-accent); }
+.pw--escaparate .pw__col p { margin-top: 1.4cqw; font-size: 1.3cqw; line-height: 1.5; color: var(--pw-ink); opacity: .78; pointer-events: none; }
+.pw--escaparate .pw__tabs { display: flex; gap: 2.2cqw; margin-top: 2.2cqw; }
+.pw--escaparate .pw__tabs button { padding: 0 0 .6cqw; border: 0; border-bottom: .14cqw solid transparent; background: none; font: 500 1.25cqw/1 'Inter', sans-serif; letter-spacing: .05em; color: var(--pw-muted); cursor: pointer; transition: color .25s ease, border-color .25s ease; }
+.pw--escaparate .pw__tabs button u { text-decoration: none; margin-right: .5cqw; opacity: .7; }
+.pw--escaparate .pw__tabs button:hover { color: var(--pw-ink); }
+.pw--escaparate .pw__tabs button.is-on { color: var(--pw-accent); border-bottom-color: var(--pw-accent); }
+.pw--escaparate .pw__btn--gold { margin-top: 2.4cqw; padding: 1.05cqw 2.8cqw; background: var(--pw-accent); color: #14110a; box-shadow: 0 .6cqw 1.8cqw rgba(0, 0, 0, .35); font: 600 1.3cqw/1 'Poppins', sans-serif; letter-spacing: .05em; pointer-events: auto; cursor: pointer; transition: transform .22s ease, box-shadow .22s ease, background-color .6s ease; }
+.pw--escaparate .pw__btn--gold:hover { transform: translateY(-.35cqw); filter: none; box-shadow: 0 0 2.6cqw color-mix(in srgb, var(--pw-accent) 70%, transparent), 0 1cqw 2.4cqw rgba(0, 0, 0, .4); }
+@media (prefers-reduced-motion: reduce) { .pw--escaparate .pw__tabs button, .pw--escaparate .pw__btn--gold { transition: none; } }
+

@@ -17,9 +17,9 @@
     { key: 'pulse', name: 'Pulse Fit', tag: 'Gimnasio', kind: 'tablero', cls: 'cv cv-pulse', api: 'PulseFit', theme: 'pulse',
       brand: '<b>PULSE</b> FIT', links: ['Clases', 'Planes', 'Entrenadores'], navBtn: 'Únete', h: 'Supera <em>tu límite</em>', p: 'Cada clic es una repetición. Llega al trofeo y empieza de nuevo.', btn: 'Prueba una clase gratis',
       about: 'Un anillo de actividad con datos del gimnasio alrededor: las calorías y la racha se mueven con cada repetición.' },
-    { key: 'aurea', name: 'Aurea', tag: 'Joyería', kind: 'wide', cls: 'cv cv-aurea', api: 'Aurea', theme: 'aurea',
+    { key: 'aurea', name: 'Aurea', tag: 'Joyería', kind: 'escaparate', layout: 'escaparate', cls: 'cv cv-aurea', api: 'Aurea', theme: 'aurea',
       brand: 'AUREA', links: ['Colección', 'Novias', 'Contacto'], navBtn: 'Reservar cita', h: 'Joyas con<br><em>luz propia</em>', p: 'Pasa el cursor: la luz hace brillar el oro y la piedra.<br>Un clic cambia la gema.', btn: 'Ver colección',
-      about: 'El cursor es una linterna que hace brillar la joya con destellos. Cada clic lanza polvo dorado y cambia la piedra: diamante, zafiro y esmeralda.' },
+      about: 'Cada gema cambia el color de toda la portada, y la luz del cursor hace brillar la joya y el título.' },
     { key: 'kicks', name: 'Kicks', tag: 'Zapatillas', kind: 'direct', cls: 'cv cv-kicks', api: 'Kicks',
       about: 'El cursor inclina la zapatilla. Cada clic lanza una onda de color y trae otra.' },
     { key: 'flora', name: 'Flora', tag: 'Florería', kind: 'direct', cls: 'cv cv-ramo', api: 'Ramo',
@@ -38,6 +38,37 @@
       if (d.step === d.last && d.user) { days++; racha.textContent = String(days); pop(racha); }
     });
   }
+  // Selector de gemas: cada círculo pide esa gema a la pieza; cuando la gema cambia (clic o solo), el círculo activo la sigue
+  function wireEscaparate(frame, piece) {
+    var PAL = [
+      { bg: 'radial-gradient(90% 120% at 28% 55%, #2c2c38 0%, #14141b 55%, #08080b 100%)', ink: '#f3ead2', acc: '#e9d8a6', mut: '#8f8a78' },
+      { bg: 'radial-gradient(90% 120% at 28% 55%, #1b3a86 0%, #0b1a4a 55%, #050c24 100%)', ink: '#eaf0ff', acc: '#f0c978', mut: '#8793b8' },
+      { bg: 'radial-gradient(90% 120% at 28% 55%, #0f5a40 0%, #07291d 55%, #03130d 100%)', ink: '#e8fff4', acc: '#e3cf84', mut: '#78a590' }
+    ];
+    var tabs = [].slice.call(frame.querySelectorAll('.pw__tabs button')), ghost = frame.querySelector('.pw__ghost'), shines = [].slice.call(frame.querySelectorAll('.pw__shine')), cur = 0;
+    function paint(i) {
+      var c = PAL[i];
+      frame.style.setProperty('--pw-ink', c.ink); frame.style.setProperty('--pw-accent', c.acc); frame.style.setProperty('--pw-muted', c.mut);
+      tabs.forEach(function (b, k) { b.classList.toggle('is-on', k === i); });
+      ghost.textContent = '0' + (i + 1);
+    }
+    frame.style.setProperty('--pw-bg', PAL[0].bg); paint(0);
+    tabs.forEach(function (b) { b.addEventListener('click', function () { piece.dispatchEvent(new CustomEvent('aurea:set', { detail: { index: +b.getAttribute('data-gem') } })); }); });
+    // Al cambiar la gema: una onda de color nace en la joya y cubre la portada con el fondo de la nueva gema; el dorado cambia a mitad de la onda
+    piece.addEventListener('aurea:gem', function (e) {
+      var i = e.detail.index; if (i === cur) return; cur = i;
+      var w = document.createElement('div'); w.className = 'pw__wave'; w.style.background = PAL[i].bg; frame.insertBefore(w, frame.firstChild);
+      var done = function () { frame.style.setProperty('--pw-bg', PAL[i].bg); if (w.parentNode) w.parentNode.removeChild(w); };
+      if (w.animate) {
+        var a = w.animate([{ clipPath: 'circle(0% at 28% 44%)' }, { clipPath: 'circle(150% at 28% 44%)' }], { duration: 950, easing: 'cubic-bezier(.3,.7,.2,1)' });
+        a.onfinish = done; setTimeout(function () { paint(i); }, 330);
+      } else { paint(i); done(); }
+    });
+    // La luz sigue al cursor también sobre el título: las letras brillan donde pasa
+    function shine(ev) { shines.forEach(function (el) { var r = el.getBoundingClientRect(); el.style.setProperty('--lx', (ev.clientX - r.left) + 'px'); el.style.setProperty('--ly', (ev.clientY - r.top) + 'px'); }); }
+    frame.addEventListener('pointermove', function (ev) { if (ev.pointerType === 'mouse') shine(ev); }, { passive: true });
+    frame.addEventListener('pointerleave', function () { shines.forEach(function (el) { el.style.setProperty('--lx', '-999px'); el.style.setProperty('--ly', '-999px'); }); });
+  }
   function mount(el, key) {
     var p = BY[key]; if (!el || !p) return null;
     var frame = document.createElement('div');
@@ -47,6 +78,17 @@
         '<div class="pw__nav"><span class="pw__brand">' + p.brand + '</span><span class="pw__links">' + p.links.map(function (l) { return '<span>' + l + '</span>'; }).join('') + '</span><span class="pw__right">' + (p.cart ? CART : '') + '<span class="pw__navbtn">' + p.navBtn + '</span></span></div>' +
         '<div class="pw__copy"><h2>' + p.h + '</h2><p>' + p.p + '</p><span class="pw__btn">' + p.btn + '</span></div>' +
         '<div class="pw__stage"><div class="' + p.cls + '"></div></div>';
+    } else if (p.kind === 'escaparate') {
+      // Cada gema, su propio mundo: menú normal arriba, la joya a la izquierda, columna editorial; el fondo y el dorado cambian con la gema
+      frame.innerHTML =
+        '<div class="pw__ghost" aria-hidden="true">01</div>' +
+        '<div class="pw__nav2"><span class="pw__logo2">Aurea</span><span class="pw__links2">' + p.links.map(function (l) { return '<span>' + l + '</span>'; }).join('') + '<span class="pw__links2-cta">Reservar cita</span></span></div>' +
+        '<div class="pw__stage"><div class="' + p.cls + '"></div></div>' +
+        '<div class="pw__col">' +
+          '<h2><span class="pw__shine pw__shine--ink">Joyas con</span><span class="pw__shine pw__shine--acc">luz propia</span></h2><i class="pw__rule"></i>' +
+          '<p>Pasa el cursor: la luz hace brillar el oro y la piedra.</p>' +
+          '<div class="pw__tabs" role="group" aria-label="Elegir gema"><button type="button" class="is-on" data-gem="0"><u>01</u> Diamante</button><button type="button" data-gem="1"><u>02</u> Zafiro</button><button type="button" data-gem="2"><u>03</u> Esmeralda</button></div>' +
+          '<span class="pw__btn pw__btn--gold">' + p.btn + '</span></div>';
     } else if (p.kind === 'tablero') {
       // Tablero de entrenamiento: menú flotante arriba, el anillo al centro con datos a los lados, título y botón abajo
       frame.className += ' pw--tablero';
@@ -68,6 +110,7 @@
     if (p.kh) piece.setAttribute('data-kh', p.kh);
     if (p.dy !== undefined) piece.setAttribute('data-dy', p.dy);
     if (p.kind === 'tablero') wireTablero(frame, piece);
+    if (p.kind === 'escaparate') wireEscaparate(frame, piece);
     var api = global[p.api];
     if (api && api.init) { try { api.init(piece); } catch (e) { /* una portada con problema no debe romper las demás */ } }
     // Brasa Burger simétrica: el carrito se suma al menú, a la derecha
