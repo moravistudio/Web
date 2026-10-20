@@ -12,13 +12,14 @@
   var BASE = (document.currentScript && document.currentScript.src) ? document.currentScript.src.replace(/js\/portadas\/[^/]*$/, '') : '';
   var DIR = BASE + 'assets/portadas/pulse-fit/';
   // Objetos: archivo y zona visible de cada imagen (fracciones de la imagen cuadrada). Todos se ajustan al mismo recuadro.
-  // «ax, ay» = punto de la imagen donde cae el número (zona lisa del objeto); «w» = ancho que ocupa el objeto, en fracción del diámetro.
-  // El número va SIEMPRE en el mismo sitio de la portada: cada objeto se coloca para que su zona lisa quede debajo de él.
+  // «ax, ay» = punto de la imagen donde cae el número (zona lisa del objeto).
+  // El número va SIEMPRE en el mismo sitio de la portada; cada objeto se coloca con su zona lisa debajo y se agranda hasta
+  // el máximo que cabe (sin salirse del anillo ni tapar el texto de abajo), así los objetos con base larga no quedan enanos.
   var OBJS = [
-    { f: 'pesa.webp', x0: 0.1435, x1: 0.8804, y0: 0.0478, y1: 0.9705, ax: 0.512, ay: 0.665, w: 0.43 },
-    { f: 'mancuerna.webp', x0: 0.0048, x1: 0.996, y0: 0.114, y1: 0.9242, ax: 0.74, ay: 0.66, w: 0.42 },
-    { f: 'guantes.webp', x0: 0.0566, x1: 0.9553, y0: 0.0925, y1: 0.9418, ax: 0.4, ay: 0.58, w: 0.5 },
-    { f: 'trofeo.webp', x0: 0.0797, x1: 0.9195, y0: 0.0542, y1: 0.9633, ax: 0.5, ay: 0.42, w: 0.385 }
+    { f: 'pesa.webp', x0: 0.1435, x1: 0.8804, y0: 0.0478, y1: 0.9705, ax: 0.512, ay: 0.665 },
+    { f: 'balon.webp', x0: 0.0981, x1: 0.9067, y0: 0.0925, y1: 0.9083, ax: 0.5, ay: 0.5 },
+    { f: 'guante.webp', x0: 0.2121, x1: 0.8118, y0: 0.0431, y1: 0.9609, ax: 0.5, ay: 0.4 },
+    { f: 'trofeo.webp', x0: 0.0797, x1: 0.9195, y0: 0.0542, y1: 0.9633, ax: 0.5, ay: 0.38 }
   ];
   var LAST = OBJS.length - 1;
   var LIME = '184,255,60';
@@ -57,10 +58,11 @@
       rctx.setTransform(dpr, 0, 0, dpr, 0, 0); fctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       cx = W / 2; cy = H / 2; ocx = cx; ocy = H * 0.395;
       // el número queda siempre en este punto; cada objeto se coloca con su zona lisa justo debajo
-      nx = cx; ny = H * 0.515;
+      nx = cx; ny = H * 0.45;
+      var topLimit = U * 0.15, bottomLimit = U * 0.775, maxW = U * 0.5;
       objs.forEach(function (ob) {
         var o = ob.o, cw = o.x1 - o.x0;
-        var side = U * o.w / cw;                              // lado de la imagen cuadrada
+        var side = Math.min(maxW / cw, (ny - topLimit) / (o.ay - o.y0), (bottomLimit - ny) / (o.y1 - o.ay));
         ob.left = nx - side * o.ax; ob.top = ny - side * o.ay;
         ob.el.style.cssText = 'width:' + side + 'px;height:' + side + 'px;left:' + ob.left + 'px;top:' + ob.top + 'px;transform-origin:' + (o.ax * 100) + '% ' + (o.ay * 100) + '%;';
       });
