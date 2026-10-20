@@ -75,7 +75,7 @@
         it.img.style.cssText = 'display:block;width:100%;height:100%;max-width:none;';
       });
       // botones: cuadrícula 3 × 2 a la derecha
-      var d = Math.min(W * 0.1, H * 0.24), gap = d * 0.2, cols = 3, gw = cols * d + (cols - 1) * gap, gx = W * 0.795 - gw / 2, gy = H * 0.26;
+      var d = Math.min(W * 0.1, H * 0.19), gap = d * 0.2, cols = 3, gw = cols * d + (cols - 1) * gap, gx = W * 0.795 - gw / 2, gy = H * 0.215;
       chips.style.cssText = 'left:' + gx + 'px;top:' + gy + 'px;width:' + gw + 'px;gap:' + gap + 'px;';
       items.forEach(function (it) { it.chip.style.width = it.chip.style.height = d + 'px'; });
     }
