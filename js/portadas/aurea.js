@@ -62,7 +62,7 @@
       // la sortija: su contenido mide ~64 % del ancho; el centro visible va un poco bajo el centro (deja sitio al logo y al texto)
       side = U * 0.64 / (BOX.x1 - BOX.x0);
       var bw = (BOX.x0 + BOX.x1) / 2, bh = (BOX.y0 + BOX.y1) / 2;
-      left = W / 2 - side * bw; top = H * 0.475 - side * bh;
+      left = W / 2 - side * bw; top = U * 0.475 - side * bh;   // se ancla al lado menor, igual que los textos (que van en cqmin)
       stones.forEach(function (st) {
         [st.base, st.lit].forEach(function (im) { im.style.cssText = 'width:' + side + 'px;height:' + side + 'px;left:' + left + 'px;top:' + top + 'px;'; });
       });
