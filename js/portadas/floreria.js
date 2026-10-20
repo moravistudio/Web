@@ -15,12 +15,13 @@
   var DIR = BASE + 'assets/portadas/floreria/';
   // Tamaño (en la imagen original) y posición de la base del tallo de cada flor; «ang» abre el ramo en abanico;
   // «len» escalona la altura; «z» es el orden de superposición; «petal» el color de sus pétalos sueltos.
+  // De izquierda a derecha: rojo, blanco, amarillo, rosado, blanco, morado (las dos blancas nunca quedan juntas).
   var FL = [
     { n: 'rosa', k: 1, w: 334, h: 604, stem: 172.4, ang: -44, len: 0.70, z: 2, petal: '#d6203a' },
-    { n: 'girasol', k: 2, w: 380, h: 604, stem: 177.7, ang: -25, len: 0.93, z: 4, petal: '#ffcb1f' },
-    { n: 'tulipan', k: 3, w: 240, h: 594, stem: 125.5, ang: -7, len: 1.03, z: 6, petal: '#ff7fae' },
-    { n: 'peonia', k: 4, w: 364, h: 596, stem: 174.5, ang: 11, len: 0.96, z: 5, petal: '#fff3df' },
-    { n: 'margarita', k: 5, w: 318, h: 588, stem: 145.5, ang: 29, len: 0.76, z: 3, petal: '#ffffff' },
+    { n: 'peonia', k: 4, w: 364, h: 596, stem: 174.5, ang: -26, len: 0.88, z: 4, petal: '#fff3df' },
+    { n: 'girasol', k: 2, w: 380, h: 604, stem: 177.7, ang: -11, len: 1.0, z: 5, petal: '#ffcb1f' },
+    { n: 'tulipan', k: 3, w: 240, h: 594, stem: 125.5, ang: 12, len: 1.04, z: 7, petal: '#ff7fae' },
+    { n: 'margarita', k: 5, w: 318, h: 588, stem: 145.5, ang: 31, len: 0.76, z: 3, petal: '#ffffff' },
     { n: 'lavanda', k: 6, w: 222, h: 611, stem: 109.6, ang: 46, len: 0.78, z: 1, petal: '#9b7bd0' }
   ];
   var BG = ['#f7dbe4', '#fbeac2', '#d9ecdc', '#dfe3f7', '#f6dccf', '#e7dcf1']; // un tono suave por cada flor que se abre
