@@ -76,3 +76,26 @@
 .pw--tablero .pw__foot .pw__btn { margin-top: 1cqw; padding: .9cqw 2.4cqw; font-size: 1.4cqw; }
 @media (prefers-reduced-motion: reduce) { .pw--tablero .pw__stat i.pop { animation: none; } }
 .pw--tablero .cv-pulse .cv__logo-t { display: none; }
+
+/* ===== Brasa Burger · simétrica: logo al centro con el menú partido a sus lados, hamburguesa al centro, el título partido a los lados ===== */
+.pw--simetrica .cv-burger .cv__bar { left: 6cqw; right: 6cqw; top: 4.5cqh; justify-content: center; align-items: center; gap: 3.2cqw; }
+.pw--simetrica .cv-burger .cv__links { display: contents; }
+.pw--simetrica .cv-burger .cv__links span { font-size: 1.5cqw; font-weight: 500; opacity: .78; white-space: nowrap; }
+.pw--simetrica .cv-burger .cv__links span:nth-child(1) { order: 1; }
+.pw--simetrica .cv-burger .cv__links span:nth-child(2) { order: 2; margin-right: 1.4cqw; }
+.pw--simetrica .cv-burger .cv__logo { order: 3; font-size: 2.7cqw; }
+.pw--simetrica .cv-burger .cv__links span:nth-child(3) { order: 4; margin-left: 1.4cqw; }
+.pw--simetrica .cv-burger .pw__cart { order: 5; width: 2cqw; height: 2cqw; }
+.pw--simetrica .cv-burger .cv__glow { left: 50cqw; }
+.pw--simetrica .cv-burger .cv__copy { top: 0; right: 0; bottom: 0; left: 0; width: auto; }
+.pw--simetrica .cv-burger .cv__h { position: absolute; inset: 0; font-size: 7.6cqw; }
+.pw--simetrica .cv-burger .cv__h1 { position: absolute; left: 6cqw; top: 34cqh; }
+.pw--simetrica .cv-burger .cv__h2 { position: absolute; right: 6cqw; top: 34cqh; text-align: right; }
+.pw--simetrica .cv-burger .cv__p { position: absolute; left: 6cqw; top: 62cqh; width: 24cqw; margin: 0; font-size: 1.55cqw; }
+.pw--simetrica .cv-burger .cv__btn { position: absolute; left: 50%; bottom: 3.5cqh; transform: translateX(-50%); margin: 0; padding: 1.5cqh 3.2cqw; font-size: 1.7cqw; white-space: nowrap; }
+.pw--simetrica .cv-burger .cv__btn { transition: transform .22s ease, box-shadow .22s ease, color .22s ease; }
+.pw--simetrica .cv-burger .cv__btn.hot { transform: translateX(-50%) translateY(-.8cqh) scale(1.05); background: linear-gradient(to top, #ff4a0a 0%, #ff7a1a 55%, #ffb02e 100%); color: #fff8e6; text-shadow: 0 .2cqh .6cqh rgba(120, 20, 0, .55); box-shadow: 0 0 3cqh rgba(255, 90, 10, .95), 0 0 7cqh rgba(255, 60, 0, .6), 0 1.4cqh 3.4cqh rgba(0, 0, 0, .4); }
+@media (prefers-reduced-motion: reduce) { .pw--simetrica .cv-burger .cv__btn { transition: none; } }
+.pw--simetrica .cv-burger .cv__info { position: absolute; z-index: 4; right: 6cqw; top: 62cqh; width: 24cqw; text-align: right; font-size: 1.55cqw; line-height: 1.45; color: #fff; opacity: .82; pointer-events: none; }
+.pw--simetrica .cv-burger .cv__info span { display: block; }
+.pw--simetrica .cv-burger .cv__info span:first-child::before { content: ''; display: inline-block; width: .7cqw; height: .7cqw; margin-right: .8cqw; border-radius: 50%; background: #ff7a1a; box-shadow: 0 0 1cqw rgba(255, 122, 26, .9); vertical-align: .08em; }

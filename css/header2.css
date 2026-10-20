@@ -21,7 +21,7 @@
 .mosaic__title h2 { font-family: var(--font-heading, 'Poppins', sans-serif); font-weight: 700; font-size: clamp(22px, 2.05vw, 36px); line-height: 1.12; letter-spacing: -.01em; color: var(--heading, #0E1A2D); }
 .mosaic__title h2 .accent { color: var(--brand-blue, #1E8CFF); }
 .mosaic__title p { margin-top: 10px; font-size: clamp(13px, 1.1vw, 16px); line-height: 1.4; color: var(--body, #5C6A7E); }
-.mosaic__all { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 8px 14px 8px 16px; border-radius: 99px; background: var(--navy, #0A1B3C); color: #fff; font: 600 13px/1 var(--font-body, 'Inter', sans-serif); text-decoration: none; transition: background .2s ease, transform .2s ease; }
+.mosaic__all { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 8px 14px 8px 16px; border-radius: 99px; background: var(--navy, #0A1B3C); color: #fff; white-space: nowrap; font: 600 clamp(11px, .95vw, 13px)/1 var(--font-body, 'Inter', sans-serif); text-decoration: none; transition: background .2s ease, transform .2s ease; }
 .mosaic__all:hover { background: var(--navy-light, #15356C); transform: translateX(2px); }
 .mosaic__all svg { flex: none; }
 .mosaic__title small { margin-top: 10px; font-size: 13px; color: var(--brand-blue, #1E8CFF); font-weight: 600; }
