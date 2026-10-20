@@ -87,6 +87,8 @@
       burst(step === LAST ? 90 : 22, step === LAST ? 1.5 : 1);
       if (step === LAST) { metaT = now; flash = 1; waves.push({ age: -0.18, life: 0.95, amp: 1 }); waves.push({ age: -0.36, life: 1.15, amp: 0.9 }); }
       setStepUI();
+      // Avisa a la portada que la rodea (los datos del tablero se mueven con cada repetición)
+      el.dispatchEvent(new CustomEvent('pulse:step', { detail: { step: step, last: LAST, user: now - lastTap < 120 } }));
     }
     function next(now) { go(now, step >= LAST ? 0 : step + 1); }
 

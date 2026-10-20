@@ -20,7 +20,9 @@
     { f: 'capa-6-pan-inferior.webp', x: 139, y: 1176, w: 735, h: 299 }
   ];
   // Posición «armada»: cada capa se apoya sobre la siguiente con un pequeño solape
-  var OVER = [0, 60, 120, 90, 170, 60]; // solape con la capa de arriba
+  var OVER = [0, 110, 120, 90, 170, 60]; // solape con la capa de arriba (el pan baja más sobre la lechuga: la miga queda tapada)
+  var Z = [5, 6, 4, 3, 2, 1]; // la lechuga va por delante del pan
+  var CRUMB = 26; // % inferior del pan superior que se recorta cuando está cerrado (la cara interior, la miga)
   var assembledTop = [], i;
   assembledTop[0] = L[0].y;
   for (i = 1; i < L.length; i++) assembledTop[i] = assembledTop[i - 1] + L[i - 1].h - OVER[i];
@@ -38,10 +40,10 @@
     el.innerHTML =
       '<canvas class="cv__embers" aria-hidden="true"></canvas><div class="cv__glow"></div>' +
       '<div class="cv__bar"><span class="cv__logo"><b>BRASA</b> BURGER</span><span class="cv__links"><span>Menú</span><span>Locales</span><span>Pedir</span></span></div>' +
-      '<div class="cv__copy"><div class="cv__h">Sabor<br>a <em class="cv__fuego"><canvas class="cv__fcv" aria-hidden="true"></canvas><span class="cv__fw">fuego</span></em></div><p class="cv__p">Hamburguesas a la parrilla, hechas al momento.</p><span class="cv__btn">Pedir ahora</span></div>' +
+      '<div class="cv__copy"><div class="cv__h"><span class="cv__h1">Sabor</span><br><span class="cv__h2">a <em class="cv__fuego"><canvas class="cv__fcv" aria-hidden="true"></canvas><span class="cv__fw">fuego</span></em></span></div><p class="cv__p">Hamburguesas a la parrilla, hechas al momento.</p><span class="cv__btn">Pedir ahora</span></div>' +
       '<div class="cv__stage"></div><canvas class="cv__smokefront" aria-hidden="true"></canvas>';
     var stage = el.querySelector('.cv__stage'), glow = el.querySelector('.cv__glow'), cv = el.querySelector('.cv__embers'), cf = el.querySelector('.cv__smokefront'), cfx = cf.getContext('2d');
-    var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer'; im.alt = ''; im.draggable = false; im.src = IMG + l.f; im.style.zIndex = String(L.length - L.indexOf(l)); stage.appendChild(im); return im; });
+    var imgs = L.map(function (l) { var im = new Image(); im.className = 'cv__layer'; im.alt = ''; im.draggable = false; im.src = IMG + l.f; im.style.zIndex = String(Z[L.indexOf(l)]); stage.appendChild(im); return im; });
 
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, embers = [], ctx = cv.getContext('2d');
     var smoke = [], fsmoke = [], lastS = 0;
@@ -73,14 +75,16 @@
       var w = FD.w, h = FD.h, fs = FD.fs, i, k;
       // 1) Forma: las letras, más una estela hacia arriba que se mece (la lengua de fuego de cada letra tiene su propia altura)
       mctx.clearRect(0, 0, w, h); mctx.globalCompositeOperation = 'lighter';
+      mctx.save(); mctx.beginPath(); mctx.rect(0, 0, w, FD.base + fs * 0.03); mctx.clip();
       for (i = 0; i < FD.word.length; i++) {
         var hf = clamp((0.6 + 0.4 * Math.sin(t * 2.3 + i * 1.9) * Math.sin(t * 0.9 + i)) * Lf, 0, 1.2);
         for (k = 0; k <= 16; k++) {
-          var fr = k / 16, yoff = fr * fs * 1.25 * hf, sway = (0.11 + 0.05 * Math.sin(t * 1.3 + i * 1.7) + 0.035 * Math.sin(t * 4.1 + k * 0.45 + i * 1.3)) * fs * fr;
+          var fr = k / 16, yoff = fr * fs * 1.25 * hf, sway = (0.11 + 0.05 * Math.sin(t * 1.3 + i * 1.7) + 0.035 * Math.sin(t * 4.1 + k * 0.45 + i * 1.3) - px * 0.3) * fs * fr; // px: las llamas se inclinan lejos del cursor
           mctx.fillStyle = 'rgba(255,255,255,' + (Math.pow(1 - fr, 1.8) * 0.34).toFixed(3) + ')';
           mctx.fillText(FD.word[i], FD.pad + FD.xs[i] + sway, FD.base - yoff);
         }
       }
+      mctx.restore();
       mctx.globalCompositeOperation = 'source-over'; mctx.fillStyle = '#fff'; mctx.fillText(FD.word, FD.pad, FD.base);
       // 2) Llamas: la imagen sube siempre hacia arriba; tres copias desfasadas que se funden entre sí (nunca baja ni gira)
       fxc.globalCompositeOperation = 'source-over'; fxc.globalAlpha = 1; fxc.clearRect(0, 0, w, h);
@@ -116,9 +120,11 @@
       if (!W || !H) return;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      k = (H * 0.86) / EXPL_H;
-      cx = W * 0.675;
-      top0 = (H - EXPL_H * k) / 2 + H * 0.03;
+      // Por defecto: hamburguesa a la derecha. Las portadas anchas pueden pedir otra posición y tamaño (data-cx, data-kh, data-dy)
+      var dcx = parseFloat(el.getAttribute('data-cx')), dkh = parseFloat(el.getAttribute('data-kh')), ddy = parseFloat(el.getAttribute('data-dy'));
+      k = (H * (dkh || 0.86)) / EXPL_H;
+      cx = W * (dcx || 0.675);
+      top0 = (H - EXPL_H * k) / 2 + H * (isNaN(ddy) ? 0.03 : ddy);
       imgs.forEach(function (im, n) { im.style.width = (L[n].w * k) + 'px'; });
       cf.width = Math.round(W * dpr); cf.height = Math.round(H * dpr); cfx.setTransform(dpr, 0, 0, dpr, 0, 0);
       fsmoke = [];
@@ -152,6 +158,7 @@
         var rot = px * (1.5 - n * 0.2) * (0.4 + e * 0.6);
         imgs[n].style.transform = 'translate3d(' + x.toFixed(1) + 'px,' + (y + fall + fl).toFixed(1) + 'px,0) rotate(' + rot.toFixed(2) + 'deg)';
         imgs[n].style.opacity = drop > 0 ? Math.min(1, drop * 3) : 0;
+        if (n === 0) { var cr = CRUMB * (1 - clamp(e * 1.4, 0, 1)); imgs[0].style.clipPath = cr > 0.2 ? 'inset(0 0 ' + cr.toFixed(1) + '% 0)' : 'none'; }
       }
       glow.style.opacity = (0.3 + 0.5 * clamp(e, 0, 1.1)).toFixed(2);
       // «fuego» se enciende por momentos

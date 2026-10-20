@@ -42,7 +42,7 @@
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     el.innerHTML =
       '<div class="cv__blob cv__blob--1"></div><div class="cv__blob cv__blob--2"></div><div class="cv__blob cv__blob--3"></div>' +
-      '<div class="cv__logo"><b>LUNA</b> GELATO</div>' +
+      '<div class="cv__logo"><b>POLAR</b> GELATO</div>' +
       '<div class="cv__stage"></div><canvas class="cv__drops" aria-hidden="true"></canvas>' +
       '<div class="cv__tag"><span class="cv__tag-t">Fresa · Pistacho · Vainilla</span></div>' +
       '<span class="cv__btn">Elegir sabor</span>';
@@ -65,12 +65,21 @@
       if (!W || !H) return;
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      k = Math.min((H * 0.72) / EXPL_H, (W * 0.6) / 374);
+      // Por defecto: el helado ocupa 72 % del alto. Las portadas anchas pueden pedir otro tamaño y altura (data-kh, data-dy)
+      var dkh = parseFloat(el.getAttribute('data-kh')), ddy = parseFloat(el.getAttribute('data-dy'));
+      k = Math.min((H * (dkh || 0.72)) / EXPL_H, (W * 0.6) / 374);
       cx = W * 0.5;
-      top0 = H * 0.105;
+      top0 = H * (isNaN(ddy) ? 0.105 : ddy);
       imgs.forEach(function (pc, n) {
         var a = pc.querySelector('.cv__f0');
         a.style.width = (L[n].w * k) + 'px';
+        // cereza de prueba: otra imagen puesta en el mismo sitio (el cuerpo de la cereza se alinea con el de la original), con giro opcional
+        if (n === 0 && el.getAttribute('data-cherry-img')) {
+          var cm = JSON.parse(el.getAttribute('data-cherry-m')), ci = el.getAttribute('data-cherry-img'), s = 128 / cm.bw, rr = parseFloat(el.getAttribute('data-cherry-rot')) || 0;
+          if (a.getAttribute('data-src') !== ci) { a.src = ci; a.setAttribute('data-src', ci); }
+          a.style.width = (cm.w * s * k) + 'px'; a.style.left = ((64.3 - cm.cx * s) * k) + 'px'; a.style.top = ((211 - cm.bb * s) * k) + 'px';
+          a.style.transformOrigin = (cm.cx * s * k) + 'px ' + (cm.bb * s * k) + 'px'; a.style.transform = 'rotate(' + rr + 'deg)';
+        }
         (L[n].alts || []).forEach(function (al, ai) { var im = pc.querySelector('.cv__f' + (ai + 1)); im.style.width = (al.w * k) + 'px'; im.style.left = ((al.x - L[n].x) * k) + 'px'; im.style.top = ((al.y - L[n].y) * k) + 'px'; });
       });
     }
@@ -82,7 +91,9 @@
       tagEl.classList.add('swap'); clearTimeout(tagTimer);
       tagTimer = setTimeout(function () { tagEl.textContent = txt; tagEl.classList.remove('swap'); }, 220);
     }
-    function setFlav(n, v) { v = ((v % 3) + 3) % 3; if (flav[n] !== v) { flav[n] = v; imgs[n].setAttribute('data-f', String(v)); updateTag(); } }
+    function pick(n, ev) { el.dispatchEvent(new CustomEvent('gelato:pick', { detail: { n: n, color: FLAVORS[flav[n]][n - 1], x: ev.clientX, y: ev.clientY } })); }
+    function announce() { el.dispatchEvent(new CustomEvent('gelato:flavor', { detail: { names: [1, 2, 3].map(function (n) { return NAMES[n][flav[n]]; }) } })); }
+    function setFlav(n, v) { v = ((v % 3) + 3) % 3; if (flav[n] !== v) { flav[n] = v; imgs[n].setAttribute('data-f', String(v)); updateTag(); announce(); } }
     function setAll(v) { for (var n = 1; n <= 3; n++) setFlav(n, v); }
     // ¿Qué bola está bajo el cursor? (de arriba hacia abajo; se achica un poco el rectángulo para no contar los bordes vacíos)
     function scoopAt(x, y) {
@@ -94,7 +105,8 @@
     }
     function touchScoop(ev, advance) {
       var hit = scoopAt(ev.clientX, ev.clientY);
-      if (advance) { if (hit > 0 && hit !== lastHit) { setFlav(hit, flav[hit] + 1); lastUser = performance.now(); } }
+      if (advance) { if (hit > 0 && hit !== lastHit) { setFlav(hit, flav[hit] + 1); lastUser = performance.now(); pick(hit, ev); } }
+      if (hit !== lastHit) el.dispatchEvent(new CustomEvent('gelato:hit', { detail: { n: hit } }));
       lastHit = hit; el.style.cursor = hit > 0 ? 'pointer' : '';
     }
 
@@ -133,6 +145,7 @@
       ctx.clearRect(0, 0, W, H);
       if (reduce) return;
       var dt = lastD ? Math.min(0.05, (now - lastD) / 1000) : 0.016; lastD = now;
+      var TH = (parseFloat(el.getAttribute('data-tilt')) || 0) * Math.PI / 180, GX = Math.sin(TH), GY = Math.cos(TH); // «abajo» del mundo, visto desde la caja inclinada
       var u = H / 436;
       // Vapor frío: sube desde el cono y entre las bolas cuando el helado se abre (muy tenue)
       if (st.open > 0.35 && st.t > 3) {
@@ -141,7 +154,7 @@
           mist.push({ x: cx + (Math.random() - 0.5) * W * 0.32, y: top0 + (L[3].y - EXPL_TOP + L[3].h * (0.7 + Math.random() * 0.9)) * k, vy: -(12 + Math.random() * 18) * u, vx: (Math.random() - 0.5) * 6 * u, age: 0, life: 2.6 + Math.random() * 1.8, r: (22 + Math.random() * 26) * u, g: 28 * u, p: Math.random() * 6.28 }); }
       }
       for (var mi = mist.length - 1; mi >= 0; mi--) {
-        var m = mist[mi]; m.age += dt; m.y += m.vy * dt; m.x += (m.vx + Math.sin(m.age * 1.1 + m.p) * 7 * u) * dt;
+        var m = mist[mi]; m.age += dt; m.y += m.vy * GY * dt; m.x += (m.vx + m.vy * GX + Math.sin(m.age * 1.1 + m.p) * 7 * u) * dt;
         if (m.age > m.life) { mist.splice(mi, 1); continue; }
         var fr = m.age / m.life, sz = (m.r + m.g * fr) * 2.2;
         ctx.globalAlpha = clamp(Math.sin(Math.PI * fr) * 0.62, 0, 1);
@@ -155,15 +168,15 @@
           var s = 1 + Math.floor(Math.random() * 3);          // bola 1, 2 ó 3
           var n = s, y = top0 + (T[n] - ASM_TOP + (DELTA[n] + (ASM_TOP - EXPL_TOP)) * clamp(e, 0, 1)) * k + 0;
           var bottom = y + L[n].h * k * 0.9;
-          drops.push({ x: cx + (Math.random() - 0.5) * L[n].w * k * 0.7 + px * W * 0.04 * DEPTH[n], y: bottom, vy: 10 * u, s: s - 1, c: FLAVORS[flav[n]][n - 1], r: (1.6 + Math.random() * 1.8) * u, a: 1 });
+          drops.push({ x: cx + (Math.random() - 0.5) * L[n].w * k * 0.7 + px * W * 0.04 * DEPTH[n], y: bottom, vx: 10 * u * GX, vy: 10 * u * GY, s: s - 1, c: FLAVORS[flav[n]][n - 1], r: (1.6 + Math.random() * 1.8) * u, a: 1 });
         }
       }
       for (var d = drops.length - 1; d >= 0; d--) {
-        var p = drops[d]; p.vy += 520 * u * dt; p.y += p.vy * dt; p.a -= dt * 0.95;
-        if (p.a <= 0 || p.y > H + 10) { drops.splice(d, 1); continue; }
+        var p = drops[d]; p.vy += 520 * u * GY * dt; p.vx += 520 * u * GX * dt; p.y += p.vy * dt; p.x += p.vx * dt; p.a -= dt * 0.95;
+        if (p.a <= 0 || p.y > H + 10 || p.x < -20 || p.x > W + 20) { drops.splice(d, 1); continue; }
         ctx.globalAlpha = clamp(p.a, 0, 1); ctx.fillStyle = p.c;
         var len = p.r * (1.6 + p.vy / (160 * u));
-        ctx.beginPath(); ctx.ellipse(p.x, p.y, p.r, len, 0, 0, 6.2832); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(p.x, p.y, p.r, len, -TH, 0, 6.2832); ctx.fill();
         ctx.globalAlpha = clamp(p.a, 0, 1) * 0.55; ctx.fillStyle = '#fff';
         ctx.beginPath(); ctx.arc(p.x - p.r * 0.3, p.y - len * 0.3, p.r * 0.32, 0, 6.2832); ctx.fill();
       }
@@ -187,7 +200,7 @@
     el.addEventListener('pointerdown', function (ev) {
       if (ev.pointerType !== 'mouse') hover = true;
       var hit = scoopAt(ev.clientX, ev.clientY);
-      if (hit > 0) { setFlav(hit, flav[hit] + 1); lastUser = performance.now(); }
+      if (hit > 0) { setFlav(hit, flav[hit] + 1); lastUser = performance.now(); pick(hit, ev); }
       lastHit = hit; el.style.cursor = hit > 0 ? 'pointer' : '';
     });
     el.addEventListener('pointerup', function (ev) { if (ev.pointerType !== 'mouse') { hover = false; tx = 0; } });

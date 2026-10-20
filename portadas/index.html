@@ -7,9 +7,9 @@
   <title>Catálogo de portadas interactivas — Moravi Studio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,300;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/portadas.css?v=3">
-  <link rel="stylesheet" href="../css/portadas-wide.css?v=5">
+  <link rel="stylesheet" href="../css/portadas-wide.css?v=29">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
@@ -41,21 +41,22 @@
     <p class="soon">Pronto habrá más portadas.</p>
   </div>
   <script src="../js/portadas/brasa-burger.js?v=2"></script>
-  <script src="../js/portadas/luna-gelato.js?v=2"></script>
+  <script src="../js/portadas/luna-gelato.js?v=12"></script>
   <script src="../js/portadas/origen-cafe.js?v=4"></script>
   <script src="../js/portadas/pulse-fit.js?v=2"></script>
   <script src="../js/portadas/aurea.js?v=2"></script>
   <script src="../js/portadas/zapatilla.js?v=2"></script>
   <script src="../js/portadas/ramo.js?v=2"></script>
-  <script src="../js/portadas/montar.js?v=5"></script>
+  <script src="../js/portadas/montar.js?v=35"></script>
   <script>
     (function () {
       var grid = document.getElementById('grid');
       PortadasAnchas.list.forEach(function (p) {
+        if (p.hidden) return;
         var card = document.createElement('article'); card.className = 'card'; card.id = p.key;
         var slot = document.createElement('div'); card.appendChild(slot);
         var row = document.createElement('div'); row.className = 'card__row'; row.innerHTML = '<h2>' + p.name + '</h2><span class="tag">' + p.tag + '</span>'; card.appendChild(row);
-        var d = document.createElement('p'); d.textContent = p.about; card.appendChild(d);
+        if (p.about) { var d = document.createElement('p'); d.textContent = p.about; card.appendChild(d); }
         var a = document.createElement('a'); a.className = 'card__go'; a.href = 'ver.html?c=' + p.key; a.innerHTML = 'Ver portada completa <span aria-hidden="true">→</span>'; card.appendChild(a);
         grid.appendChild(card);
         PortadasAnchas.mount(slot, p.key);
