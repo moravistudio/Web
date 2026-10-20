@@ -1,0 +1,180 @@
+/*
+ * Portadas interactivas de Moravi Studio.
+ * Cada portada es un componente que se diseña UNA sola vez y se usa en dos lugares:
+ *   1) el mosaico de la portada 2 del inicio  2) el catálogo de portadas (portadas/).
+ * El tamaño de todo lo de adentro se mide en unidades del contenedor (cqw / cqh), así la portada se ve igual
+ * a cualquier tamaño, en PC y en celular.
+ */
+.cv {
+  position: relative; overflow: hidden; container-type: size; width: 100%; height: 100%;
+  border-radius: inherit; color: #fff; isolation: isolate; user-select: none; -webkit-user-select: none;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.cv *, .cv *::before, .cv *::after { box-sizing: border-box; }
+.cv a, .cv button { font: inherit; }
+
+/* ---------- 1 · Brasa Burger (hamburguesería) ---------- */
+.cv-burger { background: radial-gradient(120% 90% at 66% 42%, #5e1d0a 0%, #2b0f08 46%, #120a07 100%); }
+.cv-burger .cv__embers { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.cv-burger .cv__glow {
+  position: absolute; z-index: 1; left: 67cqw; top: 52cqh; width: 78cqw; height: 78cqw; margin: -39cqw 0 0 -39cqw; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 130, 30, .55), rgba(255, 90, 10, .18) 45%, transparent 70%); opacity: .35; pointer-events: none;
+}
+.cv-burger .cv__bar { position: absolute; z-index: 4; left: 6cqw; right: 6cqw; top: 5cqh; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+.cv-burger .cv__logo { font: 800 4cqw/1 'Poppins', sans-serif; letter-spacing: .16em; }
+.cv-burger .cv__logo b { color: #ff7a1a; font-weight: 800; }
+.cv-burger .cv__links { display: flex; gap: 3.2cqw; font-size: 2.5cqw; font-weight: 500; opacity: .75; }
+.cv-burger .cv__copy { position: absolute; z-index: 4; left: 6cqw; bottom: 8cqh; width: 33cqw; pointer-events: none; }
+.cv-burger .cv__h { font: 800 8.4cqw/.98 'Poppins', sans-serif; letter-spacing: -.02em; }
+.cv-burger .cv__h em { font-style: normal; color: #ff7a1a; transition: color .45s ease; }
+.cv-burger .cv__fuego { position: relative; z-index: 0; isolation: isolate; display: inline-block; }
+/* Encendida: las letras siguen nítidas, con color de brasa (más claro abajo) y un resplandor; las llamas salen por detrás */
+.cv-burger .cv__fw { display: inline-block; }
+.cv-burger .cv__fuego.is-lit .cv__fw {
+  color: transparent; background: linear-gradient(to top, #ffe27a 0%, #ffab2e 38%, #ff6a12 78%, #ff5208 100%);
+  -webkit-background-clip: text; background-clip: text; filter: drop-shadow(0 0 .7cqw rgba(255, 120, 20, .75));
+}
+.cv-burger .cv__fcv { position: absolute; pointer-events: none; opacity: 0; z-index: -1; filter: drop-shadow(0 0 1.1cqw rgba(255, 110, 10, .85)); }
+.cv-burger .cv__p { margin-top: 2.2cqh; font-size: 2.7cqw; line-height: 1.4; color: #fff; opacity: .82; }
+.cv-burger .cv__btn {
+  display: inline-block; margin-top: 3cqh; background: #ff7a1a; color: #1a0b05; font: 700 2.9cqw/1 'Poppins', sans-serif;
+  padding: 2cqh 4cqw; border-radius: 99px; box-shadow: 0 .8cqh 2.4cqh rgba(255, 122, 26, .45);
+}
+.cv-burger .cv__stage { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.cv-burger .cv__smokefront { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+.cv-burger .cv__layer { position: absolute; left: 0; top: 0; display: block; max-width: none; height: auto; will-change: transform; filter: drop-shadow(0 1.2cqh 1.6cqh rgba(0, 0, 0, .55)); }
+.cv-burger .cv__layer.is-hidden { visibility: hidden; }
+
+/* ---------- 2 · Luna Gelato (heladería) — portada vertical ---------- */
+.cv-gelato { background: linear-gradient(180deg, #ffe2ee 0%, #fff4e8 52%, #e2f5ec 100%); color: #3b1c3b; }
+.cv-gelato .cv__blob { position: absolute; border-radius: 50%; filter: blur(3cqw); opacity: .8; pointer-events: none; will-change: transform; }
+.cv-gelato .cv__blob--1 { width: 80cqw; height: 80cqw; left: -30cqw; top: 8cqh; background: #ffbfd6; animation: cvBlobA 9s ease-in-out infinite alternate; }
+.cv-gelato .cv__blob--2 { width: 70cqw; height: 70cqw; right: -28cqw; top: 38cqh; background: #c9ecdc; animation: cvBlobB 11s ease-in-out infinite alternate; }
+.cv-gelato .cv__blob--3 { width: 60cqw; height: 60cqw; left: 10cqw; bottom: -14cqh; background: #fff0b8; animation: cvBlobA 13s ease-in-out infinite alternate-reverse; }
+@keyframes cvBlobA { from { transform: translate(0, 0) scale(1); } to { transform: translate(9cqw, 5cqh) scale(1.12); } }
+@keyframes cvBlobB { from { transform: translate(0, 0) scale(1.05); } to { transform: translate(-8cqw, -6cqh) scale(.92); } }
+.cv-gelato .cv__logo { position: absolute; z-index: 5; top: 3.6cqh; left: 0; right: 0; text-align: center; font: 800 7.4cqw/1 'Poppins', sans-serif; letter-spacing: .14em; color: #3b1c3b; pointer-events: none; }
+.cv-gelato .cv__logo b { color: #e0558f; font-weight: 800; }
+.cv-gelato .cv__stage { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.cv-gelato .cv__drops { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+.cv-gelato .cv__piece { position: absolute; left: 0; top: 0; width: 0; height: 0; will-change: transform; }
+.cv-gelato .cv__piece img { position: absolute; left: 0; top: 0; display: block; max-width: none; height: auto; filter: drop-shadow(0 1.2cqh 1.4cqh rgba(130, 40, 90, .22)); }
+/* Cambio de sabor por bola: la imagen del sabor nuevo aparece sobre la anterior y luego la anterior se retira (sin rastro de goteos).
+   El sabor de cada bola se marca con data-f="0|1|2" en su pieza. Las piezas con una sola imagen (cereza, cono) no cambian. */
+.cv-gelato .cv__f { opacity: 0; transition: opacity .4s ease .45s; }
+.cv-gelato .cv__f:only-child { opacity: 1; }
+.cv-gelato .cv__piece:not([data-f]) .cv__f0, .cv-gelato .cv__piece[data-f="0"] .cv__f0, .cv-gelato .cv__piece[data-f="1"] .cv__f1, .cv-gelato .cv__piece[data-f="2"] .cv__f2 { opacity: 1; transition: opacity .6s ease 0s; }
+.cv-gelato .cv__tag { position: absolute; z-index: 5; left: 0; right: 0; bottom: 10.4cqh; height: 5cqh; text-align: center; font: 600 4.1cqw/1.2 'Inter', sans-serif; color: #7a3d63; pointer-events: none; }
+.cv-gelato .cv__tag-t { position: absolute; left: 0; right: 0; transition: opacity .22s ease; }
+.cv-gelato .cv__tag-t.swap { opacity: 0; }
+.cv-gelato .cv__btn { position: absolute; z-index: 5; left: 50%; bottom: 3.4cqh; transform: translateX(-50%); white-space: nowrap; background: #e0558f; color: #fff; font: 700 5cqw/1 'Poppins', sans-serif; padding: 1.5cqh 7cqw; border-radius: 99px; box-shadow: 0 .8cqh 2cqh rgba(224, 85, 143, .4); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .cv-gelato .cv__blob { animation: none; } .cv-gelato .cv__f, .cv-gelato .cv__tag-t { transition: none; } }
+
+/* ---------- 3 · Origen Café (cafetería) — portada cuadrada ---------- */
+.cv-cafe { background: radial-gradient(90% 80% at 50% 62%, #5a3722 0%, #2c1a10 52%, #130b07 100%); color: #f6e9d8; }
+.cv-cafe .cv__glow { position: absolute; z-index: 0; left: 50%; top: 66%; width: 92cqmin; height: 92cqmin; margin: -46cqmin 0 0 -46cqmin; border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 168, 70, .38), rgba(255, 140, 40, .12) 48%, transparent 70%); animation: cvCafeGlow 6s ease-in-out infinite alternate; }
+@keyframes cvCafeGlow { from { opacity: .65; transform: scale(.96); } to { opacity: 1; transform: scale(1.05); } }
+.cv-cafe .cv__logo { position: absolute; z-index: 6; top: 5.4cqmin; left: 0; right: 0; text-align: center; font: 800 5.6cqmin/1 'Poppins', sans-serif; letter-spacing: .18em; color: #f6e9d8; pointer-events: none; }
+.cv-cafe .cv__logo b { color: #e8a45a; font-weight: 800; }
+.cv-cafe .cv__beans { position: absolute; inset: 0; pointer-events: none; }
+.cv-cafe .cv__beans--back { z-index: 1; }
+.cv-cafe .cv__beans--back .cv__bean { filter: brightness(.62) blur(.25cqmin) drop-shadow(0 1cqmin 1.4cqmin rgba(0, 0, 0, .5)); }
+.cv-cafe .cv__beans--front { z-index: 5; }
+.cv-cafe .cv__beans--front .cv__bean { filter: drop-shadow(0 1.4cqmin 1.8cqmin rgba(0, 0, 0, .55)); }
+.cv-cafe .cv__bean { position: absolute; left: 0; top: 0; display: block; max-width: none; height: auto; opacity: 0; will-change: transform; }
+.cv-cafe .cv__cup { position: absolute; z-index: 2; display: block; max-width: none; opacity: 0; will-change: transform; filter: drop-shadow(0 2.4cqmin 2.6cqmin rgba(0, 0, 0, .5)); }
+.cv-cafe .cv__ripple { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+.cv-cafe .cv__steam { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+.cv-cafe .cv__drop { position: absolute; left: 0; top: 0; z-index: 4; display: block; max-width: none; height: auto; opacity: 0; pointer-events: none; will-change: transform; filter: drop-shadow(0 .8cqmin 1cqmin rgba(0, 0, 0, .5)); }
+.cv-cafe .cv__copy { position: absolute; z-index: 6; left: 0; right: 0; bottom: 3.6cqmin; text-align: center; pointer-events: none; }
+.cv-cafe .cv__h { display: block; font: 700 6.4cqmin/1.12 'Poppins', sans-serif; color: #f6e9d8; }
+.cv-cafe .cv__h em { font-style: normal; color: #e8a45a; }
+@media (prefers-reduced-motion: reduce) { .cv-cafe .cv__glow { animation: none; } }
+
+/* ---------- 4 · Pulse Fit (gimnasio) — portada circular ---------- */
+.cv-pulse { background: radial-gradient(circle at 50% 46%, #262b27 0%, #121513 52%, #060807 100%); color: #fff; cursor: pointer; }
+.cv-pulse .cv__light { position: absolute; z-index: 0; left: 50%; top: 50%; width: 82cqmin; height: 82cqmin; margin: -41cqmin 0 0 -41cqmin; border-radius: 50%; pointer-events: none; will-change: transform;
+  background: radial-gradient(circle, rgba(184, 255, 60, .34), rgba(120, 220, 20, .12) 46%, transparent 70%); }
+.cv-pulse .cv__ring { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.cv-pulse .cv__objs { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.cv-pulse .cv__obj { position: absolute; display: block; max-width: none; opacity: 0; will-change: transform; filter: drop-shadow(0 2.4cqmin 2.2cqmin rgba(0, 0, 0, .6)); pointer-events: none; }
+/* Número del paso: siempre en el mismo punto; cada objeto se coloca con su zona lisa debajo */
+.cv-pulse .cv__count { position: absolute; z-index: 3; transform: translate(-50%, -50%); pointer-events: none; text-align: center; }
+.cv-pulse .cv__num { display: inline-block; font: 800 11cqmin/1 'Poppins', sans-serif; color: rgb(184, 255, 60); text-shadow: 0 0 3.4cqmin rgba(184, 255, 60, .85), 0 0 .8cqmin rgba(0, 0, 0, .85); }
+.cv-pulse .cv__num.pop { animation: cvPulsePop .38s cubic-bezier(.2, 1.4, .4, 1); }
+@keyframes cvPulsePop { 0% { transform: scale(1.7); } 100% { transform: scale(1); } }
+.cv-pulse .cv__fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+.cv-pulse .cv__logo { position: absolute; z-index: 5; left: 0; right: 0; bottom: 14.2cqmin; height: 7cqmin; text-align: center; font: 800 6.6cqmin/1 'Poppins', sans-serif; letter-spacing: .2em; color: #fff; pointer-events: none; }
+.cv-pulse .cv__logo b { color: rgb(184, 255, 60); font-weight: 800; }
+.cv-pulse .cv__logo span { position: absolute; left: 0; right: 0; transition: opacity .25s ease; }
+.cv-pulse .cv__logo-m { opacity: 0; color: #f4ffd2; text-shadow: 0 0 3.6cqmin rgba(184, 255, 60, 1); }
+.cv-pulse .cv__logo.meta .cv__logo-t { opacity: 0; }
+.cv-pulse .cv__logo.meta .cv__logo-m { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .cv-pulse .cv__num.pop { animation: none; } .cv-pulse .cv__logo span { transition: none; } }
+
+/* ---------- 5 · Aurea (joyería) — portada cuadrada grande ---------- */
+.cv-aurea { background: radial-gradient(85% 75% at 50% 46%, #1c2748 0%, #0d1428 55%, #060914 100%); color: #f4e9d2; cursor: pointer; }
+.cv-aurea .cv__bokeh { position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: .9;
+  background:
+    radial-gradient(circle at 18% 24%, rgba(255, 214, 140, .16) 0, transparent 9cqmin),
+    radial-gradient(circle at 80% 18%, rgba(160, 190, 255, .14) 0, transparent 11cqmin),
+    radial-gradient(circle at 88% 62%, rgba(255, 214, 140, .12) 0, transparent 8cqmin),
+    radial-gradient(circle at 10% 70%, rgba(160, 190, 255, .1) 0, transparent 10cqmin),
+    radial-gradient(circle at 52% 8%, rgba(255, 230, 180, .1) 0, transparent 8cqmin); animation: cvAureaBokeh 9s ease-in-out infinite alternate; }
+@keyframes cvAureaBokeh { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.06) translate(1cqmin, -1cqmin); } }
+.cv-aurea .cv__dust { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+.cv-aurea .cv__stones { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.cv-aurea .cv__stone { position: absolute; inset: 0; opacity: 0; will-change: transform, opacity; }
+.cv-aurea .cv__ring, .cv-aurea .cv__lit { position: absolute; display: block; max-width: none; pointer-events: none; }
+.cv-aurea .cv__ring { filter: drop-shadow(0 3cqmin 3cqmin rgba(0, 0, 0, .55)); }
+/* Copia más brillante de la sortija, visible solo dentro del círculo de luz (sigue al cursor); solo se ve sobre la joya porque es la misma imagen */
+.cv-aurea .cv__lit { filter: brightness(2.6) saturate(1.2) contrast(1.05); opacity: 0; mix-blend-mode: screen;
+  -webkit-mask-image: radial-gradient(circle var(--lr, 100px) at var(--lx, 50%) var(--ly, 50%), #000 0%, rgba(0, 0, 0, .55) 45%, transparent 100%);
+  mask-image: radial-gradient(circle var(--lr, 100px) at var(--lx, 50%) var(--ly, 50%), #000 0%, rgba(0, 0, 0, .55) 45%, transparent 100%); }
+.cv-aurea .cv__fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+.cv-aurea .cv__flash { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; background: radial-gradient(circle at 50% 42%, rgba(255, 246, 220, .85), rgba(255, 220, 150, .25) 40%, transparent 70%); }
+.cv-aurea .cv__logo { position: absolute; z-index: 5; top: 6cqmin; left: 0; right: 0; text-align: center; font: 600 6.6cqmin/1 'Poppins', sans-serif; letter-spacing: .5em; text-indent: .5em; color: #f4e9d2; pointer-events: none; }
+.cv-aurea .cv__tag { position: absolute; z-index: 5; top: 15cqmin; left: 0; right: 0; text-align: center; font: 400 3.2cqmin/1 'Inter', sans-serif; letter-spacing: .24em; text-indent: .24em; text-transform: uppercase; color: rgba(244, 233, 210, .7); pointer-events: none; }
+.cv-aurea .cv__name { position: absolute; z-index: 5; left: 0; right: 0; top: 76cqmin; height: 5cqmin; text-align: center; pointer-events: none; }
+.cv-aurea .cv__name-t { display: inline-block; font: 500 4.2cqmin/1 'Poppins', sans-serif; letter-spacing: .3em; text-indent: .3em; text-transform: uppercase; color: #e8c987; transition: opacity .22s ease; }
+.cv-aurea .cv__name-t.swap { opacity: 0; }
+.cv-aurea .cv__btn { position: absolute; z-index: 5; left: 50%; bottom: 5.4cqmin; transform: translateX(-50%); white-space: nowrap; padding: 2.2cqmin 7cqmin; border: .35cqmin solid rgba(232, 201, 135, .85); border-radius: 99px; font: 500 3.4cqmin/1 'Poppins', sans-serif; letter-spacing: .18em; text-indent: .18em; text-transform: uppercase; color: #f4e9d2; background: rgba(232, 201, 135, .08); pointer-events: none; }
+@media (prefers-reduced-motion: reduce) { .cv-aurea .cv__bokeh { animation: none; } .cv-aurea .cv__name-t { transition: none; } }
+
+/* ---------- 6 · Kicks (zapatillas / moda) — portada horizontal ancha, estilo gráfico ---------- */
+.cv-kicks { --ink: #fff; --ghost: rgba(255, 255, 255, .2); background: #ff6a1f; color: var(--ink); cursor: pointer; }
+.cv-kicks .cv__bg { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.cv-kicks .cv__word { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; justify-content: center; pointer-events: none; will-change: transform; }
+.cv-kicks .cv__word-t { font: 900 78cqh/1 'Poppins', sans-serif; letter-spacing: -.04em; color: var(--ghost); white-space: nowrap; transition: opacity .23s ease, transform .23s ease, color .6s ease; }
+.cv-kicks .cv__word-t.swap { opacity: 0; transform: translateY(6cqh); }
+.cv-kicks .cv__shadow { position: absolute; z-index: 2; border-radius: 50%; background: radial-gradient(ellipse at center, rgba(0, 0, 0, .55), transparent 70%); filter: blur(.6cqh); pointer-events: none; opacity: 0; }
+.cv-kicks .cv__fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+.cv-kicks .cv__shoes { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.cv-kicks .cv__shoe { position: absolute; display: block; max-width: none; opacity: 0; will-change: transform; filter: drop-shadow(0 2cqh 2.4cqh rgba(0, 0, 0, .25)); pointer-events: none; }
+.cv-kicks .cv__logo { position: absolute; z-index: 5; top: 9cqh; left: 4cqw; font: 900 12cqh/1 'Poppins', sans-serif; letter-spacing: .08em; color: var(--ink); pointer-events: none; transition: color .5s ease; }
+.cv-kicks .cv__sub { position: absolute; z-index: 5; left: 4cqw; bottom: 22cqh; font: 500 7cqh/1 'Inter', sans-serif; letter-spacing: .22em; text-transform: uppercase; color: var(--ink); opacity: .85; pointer-events: none; transition: color .5s ease; }
+.cv-kicks .cv__btn { position: absolute; z-index: 5; left: 4cqw; bottom: 8cqh; padding: 3.6cqh 7cqh; border: .7cqh solid var(--ink); border-radius: 99px; font: 700 6.2cqh/1 'Poppins', sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); pointer-events: none; transition: color .5s ease, border-color .5s ease; }
+@media (prefers-reduced-motion: reduce) { .cv-kicks .cv__word-t, .cv-kicks .cv__logo, .cv-kicks .cv__sub, .cv-kicks .cv__btn { transition: none; } }
+
+/* ---------- 7 · Flora (florería) — «Elige tu ramo», horizontal ---------- */
+.cv-ramo { background: linear-gradient(135deg, #f8f2e6 0%, #efe6d3 100%); color: #3d4a3a; }
+.cv-ramo .cv__paper { position: absolute; left: 0; top: 0; bottom: 0; width: 60%; background: radial-gradient(70% 80% at 50% 100%, rgba(173, 190, 165, .45), transparent 70%); pointer-events: none; }
+.cv-ramo .cv__flowers { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.cv-ramo .cv__fl { will-change: transform, opacity; }
+.cv-ramo .cv__fl img { filter: drop-shadow(0 .8cqh 1.2cqh rgba(60, 50, 30, .22)); }
+.cv-ramo .cv__fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+.cv-ramo .cv__logo { position: absolute; z-index: 5; top: 7cqh; left: 4cqw; font: 600 8cqh/1 Georgia, 'Times New Roman', serif; letter-spacing: .3em; color: #3d5a3d; pointer-events: none; }
+.cv-ramo .cv__title { position: absolute; z-index: 5; left: 62.5cqw; width: 33cqw; top: 9cqh; text-align: center; font: italic 400 6.6cqh/1 Georgia, 'Times New Roman', serif; color: #5b6b57; pointer-events: none; }
+.cv-ramo .cv__chips { position: absolute; z-index: 6; display: flex; flex-wrap: wrap; }
+.cv-ramo .cv__chip { position: relative; padding: 0; border: .45cqh solid rgba(61, 90, 61, .25); border-radius: 50%; background: #fffdf8; overflow: visible; cursor: pointer; transition: transform .2s cubic-bezier(.2, 1.5, .4, 1), border-color .2s ease, box-shadow .2s ease; box-shadow: 0 .6cqh 1.6cqh rgba(60, 50, 30, .12); }
+.cv-ramo .cv__chip canvas { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; pointer-events: none; }
+.cv-ramo .cv__chip.on { border-color: #3d5a3d; box-shadow: 0 0 0 .7cqh rgba(61, 90, 61, .18), 0 .8cqh 2cqh rgba(60, 50, 30, .2); }
+.cv-ramo .cv__chip.on::after { content: ''; position: absolute; right: -.4cqh; top: -.4cqh; width: 28%; height: 28%; border-radius: 50%; background: #3d5a3d; box-shadow: 0 0 0 .4cqh #fffdf8; }
+.cv-ramo .cv__chip-n { position: absolute; left: 50%; bottom: -5.6cqh; transform: translateX(-50%); white-space: nowrap; font: 500 3.9cqh/1 'Inter', sans-serif; color: #5b6b57; opacity: 0; transition: opacity .18s ease; pointer-events: none; }
+.cv-ramo .cv__chip:hover .cv__chip-n { opacity: 1; }
+.cv-ramo .cv__sum { position: absolute; z-index: 5; left: 62.5cqw; width: 33cqw; bottom: 22cqh; text-align: center; font: 500 4.6cqh/1.2 'Inter', sans-serif; color: #3d4a3a; pointer-events: none; min-height: 6cqh; }
+.cv-ramo .cv__sum-t { display: inline-block; transition: opacity .16s ease; }
+.cv-ramo .cv__sum-t.swap { opacity: 0; }
+.cv-ramo .cv__btn { position: absolute; z-index: 5; left: 79.5cqw; bottom: 7cqh; transform: translateX(-50%); white-space: nowrap; padding: 3cqh 7cqh; border-radius: 99px; background: #3d5a3d; color: #fffdf8; font: 600 5cqh/1 'Poppins', sans-serif; letter-spacing: .06em; pointer-events: none; box-shadow: 0 1cqh 2.4cqh rgba(61, 90, 61, .3); }
+@media (prefers-reduced-motion: reduce) { .cv-ramo .cv__chip, .cv-ramo .cv__chip-n, .cv-ramo .cv__sum-t { transition: none; } }

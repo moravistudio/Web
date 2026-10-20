@@ -1,0 +1,61 @@
+/* ===== Portada con dos headers que se alternan: 1) laptop/tablet/celular  2) mosaico de portadas interactivas =====
+   REGLA: el Header 2 ocupa EXACTAMENTE el mismo bloque que el Header 1 (mismo alto, mismo ancho), en PC y en celular.
+   El alto lo manda solo el Header 1; el Header 2 va encima, ocupando ese mismo espacio, y se alternan con un fundido.
+   Sin JavaScript se ve solo el Header 1 (el Header 2 está oculto). */
+.hero-slides { position: relative; }
+.hero-slides > .hero { transition: opacity .7s ease; }
+.hero-slides.is-2 > .hero { opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s; }
+
+.hero2 { display: none; position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; overflow: hidden; }
+.hero-slides.has-2 > .hero2 { display: block; }
+.hero-slides.is-2 > .hero2 { opacity: 1; }
+.hero-slides:not(.is-2) > .hero2 { pointer-events: none; }
+
+/* PC: el mosaico (maqueta B, proporción 2:1) se centra y se ajusta al bloque, sin pasarse de alto ni de ancho */
+.hero2__inner { position: absolute; inset: 104px 60px 76px; container-type: size; display: flex; align-items: center; justify-content: center; }
+.mosaic { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); grid-template-rows: repeat(6, minmax(0, 1fr)); gap: 12px; width: min(100cqw, 200cqh, 1320px); aspect-ratio: 2 / 1; }
+.mosaic__tile { position: relative; display: block; border-radius: 16px; overflow: hidden; color: inherit; text-decoration: none; transform: translateZ(0); }
+.mosaic__tile--round { border-radius: 50%; }
+.mosaic__title { display: flex; flex-direction: column; justify-content: center; padding: 0 22px 0 26px; position: relative; grid-area: 1 / 1 / 3 / 5; min-width: 0; }
+.mosaic__title::before { content: ''; position: absolute; left: 0; top: 14px; bottom: 14px; width: 3px; background: var(--brand-blue, #1E8CFF); border-radius: 2px; }
+.mosaic__title h2 { font-family: var(--font-heading, 'Poppins', sans-serif); font-weight: 700; font-size: clamp(22px, 2.5vw, 36px); line-height: 1.12; letter-spacing: -.01em; color: var(--heading, #0E1A2D); }
+.mosaic__title h2 .accent { color: var(--brand-blue, #1E8CFF); }
+.mosaic__title p { margin-top: 10px; font-size: clamp(13px, 1.1vw, 16px); line-height: 1.4; color: var(--body, #5C6A7E); }
+.mosaic__title small { margin-top: 10px; font-size: 13px; color: var(--brand-blue, #1E8CFF); font-weight: 600; }
+
+/* Ubicación de cada portada en la maqueta B (PC) */
+.m-burger { grid-area: 1 / 5 / 5 / 9; }
+.m-gelato { grid-area: 1 / 9 / 5 / 11; }
+.m-cafe { grid-area: 1 / 11 / 3 / 13; }
+.m-pulse { grid-area: 3 / 11 / 5 / 13; }
+.m-aurea { grid-area: 3 / 1 / 7 / 5; }
+.m-kicks { grid-area: 5 / 5 / 7 / 10; }
+.m-flora { grid-area: 5 / 10 / 7 / 13; }
+
+/* Puntitos para elegir el header */
+.hero-dots { position: absolute; left: 50%; bottom: 20px; transform: translateX(-50%); z-index: 5; display: none; gap: 10px; }
+.hero-slides.has-2 .hero-dots { display: flex; }
+.hero-dots button { position: relative; width: 9px; height: 9px; padding: 0; border: 0; border-radius: 50%; background: rgba(14, 26, 45, .25); cursor: pointer; transition: width .25s ease, background .25s ease; }
+.hero-dots button::before { content: ''; position: absolute; inset: -9px; }
+.hero-dots button.is-active { width: 24px; border-radius: 6px; background: var(--brand-blue, #1E8CFF); }
+
+/* Celular y tablet chica: el MISMO bloque que el Header 1; las mismas siete portadas y el título, en una grilla compacta de 3 filas */
+@media (max-width: 768px) {
+  .hero2__inner { inset: 76px 12px 36px; container-type: normal; flex-direction: column; justify-content: flex-start; align-items: stretch; }
+  .mosaic { width: 100%; flex: 1 1 0; min-height: 0; aspect-ratio: auto; gap: 8px; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: 1.25fr 1fr 1fr auto; }
+  .m-burger { grid-area: 1 / 1 / 2 / 5; }
+  .m-gelato { grid-area: 1 / 5 / 2 / 7; }
+  .m-cafe { grid-area: 2 / 1 / 3 / 3; }
+  .m-pulse { grid-area: 2 / 3 / 3 / 5; }
+  .m-aurea { grid-area: 2 / 5 / 3 / 7; }
+  .m-kicks { grid-area: 3 / 1 / 4 / 4; }
+  .m-flora { grid-area: 3 / 4 / 4 / 7; }
+  .mosaic__tile { border-radius: 12px; }
+  .mosaic__title { grid-area: 4 / 1 / 5 / 7; padding: 4px 0 0; text-align: center; align-items: center; }
+  .mosaic__title::before { display: none; }
+  .mosaic__title h2 { font-size: 18px; }
+  .mosaic__title h2 br { display: none; }
+  .mosaic__title p { margin-top: 3px; font-size: 11.5px; }
+  .mosaic__title small { display: none; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-slides > .hero, .hero2, .hero-dots button { transition: none; } }
