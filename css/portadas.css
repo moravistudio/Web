@@ -152,13 +152,14 @@
 .cv-kicks .cv__fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
 .cv-kicks .cv__shoes { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
 .cv-kicks .cv__shoe { position: absolute; display: block; max-width: none; opacity: 0; will-change: transform; filter: drop-shadow(0 2cqh 2.4cqh rgba(0, 0, 0, .25)); pointer-events: none; }
-.cv-kicks .cv__logo { position: absolute; z-index: 5; top: 9cqh; left: 4cqw; font: 900 12cqh/1 'Poppins', sans-serif; letter-spacing: .08em; color: var(--ink); pointer-events: none; transition: color .5s ease; }
+.cv-kicks .cv__logo { position: absolute; z-index: 5; top: 5cqh; left: 4cqw; font: 900 12cqh/1 'Poppins', sans-serif; letter-spacing: .08em; color: var(--ink); pointer-events: none; transition: color .5s ease; }
 .cv-kicks .cv__sub { position: absolute; z-index: 5; left: 4cqw; bottom: 21cqh; font: 500 min(4.2cqh, 2.1cqw)/1 'Inter', sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); opacity: .85; pointer-events: none; transition: color .5s ease; }
-.cv-kicks .cv__btn { position: absolute; z-index: 5; left: 4cqw; bottom: 8cqh; padding: min(2.6cqh, 1.4cqw) min(5.4cqh, 3cqw); border: min(.5cqh, .28cqw) solid var(--ink); border-radius: 99px; font: 700 min(4.2cqh, 2.2cqw)/1 'Poppins', sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); pointer-events: none; transition: color .5s ease, border-color .5s ease; }
+.cv-kicks .cv__btn { position: absolute; z-index: 5; left: 4cqw; bottom: 8cqh; padding: min(2.6cqh, 1.4cqw) min(5.4cqh, 3cqw); border: min(.5cqh, .28cqw) solid var(--ink); border-radius: 99px; font: 700 min(4.2cqh, 2.2cqw)/1 'Poppins', sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--ink); pointer-events: none; transition: color .5s ease, border-color .5s ease, background .25s ease, transform .25s ease, box-shadow .25s ease; }
+.cv-kicks .cv__btn.hot { background: var(--ink); color: var(--bgc, #ff6a1f); transform: translateY(-.8cqh); box-shadow: 0 1.4cqh 3cqh rgba(0, 0, 0, .28); }
 /* Menú de la tienda: links + carrito (solo decorativo, sin contador) (arriba a la derecha, en la línea del logo) */
-.cv-kicks .cv__nav { position: absolute; z-index: 5; top: 9cqh; right: 4cqw; height: 12cqh; display: flex; align-items: center; gap: 3.2cqw; pointer-events: none; color: var(--ink); transition: color .5s ease; }
-.cv-kicks .cv__links { display: flex; align-items: center; gap: 2.6cqw; font: 600 min(3.4cqh, 1.7cqw)/1 'Poppins', sans-serif; letter-spacing: .1em; text-transform: uppercase; opacity: .9; }
-.cv-kicks .cv__cart { position: relative; display: inline-flex; width: min(6cqh, 2.8cqw); height: min(6cqh, 2.8cqw); }
+.cv-kicks .cv__nav { position: absolute; z-index: 5; top: 5cqh; right: 4cqw; height: 12cqh; display: flex; align-items: center; gap: 2.4cqw; pointer-events: none; color: var(--ink); transition: color .5s ease; }
+.cv-kicks .cv__links { display: flex; align-items: center; gap: 2cqw; font: 600 min(2.7cqh, 1.35cqw)/1 'Poppins', sans-serif; letter-spacing: .1em; text-transform: uppercase; opacity: .9; }
+.cv-kicks .cv__cart { position: relative; display: inline-flex; width: min(4.6cqh, 2.2cqw); height: min(4.6cqh, 2.2cqw); }
 .cv-kicks .cv__cart svg { width: 100%; height: 100%; }
 /* En piezas chicas (miniatura del mosaico) solo queda el carrito */
 @container (max-width: 560px) { .cv-kicks .cv__links { display: none; } }

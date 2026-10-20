@@ -40,7 +40,7 @@
       '<div class="cv__sub">Nueva colección</div>' +
       '<span class="cv__btn">Comprar ahora</span>';
     var bg = el.querySelector('.cv__bg'), bctx = bg.getContext('2d'), fx = el.querySelector('.cv__fx'), fctx = fx.getContext('2d'),
-        wordBox = el.querySelector('.cv__word'), wordEl = el.querySelector('.cv__word-t'), shadow = el.querySelector('.cv__shadow'), shoesBox = el.querySelector('.cv__shoes');
+        btnEl = el.querySelector('.cv__btn'), wordBox = el.querySelector('.cv__word'), wordEl = el.querySelector('.cv__word-t'), shadow = el.querySelector('.cv__shadow'), shoesBox = el.querySelector('.cv__shoes');
     var shoes = PALETTE.map(function (c) { var im = new Image(); im.className = 'cv__shoe'; im.alt = ''; im.draggable = false; im.src = DIR + c.shoe; shoesBox.appendChild(im); return { el: im, box: c.box, side: 0, sx: 0, sy: 0 }; });
     var prev = -1, changeT = -1e9;
 
@@ -51,7 +51,7 @@
     var vis = true, running = false, raf = 0;
 
     function applyInk(i) {
-      var c = PALETTE[i]; el.style.setProperty('--ink', c.ink); el.style.setProperty('--ghost', c.ghost);
+      var c = PALETTE[i]; el.style.setProperty('--ink', c.ink); el.style.setProperty('--ghost', c.ghost); el.style.setProperty('--bgc', c.bg);
     }
     function layout() {
       var r = el.getBoundingClientRect(); W = r.width; H = r.height;
@@ -159,10 +159,15 @@
       if (go && !running) { running = true; lastT = 0; if (!raf) raf = requestAnimationFrame(frame); }
       else if (!go) { running = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } }
     }
-    function setPtr(ev) { var r = el.getBoundingClientRect(); ptr.x = ev.clientX - r.left; ptr.y = ev.clientY - r.top; ptr.in = true; }
+    // El botón no recibe el cursor (todo el cuadro es el clic que cambia de zapatilla), así que su «hover» se calcula por posición
+    function setPtr(ev) {
+      var r = el.getBoundingClientRect(); ptr.x = ev.clientX - r.left; ptr.y = ev.clientY - r.top; ptr.in = true;
+      var b = btnEl.getBoundingClientRect();
+      btnEl.classList.toggle('hot', ev.pointerType === 'mouse' && ev.clientX >= b.left && ev.clientX <= b.right && ev.clientY >= b.top && ev.clientY <= b.bottom);
+    }
     el.addEventListener('pointerenter', setPtr);
     el.addEventListener('pointermove', setPtr, { passive: true });
-    el.addEventListener('pointerleave', function () { ptr.in = false; });
+    el.addEventListener('pointerleave', function () { ptr.in = false; btnEl.classList.remove('hot'); });
     el.addEventListener('pointerdown', function (ev) { setPtr(ev); var now = performance.now(); lastTap = now; lastAuto = now; change(now, ptr.x, ptr.y, true); });
     el.addEventListener('pointerup', function (ev) { if (ev.pointerType !== 'mouse') ptr.in = false; });
     el.addEventListener('pointercancel', function () { ptr.in = false; });
