@@ -21,7 +21,7 @@
       brand: 'AUREA', links: ['Colección', 'Novias', 'Contacto'], navBtn: 'Reservar cita', h: 'Joyas con<br><em>luz propia</em>', p: 'Pasa el cursor: la luz hace brillar el oro y la piedra.<br>Un clic cambia la gema.', btn: 'Ver colección',
       about: 'El cursor es una linterna que hace brillar la joya con destellos. Cada clic lanza polvo dorado y cambia la piedra: diamante, zafiro y esmeralda.' },
     { key: 'kicks', name: 'Kicks', tag: 'Zapatillas', kind: 'direct', cls: 'cv cv-kicks', api: 'Kicks',
-      about: 'Una zapatilla sobre un fondo de color con una palabra gigante detrás. El cursor la inclina; cada clic lanza una onda de color y trae otra zapatilla.' },
+      about: 'El cursor inclina la zapatilla. Cada clic lanza una onda de color y trae otra.' },
     { key: 'flora', name: 'Flora', tag: 'Florería', kind: 'direct', cls: 'cv cv-ramo', api: 'Ramo',
       about: 'Elige tu ramo: seis flores para escoger. Cada clic agrega una flor al ramo, que se acomoda en abanico; otro clic la quita.' }
   ];
