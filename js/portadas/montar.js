@@ -12,7 +12,7 @@
       brand: '<b>LUNA</b> GELATO', links: ['Sabores', 'Locales', 'Pedidos'], navBtn: 'Pedir', h: 'Arma tu helado,<br><em>bola por bola</em>', p: 'Toca cada bola para cambiar de sabor y mira cómo se transforma.', btn: 'Elegir sabor',
       about: 'El helado se arma sobre el cono. Cada bola cambia de sabor por separado al pasar el cursor o tocarla: nueve sabores reales, con goteos y vapor frío.' },
     { key: 'cafe', name: 'Origen Café', tag: 'Cafetería', kind: 'wide', cls: 'cv cv-cafe', api: 'OrigenCafe', theme: 'cafe',
-      brand: '<b>ORIGEN</b> CAFÉ', links: ['Menú', 'Granos', 'Suscripción', 'Visítanos'], navBtn: 'Reservar', cx: 0.74, h: 'Despierta<br><em>tus sentidos</em>', p: 'Café de origen, tostado cada mañana.<br>Haz clic y mira caer un grano.', btn: 'Pedir ahora',
+      brand: '<b>ORIGEN</b> CAFÉ', links: ['Menú', 'Granos', 'Suscripción', 'Visítanos'], navBtn: 'Reservar', cart: true, cx: 0.74, usc: 0.84, h: 'Despierta<br><em>tus sentidos</em>', p: 'Café de origen, tostado cada mañana.<br>Haz clic y mira caer un grano.', btn: 'Pedir ahora',
       about: 'El vapor se aparta cuando pasas el cursor, los granos flotan con profundidad y cada clic sirve café: ondas en la taza, un grano que cae y gotitas.' },
     { key: 'pulse', name: 'Pulse Fit', tag: 'Gimnasio', kind: 'wide', cls: 'cv cv-pulse', api: 'PulseFit', theme: 'pulse',
       brand: '<b>PULSE</b> FIT', links: ['Clases', 'Planes', 'Entrenadores'], navBtn: 'Únete', h: 'Supera<br><em>tu límite</em>', p: 'Cada clic es una repetición.<br>Llega al trofeo y empieza de nuevo.', btn: 'Prueba una clase gratis',
@@ -25,6 +25,7 @@
     { key: 'flora', name: 'Flora', tag: 'Florería', kind: 'direct', cls: 'cv cv-ramo', api: 'Ramo',
       about: 'Elige tu ramo: seis flores para escoger. Cada clic agrega una flor al ramo, que se acomoda en abanico; otro clic la quita.' }
   ];
+  var CART = '<span class="pw__cart" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.2L21 8H6"/></svg><i>0</i></span>';
   var BY = {}; LIST.forEach(function (p) { BY[p.key] = p; });
 
   function mount(el, key) {
@@ -33,7 +34,7 @@
     frame.className = 'pw ' + (p.kind === 'direct' ? 'pw--direct' : 'pw--' + p.theme);
     if (p.kind === 'wide') {
       frame.innerHTML =
-        '<div class="pw__nav"><span class="pw__brand">' + p.brand + '</span><span class="pw__links">' + p.links.map(function (l) { return '<span>' + l + '</span>'; }).join('') + '</span><span class="pw__navbtn">' + p.navBtn + '</span></div>' +
+        '<div class="pw__nav"><span class="pw__brand">' + p.brand + '</span><span class="pw__links">' + p.links.map(function (l) { return '<span>' + l + '</span>'; }).join('') + '</span><span class="pw__right">' + (p.cart ? CART : '') + '<span class="pw__navbtn">' + p.navBtn + '</span></span></div>' +
         '<div class="pw__copy"><h2>' + p.h + '</h2><p>' + p.p + '</p><span class="pw__btn">' + p.btn + '</span></div>' +
         '<div class="pw__stage"><div class="' + p.cls + '"></div></div>';
     } else {
@@ -42,6 +43,7 @@
     el.appendChild(frame);
     var piece = frame.querySelector('.cv');
     if (p.cx) piece.setAttribute('data-cx', p.cx);
+    if (p.usc) piece.setAttribute('data-usc', p.usc);
     var api = global[p.api];
     if (api && api.init) { try { api.init(piece); } catch (e) { /* una portada con problema no debe romper las demás */ } }
     return frame;

@@ -37,6 +37,8 @@
     // Centro horizontal de la taza como fracción del ancho (0.5 por defecto). En una portada ancha, la pieza ocupa TODO el ancho y la taza se coloca a la derecha.
     var cxf = parseFloat(el.getAttribute('data-cx')) || 0.5;
     el.style.setProperty('--cxf', cxf);
+    // Escala de los elementos (1 por defecto). En la portada ancha la pieza ocupa todo el alto, así que se reduce para que la taza y los granos midan lo mismo que antes.
+    var usc = parseFloat(el.getAttribute('data-usc')) || 1;
     el.innerHTML =
       '<div class="cv__glow"></div>' +
       '<div class="cv__logo"><b>ORIGEN</b> CAFÉ</div>' +
@@ -68,7 +70,7 @@
     function layout() {
       var r = el.getBoundingClientRect(); W = r.width; H = r.height;
       if (!W || !H) return;
-      U = Math.min(W, H); dpr = Math.min(window.devicePixelRatio || 1, 2);
+      U = Math.min(W, H) * usc; dpr = Math.min(window.devicePixelRatio || 1, 2);
       [rip, stm].forEach(function (c) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); });
       rctx.setTransform(dpr, 0, 0, dpr, 0, 0); sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       // La taza: su contenido (73 % del ancho de la imagen) ocupa ~58 % del lado menor; se apoya en la parte baja
