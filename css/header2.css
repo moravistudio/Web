@@ -21,6 +21,9 @@
 .mosaic__title h2 { font-family: var(--font-heading, 'Poppins', sans-serif); font-weight: 700; font-size: clamp(22px, 2.05vw, 36px); line-height: 1.12; letter-spacing: -.01em; color: var(--heading, #0E1A2D); }
 .mosaic__title h2 .accent { color: var(--brand-blue, #1E8CFF); }
 .mosaic__title p { margin-top: 10px; font-size: clamp(13px, 1.1vw, 16px); line-height: 1.4; color: var(--body, #5C6A7E); }
+.mosaic__all { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; margin-top: 12px; padding: 8px 14px 8px 16px; border-radius: 99px; background: var(--navy, #0A1B3C); color: #fff; font: 600 13px/1 var(--font-body, 'Inter', sans-serif); text-decoration: none; transition: background .2s ease, transform .2s ease; }
+.mosaic__all:hover { background: var(--navy-light, #15356C); transform: translateX(2px); }
+.mosaic__all svg { flex: none; }
 .mosaic__title small { margin-top: 10px; font-size: 13px; color: var(--brand-blue, #1E8CFF); font-weight: 600; }
 
 /* Ubicación de cada portada (PC): usa todo el ancho; el alto lo marca el Header 1 */
@@ -33,7 +36,7 @@
 .m-flora { grid-area: 5 / 9 / 7 / 13; }
 
 /* Botoncito «Ver» en cada portada del mosaico: abre la portada completa sin quitarle el clic al juego */
-.mosaic__go { position: absolute; z-index: 8; right: 8px; top: 8px; padding: 5px 9px; border-radius: 99px; background: rgba(255, 255, 255, .9); color: #0A1B3C; font: 700 11px/1 var(--font-body, 'Inter', sans-serif); text-decoration: none; opacity: 0; transform: translateY(-3px); transition: opacity .2s ease, transform .2s ease; box-shadow: 0 3px 10px rgba(0, 0, 0, .2); }
+.mosaic__go { position: absolute; z-index: 8; right: 8px; top: 8px; padding: 5px 9px; border-radius: 99px; background: rgba(255, 255, 255, .9); color: #0A1B3C; font: 700 11px/1 var(--font-body, 'Inter', sans-serif); white-space: nowrap; text-decoration: none; opacity: 0; transform: translateY(-3px); transition: opacity .2s ease, transform .2s ease; box-shadow: 0 3px 10px rgba(0, 0, 0, .2); }
 .mosaic__tile:hover .mosaic__go, .mosaic__go:focus-visible { opacity: 1; transform: none; }
 .mosaic__tile--round .mosaic__go { right: 50%; top: 4%; transform: translate(50%, -3px); }
 .mosaic__tile--round:hover .mosaic__go { transform: translate(50%, 0); }
@@ -51,7 +54,7 @@
 
 /* Celular y tablet chica: el MISMO bloque que el Header 1; las mismas siete portadas y el título, en una grilla compacta de 3 filas */
 @media (max-width: 768px) {
-  .hero2__inner { inset: 76px 12px 36px; container-type: normal; flex-direction: column; justify-content: flex-start; align-items: stretch; }
+  .hero2__inner { inset: 76px 12px 8px; container-type: normal; flex-direction: column; justify-content: flex-start; align-items: stretch; }
   .mosaic { width: 100%; flex: 1 1 0; min-height: 0; aspect-ratio: auto; gap: 8px; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: 1.25fr 1fr 1fr auto; }
   .m-burger { grid-area: 1 / 1 / 2 / 5; }
   .m-gelato { grid-area: 1 / 5 / 2 / 7; }
@@ -67,6 +70,7 @@
   .mosaic__title h2 br { display: none; }
   .mosaic__title p { margin-top: 3px; font-size: 11.5px; }
   .mosaic__title small { display: none; }
+  .mosaic__all { align-self: center; margin-top: 6px; padding: 6px 12px 6px 14px; font-size: 12px; }
 }
 @media (max-width: 768px) { .hero-arrow { width: 24px; height: 24px; opacity: .4; } .hero-arrow svg { width: 16px; height: 16px; } .hero-arrow--prev { left: 0; } .hero-arrow--next { right: 0; } }
 @media (prefers-reduced-motion: reduce) { .hero-slides > .hero, .hero2, .hero-arrow { transition: none; } }
