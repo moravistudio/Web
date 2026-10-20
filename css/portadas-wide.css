@@ -49,3 +49,30 @@
 .pw .pw__navbtn:hover { background: var(--pw-accent); color: var(--pw-btn-ink, #111); transform: translateY(-.2cqw); box-shadow: 0 .8cqw 2.2cqw color-mix(in srgb, var(--pw-accent) 45%, transparent); }
 .pw .pw__navbtn:active { transform: translateY(0); }
 @media (prefers-reduced-motion: reduce) { .pw .pw__btn, .pw .pw__navbtn { transition: none; } .pw .pw__btn:hover, .pw .pw__navbtn:hover { transform: none; } }
+
+/* ===== Pulse Fit · tablero de entrenamiento: menú flotante, anillo al centro con datos a los lados, título y botón abajo ===== */
+.pw--tablero .pw__pill { position: absolute; z-index: 5; top: 4cqh; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 3.2cqw; padding: .9cqw .9cqw .9cqw 2.2cqw; border-radius: 99px; background: rgba(255, 255, 255, .07); border: 1px solid rgba(255, 255, 255, .12); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); white-space: nowrap; pointer-events: none; }
+.pw--tablero .pw__pill .pw__brand { font-size: 1.5cqw; }
+.pw--tablero .pw__plinks { display: flex; gap: 2.4cqw; font-size: 1.3cqw; font-weight: 500; opacity: .8; }
+.pw--tablero .pw__pill .pw__navbtn { font-size: 1.25cqw; padding: .7cqw 1.7cqw; background: var(--pw-accent); color: var(--pw-btn-ink); }
+.pw--tablero .pw__pill .pw__navbtn:hover { filter: brightness(1.08); box-shadow: 0 .6cqw 1.8cqw color-mix(in srgb, var(--pw-accent) 45%, transparent); }
+.pw--tablero .pw__stage { left: 50%; right: auto; top: 14cqh; bottom: auto; width: 56cqh; height: 56cqh; transform: translateX(-50%); }
+.pw--tablero .pw__stage > .cv { inset: 0; width: 100%; height: 100%; aspect-ratio: auto; transform: none; border-radius: 50%; }
+.pw--tablero .pw__stat { position: absolute; z-index: 4; width: 17cqw; padding: 1.1cqw 1.4cqw; border-radius: 1.5cqw; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .1); pointer-events: none; }
+.pw--tablero .pw__stat span { display: block; font-size: 1.2cqw; color: #9aa393; }
+.pw--tablero .pw__stat b { display: block; margin-top: .5cqw; font: 800 2.6cqw/1 'Poppins', sans-serif; }
+.pw--tablero .pw__stat b i { font-style: normal; display: inline-block; }
+.pw--tablero .pw__stat b u { text-decoration: none; font: 600 1.3cqw 'Inter', sans-serif; color: var(--pw-accent); }
+.pw--tablero .pw__stat i.pop { animation: pwStatPop .35s cubic-bezier(.2, 1.4, .4, 1); }
+@keyframes pwStatPop { 0% { transform: scale(1); color: var(--pw-accent); } 40% { transform: scale(1.18); color: var(--pw-accent); } 100% { transform: scale(1); } }
+.pw--tablero .pw__stat--l1 { left: 13cqw; top: 25cqh; }
+.pw--tablero .pw__stat--l2 { left: 13cqw; top: 49cqh; }
+.pw--tablero .pw__stat--r1 { right: 13cqw; top: 25cqh; }
+.pw--tablero .pw__stat--r2 { right: 13cqw; top: 49cqh; }
+.pw--tablero .pw__foot { position: absolute; z-index: 5; left: 0; right: 0; bottom: 3cqh; text-align: center; pointer-events: none; }
+.pw--tablero .pw__foot h2 { font: 800 3.4cqw/1 'Poppins', sans-serif; letter-spacing: -.01em; }
+.pw--tablero .pw__foot h2 em { font-style: normal; color: var(--pw-accent); }
+.pw--tablero .pw__foot p { margin-top: .7cqw; font-size: 1.25cqw; opacity: .75; }
+.pw--tablero .pw__foot .pw__btn { margin-top: 1cqw; padding: .9cqw 2.4cqw; font-size: 1.4cqw; }
+@media (prefers-reduced-motion: reduce) { .pw--tablero .pw__stat i.pop { animation: none; } }
+.pw--tablero .cv-pulse .cv__logo-t { display: none; }
