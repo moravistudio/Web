@@ -163,3 +163,15 @@
 .cv-nido .cv__logo { position: absolute; z-index: 2; top: 7cqh; left: 4cqw; font: 500 7.4cqh/1 'Poppins', sans-serif; letter-spacing: .06em; color: #fff; text-shadow: 0 .4cqh 1.6cqh rgba(20, 30, 70, .35); pointer-events: none; }
 .cv-nido .cv__logo b { font-weight: 900; letter-spacing: .16em; }
 .cv-nido .cv__tag { position: absolute; z-index: 2; left: 4cqw; bottom: 7cqh; padding: 2.4cqh 4.4cqh; border-radius: 99px; background: rgba(255, 255, 255, .92); font: 600 5.6cqh/1 'Poppins', sans-serif; color: #2a3550; box-shadow: 0 1cqh 3cqh rgba(20, 30, 70, .2); pointer-events: none; }
+
+/* ---------- 7 · Flora (florería) — ramo que florece, horizontal ---------- */
+.cv-flora { background: #e7dcf1; cursor: pointer; color: #3a2a3f; }
+.cv-flora .cv__bg, .cv-flora .cv__bgnew { position: absolute; inset: 0; pointer-events: none; }
+.cv-flora .cv__bgnew { opacity: 0; transition: opacity .9s ease; }
+.cv-flora .cv__flowers { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.cv-flora .cv__fl { will-change: transform, opacity; }
+.cv-flora .cv__fl img { display: block; max-width: none; will-change: opacity; filter: drop-shadow(0 .8cqh 1.2cqh rgba(60, 30, 50, .25)); }
+.cv-flora .cv__fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+.cv-flora .cv__logo { position: absolute; z-index: 4; top: 7cqh; left: 4cqw; font: 400 7cqh/1 'Poppins', sans-serif; letter-spacing: .06em; color: #4a2f4f; pointer-events: none; }
+.cv-flora .cv__logo b { font-weight: 800; letter-spacing: .2em; }
+@media (prefers-reduced-motion: reduce) { .cv-flora .cv__bgnew { transition: none; } }
