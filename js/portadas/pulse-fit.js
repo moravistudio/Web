@@ -16,7 +16,7 @@
   // «dy» = pequeño desplazamiento vertical (fracción del diámetro) para que la zona lisa de cada objeto quede bajo el número,
   // que va siempre en el mismo punto, en el centro del recuadro.
   var OBJS = [
-    { f: 'mancuernas-dos.webp', x0: 0.0271, x1: 0.9729, y0: 0.2145, y1: 0.8118, dy: -0.03 },
+    { f: 'pesa-baja.webp', x0: 0.1451, x1: 0.8517, y0: 0.0622, y1: 0.9386, dy: -0.03 },
     { f: 'balon.webp', x0: 0.0981, x1: 0.9067, y0: 0.0925, y1: 0.9083, dy: 0 },
     { f: 'guante.webp', x0: 0.2121, x1: 0.8118, y0: 0.0431, y1: 0.9609, dy: 0 },
     { f: 'trofeo.webp', x0: 0.0797, x1: 0.9195, y0: 0.0542, y1: 0.9633, dy: 0.015 }
