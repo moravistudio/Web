@@ -163,6 +163,8 @@
 .cv-kicks .cv__cart svg { width: 100%; height: 100%; }
 /* En piezas chicas (miniatura del mosaico) solo queda el carrito */
 @container (max-width: 560px) { .cv-kicks .cv__links { display: none; } }
+/* ...pero en la portada completa y en la tarjeta del catálogo (dentro de .pw) el menú se ve entero */
+.pw .cv-kicks .cv__links { display: flex; }
 @media (prefers-reduced-motion: reduce) { .cv-kicks .cv__word-t, .cv-kicks .cv__logo, .cv-kicks .cv__sub, .cv-kicks .cv__btn { transition: none; } }
 
 /* ---------- 7 · Flora (florería) — «Elige tu ramo», horizontal ---------- */
