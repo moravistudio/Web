@@ -1,6 +1,5 @@
 /*
- * Parte interactiva de la portada «Kicks» (zapatillas / moda), estilo gráfico urbano. Es solo el elemento interactivo;
- * el menú, el título y el botón pertenecen a la portada completa (página aparte).
+ * Portada «Kicks» (zapatillas / moda) — portada HORIZONTAL ancha, estilo gráfico urbano.
  * Una zapatilla blanca de perfil sobre un fondo de color vivo, con una palabra gigante detrás (RUN, JUMP, MOVE, FLOW).
  *  - El cursor (o el dedo) inclina la zapatilla; la palabra gigante y la sombra se mueven a otra profundidad.
  *  - Cada clic o toque: una onda de color se expande desde ahí y cambia el fondo y la palabra; la zapatilla salta con líneas de velocidad.
@@ -33,7 +32,10 @@
       '<div class="cv__word"><span class="cv__word-t">RUN</span></div>' +
       '<div class="cv__shadow"></div>' +
       '<canvas class="cv__fx" aria-hidden="true"></canvas>' +
-      '<img class="cv__shoe" alt="" draggable="false">';
+      '<img class="cv__shoe" alt="" draggable="false">' +
+      '<div class="cv__logo">KICKS</div>' +
+      '<div class="cv__sub">Nueva colección</div>' +
+      '<span class="cv__btn">Comprar ahora</span>';
     var bg = el.querySelector('.cv__bg'), bctx = bg.getContext('2d'), fx = el.querySelector('.cv__fx'), fctx = fx.getContext('2d'),
         wordBox = el.querySelector('.cv__word'), wordEl = el.querySelector('.cv__word-t'), shadow = el.querySelector('.cv__shadow'), shoe = el.querySelector('.cv__shoe');
     shoe.src = IMG;
@@ -54,9 +56,9 @@
       [bg, fx].forEach(function (c) { c.width = Math.round(W * dpr); c.height = Math.round(H * dpr); });
       bctx.setTransform(dpr, 0, 0, dpr, 0, 0); fctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       // zapatilla: contenido ~ 0,62 del alto y no más de ~46 % del ancho; centrada un poco a la derecha
-      var contentH = Math.min(H * 0.66, (W * 0.5 / (BOX.x1 - BOX.x0)) * (BOX.y1 - BOX.y0));
+      var contentH = Math.min(H * 0.6, (W * 0.43 / (BOX.x1 - BOX.x0)) * (BOX.y1 - BOX.y0));
       side = contentH / (BOX.y1 - BOX.y0);
-      var cx = W * 0.5, cy = H * 0.5;
+      var cx = W * 0.6, cy = H * 0.5;
       sx = cx - side * (BOX.x0 + BOX.x1) / 2; sy = cy - side * (BOX.y0 + BOX.y1) / 2;
       shoe.style.cssText = 'width:' + side + 'px;height:' + side + 'px;left:' + sx + 'px;top:' + sy + 'px;transform-origin:50% ' + (BOX.y1 * 100) + '%;';
       var gw = side * (BOX.x1 - BOX.x0) * 0.8, groundY = sy + side * BOX.y1;
