@@ -40,3 +40,12 @@
 
 /* Café: la pieza ocupa TODA la portada (sin marco), así el vapor y los granos nunca se cortan en un borde */
 .pw--cafe .pw__stage { left: 0; right: 0; top: 0; bottom: 0; }
+
+/* Los botones de la portada reaccionan al pasar el mouse (no llevan a ningún lado: es parte de la experiencia de una web de verdad).
+   El resto del texto deja pasar el mouse hacia la parte interactiva; los botones sí lo reciben. */
+.pw .pw__btn, .pw .pw__navbtn { pointer-events: auto; cursor: pointer; transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease, color .22s ease, filter .22s ease; }
+.pw .pw__btn:hover { transform: translateY(-.35cqw); filter: brightness(1.1); box-shadow: 0 1.1cqw 3cqw color-mix(in srgb, var(--pw-accent) 55%, transparent), 0 .6cqw 1.6cqw rgba(0, 0, 0, .3); }
+.pw .pw__btn:active { transform: translateY(0); filter: brightness(.96); }
+.pw .pw__navbtn:hover { background: var(--pw-accent); color: var(--pw-btn-ink, #111); transform: translateY(-.2cqw); box-shadow: 0 .8cqw 2.2cqw color-mix(in srgb, var(--pw-accent) 45%, transparent); }
+.pw .pw__navbtn:active { transform: translateY(0); }
+@media (prefers-reduced-motion: reduce) { .pw .pw__btn, .pw .pw__navbtn { transition: none; } .pw .pw__btn:hover, .pw .pw__navbtn:hover { transform: none; } }
