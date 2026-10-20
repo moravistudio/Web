@@ -16,10 +16,10 @@
   // «dy» = pequeño desplazamiento vertical (fracción del diámetro) para que la zona lisa de cada objeto quede bajo el número,
   // que va siempre en el mismo punto, en el centro del recuadro.
   var OBJS = [
-    { f: 'pesa.webp', x0: 0.1435, x1: 0.8804, y0: 0.0478, y1: 0.9705, dy: -0.055 },
+    { f: 'pesa.webp', x0: 0.1435, x1: 0.8804, y0: 0.0478, y1: 0.9705, dy: -0.015 },
     { f: 'balon.webp', x0: 0.0981, x1: 0.9067, y0: 0.0925, y1: 0.9083, dy: 0 },
-    { f: 'guante.webp', x0: 0.2121, x1: 0.8118, y0: 0.0431, y1: 0.9609, dy: 0.005 },
-    { f: 'trofeo.webp', x0: 0.0797, x1: 0.9195, y0: 0.0542, y1: 0.9633, dy: 0.025 }
+    { f: 'guante.webp', x0: 0.2121, x1: 0.8118, y0: 0.0431, y1: 0.9609, dy: 0 },
+    { f: 'trofeo.webp', x0: 0.0797, x1: 0.9195, y0: 0.0542, y1: 0.9633, dy: 0.015 }
   ];
   var LAST = OBJS.length - 1;
   var LIME = '184,255,60';
@@ -58,7 +58,7 @@
       rctx.setTransform(dpr, 0, 0, dpr, 0, 0); fctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       cx = W / 2; cy = H / 2; ocx = cx; ocy = H * 0.395;
       // recuadro común y punto fijo del número (su centro)
-      nx = cx; ny = H * 0.46;
+      nx = cx; ny = H * 0.48;
       var maxW = U * 0.5, maxH = U * 0.5;
       objs.forEach(function (ob) {
         var o = ob.o, cw = o.x1 - o.x0, chh = o.y1 - o.y0, mx = o.x0 + cw / 2, my = o.y0 + chh / 2;
