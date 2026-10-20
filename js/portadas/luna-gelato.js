@@ -57,7 +57,7 @@
     var W = 0, H = 0, k = 1, cx = 0, top0 = 0, dpr = 1, drops = [], dacc = 0, lastD = 0, mist = [], macc = 0;
     var mistSprite = (function () { var c = document.createElement('canvas'); c.width = c.height = 96; var g = c.getContext('2d'), gr = g.createRadialGradient(48, 48, 0, 48, 48, 48);
       gr.addColorStop(0, 'rgba(170,205,235,.55)'); gr.addColorStop(0.45, 'rgba(190,215,238,.28)'); gr.addColorStop(1, 'rgba(200,222,242,0)'); g.fillStyle = gr; g.fillRect(0, 0, 96, 96); return c; })();
-    var px = 0, tx = 0, hover = false, e = 0, flav = [0, 0, 0, 0, 0], lastUser = -1e9, lastHit = -1, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
+    var px = 0, tx = 0, hover = false, e = 0, flav = [0, 0, 0, 0, 0], lastUser = -1e9, lastHit = -1, t0 = performance.now();
     var vis = true, running = false, raf = 0, lastCycle = -1;
 
     function layout() {

@@ -45,7 +45,7 @@
     var W = 0, H = 0, U = 0, dpr = 1, cx = 0, cy = 0, base = 0, cur = 0;
     var waves = [], lines = [], puffs = [], lastT = 0, jumpT = -1e9, lastTap = -1e9, lastAuto = 0, wordTimer = 0;
     var ptr = { x: 0, y: 0, in: false }, lp = { x: 0, y: 0 };
-    var t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
+    var t0 = performance.now();
     var vis = true, running = false, raf = 0;
 
     function applyInk(i) {

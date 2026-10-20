@@ -50,7 +50,7 @@
     var cur = 0, prev = -1, changeT = -1e9, flash = 0, lastTap = -1e9, lastAuto = 0, nameTimer = 0;
     var stars = [], dust = [], sparks = [], lastT = 0, starAcc = 0;
     var ptr = { x: 0, y: 0, in: false }, light = { x: 0, y: 0, a: 0 };
-    var t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
+    var t0 = performance.now();
     var vis = true, running = false, raf = 0;
 
     function layout() {

@@ -59,7 +59,7 @@
     var W = 0, H = 0, U = 0, dpr = 1, cupX = 0, cupY = 0, cupS = 0, sx = 0, sy = 0, srx = 0, sry = 0;
     var puffs = [], ripples = [], drops = [], splash = [], pacc = 0, lastT = 0, bounce = 0;
     var ptr = { x: -999, y: -999, vx: 0, vy: 0, in: false, px: 0, py: 0 }, par = { x: 0, y: 0, tx: 0, ty: 0 };
-    var t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
+    var t0 = performance.now();
     var vis = true, running = false, raf = 0, lastAuto = -1, lastAutoDrop = 0;
 
     function layout() {

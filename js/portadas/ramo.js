@@ -59,7 +59,7 @@
 
     var W = 0, H = 0, U = 0, dpr = 1, ox = 0, oy = 0, scale = 1, petals = [], lastT = 0, sumTxt = '';
     var ptr = { x: 0, y: 0, in: false }, lp = { x: 0, y: 0 };
-    var t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
+    var t0 = performance.now();
     var vis = true, running = false, raf = 0;
 
     function layout() {

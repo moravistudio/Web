@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/styles.css?v=9">
+  <link rel="stylesheet" href="css/portadas.css?v=1">
+  <link rel="stylesheet" href="css/header2.css?v=2">
 </head>
 <body>
   <script>try{if(!sessionStorage.getItem('moravi-intro-visto'))document.documentElement.classList.add('intro-on','scene-wait');}catch(e){document.documentElement.classList.add('intro-on','scene-wait');}</script>
@@ -56,7 +58,9 @@
     </div>
   </header>
 
-  <!-- ============ HERO ============ -->
+  <!-- ============ HEADERS (dos que se alternan) ============ -->
+  <div class="hero-slides">
+  <!-- ---- Header 1: laptop, tablet y celular ---- -->
   <section class="hero">
     <div class="container hero__inner">
       <div class="hero__content">
@@ -94,6 +98,28 @@
       </div>
     </div>
   </section>
+
+  <!-- ---- Header 2: mosaico de portadas interactivas ---- -->
+  <section class="hero2" aria-label="Portadas interactivas">
+    <div class="hero2__inner">
+      <div class="mosaic">
+        <div class="mosaic__title">
+          <h2><span data-i18n="header2.title.lead">Experiencias web</span><br><span class="accent" data-i18n="header2.title.accent">interactivas</span></h2>
+          <p data-i18n="header2.subtitle">La primera pantalla de tu negocio, con vida propia</p>
+          <small data-i18n="header2.hint">Toca una portada para ver más →</small>
+        </div>
+        <a class="mosaic__tile m-burger" href="portadas/#brasa-burger" aria-label="Brasa Burger — hamburguesería"><div class="cv cv-burger" id="h2-burger"></div></a>
+        <a class="mosaic__tile m-gelato" href="portadas/#luna-gelato" aria-label="Luna Gelato — heladería"><div class="cv cv-gelato" id="h2-gelato"></div></a>
+        <a class="mosaic__tile m-cafe" href="portadas/#origen-cafe" aria-label="Origen Café — cafetería"><div class="cv cv-cafe" id="h2-cafe"></div></a>
+        <a class="mosaic__tile mosaic__tile--round m-pulse" href="portadas/#pulse-fit" aria-label="Pulse Fit — gimnasio"><div class="cv cv-pulse" id="h2-pulse"></div></a>
+        <a class="mosaic__tile m-aurea" href="portadas/#aurea" aria-label="Aurea — joyería"><div class="cv cv-aurea" id="h2-aurea"></div></a>
+        <a class="mosaic__tile m-kicks" href="portadas/#kicks" aria-label="Kicks — zapatillas"><div class="cv cv-kicks" id="h2-kicks"></div></a>
+        <a class="mosaic__tile m-flora" href="portadas/#flora" aria-label="Flora — florería"><div class="cv cv-ramo" id="h2-flora"></div></a>
+      </div>
+    </div>
+  </section>
+  <div class="hero-dots" role="group" aria-label="Elegir portada"><button type="button" class="is-active" aria-label="Portada 1" aria-current="true"></button><button type="button" aria-label="Portada 2" aria-current="false"></button></div>
+  </div>
 
   <!-- ============ PRODUCTOS (acceso directo; mismas tarjetas y mismo acceso que en /productos) ============ -->
   <section class="projects home-products" id="productos-inicio">
@@ -380,6 +406,14 @@
   <script src="js/intro.js?v=3" defer></script>
   <script src="js/portada-escena.js?v=1" defer></script>
   <script src="js/menu-mobile.js" defer></script>
+  <script src="js/portadas/brasa-burger.js" defer></script>
+  <script src="js/portadas/luna-gelato.js" defer></script>
+  <script src="js/portadas/origen-cafe.js" defer></script>
+  <script src="js/portadas/pulse-fit.js" defer></script>
+  <script src="js/portadas/aurea.js" defer></script>
+  <script src="js/portadas/zapatilla.js" defer></script>
+  <script src="js/portadas/ramo.js" defer></script>
+  <script src="js/header2.js?v=1" defer></script>
   <script src="js/auth-gate.js" defer></script>
   <script src="js/productos-carrusel.js" defer></script>
   <script src="js/tarjetas-efecto.js" defer></script>

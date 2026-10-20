@@ -37,6 +37,11 @@
         },
         subtitle: 'Cada proyecto combina diseño, estrategia y tecnología para ayudarte a destacar y convertir más visitantes en clientes.'
       },
+      header2: {
+        title: { lead: 'Experiencias web', accent: 'interactivas' },
+        subtitle: 'La primera pantalla de tu negocio, con vida propia',
+        hint: 'Toca una portada para ver más →'
+      },
       homeProducts: {
         title: { lead: 'Productos', accent: 'listos para usar' },
         subtitle: 'Creadas por Moravi Studio. Entra con tu cuenta de Google y empieza hoy.',
@@ -187,6 +192,11 @@
           end: 'your business.'
         },
         subtitle: 'Every project combines design, strategy, and technology to help you stand out and turn more visitors into customers.'
+      },
+      header2: {
+        title: { lead: 'Interactive', accent: 'web experiences' },
+        subtitle: "Your business's first screen, with a life of its own",
+        hint: 'Tap a cover to see more →'
       },
       homeProducts: {
         title: { lead: 'Ready-to-use', accent: 'products' },

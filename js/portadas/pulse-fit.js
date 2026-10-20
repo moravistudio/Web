@@ -47,7 +47,7 @@
     var lastTap = -1e9, lastAutoStart = 0, autoLeft = 0, autoNext = 0;
     var waves = [], sparks = [], lastT = 0;
     var ptr = { x: 0, y: 0, in: false }, lp = { x: 0, y: 0 };
-    var t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000;
+    var t0 = performance.now();
     var vis = true, running = false, raf = 0;
 
     function layout() {

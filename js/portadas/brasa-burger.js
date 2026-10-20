@@ -109,7 +109,7 @@
       var life = 4.5 + Math.random() * 3;
       return { x: cx + (Math.random() * 2 - 1) * W * 0.2, y: H * (0.5 + Math.random() * 0.2), r: 26 + Math.random() * 26, g: 20 + Math.random() * 24, vy: 14 + Math.random() * 14, age: anywhere ? Math.random() * life : 0, life: life, a: 0.4 + Math.random() * 0.6, p: Math.random() * 6.28 };
     }
-    var px = 0, tx = 0, hover = false, e = 0, t0 = performance.now() - (parseFloat((/[?&]t=([0-9.]+)/.exec(location.search) || [])[1]) || 0) * 1000, vis = true, running = false, raf = 0;
+    var px = 0, tx = 0, hover = false, e = 0, t0 = performance.now(), vis = true, running = false, raf = 0;
 
     function layout() {
       var r = el.getBoundingClientRect(); W = r.width; H = r.height;
