@@ -175,3 +175,25 @@
 .cv-flora .cv__logo { position: absolute; z-index: 4; top: 7cqh; left: 4cqw; font: 400 7cqh/1 'Poppins', sans-serif; letter-spacing: .06em; color: #4a2f4f; pointer-events: none; }
 .cv-flora .cv__logo b { font-weight: 800; letter-spacing: .2em; }
 @media (prefers-reduced-motion: reduce) { .cv-flora .cv__bgnew { transition: none; } }
+
+/* ---------- 7 · Flora (florería) — «Elige tu ramo», horizontal ---------- */
+.cv-ramo { background: linear-gradient(135deg, #f8f2e6 0%, #efe6d3 100%); color: #3d4a3a; }
+.cv-ramo .cv__paper { position: absolute; left: 0; top: 0; bottom: 0; width: 60%; background: radial-gradient(70% 80% at 50% 100%, rgba(173, 190, 165, .45), transparent 70%); pointer-events: none; }
+.cv-ramo .cv__flowers { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.cv-ramo .cv__fl { will-change: transform, opacity; }
+.cv-ramo .cv__fl img { filter: drop-shadow(0 .8cqh 1.2cqh rgba(60, 50, 30, .22)); }
+.cv-ramo .cv__fx { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 4; pointer-events: none; }
+.cv-ramo .cv__logo { position: absolute; z-index: 5; top: 7cqh; left: 4cqw; font: 600 8cqh/1 Georgia, 'Times New Roman', serif; letter-spacing: .3em; color: #3d5a3d; pointer-events: none; }
+.cv-ramo .cv__title { position: absolute; z-index: 5; left: 62.5cqw; width: 33cqw; top: 9cqh; text-align: center; font: italic 400 6.6cqh/1 Georgia, 'Times New Roman', serif; color: #5b6b57; pointer-events: none; }
+.cv-ramo .cv__chips { position: absolute; z-index: 6; display: flex; flex-wrap: wrap; }
+.cv-ramo .cv__chip { position: relative; padding: 0; border: .45cqh solid rgba(61, 90, 61, .25); border-radius: 50%; background: #fffdf8; overflow: visible; cursor: pointer; transition: transform .2s cubic-bezier(.2, 1.5, .4, 1), border-color .2s ease, box-shadow .2s ease; box-shadow: 0 .6cqh 1.6cqh rgba(60, 50, 30, .12); }
+.cv-ramo .cv__chip canvas { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; pointer-events: none; }
+.cv-ramo .cv__chip.on { border-color: #3d5a3d; box-shadow: 0 0 0 .7cqh rgba(61, 90, 61, .18), 0 .8cqh 2cqh rgba(60, 50, 30, .2); }
+.cv-ramo .cv__chip.on::after { content: ''; position: absolute; right: -.4cqh; top: -.4cqh; width: 28%; height: 28%; border-radius: 50%; background: #3d5a3d; box-shadow: 0 0 0 .4cqh #fffdf8; }
+.cv-ramo .cv__chip-n { position: absolute; left: 50%; bottom: -5.6cqh; transform: translateX(-50%); white-space: nowrap; font: 500 3.9cqh/1 'Inter', sans-serif; color: #5b6b57; opacity: 0; transition: opacity .18s ease; pointer-events: none; }
+.cv-ramo .cv__chip:hover .cv__chip-n { opacity: 1; }
+.cv-ramo .cv__sum { position: absolute; z-index: 5; left: 62.5cqw; width: 33cqw; bottom: 22cqh; text-align: center; font: 500 4.6cqh/1.2 'Inter', sans-serif; color: #3d4a3a; pointer-events: none; min-height: 6cqh; }
+.cv-ramo .cv__sum-t { display: inline-block; transition: opacity .16s ease; }
+.cv-ramo .cv__sum-t.swap { opacity: 0; }
+.cv-ramo .cv__btn { position: absolute; z-index: 5; left: 79.5cqw; bottom: 7cqh; transform: translateX(-50%); white-space: nowrap; padding: 3cqh 7cqh; border-radius: 99px; background: #3d5a3d; color: #fffdf8; font: 600 5cqh/1 'Poppins', sans-serif; letter-spacing: .06em; pointer-events: none; box-shadow: 0 1cqh 2.4cqh rgba(61, 90, 61, .3); }
+@media (prefers-reduced-motion: reduce) { .cv-ramo .cv__chip, .cv-ramo .cv__chip-n, .cv-ramo .cv__sum-t { transition: none; } }
