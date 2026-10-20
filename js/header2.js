@@ -10,7 +10,9 @@
   var wrap = document.querySelector('.hero-slides');
   if (!wrap) return;
   var hero2 = wrap.querySelector('.hero2');
-  var dots = Array.prototype.slice.call(wrap.querySelectorAll('.hero-dots button'));
+  var dots = Array.prototype.slice.call(wrap.querySelectorAll('.hero-dot'));
+  var nextBtn = wrap.querySelector('.hero-next');
+  wrap.classList.add('js-on');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var root = document.documentElement;
   var cur = 0, timer = 0, lastTouch = -1e9, hovering = false, visible = true, started = false, covers = false;
@@ -41,6 +43,7 @@
   function touched() { lastTouch = Date.now(); }
 
   dots.forEach(function (d, k) { d.addEventListener('click', function () { touched(); show(k); }); });
+  if (nextBtn) nextBtn.addEventListener('click', function () { touched(); show(cur === 0 ? 1 : 0); });
   hero2.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') { hovering = true; } });
   hero2.addEventListener('pointerleave', function () { hovering = false; touched(); });
   ['pointerdown', 'touchstart', 'keydown'].forEach(function (ev) { hero2.addEventListener(ev, touched, { passive: true }); });

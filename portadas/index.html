@@ -8,90 +8,60 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/portadas.css">
+  <link rel="stylesheet" href="../css/portadas.css?v=2">
+  <link rel="stylesheet" href="../css/portadas-wide.css?v=1">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
-    .wrap{width:min(1180px,calc(100vw - 48px));margin:0 auto;padding:40px 0 80px}
+    .wrap{width:min(1560px,calc(100vw - 64px));margin:0 auto;padding:40px 0 90px}
     .back{color:#1E8CFF;text-decoration:none;font-weight:600;font-size:14px}
     h1{font:700 clamp(30px,4vw,48px)/1.12 'Poppins',sans-serif;margin-top:18px;letter-spacing:-.01em}
     h1 em{font-style:normal;color:#1E8CFF}
-    .lead{margin-top:12px;color:#5C6A7E;font-size:18px;max-width:640px;line-height:1.5}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(520px,100%),1fr));gap:34px;margin-top:40px}
-    .card{background:#fff;border:1px solid #dde5f0;border-radius:20px;padding:18px 18px 22px;box-shadow:0 8px 28px rgba(14,26,45,.07)}
-    .browser{border-radius:14px;overflow:hidden;border:1px solid #d5deea;background:#fff}
-    .browser__bar{display:flex;align-items:center;gap:6px;height:30px;padding:0 12px;background:#eef2f8;border-bottom:1px solid #d5deea}
-    .browser__bar i{width:10px;height:10px;border-radius:50%;background:#cbd5e3}
-    .browser__bar span{margin-left:10px;font-size:12px;color:#8a97ab}
-    .browser__body{aspect-ratio:1/1;border-radius:0}
-    .browser__body--round{display:grid;place-items:center;background:#eef2f8}
-    .browser__body--round .round{width:88%;aspect-ratio:1/1;border-radius:50%;overflow:hidden;box-shadow:0 14px 34px rgba(14,26,45,.25)}
-    .card--wide{grid-column:1/-1}
-    .browser__body--wide{aspect-ratio:2.6/1}
-    .browser__body--tall{aspect-ratio:210/436;max-width:360px;margin:0 auto}
-    .card h2{font:700 20px 'Poppins',sans-serif;margin-top:16px}
-    .card .tag{display:inline-block;margin-top:6px;font-size:12px;font-weight:600;color:#1E8CFF;background:rgba(30,140,255,.1);padding:4px 10px;border-radius:99px}
-    .card p{margin-top:10px;color:#5C6A7E;font-size:15px;line-height:1.5}
+    .lead{margin-top:12px;color:#5C6A7E;font-size:18px;max-width:720px;line-height:1.5}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 26px;margin-top:40px}
+    .card{background:#fff;border:1px solid #dde5f0;border-radius:22px;padding:12px 12px 20px;box-shadow:0 8px 28px rgba(14,26,45,.07)}
+    .card .pw{border-radius:14px}
+    .card__row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:16px 8px 0}
+    .card h2{font:700 19px 'Poppins',sans-serif}
+    .tag{display:inline-block;font-size:12px;font-weight:600;color:#1E8CFF;background:rgba(30,140,255,.1);padding:4px 10px;border-radius:99px;white-space:nowrap}
+    .card p{margin:8px 8px 0;color:#5C6A7E;font-size:14px;line-height:1.5}
+    .card__go{display:inline-flex;align-items:center;gap:6px;margin:14px 8px 0;font:600 14px 'Inter',sans-serif;color:#0A1B3C;text-decoration:none;border-bottom:2px solid #1E8CFF;padding-bottom:2px}
+    .card__go:hover{color:#1E8CFF}
     .soon{margin-top:34px;color:#8a97ab;font-size:14px}
+    @media (max-width:1100px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:680px){.wrap{width:calc(100vw - 32px)}.grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <a class="back" href="../">← Volver a Moravi Studio</a>
     <h1>Catálogo de portadas <em>interactivas</em></h1>
-    <p class="lead">La primera pantalla de un negocio, con vida propia. Cada portada se mueve: pasa el cursor o tócala.</p>
-    <div class="grid">
-      <article class="card" id="brasa-burger">
-        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>brasaburger.com</span></div><div class="browser__body"><div class="cv cv-burger" id="burger"></div></div></div>
-        <h2>Brasa Burger</h2><span class="tag">Hamburguesería</span>
-        <p>La hamburguesa se arma capa por capa y se abre sola, o cuando pasas el cursor. Las brasas suben de fondo.</p>
-      </article>
-      <article class="card" id="luna-gelato">
-        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>lunagelato.com</span></div><div class="browser__body browser__body--tall"><div class="cv cv-gelato" id="gelato"></div></div></div>
-        <h2>Luna Gelato</h2><span class="tag">Heladería</span>
-        <p>El helado se arma sobre el cono, bola por bola. Cada cierto tiempo, o cuando pasas el cursor, se abre, gotea y cambia de sabor.</p>
-      </article>
-      <article class="card" id="origen-cafe">
-        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>origencafe.com</span></div><div class="browser__body"><div class="cv cv-cafe" id="cafe"></div></div></div>
-        <h2>Origen Café</h2><span class="tag">Cafetería</span>
-        <p>El vapor se aparta cuando pasas el cursor, los granos flotan con profundidad, y cada clic sirve café: ondas en la taza y un grano que cae.</p>
-      </article>
-      <article class="card" id="pulse-fit">
-        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>pulsefit.com</span></div><div class="browser__body browser__body--round"><div class="round"><div class="cv cv-pulse" id="pulse"></div></div></div></div>
-        <h2>Pulse Fit</h2><span class="tag">Gimnasio</span>
-        <p>Cada clic o toque suma una repetición: la pesa se contrae, salen chispas y el anillo se llena. Al llegar a 10, destello y "¡META!". Si nadie la toca, el anillo se vacía solo.</p>
-      </article>
-      <article class="card" id="aurea">
-        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>aurea-joyas.com</span></div><div class="browser__body"><div class="cv cv-aurea" id="aurea-cv"></div></div></div>
-        <h2>Aurea</h2><span class="tag">Joyería</span>
-        <p>La luz hace brillar la joya: pasa el cursor y el oro y la piedra resplandecen con destellos. Cada clic lanza polvo dorado y cambia la piedra: diamante, zafiro y esmeralda.</p>
-      </article>
-      <article class="card card--wide" id="kicks">
-        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>kicks-store.com</span></div><div class="browser__body browser__body--wide"><div class="cv cv-kicks" id="kicks-cv"></div></div></div>
-        <h2>Kicks</h2><span class="tag">Zapatillas</span>
-        <p>Una zapatilla sobre un fondo de color con una palabra gigante detrás. El cursor la inclina; cada clic lanza una onda de color que cambia el fondo y la palabra, y la zapatilla salta.</p>
-      </article>
-      <article class="card" id="flora">
-        <div class="browser"><div class="browser__bar"><i></i><i></i><i></i><span>flora-floreria.com</span></div><div class="browser__body browser__body--wide"><div class="cv cv-ramo" id="flora-cv"></div></div></div>
-        <h2>Flora</h2><span class="tag">Florería</span>
-        <p>Elige tu ramo: seis flores para escoger. Cada clic agrega una flor al ramo, que se acomoda en abanico; otro clic la quita. Un resumen muestra las flores elegidas y el cursor mece el ramo.</p>
-      </article>
-    </div>
+    <p class="lead">La primera pantalla de un negocio, con vida propia. Cada portada se mueve: pasa el cursor o tócala, y abre la que quieras ver completa.</p>
+    <div class="grid" id="grid"></div>
     <p class="soon">Pronto habrá más portadas.</p>
   </div>
-  <script src="../js/portadas/brasa-burger.js"></script>
-  <script src="../js/portadas/luna-gelato.js"></script>
-  <script src="../js/portadas/origen-cafe.js"></script>
-  <script src="../js/portadas/pulse-fit.js"></script>
-  <script src="../js/portadas/aurea.js"></script>
-  <script src="../js/portadas/zapatilla.js"></script>
-  <script src="../js/portadas/ramo.js"></script>
-  <script>BrasaBurger.init(document.getElementById('burger'));
-  LunaGelato.init(document.getElementById('gelato'));
-  OrigenCafe.init(document.getElementById('cafe'));
-  PulseFit.init(document.getElementById('pulse'));
-  Aurea.init(document.getElementById('aurea-cv'));
-  Kicks.init(document.getElementById('kicks-cv'));
-  Ramo.init(document.getElementById('flora-cv'));</script>
+  <script src="../js/portadas/brasa-burger.js?v=2"></script>
+  <script src="../js/portadas/luna-gelato.js?v=2"></script>
+  <script src="../js/portadas/origen-cafe.js?v=2"></script>
+  <script src="../js/portadas/pulse-fit.js?v=2"></script>
+  <script src="../js/portadas/aurea.js?v=2"></script>
+  <script src="../js/portadas/zapatilla.js?v=2"></script>
+  <script src="../js/portadas/ramo.js?v=2"></script>
+  <script src="../js/portadas/montar.js?v=1"></script>
+  <script>
+    (function () {
+      var grid = document.getElementById('grid');
+      PortadasAnchas.list.forEach(function (p) {
+        var card = document.createElement('article'); card.className = 'card'; card.id = p.key;
+        var slot = document.createElement('div'); card.appendChild(slot);
+        var row = document.createElement('div'); row.className = 'card__row'; row.innerHTML = '<h2>' + p.name + '</h2><span class="tag">' + p.tag + '</span>'; card.appendChild(row);
+        var d = document.createElement('p'); d.textContent = p.about; card.appendChild(d);
+        var a = document.createElement('a'); a.className = 'card__go'; a.href = 'ver.html?c=' + p.key; a.innerHTML = 'Ver portada completa <span aria-hidden="true">→</span>'; card.appendChild(a);
+        grid.appendChild(card);
+        PortadasAnchas.mount(slot, p.key);
+      });
+      if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) setTimeout(function () { t.scrollIntoView({ block: 'center' }); }, 300); }
+    })();
+  </script>
 </body>
 </html>
