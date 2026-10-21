@@ -20,8 +20,6 @@
       var px = clamp((e.clientX - r.left) / r.width, 0, 1), py = clamp((e.clientY - r.top) / r.height, 0, 1);
       card.style.setProperty('--ty', ((px - 0.5) * 2 * MAX).toFixed(2) + 'deg');
       card.style.setProperty('--tx', ((0.5 - py) * 2 * MAX).toFixed(2) + 'deg');
-      card.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
-      card.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
     }
     function end() { card.classList.remove('is-tilting'); card.style.setProperty('--tx', '0deg'); card.style.setProperty('--ty', '0deg'); }
     card.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse' && !phone.matches) card.classList.add('is-tilting'); });
