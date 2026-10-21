@@ -193,3 +193,15 @@
 .cv-ramo .cv__sum-t.swap { opacity: 0; }
 .cv-ramo .cv__btn { position: absolute; z-index: 5; left: 79.5cqw; bottom: 7cqh; transform: translateX(-50%); white-space: nowrap; padding: 2.1cqh 5.2cqh; border-radius: 99px; background: #3d5a3d; color: #fffdf8; font: 500 3.7cqh/1 'Poppins', sans-serif; letter-spacing: .08em; pointer-events: none; box-shadow: 0 1cqh 2.4cqh rgba(61, 90, 61, .3); }
 @media (prefers-reduced-motion: reduce) { .cv-ramo .cv__chip, .cv-ramo .cv__chip-n, .cv-ramo .cv__sum-t { transition: none; } }
+
+/* Caja de Flora en el inicio (Header 2): misma paleta durazno y terracota de la portada ancha */
+#h2-flora.cv-ramo { background: linear-gradient(135deg, #fee9dc 0%, #fadcc8 100%); color: #8a3b2e; }
+#h2-flora.cv-ramo .cv__paper { background: radial-gradient(70% 80% at 50% 100%, rgba(224, 103, 90, .16), transparent 70%); }
+#h2-flora.cv-ramo .cv__logo { color: #8a3b2e; }
+#h2-flora.cv-ramo .cv__title { color: #b5513f; }
+#h2-flora.cv-ramo .cv__chip { border-color: rgba(224, 103, 90, .30); box-shadow: 0 .6cqh 1.6cqh rgba(138, 59, 46, .12); }
+#h2-flora.cv-ramo .cv__chip.on { border-color: #e0675a; box-shadow: 0 0 0 .7cqh rgba(224, 103, 90, .17), 0 .8cqh 2cqh rgba(138, 59, 46, .2); }
+#h2-flora.cv-ramo .cv__chip.on::after { background: #e0675a; box-shadow: 0 0 0 .4cqh #fff6ef; }
+#h2-flora.cv-ramo .cv__chip-n { color: #8a3b2e; }
+#h2-flora.cv-ramo .cv__sum { color: #8a3b2e; }
+#h2-flora.cv-ramo .cv__btn { background: #e0675a; color: #fffdf8; box-shadow: 0 1cqh 2.4cqh rgba(224, 103, 90, .38); }
