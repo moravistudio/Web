@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="css/styles.css?v=9">
   <link rel="stylesheet" href="css/portadas.css?v=8">
   <link rel="stylesheet" href="css/header2.css?v=6">
+  <link rel="stylesheet" href="css/header-catalogos.css?v=2">
 </head>
 <body>
   <script>try{if(!sessionStorage.getItem('moravi-intro-visto'))document.documentElement.classList.add('intro-on','scene-wait');}catch(e){document.documentElement.classList.add('intro-on','scene-wait');}</script>
@@ -99,7 +100,85 @@
     </div>
   </section>
 
-  <!-- ---- Header 2: mosaico de portadas interactivas ---- -->
+  <!-- ---- Header 2: Catálogo Online y Catálogo a tu medida (una pantalla de dos partes que se corre como una ventana) ---- -->
+  <section class="hero-cat" aria-label="Catálogo Online y catálogo a tu medida">
+    <div class="hero-cat__inner">
+      <div class="h3 anim" id="hc">
+
+        <article class="pane pane--a" id="hc-pa">
+          <div class="pane__in">
+            <div class="txt">
+              <span class="eyebrow" data-i18n="hcat.a.eyebrow">Catálogo Online</span>
+              <h2><span data-i18n="hcat.a.h1">Publica tu catálogo y</span> <em data-i18n="hcat.a.h2">recibe pedidos por WhatsApp</em></h2>
+              <p class="sub" data-i18n="hcat.a.sub">Crea tu catálogo en minutos, compártelo con un enlace o un QR y gestiona todo desde tu panel.</p>
+              <ul class="ul">
+                <li data-i18n="hcat.a.b1">Recibe pedidos completos por WhatsApp</li>
+                <li data-i18n="hcat.a.b2">Tus clientes compran desde su celular</li>
+                <li data-i18n="hcat.a.b3">Sin comisiones por venta</li>
+              </ul>
+              <div class="row">
+                <a class="hc-btn" href="#" data-product-url="https://catalogonline.moravistudio.com/api/auth/moravi-session" data-i18n="hcat.a.btn">Probar 14 días gratis</a>
+                <a class="live" href="https://catalogonline.moravistudio.com/catalogo/lulabeebikinis" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg><span data-i18n="hcat.a.live">Ver un catálogo en vivo</span></a>
+              </div>
+            </div>
+            <div class="vis" aria-hidden="true">
+              <div class="fl fl--tag" data-i18n="hcat.a.pill">Vende a cualquier hora</div>
+              <div class="dev3 dev3--laptop" data-dev="laptop"><div class="dev3__in"><div class="dev3__scr"><img src="assets/img/h3-catalogo-escritorio.webp" alt="" loading="lazy"></div><img class="dev3__img" src="assets/img/dev-laptop-vacio.webp" alt="" loading="lazy"></div></div>
+              <div class="dev3 dev3--phone" data-dev="phone">
+                <div class="fl fl--wa"><span class="fl__ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.8-.1 1.3z"/></svg></span><div><b data-i18n="hcat.a.wa1">Pedidos directo</b><small data-i18n="hcat.a.wa2">a tu WhatsApp</small></div></div>
+                <div class="dev3__in"><div class="dev3__scr"><img src="assets/img/h3-catalogo-celular.webp" alt="" loading="lazy"></div><img class="dev3__img" src="assets/img/dev-celular-vacio.webp" alt="" loading="lazy"></div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="strip strip--a" id="hc-sa" aria-label="Ver Catálogo Online" style="opacity:0;pointer-events:none">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"></polyline></svg>
+            <span class="strip__lbl" data-i18n="hcat.a.strip">Catálogo online</span>
+            <span class="grip"><i></i><i></i><i></i></span>
+          </button>
+        </article>
+
+        <article class="pane pane--b" id="hc-pb">
+          <div class="pane__in">
+            <div class="txt">
+              <span class="eyebrow" data-i18n="hcat.b.eyebrow">Catálogo a tu medida</span>
+              <h2><span data-i18n="hcat.b.h1">Un catálogo con</span> <em data-i18n="hcat.b.h2">tu marca</em><span data-i18n="hcat.b.h3">, hecho para tu negocio</span></h2>
+              <p class="sub" data-i18n="hcat.b.sub">Lo diseñamos con tus colores, tu logo y el estilo de tu marca.</p>
+              <ul class="ul">
+                <li data-i18n="hcat.b.b1">Un catálogo diseñado para tu negocio</li>
+                <li data-i18n="hcat.b.b2">Funciones adaptadas a tu forma de vender</li>
+                <li data-i18n="hcat.b.b3">Soporte para mantenerlo siempre al día</li>
+              </ul>
+              <div class="row"><a class="hc-btn" href="#contacto" data-i18n="hcat.b.btn">Cotiza el tuyo</a>
+                <div class="dots" role="group" aria-label="Elige un color">
+                  <span data-i18n="hcat.b.color">Elige un color:</span>
+                  <button type="button" class="dot on" style="--c:#2F8F5B" data-b="#2F8F5B" data-s="#E4F3EA" data-bg="#F3FAF6" aria-label="Verde"></button>
+                  <button type="button" class="dot" style="--c:#2F6FED" data-b="#2F6FED" data-s="#E3EBFD" data-bg="#F2F6FE" aria-label="Azul"></button>
+                  <button type="button" class="dot" style="--c:#E8579A" data-b="#E8579A" data-s="#FBE3EE" data-bg="#FEF4F8" aria-label="Rosado"></button>
+                  <button type="button" class="dot" style="--c:#D93636" data-b="#D93636" data-s="#FBE2E2" data-bg="#FEF3F3" aria-label="Rojo"></button>
+                </div>
+              </div>
+            </div>
+            <div class="vis" aria-hidden="true">
+              <div class="dev3 dev3--laptop" data-dev="laptop"><div class="dev3__in"><div class="dev3__scr"><div class="mc mc--lap" data-mc="clothes"></div></div><img class="dev3__img" src="assets/img/dev-laptop-vacio.webp" alt="" loading="lazy"></div></div>
+              <div class="fl fl--pill" data-i18n="hcat.b.pill">Diseño único para tu marca</div>
+              <div class="dev3 dev3--tablet" data-dev="tablet">
+                <div class="fl fl--dom"><span class="fl__ic" style="background:var(--brand);color:#fff;font:800 15px/1 Poppins,sans-serif">T</span><div><b data-i18n="hcat.b.logo1">Tu logo</b><small data-i18n="hcat.b.logo2">y tus colores</small></div></div>
+                <div class="dev3__in"><div class="dev3__scr"><div class="mc mc--tab" data-mc="clothes"></div></div><img class="dev3__img" src="assets/img/dev-tablet-vacio.webp" alt="" loading="lazy"></div>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="strip strip--b" id="hc-sb" aria-label="Ver Catálogo a tu medida">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 5 8 12 15 19"></polyline></svg>
+            <span class="strip__lbl" data-i18n="hcat.b.strip">Catálogo a tu medida</span>
+            <span class="grip"><i></i><i></i><i></i></span>
+          </button>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Header 3: mosaico de portadas interactivas ---- -->
   <section class="hero2" aria-label="Portadas interactivas">
     <div class="hero2__inner">
       <div class="mosaic">
@@ -414,7 +493,8 @@
   <script src="js/portadas/aurea.js?v=2" defer></script>
   <script src="js/portadas/zapatilla.js?v=2" defer></script>
   <script src="js/portadas/ramo.js?v=9" defer></script>
-  <script src="js/header2.js?v=2" defer></script>
+  <script src="js/header-catalogos.js?v=1" defer></script>
+  <script src="js/header2.js?v=3" defer></script>
   <script src="js/auth-gate.js" defer></script>
   <script src="js/productos-carrusel.js" defer></script>
   <script src="js/tarjetas-efecto.js" defer></script>

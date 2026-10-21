@@ -1,0 +1,180 @@
+/* ===== Header 2 del inicio: «Catálogo Online» y «Catálogo a tu medida» en una sola pantalla de dos partes que se corre como una ventana =====
+   Va entre el Header 1 (laptop/tablet/celular) y las portadas interactivas (ahora el Header 3). Ocupa el mismo bloque que los otros dos.
+   Todos los selectores viven dentro de .hero-cat para no afectar nada del resto del sitio. */
+.hero-cat { display: none; position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; overflow: hidden; font-family: 'Inter', system-ui, sans-serif; color: #0E1A2D; }
+.hero-slides.has-cat > .hero-cat { display: block; }
+.hero-slides.is-cat > .hero-cat { opacity: 1; }
+.hero-slides:not(.is-cat) > .hero-cat { pointer-events: none; }
+.hero-slides.is-cat > .hero { opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s; }
+.hero-cat__inner { position: absolute; inset: 104px clamp(24px, 4.5vw, 96px) 76px; }
+.hero-cat img { max-width: none; }
+.hero-cat .h3 { --s: 64px; position: relative; width: min(100%, 1900px); height: 100%; margin: 0 auto; border-radius: 24px; overflow: hidden; background: #fff; isolation: isolate; }
+@media (max-width: 768px) { .hero-cat__inner { inset: 76px 12px 8px; } }
+.hero-cat *, .hero-cat *::before, .hero-cat *::after {box-sizing:border-box;margin:0;padding:0}
+.hero-cat .pane {position:absolute;top:0;left:0;height:100%;width:calc(100% - var(--s));touch-action:pan-y;will-change:transform}
+.hero-cat .h3.anim .pane {transition:transform .65s cubic-bezier(.65,.05,.25,1)}
+.hero-cat .pane__in {position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);align-items:center;gap:20px;padding:0 clamp(28px,4vw,64px)}
+.hero-cat .txt {position:relative;z-index:2;max-width:520px}
+.hero-cat .eyebrow {display:inline-block;font:700 12px/1 'Poppins',sans-serif;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px;color:var(--brand)}
+.hero-cat h2 {font:800 clamp(28px,3vw,42px)/1.08 'Poppins',sans-serif;letter-spacing:-.02em}
+.hero-cat h2 em {font-style:normal;color:var(--brand)}
+.hero-cat .sub {margin-top:12px;font-size:16px;line-height:1.5;color:#5C6A7E;max-width:470px}
+.hero-cat .ul {list-style:none;margin-top:18px;display:grid;gap:10px}
+.hero-cat .ul li {display:flex;align-items:center;gap:11px;font-size:15.5px;font-weight:500;color:#243349}
+.hero-cat .ul li::before {content:'';flex:none;width:20px;height:20px;border-radius:50%;background:var(--brand) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.5l3 3 6-6.5' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;transition:background-color .5s}
+.hero-cat .row {margin-top:26px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.hero-cat .hc-btn {display:inline-flex;align-items:center;gap:8px;font:600 15.5px/1 'Poppins',sans-serif;color:#fff;background:var(--brand);padding:16px 28px;border-radius:99px;text-decoration:none;box-shadow:0 10px 26px -8px var(--brand);transition:background-color .5s,box-shadow .25s,transform .2s}
+.hero-cat .hc-btn:hover {transform:translateY(-2px);box-shadow:0 14px 34px -6px var(--brand),0 0 0 6px color-mix(in srgb,var(--brand) 18%,transparent)}
+.hero-cat .live {display:inline-flex;align-items:center;gap:8px;font:600 14.5px/1 'Poppins',sans-serif;color:var(--brand);text-decoration:none;padding:10px 4px;border-bottom:2px solid transparent;transition:border-color .2s}
+.hero-cat .live:hover {border-bottom-color:var(--brand)}
+.hero-cat .price {margin-top:12px;font-size:13.5px;color:#5C6A7E}
+.hero-cat .price b {color:#0E1A2D;font-weight:600}
+/* 3A: Catálogo Online (suscripción), siempre con el azul de Moravi */
+.hero-cat .pane--a {--brand:#1E8CFF;--soft:rgba(30,140,255,.1);background:linear-gradient(135deg,#ffffff 0%,#f2f7ff 100%)}
+/* 3B: Catálogo a tu medida (cambia de marca al elegir un color) */
+.hero-cat .pane--b {--brand:#2F8F5B;--soft:#E4F3EA;--bg:#F3FAF6;background:var(--bg);transition:background-color .5s}
+.hero-cat .dots {display:flex;align-items:center;gap:9px}
+.hero-cat .dots span {font:500 13.5px/1 'Inter',sans-serif;color:#5C6A7E;margin-right:2px}
+.hero-cat .dot {width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px rgba(14,26,45,.15);cursor:pointer;background:var(--c);transition:transform .2s,box-shadow .2s}
+.hero-cat .dot:hover {transform:scale(1.12)}
+.hero-cat .dot.on {box-shadow:0 0 0 2px var(--c)}
+/* aparatos: imágenes reales (las del Header 1) con la pantalla vacía; el contenido se coloca detrás con la perspectiva exacta */
+.hero-cat .vis {position:relative;height:min(100%,440px);align-self:center;min-width:0;animation:hcBob 7s ease-in-out infinite}
+@keyframes hcBob {0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.hero-cat .dev3 {position:absolute;aspect-ratio:var(--ar);filter:drop-shadow(0 20px 22px rgba(14,26,45,.28))}
+.hero-cat .dev3__in {position:absolute;left:0;top:0;transform-origin:0 0}
+.hero-cat .dev3__scr {position:absolute;left:0;top:0;transform-origin:0 0;overflow:hidden;background:#fff}
+.hero-cat .dev3__scr>img {width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.hero-cat .dev3__scr .mc {width:100%;height:100%}
+.hero-cat .dev3__img {position:absolute;left:0;top:0;display:block;pointer-events:none}
+.hero-cat .dev3--laptop {left:0;bottom:2%;width:78%;--ar:1536/1024}
+.hero-cat .dev3--phone {right:1%;bottom:-3%;width:25%;--ar:1024/1536;z-index:2}
+.hero-cat .dev3--tablet {right:0;bottom:-3%;width:28%;--ar:1024/1536;z-index:2}
+/* mini catálogo (se dibuja varias veces) */
+.hero-cat .mc {container-type:inline-size;background:#fff;overflow:hidden;font-family:'Inter',sans-serif;color:#0E1A2D;position:relative}
+.hero-cat .mc__bar {display:flex;align-items:center;gap:2.6cqw;padding:3cqw 3.4cqw;background:var(--brand);color:#fff;transition:background-color .5s}
+.hero-cat .mc__logo {width:7cqw;height:7cqw;border-radius:50%;background:#fff;color:var(--brand);font:800 3.8cqw/7cqw 'Poppins',sans-serif;text-align:center;font-style:normal;transition:color .5s}
+.hero-cat .mc__bar b {font:700 3.4cqw/1 'Poppins',sans-serif}
+.hero-cat .mc__search {margin-left:auto;width:26cqw;height:5.4cqw;border-radius:3cqw;background:rgba(255,255,255,.25)}
+.hero-cat .mc__wa {width:6cqw;height:6cqw;display:grid;place-items:center;color:#fff}
+.hero-cat .mc__wa svg {width:100%!important;height:100%!important}
+.hero-cat .mc__chips {display:flex;gap:2cqw;padding:3cqw 3.4cqw 1cqw}
+.hero-cat .mc__chips u {text-decoration:none;font:600 2.6cqw/1 'Inter',sans-serif;padding:1.5cqw 3cqw;border-radius:3cqw;background:#eef2f8;color:#4a5a70}
+.hero-cat .mc__chips u.on {background:var(--brand);color:#fff;transition:background-color .5s}
+.hero-cat .mc__grid {display:grid;grid-template-columns:repeat(3,1fr);gap:2.6cqw;padding:2cqw 3.4cqw}
+.hero-cat .mc--phone .mc__grid {grid-template-columns:repeat(2,1fr)}
+.hero-cat .mc--phone .mc__card:nth-child(3) {display:none}
+.hero-cat .mc--tab .mc__grid {grid-template-columns:repeat(2,1fr)}
+.hero-cat .mc__wa {position:relative}
+.hero-cat .mc__badge {position:absolute;right:-38%;top:-42%;min-width:2.8cqw;height:2.8cqw;padding:0 .7cqw;border-radius:99px;background:#fff;color:var(--brand);font:800 1.8cqw/2.8cqw 'Inter',sans-serif;text-align:center;box-shadow:0 .4cqw 1cqw rgba(0,0,0,.25);display:none;transition:color .5s}
+.hero-cat .mc__badge.on {display:block}
+.hero-cat .mc__wa.bump {animation:hcCartBump .45s ease}
+@keyframes hcCartBump {0%{transform:scale(1)}35%{transform:scale(1.35)}100%{transform:scale(1)}}
+.hero-cat .mc__fly {position:absolute;z-index:6;width:9cqw;height:9cqw;object-fit:contain;pointer-events:none;border-radius:50%;background:#fff;box-shadow:0 .8cqw 2cqw rgba(0,0,0,.25);padding:.8cqw}
+.hero-cat .mc__card em {transition:background-color .3s,transform .15s,filter .3s}
+.hero-cat .mc__card em.press {transform:scale(.94);filter:brightness(1.1)}
+.hero-cat .mc__card em.added {background:color-mix(in srgb,var(--brand) 78%,#000)}
+/* pantalla ancha (laptop): todo ocupa la pantalla completa, sin huecos: barra, filtros, fotos, nombre, precio y botón Agregar */
+.hero-cat .mc--lap .mc__bar {padding:2.1cqw 3cqw;gap:1.8cqw}
+.hero-cat .mc--lap .mc__logo {width:5cqw;height:5cqw;font:800 2.8cqw/5cqw 'Poppins',sans-serif}
+.hero-cat .mc--lap .mc__bar b {font-size:2.5cqw}
+.hero-cat .mc--lap .mc__search {width:24cqw;height:3.8cqw}
+.hero-cat .mc--lap .mc__wa {width:4.2cqw;height:4.2cqw}
+.hero-cat .mc--lap .mc__chips {padding:2.4cqw 3cqw .8cqw;gap:1.6cqw}
+.hero-cat .mc--lap .mc__chips u {font-size:1.9cqw;padding:1.2cqw 2.6cqw}
+.hero-cat .mc--lap .mc__grid {gap:2.2cqw;padding:1.8cqw 3cqw}
+.hero-cat .mc--lap .mc__card {padding:1.2cqw;border-radius:1.6cqw}
+.hero-cat .mc--lap .mc__img {aspect-ratio:1/.92;border-radius:1.2cqw}
+.hero-cat .mc--lap .mc__card p {font-size:2cqw;min-height:5.2cqw;margin-top:1.1cqw}
+.hero-cat .mc--lap .mc__card s {font-size:1.9cqw;margin-bottom:1.1cqw}
+.hero-cat .mc--lap .mc__card em {font-size:1.9cqw;padding:1.1cqw 0;border-radius:1.2cqw;gap:.9cqw}
+.hero-cat .mc--lap .mc__card em svg {width:2.5cqw!important;height:2.5cqw!important}
+.hero-cat .mc__card {border:1px solid #e6ecf5;border-radius:2.4cqw;padding:1.6cqw;background:#fff;display:flex;flex-direction:column}
+.hero-cat .mc:not(.mc--tab) .mc__card:nth-child(4) {display:none}
+.hero-cat .mc__img {position:relative;aspect-ratio:1/1;border-radius:1.8cqw;background:#fff;border:.35cqw solid #eceff4;overflow:hidden}
+.hero-cat .mc__img img {position:absolute;left:50%;top:50%;width:92%;height:92%;object-fit:contain;transform:translate(-50%,-50%);display:block;z-index:1}
+.hero-cat .mc__img svg {position:absolute;left:50%;top:50%;height:80%;width:auto;transform:translate(-50%,-50%);display:block}
+.hero-cat .mc__img svg .f {fill:var(--brand);transition:fill .5s}
+.hero-cat .mc__img svg .w {fill:none;stroke:#fff;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;opacity:.85}
+.hero-cat .mc__card p {font:600 2.7cqw/1.25 'Inter',sans-serif;margin-top:1.4cqw;min-height:6.8cqw;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hero-cat .mc__card s {text-decoration:none;display:block;margin-bottom:1.4cqw;font:500 2.5cqw/1.2 'Inter',sans-serif;color:#6b7a90;margin-top:.6cqw}
+.hero-cat .mc__card em {font-style:normal;display:flex;align-items:center;justify-content:center;gap:1.2cqw;margin-top:auto;padding:1.4cqw 0;border-radius:2cqw;background:var(--brand);color:#fff;font:600 2.5cqw/1 'Inter',sans-serif;transition:background-color .5s}
+/* tarjetitas que flotan alrededor de los aparatos */
+.hero-cat .fl {position:absolute;z-index:4;background:#fff;border-radius:16px;box-shadow:0 14px 30px -10px rgba(14,26,45,.3);padding:10px 14px;display:flex;align-items:center;gap:10px;animation:hcFlo 6s ease-in-out infinite}
+.hero-cat .fl:nth-of-type(2n) {animation-delay:-3s}
+@keyframes hcFlo {0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.hero-cat .fl b {display:block;font:700 13px/1.2 'Poppins',sans-serif;color:#0E1A2D}
+.hero-cat .fl small {display:block;font:500 11.5px/1.3 'Inter',sans-serif;color:#6b7a90;margin-top:2px}
+.hero-cat .fl__ic {flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#25D366}
+.hero-cat .dev3 .fl {white-space:nowrap}
+.hero-cat .dev3--phone .fl--wa {right:-14%;bottom:103%;top:auto}
+.hero-cat .fl--qr {right:3%;top:3%;flex-direction:column;gap:5px;padding:9px 11px;text-align:center}
+.hero-cat .fl--qr svg {display:block;width:50px;height:50px}
+.hero-cat .fl--tag {left:8%;top:3%;background:#1E8CFF;color:#fff;border-radius:99px;padding:9px 15px;font:700 13px/1 'Poppins',sans-serif;box-shadow:0 12px 26px -8px #1E8CFF;transform:rotate(-4deg)}
+.hero-cat .fl--dom {color:var(--brand)}
+.hero-cat .dev3--tablet .fl--dom {left:15.6%;right:auto;bottom:100%;top:auto}
+.hero-cat .fl--pill {left:8%;top:3%;background:var(--brand);color:#fff;border-radius:99px;padding:9px 15px;font:700 13px/1 'Poppins',sans-serif;box-shadow:0 12px 26px -8px var(--brand);transform:rotate(-4deg);transition:background-color .5s,box-shadow .5s}
+.hero-cat .fl--dom .fl__ic {background:var(--soft);transition:background-color .5s}
+.hero-cat .fl--dom b {color:#0E1A2D}
+.hero-cat .fl--off {right:3%;top:2%;width:78px;height:78px;border-radius:50%;padding:0;justify-content:center;flex-direction:column;gap:0;background:var(--brand);color:#fff;transform:rotate(8deg);box-shadow:0 14px 30px -8px var(--brand);transition:background-color .5s,box-shadow .5s}
+.hero-cat .fl--off span {font:800 22px/1 'Poppins',sans-serif}
+.hero-cat .fl--off em {font:600 10.5px/1 'Inter',sans-serif;font-style:normal;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+.hero-cat .fl--logo {left:46%;top:2%}
+.hero-cat .fl--logo .fl__ic {background:var(--brand);color:#fff;font:800 15px/1 'Poppins',sans-serif;transition:background-color .5s}
+/* franjas verticales: la pantalla que no se ve queda como una franja con su nombre; se agarra y se corre */
+.hero-cat .strip {position:absolute;top:0;bottom:0;width:var(--s);border:0;padding:0;color:#fff;cursor:grab;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;overflow:hidden;touch-action:pan-y;z-index:5;font-family:'Poppins',sans-serif}
+.hero-cat .h3.anim .strip {transition:opacity .65s ease}
+.hero-cat .strip:active {cursor:grabbing}
+.hero-cat .strip--a {right:0;background:linear-gradient(180deg,#2d9bff,#0a62d6)}
+.hero-cat .strip--b {left:0;background:var(--brand);transition:background-color .5s}
+.hero-cat .h3.anim .strip--b {transition:opacity .65s ease,background-color .5s}
+.hero-cat .strip__lbl {writing-mode:vertical-rl;font-weight:700;font-size:13.5px;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap}
+.hero-cat .strip--a .strip__lbl {transform:rotate(180deg)}
+.hero-cat .strip svg {flex:none;animation:hcNudge 5s ease-in-out infinite}
+.hero-cat .strip--a svg {animation-name:hcNudgeR}
+@keyframes hcNudge {0%,72%,100%{transform:translateX(0)}82%{transform:translateX(5px)}91%{transform:translateX(0)}}
+@keyframes hcNudgeR {0%,72%,100%{transform:translateX(0)}82%{transform:translateX(-5px)}91%{transform:translateX(0)}}
+.hero-cat .strip::after {content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(255,255,255,.38) 50%,transparent 70%);transform:translateY(-130%);animation:hcShim 5s ease-in-out infinite;pointer-events:none}
+@keyframes hcShim {0%,70%{transform:translateY(-130%)}100%{transform:translateY(130%)}}
+.hero-cat .strip:hover, .hero-cat .strip:focus-visible {filter:brightness(1.08)}
+.hero-cat .strip:focus-visible {outline:3px solid #fff;outline-offset:-5px}
+.hero-cat .grip {display:grid;gap:4px}
+.hero-cat .grip i {width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.75);display:block}
+@media (max-width:900px) {
+.hero-cat .pane__in {grid-template-columns:1fr;align-items:start;padding:24px 20px 0}
+.hero-cat .vis {position:absolute;left:12px;right:12px;bottom:-4px;height:230px}
+.hero-cat .dev3--laptop {width:72%}
+.hero-cat h2 {font-size:26px}
+.hero-cat .sub {font-size:14.5px;margin-top:8px}
+.hero-cat .ul {margin-top:12px;gap:7px}
+.hero-cat .ul li {font-size:14px}
+.hero-cat .row {margin-top:16px;gap:12px}
+.hero-cat .hc-btn {padding:13px 20px;font-size:14px}
+.hero-cat .strip__lbl {font-size:11.5px;letter-spacing:.16em}
+}
+@media (prefers-reduced-motion:reduce) {
+.hero-cat *, .hero-cat *::before, .hero-cat *::after {transition:none!important;animation:none!important}
+}
+
+/* Celular: el bloque del header es bajo (unos 450 px útiles), así que el texto se compacta, se oculta lo secundario y los aparatos quedan abajo, más chicos */
+@media (max-width: 768px) {
+  .hero-cat .pane__in { padding: 14px 16px 0; }
+  .hero-cat .eyebrow { margin-bottom: 6px; font-size: 11px; }
+  .hero-cat h2 { font-size: 21px; line-height: 1.1; }
+  .hero-cat .sub { display: none; }
+  .hero-cat .ul { margin-top: 8px; gap: 4px; }
+  .hero-cat .ul li { font-size: 12.5px; gap: 8px; }
+  .hero-cat .ul li::before { width: 15px; height: 15px; }
+  .hero-cat .row { margin-top: 10px; gap: 10px; }
+  .hero-cat .hc-btn { padding: 11px 18px; font-size: 13px; }
+  .hero-cat .live { font-size: 12.5px; padding: 6px 2px; }
+  .hero-cat .dots span { display: none; }
+  .hero-cat .dot { width: 22px; height: 22px; }
+  .hero-cat .vis { left: 4px; right: 4px; bottom: -8px; height: 165px; }
+  .hero-cat .fl--tag, .hero-cat .fl--pill { display: none; }
+  .hero-cat .dev3--laptop { width: 68%; }
+  .hero-cat .fl { padding: 7px 10px; border-radius: 12px; gap: 7px; }
+  .hero-cat .fl b { font-size: 11px; }
+  .hero-cat .fl small { font-size: 10px; }
+  .hero-cat .fl__ic { width: 26px; height: 26px; }
+}
