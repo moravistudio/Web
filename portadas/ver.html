@@ -16,8 +16,10 @@
     .top{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(16px,3vw,40px)}
     .top a{color:#1E8CFF;text-decoration:none;font-weight:600;font-size:14px}
     .top__nav{display:flex;gap:18px}
-    .stage{width:min(calc(100vw - 2 * clamp(16px,3vw,40px)),calc((100vh - 150px) * 2.2),1900px);margin:6px auto 0}
+    .stage{width:min(calc(100vw - 2 * clamp(12px,2vw,28px)),calc((100vh - 84px) * 2.2),2200px);margin:6px auto 0}
     .stage .pw{border-radius:20px;box-shadow:0 20px 60px rgba(14,26,45,.18)}
+    /* celular (vertical u horizontal): la portada ocupa todo el ancho de la pantalla, sin márgenes a los lados; el alto sale solo de la proporción */
+    @media (max-width:900px),(pointer:coarse){.top{padding:10px 16px}.stage{width:100vw;margin-top:0}.stage .pw{border-radius:0;box-shadow:none}}
     .info{width:min(calc(100vw - 2 * clamp(16px,3vw,40px)),1100px);margin:22px auto 60px;text-align:center}
     .info h1{font:700 clamp(24px,3vw,34px)/1.15 'Poppins',sans-serif}
     .info .tag{display:inline-block;margin-top:8px;font-size:12px;font-weight:600;color:#1E8CFF;background:rgba(30,140,255,.1);padding:4px 10px;border-radius:99px}
