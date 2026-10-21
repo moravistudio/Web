@@ -44,6 +44,22 @@
         all: 'Ver todas las portadas',
         back: 'Volver'
       },
+      hcat: {
+        a: {
+          eyebrow: 'Catálogo Online', h1: 'Publica tu catálogo y', h2: 'recibe pedidos por WhatsApp',
+          sub: 'Crea tu catálogo en minutos, compártelo con un enlace o un QR y gestiona todo desde tu panel.',
+          b1: 'Recibe pedidos completos por WhatsApp', b2: 'Tus clientes compran desde su celular', b3: 'Sin comisiones por venta',
+          btn: 'Probar 14 días gratis', live: 'Ver un catálogo en vivo', pill: 'Vende a cualquier hora',
+          wa1: 'Pedidos directo', wa2: 'a tu WhatsApp', strip: 'Catálogo online'
+        },
+        b: {
+          eyebrow: 'Catálogo a tu medida', h1: 'Un catálogo con', h2: 'tu marca', h3: ', hecho para tu negocio',
+          sub: 'Lo diseñamos con tus colores, tu logo y el estilo de tu marca.',
+          b1: 'Un catálogo diseñado para tu negocio', b2: 'Funciones adaptadas a tu forma de vender', b3: 'Soporte para mantenerlo siempre al día',
+          btn: 'Cotiza el tuyo', color: 'Elige un color:', pill: 'Diseño único para tu marca',
+          logo1: 'Tu logo', logo2: 'y tus colores', strip: 'Catálogo a tu medida'
+        }
+      },
       homeProducts: {
         title: { lead: 'Productos', accent: 'listos para usar' },
         subtitle: 'Creadas por Moravi Studio. Entra con tu cuenta de Google y empieza hoy.',
@@ -201,6 +217,22 @@
         hint: 'Play with each cover · tap “View” to see it in full',
         all: 'See all covers',
         back: 'Back'
+      },
+      hcat: {
+        a: {
+          eyebrow: 'Online Catalog', h1: 'Publish your catalog and', h2: 'get orders on WhatsApp',
+          sub: 'Create your catalog in minutes, share it with a link or a QR code and manage everything from your dashboard.',
+          b1: 'Get complete orders on WhatsApp', b2: 'Your customers buy from their phones', b3: 'No commission on sales',
+          btn: 'Try it free for 14 days', live: 'See a live catalog', pill: 'Sell around the clock',
+          wa1: 'Orders straight', wa2: 'to your WhatsApp', strip: 'Online catalog'
+        },
+        b: {
+          eyebrow: 'Custom catalog', h1: 'A catalog with', h2: 'your brand', h3: ', made for your business',
+          sub: "We design it with your colors, your logo and your brand's style.",
+          b1: 'A catalog designed for your business', b2: 'Features tailored to how you sell', b3: 'Support to keep it always up to date',
+          btn: 'Get a quote', color: 'Choose a color:', pill: 'One-of-a-kind brand design',
+          logo1: 'Your logo', logo2: 'and your colors', strip: 'Custom catalog'
+        }
       },
       homeProducts: {
         title: { lead: 'Ready-to-use', accent: 'products' },
