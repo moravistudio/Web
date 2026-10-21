@@ -1863,12 +1863,20 @@ img {
   .auth-modal__card { padding: 28px 20px 24px; }
 }
 
+/* Las 5 páginas legales en dos filas centradas bajo el menú: 3 generales arriba, 2 condiciones de productos abajo */
 .footer__legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.footer__legal-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 4px 18px;
-  margin-top: 10px;
 }
 
 .footer__legal .footer__privacy-link {
