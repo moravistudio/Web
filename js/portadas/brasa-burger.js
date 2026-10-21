@@ -232,6 +232,7 @@
     el.addEventListener('pointerup', function (ev) { if (ev.pointerType !== 'mouse') { hover = false; tx = 0; } });
     el.addEventListener('pointercancel', function () { hover = false; tx = 0; });
 
+    document.addEventListener('portadas:idioma', layoutFire); // al cambiar ES/EN la palabra cambia de ancho (fuego / fire): se vuelve a medir
     layout();
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layoutFire(); }); else layoutFire();
     layoutFire();
