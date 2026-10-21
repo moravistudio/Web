@@ -198,3 +198,9 @@
   .hero-cat .dev3--phone .fl--wa { right: 0; }
   .hero-cat .dev3--tablet .fl--dom { left: auto; right: 0; }
 }
+/* Celular, solo «Catálogo a tu medida»: esta parte tiene menos texto que el Catálogo Online, así que el grupo tarjeta + laptop + tablet se sube
+   para que quede el mismo espacio entre las bolitas de color y la tarjeta «Tu logo» que entre la tablet y el borde de abajo. */
+@media (max-width: 900px) {
+  .hero-cat .pane--b .dev3--laptop,
+  .hero-cat .pane--b .dev3--tablet { bottom: max(0px, calc((100cqh - min(48cqw, 75cqh) - 44px) / 2 - 3px)); }
+}
