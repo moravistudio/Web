@@ -11,6 +11,9 @@
   font-family: 'Inter', system-ui, sans-serif;
 }
 .cv *, .cv *::before, .cv *::after { box-sizing: border-box; }
+/* En celular, al tocar una portada no se marca ningún cuadro azul alrededor de lo tocado ni se puede seleccionar/arrastrar */
+.cv, .cv *, .pw, .pw *, .mosaic__tile, .mosaic__tile * { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
+.cv img, .cv canvas { -webkit-user-drag: none; outline: none; }
 .cv a, .cv button { font: inherit; }
 
 /* ---------- 1 · Brasa Burger (hamburguesería) ---------- */
