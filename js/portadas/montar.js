@@ -11,7 +11,7 @@
       about: 'La hamburguesa se arma sola y se abre con el cursor. Las llamas de «fuego» se inclinan hacia donde lo mueves.' },
     { key: 'gelato', name: 'Polar Gelato', tag: 'Heladería', kind: 'wide', layout: 'salpicon', variant: 'f', kh: 0.78, dy: 0.164, tilt: -12, cls: 'cv cv-gelato', api: 'LunaGelato', theme: 'polar',
       brand: '<b>POLAR</b> GELATO', links: ['Sabores', 'Locales', 'Pedidos'], navBtn: 'Pedir', h: 'Toca una bola,<br>salpica el <em>sabor</em>', p: 'Cada toque cambia el sabor<br>y salpica toda la portada.', btn: 'Elegir sabor',
-      about: '' },
+      about: 'Toca las bolas para cambiar el sabor y salpicar la portada.' },
     { key: 'cafe', name: 'Origen Café', tag: 'Cafetería', kind: 'wide', cls: 'cv cv-cafe', api: 'OrigenCafe', theme: 'cafe',
       brand: '<b>ORIGEN</b> CAFÉ', links: ['Menú', 'Granos', 'Suscripción', 'Visítanos'], navBtn: 'Reservar', cart: true, cx: 0.74, usc: 0.84, h: 'Despierta<br><em>tus sentidos</em>', p: 'Café de origen, tostado cada mañana.<br>Haz clic y mira caer un grano.', btn: 'Pedir ahora',
       about: 'El vapor se aparta cuando pasas el cursor, los granos flotan con profundidad y cada clic hace caer un grano en el café.' },
