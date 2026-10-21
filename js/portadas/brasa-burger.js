@@ -49,11 +49,13 @@
     var smoke = [], fsmoke = [], lastS = 0;
     // --- Palabra «fuego»: llamas reales que suben (sin girar) por dentro de las letras y se escapan hacia arriba ---
     var fuego = el.querySelector('.cv__fuego'), fcv = el.querySelector('.cv__fcv'), fctx = fcv.getContext('2d');
+    var fw = el.querySelector('.cv__fw'); if (global.PortadasIdioma) global.PortadasIdioma.refresh(el);
     var fireImg = new Image(); fireImg.src = IMG + 'fuego.webp';
     var maskC = document.createElement('canvas'), mctx = maskC.getContext('2d'), fireC = document.createElement('canvas'), fxc = fireC.getContext('2d');
     var wsparks = [], wacc = 0;
     var FD = { ox: 0, oy: 0, tw: 0, th: 0, w: 0, h: 0, pad: 0, base: 0, fs: 0, xs: [], word: 'fuego', ok: false }, Lf = 0, wasLit = false;
     function layoutFire() {
+      FD.word = fw.textContent || 'fuego';
       var cs = getComputedStyle(fuego), fs = parseFloat(cs.fontSize), r = fuego.getBoundingClientRect();
       if (!r.width || !fs) return;
       var d = Math.min(window.devicePixelRatio || 1, 2), pad = fs * 0.3, head = fs * 2.3, tail = fs * 0.4;
@@ -63,7 +65,7 @@
       fcv.style.cssText = 'left:' + (-pad) + 'px;top:' + (-head) + 'px;width:' + w + 'px;height:' + h + 'px;';
       mctx.font = cs.fontWeight + ' ' + fs + 'px ' + cs.fontFamily; mctx.textBaseline = 'alphabetic';
       if ('letterSpacing' in mctx) mctx.letterSpacing = cs.letterSpacing === 'normal' ? '0px' : cs.letterSpacing;
-      var m = mctx.measureText('fuego'), asc = m.fontBoundingBoxAscent || fs * 0.98, dsc = m.fontBoundingBoxDescent || fs * 0.3;
+      var m = mctx.measureText(FD.word), asc = m.fontBoundingBoxAscent || fs * 0.98, dsc = m.fontBoundingBoxDescent || fs * 0.3;
       var er = el.getBoundingClientRect(); FD.ox = r.left - er.left; FD.oy = r.top - er.top; FD.tw = r.width; FD.th = r.height;
       FD.w = w; FD.h = h; FD.pad = pad; FD.fs = fs; FD.base = head + (r.height - (asc + dsc)) / 2 + asc;
       FD.xs = []; for (var i = 0; i < FD.word.length; i++) FD.xs.push(mctx.measureText(FD.word.slice(0, i)).width);
