@@ -149,3 +149,14 @@
 .pw--v-f .pw__extra--bs img.bs { position: relative; z-index: 2; width: 100%; filter: drop-shadow(0 1.4cqh 1.8cqh rgba(14, 75, 92, .28)); transition: transform .16s ease; }
 .pw--v-f .pw__extra--bs img.w1 { position: absolute; z-index: 1; left: 8%; top: 9%; width: 24%; }
 .pw--v-f .pw__extra--bs img.w2 { position: absolute; z-index: 1; left: 71%; top: 13%; width: 19%; }
+/* ===== Flora · paleta durazno y terracota (prueba) ===== */
+.pw--durazno .cv-ramo { background: linear-gradient(135deg, #fee9dc 0%, #fadcc8 100%); color: #8a3b2e; }
+.pw--durazno .cv-ramo .cv__paper { background: radial-gradient(70% 80% at 50% 100%, rgba(224, 103, 90, .16), transparent 70%); }
+.pw--durazno .cv-ramo .cv__logo { color: #8a3b2e; }
+.pw--durazno .cv-ramo .cv__title { color: #b5513f; }
+.pw--durazno .cv-ramo .cv__chip { border-color: rgba(224, 103, 90, .30); box-shadow: 0 .6cqh 1.6cqh rgba(138, 59, 46, .12); }
+.pw--durazno .cv-ramo .cv__chip.on { border-color: #e0675a; box-shadow: 0 0 0 .7cqh rgba(224, 103, 90, .17), 0 .8cqh 2cqh rgba(138, 59, 46, .2); }
+.pw--durazno .cv-ramo .cv__chip.on::after { background: #e0675a; box-shadow: 0 0 0 .4cqh #fff6ef; }
+.pw--durazno .cv-ramo .cv__chip-n { color: #8a3b2e; }
+.pw--durazno .cv-ramo .cv__sum { color: #8a3b2e; }
+.pw--durazno .cv-ramo .cv__btn { background: #e0675a; color: #fffdf8; box-shadow: 0 1cqh 2.4cqh rgba(224, 103, 90, .38); }

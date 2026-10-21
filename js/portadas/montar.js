@@ -23,8 +23,8 @@
       about: 'Cada gema cambia el color de toda la portada, y la luz del cursor hace brillar la joya y el título.' },
     { key: 'kicks', name: 'Kicks', tag: 'Zapatillas', kind: 'direct', cls: 'cv cv-kicks', api: 'Kicks',
       about: 'El cursor inclina la zapatilla. Cada clic lanza una onda de color y trae otra.' },
-    { key: 'flora', name: 'Flora', tag: 'Florería', kind: 'direct', cls: 'cv cv-ramo', api: 'Ramo',
-      about: 'Elige tu ramo: seis flores para escoger. Cada clic agrega una flor al ramo, que se acomoda en abanico; otro clic la quita.' }
+    { key: 'flora', name: 'Flora', tag: 'Florería', kind: 'direct', layout: 'durazno', cls: 'cv cv-ramo', api: 'Ramo',
+      about: 'Toca las flores y arma tu ramo.' }
   ];
   var CART = '<span class="pw__cart" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.2L21 8H6"/></svg><i>0</i></span>';
   var BY = {}; LIST.forEach(function (p) { BY[p.key] = p; });
