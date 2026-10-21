@@ -140,7 +140,7 @@
 .hero-cat .strip:focus-visible {outline:3px solid #fff;outline-offset:-5px}
 .hero-cat .grip {display:grid;gap:4px}
 .hero-cat .grip i {width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.75);display:block}
-@media (max-width:900px) {
+@media (max-width:768px) {
 .hero-cat .pane__in {grid-template-columns:1fr;align-items:start;padding:24px 20px 0}
 .hero-cat .vis {position:absolute;left:12px;right:12px;bottom:-4px;height:230px}
 .hero-cat .dev3--laptop {width:72%}
@@ -156,25 +156,45 @@
 .hero-cat *, .hero-cat *::before, .hero-cat *::after {transition:none!important;animation:none!important}
 }
 
-/* Celular: el bloque del header es bajo (unos 450 px útiles), así que el texto se compacta, se oculta lo secundario y los aparatos quedan abajo, más chicos */
-@media (max-width: 768px) {
-  .hero-cat .pane__in { padding: 14px 16px 0; }
+/* Celular: el bloque del header es bajo y vertical (como el del Header 1). El texto va arriba, compacto, y los aparatos ocupan TODO el espacio que sobra:
+   su tamaño sale del alto y del ancho de ese espacio (container queries), así nunca se cortan, en cualquier celular. */
+@media (max-width: 900px) {
+  .hero-cat .h3 { --s: 44px; }
+  .hero-cat .pane__in { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; padding: 14px 16px 6px; }
+  .hero-cat .txt { flex: none; max-width: none; }
   .hero-cat .eyebrow { margin-bottom: 6px; font-size: 11px; }
   .hero-cat h2 { font-size: 21px; line-height: 1.1; }
   .hero-cat .sub { display: none; }
   .hero-cat .ul { margin-top: 8px; gap: 4px; }
   .hero-cat .ul li { font-size: 12.5px; gap: 8px; }
   .hero-cat .ul li::before { width: 15px; height: 15px; }
-  .hero-cat .row { margin-top: 10px; gap: 10px; }
+  .hero-cat .row { margin-top: 10px; gap: 6px 12px; }
   .hero-cat .hc-btn { padding: 11px 18px; font-size: 13px; }
   .hero-cat .live { font-size: 12.5px; padding: 6px 2px; }
   .hero-cat .dots span { display: none; }
   .hero-cat .dot { width: 22px; height: 22px; }
-  .hero-cat .vis { left: 4px; right: 4px; bottom: -8px; height: 165px; }
   .hero-cat .fl--tag, .hero-cat .fl--pill { display: none; }
-  .hero-cat .dev3--laptop { width: 68%; }
-  .hero-cat .fl { padding: 7px 10px; border-radius: 12px; gap: 7px; }
+  /* el espacio de los aparatos: lo que queda debajo del texto */
+  .hero-cat .vis { align-self: stretch; position: relative; left: auto; right: auto; bottom: auto; flex: 1 1 0; min-height: 0; height: auto; margin-top: 6px; container-type: size; animation: none; }
+  .hero-cat .dev3--laptop { left: 0; bottom: 0; width: min(66cqw, 120cqh); }
+  .hero-cat .dev3--phone { right: 0; bottom: 0; width: min(31cqw, 50cqh); }
+  .hero-cat .dev3--tablet { right: 0; bottom: 0; width: min(32cqw, 50cqh); }
+  .hero-cat .fl { padding: 6px 9px; border-radius: 11px; gap: 6px; }
   .hero-cat .fl b { font-size: 11px; }
   .hero-cat .fl small { font-size: 10px; }
-  .hero-cat .fl__ic { width: 26px; height: 26px; }
+  .hero-cat .fl__ic { width: 24px; height: 24px; }
+  .hero-cat .fl__ic svg { width: 14px; height: 14px; }
+  .hero-cat .dev3--phone .fl--wa { right: 0; bottom: 102%; }
+  .hero-cat .dev3--tablet .fl--dom { left: auto; right: 0; bottom: 102%; }
+}
+/* Celulares muy angostos: se ahorra una línea */
+@media (max-width: 380px) {
+  .hero-cat .live { display: none; }
+  .hero-cat h2 { font-size: 19px; }
+}
+/* Tablet horizontal / pantallas medianas: el catálogo online no se encima con la tarjeta flotante y la tarjeta de la tablet no se sale */
+@media (min-width: 901px) and (max-width: 1100px) {
+  .hero-cat .dev3--laptop { width: 58%; }
+  .hero-cat .dev3--phone .fl--wa { right: 0; }
+  .hero-cat .dev3--tablet .fl--dom { left: auto; right: 0; }
 }
