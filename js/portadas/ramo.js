@@ -69,6 +69,7 @@
 
     var W = 0, H = 0, U = 0, dpr = 1, ox = 0, oy = 0, scale = 1, petals = [], lastT = 0, sumTxt = '';
     var ptr = { x: 0, y: 0, in: false }, lp = { x: 0, y: 0 };
+    var wb = 0, wbV = 0, wbox = { l: 0, r: 0, t: 0, b: 0 };   // papel kraft: ángulo y velocidad del vaivén al tocarlo; zona del ramo que reacciona al toque
     var t0 = performance.now();
     var vis = true, running = false, raf = 0;
 
@@ -79,7 +80,8 @@
       fx.width = Math.round(W * dpr); fx.height = Math.round(H * dpr); fctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       // Ramo envuelto en papel kraft con cinta: una capa de papel DETRÁS de las flores (el interior) y otra DELANTE (la parte de abajo, recortada por el borde de la boca en V), así las flores quedan dentro del papel
       var ww = Math.min(W * 0.25, H * 0.54), hc = ww * 835 / 568, wl = W * 0.315 - ww / 2, wt = H * 0.33, box0 = 'position:absolute;left:' + wl + 'px;top:' + wt + 'px;width:' + ww + 'px;pointer-events:none;';
-      wrapB.style.cssText = box0 + 'z-index:1;'; wrapF.style.cssText = box0 + 'z-index:3;';
+      wrapB.style.cssText = box0 + 'z-index:1;transform-origin:50% 92%;'; wrapF.style.cssText = box0 + 'z-index:3;transform-origin:50% 92%;';
+      wbox = { l: wl - ww * 0.6, r: wl + ww * 1.6, t: wt - H * 0.22, b: wt + hc };
       wrapBi.style.cssText = wrapFi.style.cssText = 'display:block;width:100%;height:auto;max-width:none;';
       wrapFi.style.clipPath = 'polygon(0% 23.1%, 6.7% 23.4%, 43.1% 31.7%, 47.5% 34.7%, 73.9% 29.9%, 84.5% 20.4%, 98.6% 12%, 100% 12%, 100% 100%, 0% 100%)';
       wrapB.style.filter = wrapF.style.filter = 'drop-shadow(0 ' + (H * 0.015) + 'px ' + (H * 0.025) + 'px rgba(60,40,20,.25))';
@@ -148,7 +150,16 @@
       it.sel = false; it.t = now; it.ty.n--; targets(); chipUI(it.ty); summary();
     }
 
+    // Toque sobre el ramo (papel, cinta o tallos): el ramo entero se mece un poquito y vuelve a su sitio
+    function bump(x) {
+      if (reduce) return;
+      var dir = x < ox ? 1 : -1;
+      wbV += 40 * dir;
+      items.forEach(function (it) { if (it.sel) it.swayV += 14 * dir; });
+    }
     function place(now, t, dt) {
+      wbV += (-wb * 90 - wbV * 6) * dt; wb += wbV * dt;
+      var wt3 = 'rotate(' + wb.toFixed(2) + 'deg)'; wrapB.style.transform = wrapF.style.transform = wt3;
       lp.x += (ptr.x - lp.x) * 0.09; lp.y += (ptr.y - lp.y) * 0.09;
       var enter = reduce ? 1 : clamp((t - 0.05) / 0.8, 0, 1);
       items.forEach(function (it) {
@@ -210,7 +221,9 @@
       setPtr(ev); var now = performance.now();
       var chip = ev.target.closest && ev.target.closest('.cv__chip');
       if (chip) { addOrReset(types[Array.prototype.indexOf.call(chips.children, chip)], now); return; }
-      var hit = bouquetAt(ptr.x, ptr.y); if (hit) removeOne(hit, now);
+      var hit = bouquetAt(ptr.x, ptr.y);
+      if (hit) removeOne(hit, now);
+      else if (ptr.x >= wbox.l && ptr.x <= wbox.r && ptr.y >= wbox.t && ptr.y <= wbox.b) bump(ptr.x);
     });
     el.addEventListener('pointerup', function (ev) { if (ev.pointerType !== 'mouse') ptr.in = false; });
     el.addEventListener('pointercancel', function () { ptr.in = false; });
