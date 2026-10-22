@@ -24,7 +24,7 @@
         intro: {
           lead: 'Páginas que',
           accent: 'se sienten vivas',
-          hint: 'Mueve el cursor o desliza el dedo sobre el fondo.',
+          hint: 'Mueve el cursor o desliza el dedo: deja tu huella de luz.',
           btn: 'Conoce Moravi Studio'
         }
       },
@@ -198,7 +198,7 @@
         intro: {
           lead: 'Websites that',
           accent: 'feel alive',
-          hint: 'Move your cursor or swipe over the background.',
+          hint: 'Move your cursor or swipe: leave your trail of light.',
           btn: 'Meet Moravi Studio'
         }
       },

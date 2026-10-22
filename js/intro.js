@@ -1,6 +1,6 @@
 /*
- * Pantalla de entrada: pantalla completa con una red de puntos en 3D (canvas 2D, sin librerías ni imágenes),
- * que se muestra una sola vez por visita (sessionStorage) y se cierra con el botón, la rueda del mouse,
+ * Pantalla de entrada: pantalla completa con un fluido de luz que reacciona al cursor (js/intro-fluido.js, WebGL2); si el aparato no lo
+ * soporta, una red de puntos en 3D (canvas 2D, sin librerías ni imágenes). Se muestra una sola vez por visita (sessionStorage) y se cierra con el botón, la rueda del mouse,
  * deslizando hacia arriba, o Escape. Los textos y el selector ES/EN los maneja js/i18n.js.
  * Cuidado de rendimiento: solo anima mientras se ve; se pausa con la pestaña oculta; resolución limitada
  * (DPR máx. 2); menos puntos en pantallas chicas; red estática si el aparato pide «reducir movimiento».
@@ -17,7 +17,8 @@
   var btn = document.getElementById('intro-enter');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var clamp = function (v, a, b) { return Math.max(a, Math.min(b, v)); };
-  var ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
+  var fl = window.IntroFluido ? window.IntroFluido.create(canvas, box, reduce) : null;   // tinta de luz; null = sin WebGL2: se usa la red de puntos
+  var ctx = !fl && canvas && canvas.getContext ? canvas.getContext('2d') : null;
   var W = 0, H = 0, pts = [], running = false, raf = 0, rotY = 0, closed = false, vis = true;
   var pointer = { x: 0, y: 0, tx: 0, ty: 0 };
 
@@ -76,6 +77,7 @@
   function drawStatic() { running = true; frame(); running = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } }
   function sync() {
     var go = !closed && vis && !document.hidden && !reduce;
+    if (fl) { fl.run(go); return; }
     if (go && !running) { running = true; if (!raf) raf = requestAnimationFrame(frame); }
     else if (!go) { running = false; if (raf) { cancelAnimationFrame(raf); raf = 0; } }
   }
@@ -86,7 +88,7 @@
   }
 
   var resizeTimer;
-  function onResize() { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { build(); if (reduce) drawStatic(); }, 150); }
+  function onResize() { clearTimeout(resizeTimer); resizeTimer = setTimeout(function () { if (!ctx) return; build(); if (reduce) drawStatic(); }, 150); }
   function onVisibility() { sync(); }
 
   function enter() {
@@ -99,7 +101,7 @@
     document.removeEventListener('visibilitychange', onVisibility);
     document.removeEventListener('keydown', onKey);
     window.removeEventListener('resize', onResize);
-    setTimeout(function () { if (box.parentNode) box.parentNode.removeChild(box); }, 800);
+    setTimeout(function () { if (fl) fl.destroy(); if (box.parentNode) box.parentNode.removeChild(box); }, 800);
   }
   function onKey(e) { if (e.key === 'Escape') enter(); }
 
@@ -117,5 +119,6 @@
   document.addEventListener('visibilitychange', onVisibility);
   window.addEventListener('resize', onResize);
 
-  if (ctx) { build(); if (reduce) drawStatic(); sync(); }
+  if (fl) sync();
+  else if (ctx) { build(); if (reduce) drawStatic(); sync(); }
 })();
