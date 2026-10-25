@@ -87,7 +87,7 @@
     if (busy || !texto) return; busy = true; send.disabled = true;
     msgs.push({ rol: 'user', texto: texto }); save(); addMsg('user', texto); typing(true);
     var ctrl = new AbortController(), to = setTimeout(function () { ctrl.abort(); }, 30000);
-    fetch(api + '/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ cliente: cliente, mensajes: msgs }), signal: ctrl.signal })
+    fetch(api + '/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ cliente: cliente, mensajes: msgs, idioma: lang() }), signal: ctrl.signal })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (d) { return { ok: r.ok, d: d }; }); })
       .then(function (x) {
         typing(false);
