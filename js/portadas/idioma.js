@@ -50,6 +50,12 @@
     'Cada gema cambia el color de toda la portada, y la luz del cursor hace brillar la joya y el título.': 'Each gem changes the color of the whole cover, and the cursor’s light makes the jewel and the title shine.',
     'El cursor inclina la zapatilla. Cada clic lanza una onda de color y trae otra.': 'The cursor tilts the sneaker. Each click sends out a wave of color and brings in another.',
     'Toca las flores y arma tu ramo.': 'Tap the flowers and build your bouquet.',
+    // Chispita Clean
+    'Lavandería': 'Laundry', 'Inicio': 'Home', 'Servicios': 'Services', 'Proceso': 'Process', 'Precios': 'Pricing',
+    'Tu ropa limpia,': 'Your clothes clean,', 'sin complicaciones': 'hassle-free',
+    'Lavado profesional, secado y planchado, con recojo y entrega a domicilio.': 'Professional washing, drying and ironing, with home pickup and delivery.',
+    'Pide tu servicio ahora': 'Order your service now', 'Recojo y entrega a domicilio': 'Home pickup and delivery', 'Lavado profesional y seguro': 'Safe, professional washing', 'Prendas limpias y bien cuidadas': 'Clean, well-cared-for clothes',
+    'Una ola de agua gira sin parar alrededor de la ropa. Las burbujas flotan y revientan cuando pasas el cursor o el dedo.': 'A wave of water swirls around the clothes. Bubbles float and pop when your cursor or finger passes over them.',
     // Páginas del catálogo de portadas
     'Catálogo de portadas': 'Interactive covers', 'interactivas': 'catalog',
     'La primera pantalla de un negocio, con vida propia. Cada portada se mueve: pasa el cursor o tócala, y abre la que quieras ver completa.': 'A business’s first screen, alive. Every cover moves: hover or tap it, and open the one you want to see in full.',

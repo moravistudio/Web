@@ -160,3 +160,35 @@
 .pw--durazno .cv-ramo .cv__chip-n { color: #8a3b2e; }
 .pw--durazno .cv-ramo .cv__sum { color: #8a3b2e; }
 .pw--durazno .cv-ramo .cv__btn { background: #e0675a; color: #fffdf8; box-shadow: 0 1cqh 2.4cqh rgba(224, 103, 90, .38); }
+
+/* ===== Chispita Clean · lavandería: ropa azul con una ola de agua en video, burbujas que revientan al pasar el cursor ===== */
+.cv-chispita { background: #fff; color: #0b2f5c; cursor: default; }
+.cv-chispita::after { content: ''; position: absolute; z-index: 0; left: -10cqw; right: -10cqw; bottom: -1cqh; height: 26cqh; background: linear-gradient(180deg, transparent, #e9f7ff); clip-path: ellipse(70% 100% at 50% 100%); pointer-events: none; }
+.cv-chispita .cv__art { position: absolute; z-index: 1; left: 40cqw; right: -3cqw; top: 6cqh; bottom: 0; }
+.cv-chispita .cv__vid { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 47% 50%; mix-blend-mode: multiply; transition: transform .25s ease-out; pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 8%, #000 90%, transparent 100%); -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, transparent 0, #000 14%, #000 90%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 8%, #000 90%, transparent 100%); mask-composite: intersect; }
+.cv-chispita .cv__bubs { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+.cv-chispita .cv__bub { position: absolute; border-radius: 50%; opacity: .9; pointer-events: none; animation: chBub var(--d, 9s) ease-in-out infinite; animation-delay: var(--l, 0s);
+  background: radial-gradient(circle at 32% 28%, rgba(255, 255, 255, .95) 0 9%, rgba(255, 255, 255, .35) 12%, rgba(120, 205, 255, .18) 40%, rgba(0, 150, 230, .32) 78%, rgba(0, 120, 210, .5) 100%);
+  box-shadow: inset -.25cqw -.3cqw .6cqw rgba(255, 255, 255, .55), 0 .25cqw .8cqw rgba(0, 140, 230, .18); }
+.cv-chispita .cv__bub.pop { animation: chPop .5s ease-out forwards; }
+@keyframes chBub { 0% { transform: translate(0, 0) scale(.9); } 25% { transform: translate(.6cqw, -1.1cqw) scale(1); } 50% { transform: translate(-.5cqw, -2cqw) scale(1.04); } 75% { transform: translate(.7cqw, -.9cqw) scale(1); } 100% { transform: translate(0, 0) scale(.9); } }
+@keyframes chPop { 0% { transform: scale(1); opacity: .9; } 35% { transform: scale(1.5); opacity: .55; } 100% { transform: scale(2); opacity: 0; } }
+.cv-chispita .cv__nav { position: absolute; z-index: 4; left: 4cqw; right: 4cqw; top: 4cqh; display: flex; align-items: center; justify-content: space-between; pointer-events: none; }
+.cv-chispita .cv__logo { height: 12cqh; width: auto; display: block; }
+.cv-chispita .cv__links { display: flex; gap: 3cqw; font: 600 1.3cqw/1 'Poppins', sans-serif; color: #0b2f5c; }
+.cv-chispita .cv__links span { position: relative; padding: .5cqw 0; }
+.cv-chispita .cv__links .on::after { content: ''; position: absolute; left: 0; right: 0; bottom: -.1cqw; height: .2cqw; border-radius: .2cqw; background: #00c0f0; }
+.cv-chispita .cv__copy { position: absolute; z-index: 4; left: 4cqw; top: 25cqh; width: 44cqw; pointer-events: none; }
+.cv-chispita .cv__h { font: 800 4.5cqw/1.04 'Poppins', sans-serif; letter-spacing: -.02em; color: #0b2f5c; }
+.cv-chispita .cv__sc { display: block; margin-top: .3cqw; font: 400 4.1cqw/1.1 'Kaushan Script', cursive; letter-spacing: 0; color: #1b7fd6; white-space: nowrap; transform: rotate(-2deg); transform-origin: left; }
+.cv-chispita .cv__p { margin-top: 1.7cqw; max-width: 33cqw; font-size: 1.45cqw; line-height: 1.5; color: #3b4f66; }
+.cv-chispita .cv__btn { display: inline-flex; align-items: center; gap: .8cqw; margin-top: 2.2cqw; padding: 1.2cqw 2.4cqw; border-radius: 99px; background: linear-gradient(180deg, #2ddb6e, #20c05c); color: #fff; font: 700 1.45cqw/1 'Poppins', sans-serif; white-space: nowrap; box-shadow: 0 .8cqw 2cqw rgba(37, 211, 102, .42); pointer-events: auto; cursor: pointer; transition: transform .22s ease, box-shadow .22s ease; }
+.cv-chispita .cv__btn svg { width: 1.7cqw; height: 1.7cqw; flex: none; }
+.cv-chispita .cv__btn i { font-style: normal; }
+.cv-chispita .cv__btn:hover { transform: translateY(-.35cqw); box-shadow: 0 1.1cqw 2.6cqw rgba(37, 211, 102, .55); }
+.cv-chispita .cv__ben { position: absolute; z-index: 4; left: 4cqw; bottom: 6cqh; width: 44cqw; display: grid; grid-template-columns: repeat(3, 1fr); gap: .5cqw; padding: .9cqw .8cqw; border: .15cqw solid #bfe8fb; border-radius: 1.8cqw; background: #fff; box-shadow: 0 1.4cqw 3.4cqw rgba(0, 140, 220, .16); pointer-events: none; }
+.cv-chispita .cv__ben span { display: flex; align-items: center; gap: .7cqw; font: 600 1.02cqw/1.28 'Poppins', sans-serif; color: #0b2f5c; }
+.cv-chispita .cv__ben img { width: 3.4cqw; height: 3.4cqw; flex: none; mix-blend-mode: multiply; }
+@media (prefers-reduced-motion: reduce) { .cv-chispita .cv__bub { animation: none; } .cv-chispita .cv__bub.pop { animation: none; opacity: 0; } .cv-chispita .cv__vid { transition: none; } .cv-chispita .cv__btn { transition: none; } }

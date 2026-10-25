@@ -24,7 +24,9 @@
     { key: 'kicks', name: 'Kicks', tag: 'Zapatillas', kind: 'direct', cls: 'cv cv-kicks', api: 'Kicks',
       about: 'El cursor inclina la zapatilla. Cada clic lanza una onda de color y trae otra.' },
     { key: 'flora', name: 'Flora', tag: 'Florería', kind: 'direct', layout: 'durazno', cls: 'cv cv-ramo', api: 'Ramo',
-      about: 'Toca las flores y arma tu ramo.' }
+      about: 'Toca las flores y arma tu ramo.' },
+    { key: 'chispita', name: 'Chispita Clean', tag: 'Lavandería', kind: 'direct', cls: 'cv cv-chispita', api: 'ChispitaClean',
+      about: 'Una ola de agua gira sin parar alrededor de la ropa. Las burbujas flotan y revientan cuando pasas el cursor o el dedo.' }
   ];
   var CART = '<span class="pw__cart" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.2L21 8H6"/></svg><i>0</i></span>';
   var BY = {}; LIST.forEach(function (p) { BY[p.key] = p; });
