@@ -30,3 +30,4 @@
 .msia-foot{padding:0 12px 9px;font-size:11px;color:#7b8ba1;text-align:center;background:#fff}
 @media (max-width:480px){.msia-root{right:12px;bottom:12px}.msia-win{position:fixed;right:0;bottom:0;width:100%;height:82vh;border-radius:18px 18px 0 0}}
 @media (prefers-reduced-motion:reduce){.msia-root.is-open .msia-win{animation:none}.msia-typing i{animation:none}.msia-msgs{scroll-behavior:auto}}
+.msia-foot a{color:inherit;text-decoration:underline}
