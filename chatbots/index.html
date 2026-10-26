@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbots para tu negocio — Moravi Studio</title>
+  <meta name="description" content="Conoce cómo atendería un chatbot a tus clientes: abre los ejemplos de Moravi Studio y conversa con ellos, con botones o con inteligencia artificial.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" id="msia-css" href="../chatbot-ia/chatbot-ia.css?v=5">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
+    .wrap{width:min(1180px,calc(100vw - 48px));margin:0 auto;padding:36px 0 90px}
+    .back{color:#1E8CFF;text-decoration:none;font-weight:600;font-size:14px}
+    h1{font:700 clamp(30px,4vw,48px)/1.12 'Poppins',sans-serif;margin-top:18px;letter-spacing:-.01em;max-width:820px}
+    h1 em{font-style:normal;color:#1E8CFF}
+    .lead{margin-top:14px;color:#5C6A7E;font-size:18px;max-width:700px;line-height:1.55}
+    .note{margin-top:10px;color:#5C6A7E;font-size:15px;max-width:700px;line-height:1.5}
+    h2{font:700 clamp(22px,2.6vw,30px)/1.2 'Poppins',sans-serif;margin:54px 0 0}
+    .grid + h2{margin-top:92px}
+    .foot{margin-top:64px;padding-top:22px;border-top:1px solid #dde5f0;display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;font-size:13.5px;color:#5C6A7E}
+    .foot nav{display:flex;flex-wrap:wrap;gap:8px 20px}
+    .foot a{color:#41506a;text-decoration:none}
+    .foot a:hover{color:#1E8CFF;text-decoration:underline}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:22px}
+    .card{background:#fff;border:1px solid #dde5f0;border-radius:22px;padding:24px;box-shadow:0 8px 28px rgba(14,26,45,.07);display:flex;flex-direction:column}
+    .tag{display:inline-block;align-self:flex-start;font-size:12px;font-weight:600;color:#1E8CFF;background:rgba(30,140,255,.1);padding:4px 10px;border-radius:99px}
+    .card h3{font:700 20px/1.2 'Poppins',sans-serif;margin-top:14px}
+    .card p{margin-top:8px;color:#5C6A7E;font-size:14.5px;line-height:1.5;flex:1}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+    .chips span{font-size:12px;font-weight:600;color:#0A1B3C;background:#EEF4FB;border-radius:99px;padding:4px 10px}
+    .btn{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 14.5px 'Inter',sans-serif;color:#fff;background:#1E8CFF;border-radius:99px;padding:12px 22px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 20px rgba(30,140,255,.3)}
+    .btn:hover{transform:translateY(-2px)}
+    .btn--light{background:#fff;color:#0A1B3C;box-shadow:none;margin-top:0;flex:none}
+    /* recuadro azul que presenta cada modalidad */
+    .intro{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;background:#0A1B3C;color:#fff;border-radius:22px;padding:28px 32px;box-shadow:0 14px 40px rgba(14,26,45,.18)}
+    .intro small{display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#7fb8ff}
+    .intro b{display:block;font:700 22px/1.25 'Poppins',sans-serif;margin-top:6px}
+    .intro p{margin-top:8px;color:#c9d6ea;font-size:15px;line-height:1.55;max-width:620px}
+    .intro ul{list-style:none;display:grid;gap:8px;font-size:14.5px;color:#fff;flex:none}
+    .intro li::before{content:'✓';margin-right:9px;color:#7fb8ff;font-weight:700}
+    .cta{margin-top:56px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:#fff;border:1px solid #dde5f0;border-radius:22px;padding:24px 28px}
+    .cta b{display:block;font:700 19px/1.25 'Poppins',sans-serif}
+    .cta p{margin-top:4px;color:#5C6A7E;font-size:15px}
+    .cta .btn{margin-top:0}
+    /* ventana de ejemplo */
+    .modal{position:fixed;inset:0;z-index:2147482000;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(10,27,60,.62);backdrop-filter:blur(3px)}
+    .modal.on{display:flex}
+    .frame{position:relative;width:min(420px,100%);height:min(700px,calc(100vh - 40px));background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+    .frame .x{position:absolute;z-index:5;top:9px;right:9px;width:32px;height:32px;border-radius:10px;border:0;cursor:pointer;background:rgba(255,255,255,.14);color:#fff;font-size:15px}
+    .frame .x:hover{background:rgba(255,255,255,.28)}
+    .frame .slot{width:100%;height:100%}
+    .frame .msia-head{padding-right:52px}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.wrap{width:calc(100vw - 32px)}.modal{padding:0}.frame{width:100%;height:100%;border-radius:0}.intro,.cta{padding:22px}}
+    @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../">← Volver a Moravi Studio</a>
+    <h1>Mira cómo atendería <em>un chatbot a tus clientes</em></h1>
+    <p class="lead">Abre cualquiera de los ejemplos y conversa como lo haría un cliente: consulta precios, elige opciones y deja armado un pedido. Así se comportaría el de tu negocio.</p>
+    <p class="note">Los negocios de estos ejemplos son inventados, y nada de lo que hagas aquí se envía a nadie.</p>
+
+    <h2>Chatbots básicos</h2>
+    <div class="intro">
+      <div>
+        <small>Con botones</small>
+        <b>Acompañan al cliente paso a paso</b>
+        <p>Cada pantalla ofrece opciones para tocar, así que el cliente nunca se pierde. No usan inteligencia artificial: responden al instante y no tienen costo por mensaje.</p>
+      </div>
+      <ul><li>Respuesta inmediata</li><li>Sin costo por mensaje</li><li>Ideales para preguntas repetidas</li></ul>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">Nivel 1 · Informativo</span>
+        <h3>Centro de belleza</h3>
+        <p>Contesta lo que más se pregunta, servicios, precios, horario y cómo reservar, sin que nadie del equipo tenga que responder.</p>
+        <div class="chips"><span>Servicios y precios</span><span>Horario</span><span>Guía para reservar</span></div>
+        <button class="btn" type="button" data-flujo="belleza">Probar</button>
+      </article>
+      <article class="card">
+        <span class="tag">Nivel 2 · Con pedido</span>
+        <h3>Boutique de ropa</h3>
+        <p>El cliente escoge la prenda, la talla y la forma de entrega, y el bot le muestra el pedido completo, listo para confirmar.</p>
+        <div class="chips"><span>Prendas por categoría</span><span>Selección de talla</span><span>Resumen del pedido</span></div>
+        <button class="btn" type="button" data-flujo="ropa">Probar</button>
+      </article>
+      <article class="card">
+        <span class="tag">Nivel 3 · Conversacional</span>
+        <h3>Lavandería a domicilio</h3>
+        <p>Entiende frases cortas como «¿cuánto cuesta?», avisa si el local está abierto y recibe la solicitud de recojo con distrito y día.</p>
+        <div class="chips"><span>Reconoce palabras</span><span>Estado del local</span><span>Recojo programado</span></div>
+        <button class="btn" type="button" data-flujo="lavanderia">Probar</button>
+      </article>
+    </div>
+
+    <h2>Chatbots avanzados con inteligencia artificial</h2>
+    <div class="intro">
+      <div>
+        <small>Chat con IA</small>
+        <b>Conversa con el asistente de Moravi Studio</b>
+        <p>Este sí responde con libertad: escríbele lo que quieras saber de nuestros servicios. Y prueba también los ejemplos de abajo, hechos para otros rubros.</p>
+      </div>
+      <button class="btn btn--light" type="button" id="abrir-ia">Conversar con la IA</button>
+    </div>
+    <div class="grid">
+      <article class="card">
+        <span class="tag">Nivel 4 · IA que responde</span>
+        <h3>Academia de idiomas</h3>
+        <p>Conversa con libertad: orienta sobre cursos, niveles, horarios y precios, y ayuda a decidir qué nivel le conviene a cada persona.</p>
+        <div class="chips"><span>Responde con libertad</span><span>Orienta sobre niveles</span><span>Horarios y precios</span></div>
+        <button class="btn" type="button" data-ia="academia">Probar</button>
+      </article>
+      <article class="card">
+        <span class="tag">Nivel 5 · IA que capta</span>
+        <h3>Inmobiliaria</h3>
+        <p>Entiende qué busca el interesado, le sugiere propiedades y deja sus datos listos para que un asesor lo llame.</p>
+        <div class="chips"><span>Pregunta qué busca</span><span>Sugiere opciones</span><span>Deja sus datos</span></div>
+        <button class="btn" type="button" data-ia="inmobiliaria">Probar</button>
+      </article>
+      <article class="card">
+        <span class="tag">Nivel 6 · IA que recibe solicitudes</span>
+        <h3>Clínica dental</h3>
+        <p>Recibe la solicitud de cita con el tratamiento y el horario preferido, sin diagnosticar y avisando qué hacer ante una urgencia.</p>
+        <div class="chips"><span>Solicitud de cita</span><span>Sin diagnosticar</span><span>Aviso de urgencias</span></div>
+        <button class="btn" type="button" data-ia="dental">Probar</button>
+      </article>
+    </div>
+
+    <div class="cta">
+      <div><b>¿Tu negocio es otro?</b><p>Cuéntanos a qué te dedicas y preparamos un ejemplo con tu información.</p></div>
+      <a class="btn" href="https://wa.me/51940284018?text=Hola%20Moravi%20Studio%2C%20quiero%20un%20chatbot%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer">Cuéntanos tu caso</a>
+    </div>
+
+    <footer class="foot">
+      <span>© 2026 Moravi Studio</span>
+      <nav aria-label="Enlaces legales"><a href="../">Inicio</a><a href="../portafolio.html">Proyectos</a><a href="../privacidad.html">Política de privacidad</a><a href="../terminos.html">Términos y condiciones</a></nav>
+    </footer>
+  </div>
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Ejemplo de chatbot">
+    <div class="frame"><button class="x" type="button" id="cerrar" aria-label="Cerrar ejemplo">✕</button><div class="slot" id="slot"></div></div>
+  </div>
+
+  <script src="../chatbot-ia/flujos-demo.js?v=2"></script>
+  <script src="../chatbot-ia/chatbot-flujo.js?v=1"></script>
+  <script>
+    (function () {
+      // En tu computadora el servidor de chatbots corre en el puerto 5190; en la web, en Railway
+      var local = location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+      var API = local ? 'http://localhost:5190' : 'https://moravi-chatbots-production.up.railway.app';
+      var PIE = 'Ejemplo de Moravi Studio: negocio inventado. Las respuestas las genera una IA.';
+      var IA = {
+        academia: { cliente: 'demo-academia', titulo: 'Academia de idiomas de ejemplo', sub: 'Chatbot con IA · responde consultas', bienvenida: '¡Hola! 👋 Soy el asistente de la Academia de idiomas de ejemplo. Pregúntame por cursos, horarios, precios o qué nivel te conviene.' },
+        inmobiliaria: { cliente: 'demo-inmobiliaria', titulo: 'Inmobiliaria de ejemplo', sub: 'Chatbot con IA · capta datos', bienvenida: '¡Hola! 👋 Soy el asistente de la Inmobiliaria de ejemplo. Cuéntame si buscas comprar o alquilar y te ayudo a encontrar algo.' },
+        dental: { cliente: 'demo-dental', titulo: 'Clínica dental de ejemplo', sub: 'Chatbot con IA · solicitudes de cita', bienvenida: '¡Hola! 👋 Soy el asistente de la Clínica dental de ejemplo. Te cuento de los tratamientos y dejo tu solicitud de cita.' }
+      };
+
+      // chat flotante con IA de Moravi Studio
+      var s = document.createElement('script');
+      s.src = '../chatbot-ia/chatbot-ia.js?v=5'; s.setAttribute('data-cliente', 'moravi-studio'); s.setAttribute('data-api', API);
+      s.setAttribute('data-privacidad', '../privacidad.html'); s.setAttribute('data-privacidad-en', '../privacy-policy.html');
+      s.setAttribute('data-titulo', 'Asistente de Moravi Studio'); s.setAttribute('data-titulo-en', 'Moravi Studio Assistant'); s.setAttribute('data-whatsapp', 'https://wa.me/51940284018');
+      document.body.appendChild(s);
+
+      var modal = document.getElementById('modal'), slot = document.getElementById('slot'), ultimo = null;
+      function abrir(b, montar) { ultimo = b; slot.textContent = ''; montar(); modal.classList.add('on'); document.getElementById('cerrar').focus(); }
+      function cerrar() { modal.classList.remove('on'); slot.textContent = ''; if (ultimo) { try { ultimo.focus(); } catch (e) {} } }
+      document.querySelectorAll('[data-flujo]').forEach(function (b) {
+        b.addEventListener('click', function () { abrir(b, function () { MsiaFlujo.mount({ contenedor: slot, flujo: FLUJOS_DEMO[b.getAttribute('data-flujo')] }); }); });
+      });
+      document.querySelectorAll('[data-ia]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var c = IA[b.getAttribute('data-ia')];
+          abrir(b, function () { MsiaChat.mount({ contenedor: slot, api: API, cliente: c.cliente, titulo: c.titulo, sub: c.sub, bienvenida: c.bienvenida, pie: PIE, max: 300, privacidad: '../privacidad.html', privacidadEn: '../privacy-policy.html', whatsapp: 'https://wa.me/51940284018' }); });
+        });
+      });
+      document.getElementById('cerrar').addEventListener('click', cerrar);
+      modal.addEventListener('click', function (e) { if (e.target === modal) cerrar(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('on')) cerrar(); });
+      // el chat con IA de Moravi Studio es el globo flotante de la página: este botón lo abre
+      document.getElementById('abrir-ia').addEventListener('click', function () {
+        var t = document.querySelector('.msia-toggle'), r = document.querySelector('.msia-root:not(.msia-embed)');
+        if (t && r && !r.classList.contains('is-open')) t.click();
+      });
+    })();
+  </script>
+</body>
+</html>

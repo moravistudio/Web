@@ -31,3 +31,13 @@
 @media (max-width:480px){.msia-root{right:12px;bottom:12px}.msia-win{position:fixed;right:0;bottom:0;width:100%;height:82vh;border-radius:18px 18px 0 0}}
 @media (prefers-reduced-motion:reduce){.msia-root.is-open .msia-win{animation:none}.msia-typing i{animation:none}.msia-msgs{scroll-behavior:auto}}
 .msia-foot a{color:inherit;text-decoration:underline}
+/* Modo incrustado (dentro de la página, sin globo flotante) */
+.msia-root.msia-embed{position:relative;right:auto;bottom:auto;width:100%;height:100%;z-index:auto}
+.msia-embed .msia-toggle{display:none}
+.msia-embed .msia-win{position:static;display:flex;width:100%;height:100%;border-radius:0;box-shadow:none;border:0;animation:none}
+/* Chatbot de botones (chatbot-flujo.js) */
+.msia-opts{display:flex;flex-wrap:wrap;gap:7px;align-self:flex-start;max-width:94%}
+.msia-opt{border:1.5px solid var(--msia-main);background:#fff;color:var(--msia-main);border-radius:99px;padding:7px 13px;font:inherit;font-weight:600;font-size:13px;cursor:pointer;transition:background .15s,color .15s}
+.msia-opt:hover{background:var(--msia-main);color:#fff}
+.msia-caja{align-self:flex-start;max-width:90%;background:#e9fbe9;border:1px solid #bfe8c0;border-radius:12px;padding:10px 12px;font-size:13px;white-space:pre-wrap}
+.msia-caja b{display:block;font-size:11.5px;color:#2a7a35;margin-bottom:4px;text-transform:uppercase;letter-spacing:.03em}
