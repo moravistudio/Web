@@ -52,6 +52,9 @@
     .frame .msia-head{padding-right:52px}
     @media (max-width:900px){.grid{grid-template-columns:1fr}.wrap{width:calc(100vw - 32px)}.modal{padding:0}.frame{width:100%;height:100%;border-radius:0}.intro,.cta{padding:22px}}
     @media (max-width:768px){.footer__bottom{padding-bottom:84px}}
+    .demo-abierta{overflow:hidden}
+    .demo-abierta .msia-root:not(.msia-embed){display:none}
+    @media (max-width:900px){.frame .x{width:40px;height:40px;font-size:17px}}
     @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
   </style>
 </head>
@@ -215,8 +218,8 @@
       document.body.appendChild(s);
 
       var modal = document.getElementById('modal'), slot = document.getElementById('slot'), ultimo = null;
-      function abrir(b, montar) { ultimo = b; slot.textContent = ''; montar(); modal.classList.add('on'); document.getElementById('cerrar').focus(); }
-      function cerrar() { modal.classList.remove('on'); slot.textContent = ''; if (ultimo) { try { ultimo.focus(); } catch (e) {} } }
+      function abrir(b, montar) { ultimo = b; slot.textContent = ''; montar(); modal.classList.add('on'); document.body.classList.add('demo-abierta'); document.getElementById('cerrar').focus(); }
+      function cerrar() { modal.classList.remove('on'); document.body.classList.remove('demo-abierta'); slot.textContent = ''; if (ultimo) { try { ultimo.focus(); } catch (e) {} } }
       document.querySelectorAll('[data-flujo]').forEach(function (b) {
         b.addEventListener('click', function () { abrir(b, function () { MsiaFlujo.mount({ contenedor: slot, flujo: FLUJOS_DEMO[b.getAttribute('data-flujo')] }); }); });
       });
@@ -228,7 +231,16 @@
       });
       document.getElementById('cerrar').addEventListener('click', cerrar);
       modal.addEventListener('click', function (e) { if (e.target === modal) cerrar(); });
-      document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && modal.classList.contains('on')) cerrar(); });
+      document.addEventListener('keydown', function (e) {
+        if (!modal.classList.contains('on')) return;
+        if (e.key === 'Escape') { cerrar(); return; }
+        if (e.key === 'Tab') { // el foco se queda dentro de la ventana del ejemplo
+          var f = [].slice.call(modal.querySelectorAll('button, textarea, a[href], input')).filter(function (x) { return !x.disabled && x.offsetParent !== null; });
+          if (!f.length) return;
+          var i = f.indexOf(document.activeElement);
+          if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && i === f.length - 1) { e.preventDefault(); f[0].focus(); }
+        }
+      });
       // el chat con IA de Moravi Studio es el globo flotante de la página: este botón lo abre
       document.getElementById('abrir-ia').addEventListener('click', function () {
         var t = document.querySelector('.msia-toggle'), r = document.querySelector('.msia-root:not(.msia-embed)');
