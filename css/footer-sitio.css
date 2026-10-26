@@ -1,0 +1,219 @@
+/* Footer del sitio, para páginas independientes (como /chatbots/) que no cargan styles.css completo.
+   Copia exacta de las reglas del footer de css/styles.css: si el footer cambia allá, cambiarlo aquí también. */
+:root { --navy: #0A1B3C; --brand-blue: #1E8CFF; --white: #FFFFFF; --font-heading: 'Poppins', sans-serif; --font-body: 'Inter', sans-serif; }
+.container { max-width: 1720px; margin: 0 auto; padding: 0 clamp(24px, 4.5vw, 80px); }
+.footer {
+  background: var(--navy);
+}
+
+.footer__top {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 24px;
+  padding-top: 16px;
+  padding-bottom: clamp(16px, 2vw, 22px);
+}
+
+.footer__logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  margin-top: -16px;
+}
+
+.footer__logo-ms {
+  height: 38px;
+  width: auto;
+}
+
+.footer__logo-texto {
+  height: 145px;
+  width: auto;
+}
+
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wordmark de texto (no la imagen del header): el logo real trae el
+   ícono de esfera horneado en detalle de color, y un filtro
+   brightness(0)+invert(1) lo aplana a una mancha blanca sin forma
+   reconocible. Texto propio garantiza contraste nítido sobre el
+   fondo oscuro sin depender de un archivo aparte. */
+.footer__wordmark {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 22px;
+  letter-spacing: 3px;
+  line-height: 1.35;
+  color: var(--white);
+}
+
+.footer__wordmark-sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 5px;
+  color: var(--brand-blue);
+}
+
+.footer__tagline {
+  margin-top: -30px;
+  max-width: 280px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer__nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(18px, 2.2vw, 32px);
+}
+
+.footer__nav-link {
+  color: var(--white);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__nav-link:hover {
+  color: var(--brand-blue);
+}
+
+.footer__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  justify-self: end;
+  padding-right: 24px;
+}
+
+.footer__email {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 13px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer__email:hover {
+  color: var(--white);
+}
+
+.footer__social {
+  display: flex;
+  gap: 10px;
+}
+
+.footer__social-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.footer__social-icon:hover {
+  transform: translateY(-2px);
+}
+
+.footer__social-icon--instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285aeb 90%);
+}
+
+.footer__social-icon--whatsapp {
+  background: #25d366;
+}
+
+.footer__center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+
+.footer__privacy-link {
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.45);
+  text-decoration: none;
+  margin-top: 10px;
+  transition: color 0.2s;
+}
+
+.footer__privacy-link:hover {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 18px 0;
+}
+
+.footer__bottom-inner {
+  text-align: center;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+@media (max-width: 720px) {
+  .footer__top {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer__brand {
+    align-items: center;
+  }
+
+  .footer__aside {
+    align-items: center;
+  }
+}
+
+
+/* Las 5 páginas legales en dos filas centradas bajo el menú: 3 generales arriba, 2 condiciones de productos abajo */
+.footer__legal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.footer__legal-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 18px;
+}
+
+.footer__legal .footer__privacy-link {
+  display: inline;
+  margin-top: 0;
+}
+
+@media (max-width: 768px) {
+  .footer__top { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 24px; }
+  .footer__brand { align-items: center; text-align: center; }
+  .footer__tagline { text-align: center; max-width: 280px; }
+  .footer__nav { flex-direction: column; align-items: center; gap: 16px; }
+  .footer__logo-ms { display: none; }
+  .footer__logo-texto { display: block; margin: 0 auto; }
+  .footer__social { gap: 10px; margin: 0 auto; }
+  .footer__aside { display: flex; flex-direction: row; align-items: center; justify-content: center; width: 100%; padding-right: 0; grid-column: 1 / -1; }
+}
+
+/* Reglas globales de styles.css de las que depende el footer (aquí solo dentro del footer) */
+.footer { font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+.footer img { max-width: 100%; display: block; }

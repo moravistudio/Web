@@ -12,10 +12,6 @@
   }
 }
 
-/* ===== Servicios · tarjeta 04 (Chatbot): lleva a la página de ejemplos /chatbots/ ===== */
-.services__card-link { position: relative; display: block; flex: 1; width: 100%; height: 100%; container-type: inline-size; color: inherit; text-decoration: none; cursor: pointer; }
-.services__card-link::after { content: 'Ver ejemplos →'; position: absolute; left: 5.5%; bottom: 9%; padding: .6em 1.25em; border-radius: 99px; background: #1E8CFF; color: #fff; font: 600 clamp(11px, 2.1cqw, 16px)/1 'Poppins', sans-serif; box-shadow: 0 .5em 1.3em rgba(30, 140, 255, .45); transition: transform .2s ease, box-shadow .2s ease; }
-html[lang="en"] .services__card-link::after { content: 'See examples →'; }
-.services__card-link:hover::after { transform: translateX(4px); box-shadow: 0 .6em 1.6em rgba(30, 140, 255, .6); }
+/* ===== Servicios · tarjeta 04 (Chatbot): es un enlace (toda la tarjeta es clicable, sin botón extra; el cursor cambia a manito) ===== */
+.services__card-link { position: relative; display: block; flex: 1; width: 100%; height: 100%; color: inherit; text-decoration: none; cursor: pointer; }
 .services__card-link:focus-visible { outline: 3px solid #1E8CFF; outline-offset: -3px; border-radius: 18px; }
-@media (prefers-reduced-motion: reduce) { .services__card-link::after { transition: none; } .services__card-link:hover::after { transform: none; } }
