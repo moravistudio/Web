@@ -167,9 +167,9 @@
           title: 'MS Video Downloader',
           text: 'Descarga vídeos desde URLs compatibles y elige entre los formatos y calidades disponibles.'
         },
-        videoDetector: {
-          title: 'Video Detector & Downloader',
-          text: 'Detecta los vídeos disponibles en una página, identifica sus formatos y permite elegir cuál descargar.'
+        cotizaciones: {
+          title: 'Generador de Cotizaciones',
+          text: 'Crea cotizaciones profesionales en PDF con tu logo y tus precios, listas para enviar a tus clientes en segundos.'
         },
         usarHerramienta: 'Usar herramienta →',
         usarCalculadora: 'Usar calculadora →',
@@ -341,9 +341,9 @@
           title: 'MS Video Downloader',
           text: 'Download videos from supported URLs and choose from the available formats and qualities.'
         },
-        videoDetector: {
-          title: 'Video Detector & Downloader',
-          text: 'Detect videos available on a webpage, identify their formats, and choose which one to download.'
+        cotizaciones: {
+          title: 'Quotation Generator',
+          text: 'Create professional PDF quotes with your logo and prices, ready to send to your clients in seconds.'
         },
         usarHerramienta: 'Use tool →',
         usarCalculadora: 'Use calculator →',
