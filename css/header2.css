@@ -74,3 +74,7 @@
 }
 @media (max-width: 768px) { .hero-arrow { width: 24px; height: 24px; opacity: .4; } .hero-arrow svg { width: 16px; height: 16px; } .hero-arrow--prev { left: 0; } .hero-arrow--next { right: 0; } }
 @media (prefers-reduced-motion: reduce) { .hero-slides > .hero, .hero2, .hero-arrow { transition: none; } }
+
+/* Celular: el área táctil ampliada de las flechas (.hero-arrow::before, inset -8px) sobresale 8 px por el borde derecho cuando la flecha está pegada al borde (right: 0).
+   Eso hacía la página 8 px más ancha que la pantalla y se deslizaba de lado. overflow-x: clip lo recorta sin crear una zona de scroll; lo recortado queda fuera de la pantalla y no se podía tocar. */
+@media (max-width: 768px) { .hero-slides { overflow-x: clip; } }
