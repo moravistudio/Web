@@ -57,6 +57,21 @@
     .frame .msia-head{padding-right:52px}
     @media (max-width:900px){.grid{grid-template-columns:1fr}.wrap{width:calc(100vw - 32px)}.modal{padding:0}.frame{width:100%;height:100%;border-radius:0}.intro,.cta{padding:22px}}
     @media (max-width:768px){.footer__bottom{padding-bottom:84px}}
+    .pasos{list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:22px}
+    .pasos li{counter-increment:p;background:#fff;border:1px solid #dde5f0;border-radius:20px;padding:22px;box-shadow:0 8px 28px rgba(14,26,45,.06)}
+    .pasos li::before{content:counter(p);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#1E8CFF;color:#fff;font:700 15px 'Poppins',sans-serif;margin-bottom:12px}
+    .pasos b{display:block;font:700 16px/1.3 'Poppins',sans-serif}
+    .pasos span{display:block;margin-top:6px;color:#5C6A7E;font-size:14px;line-height:1.5}
+    .faq{margin-top:20px;max-width:860px}
+    .faq details{background:#fff;border:1px solid #dde5f0;border-radius:16px;margin-top:10px;overflow:hidden}
+    .faq summary{cursor:pointer;list-style:none;padding:17px 52px 17px 20px;font:600 15.5px/1.4 'Inter',sans-serif;position:relative}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:'+';position:absolute;right:20px;top:50%;transform:translateY(-50%);font:600 22px/1 'Poppins',sans-serif;color:#1E8CFF}
+    .faq details[open] summary::after{content:'–'}
+    .faq summary:focus-visible{outline:2px solid #1E8CFF;outline-offset:-2px}
+    .faq details p{padding:0 20px 18px;color:#5C6A7E;font-size:14.5px;line-height:1.6}
+    @media (max-width:1000px){.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:560px){.pasos{grid-template-columns:1fr}}
     .demo-abierta{overflow:hidden}
     .demo-abierta .msia-root:not(.msia-embed){display:none}
     @media (max-width:900px){.frame .x{width:40px;height:40px;font-size:17px}}
@@ -139,6 +154,24 @@
       </article>
     </div>
 
+    <h2>De tu información a tu chatbot en 4 pasos</h2>
+    <ol class="pasos">
+      <li><b>Nos cuentas de tu negocio</b><span>Servicios, precios, horarios y las preguntas que más te hacen tus clientes.</span></li>
+      <li><b>Armamos tu chatbot</b><span>Con tu información y el tono de tu marca, y lo probamos con preguntas reales.</span></li>
+      <li><b>Lo pruebas antes de publicarlo</b><span>Te damos un enlace privado para que converses con él y pidas los cambios que quieras.</span></li>
+      <li><b>Lo instalamos en tu web</b><span>Con tu aprobación queda funcionando en tu página, atendiendo a tus clientes a cualquier hora.</span></li>
+    </ol>
+
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Necesito tener una página web?</summary><p>Sí, el chatbot vive en la página de tu negocio. Si todavía no tienes una, también hacemos páginas web y catálogos digitales.</p></details>
+      <details><summary>¿Funciona dentro de WhatsApp?</summary><p>No: estos chatbots atienden en la web de tu negocio, no dentro de WhatsApp. Eso sí, el chatbot puede darle a tu cliente tu número para que siga la conversación contigo por ahí.</p></details>
+      <details><summary>¿Me conviene uno con botones o uno con IA?</summary><p>Si tus clientes preguntan casi siempre lo mismo, uno con botones basta: responde al instante y no tiene costo por mensaje. Si las preguntas son muy variadas o quieres que converse con libertad, conviene uno con IA.</p></details>
+      <details><summary>¿Puede equivocarse el chatbot con IA?</summary><p>Responde solo con la información de tu negocio que le damos y, si no sabe algo, lo dice y te deriva. Aun así sigue siendo una IA, por eso lo revisamos juntos antes de publicarlo.</p></details>
+      <details><summary>¿Quién actualiza la información si cambio mis precios?</summary><p>Nos escribes y lo actualizamos por ti.</p></details>
+      <details><summary>¿Cuánto cuesta y cuánto tarda?</summary><p>Los chatbots con botones y los de IA se cotizan por separado, y el precio depende de cuánta información maneja y qué funciones necesita. Una vez que tenemos tu información, armarlo toma pocas horas; el tiempo total depende de cuándo nos la envíes y de cuántos cambios pidas.</p></details>
+    </div>
+
     <div class="cta">
       <div><b>¿Tu negocio es otro?</b><p>Cuéntanos a qué te dedicas y preparamos un ejemplo con tu información.</p></div>
       <a class="btn" href="https://wa.me/51940284018?text=Hola%20Moravi%20Studio%2C%20quiero%20un%20chatbot%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer">Cuéntanos tu caso</a>
@@ -206,7 +239,7 @@
 
   <script src="../chatbot-ia/flujos-demo.js?v=2"></script>
   <script src="../chatbot-ia/chatbot-flujo.js?v=2"></script>
-  <script src="../js/chatbots-idioma.js?v=1"></script>
+  <script src="../js/chatbots-idioma.js?v=2"></script>
   <script>
     (function () {
       // En tu computadora el servidor de chatbots corre en el puerto 5190; en la web, en Railway
