@@ -14,31 +14,31 @@
   function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
 
   // ¿Abierto ahora? según el horario del flujo, en hora de Lima
-  function abiertoAhora(h) {
+  function abiertoAhora(h, ui) {
     if (!h) return '';
     try {
       var p = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Lima', weekday: 'short', hour: 'numeric', hour12: false }).formatToParts(new Date()), dia = 0, hora = 0;
       p.forEach(function (x) { if (x.type === 'weekday') dia = { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[x.value]; if (x.type === 'hour') hora = +x.value % 24; });
-      return (h.dias.indexOf(dia) >= 0 && hora >= h.desde && hora < h.hasta) ? '🟢 Abierto ahora' : '🔴 Cerrado ahora';
+      return (h.dias.indexOf(dia) >= 0 && hora >= h.desde && hora < h.hasta) ? (ui.abierto || '🟢 Abierto ahora') : (ui.cerrado || '🔴 Cerrado ahora');
     } catch (e) { return ''; }
   }
 
   function mount(o) {
     var f = o.flujo, cont = o.contenedor; if (!f || !cont) return null;
-    var vars = {}, busy = false;
+    var vars = {}, busy = false, ui = f.ui || {};
     var root = el('div', 'msia-root msia-embed is-open'), win = el('div', 'msia-win'), list = el('div', 'msia-msgs'), foot = el('div', 'msia-foot', f.pie || 'Demo de Moravi Studio: no se envía nada a nadie.');
     var head = el('div', 'msia-head'), t = el('b'), sub = el('small', null, f.sub || 'Chatbot de botones'); t.appendChild(document.createTextNode(f.titulo || 'Asistente')); t.appendChild(sub);
-    var nuevo = el('button', 'msia-icon-btn', '↻'); nuevo.type = 'button'; nuevo.title = 'Nueva conversación'; nuevo.setAttribute('aria-label', 'Nueva conversación');
+    var nuevo = el('button', 'msia-icon-btn', '↻'); nuevo.type = 'button'; nuevo.title = ui.nuevo || 'Nueva conversación'; nuevo.setAttribute('aria-label', ui.nuevo || 'Nueva conversación');
     head.appendChild(t); head.appendChild(nuevo); win.appendChild(head); win.appendChild(list);
     var form = null, input = null;
     if (f.libre) {
-      form = el('form', 'msia-form'); input = el('textarea', 'msia-input'); var send = el('button', 'msia-send', 'Enviar'); send.type = 'submit';
-      input.rows = 1; input.maxLength = 200; input.placeholder = 'Escribe tu pregunta o elige una opción…'; input.setAttribute('aria-label', 'Tu mensaje');
+      form = el('form', 'msia-form'); input = el('textarea', 'msia-input'); var send = el('button', 'msia-send', ui.enviar || 'Enviar'); send.type = 'submit';
+      input.rows = 1; input.maxLength = 200; input.placeholder = ui.placeholder || 'Escribe tu pregunta o elige una opción…'; input.setAttribute('aria-label', ui.tuMensaje || 'Tu mensaje');
       form.appendChild(input); form.appendChild(send); win.appendChild(form);
     }
     win.appendChild(foot); root.appendChild(win); cont.appendChild(root);
 
-    function tpl(s) { return String(s).replace(/\{\{(\w+)\}\}/g, function (_, k) { return k === 'abierto' ? abiertoAhora(f.horario) : (vars[k] != null ? vars[k] : ''); }); }
+    function tpl(s) { return String(s).replace(/\{\{(\w+)\}\}/g, function (_, k) { return k === 'abierto' ? abiertoAhora(f.horario, ui) : (vars[k] != null ? vars[k] : ''); }); }
     function addBot(texto) { var b = el('div', 'msia-m msia-m--bot', tpl(texto)); list.appendChild(b); list.scrollTop = list.scrollHeight; return b; }
     function addMe(texto) { list.appendChild(el('div', 'msia-m msia-m--me', texto)); list.scrollTop = list.scrollHeight; }
     function limpiarBotones() { [].slice.call(list.querySelectorAll('.msia-opts')).forEach(function (n) { n.remove(); }); }
