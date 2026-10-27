@@ -34,10 +34,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .cab__nav a:hover{color:var(--marca)}
 .cab__nav a.on{color:var(--marca);border-color:var(--marca);font-weight:700}
 .logo{display:flex;align-items:center;gap:11px;justify-self:center}
-.logo svg{width:40px;height:40px}
-.logo__txt{display:flex;flex-direction:column;line-height:1}
-.logo__nombre{font-family:var(--serif);font-weight:600;font-size:29px;letter-spacing:.03em;color:var(--tinta)}
-.logo__sub{font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--suave);margin-top:5px}
+.logo__img{display:block;height:54px;width:auto}
 .cab__der{display:flex;gap:8px;justify-content:flex-end}
 .btn-icono{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--tinta);transition:background .2s,color .2s}
 .btn-icono:hover{background:var(--blush);color:var(--marca)}
@@ -157,7 +154,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .pie{background:var(--tinta);color:#EBDCE8;padding:54px 0 26px}
 .pie__cols{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:36px}
 .pie .logo{justify-self:start}
-.pie .logo__nombre{color:#fff}.pie .logo__sub{color:#C9B2C4}
+.pie .logo__img{height:58px}
 .pie p,.pie li{font-size:14px;color:#D2BFCE}
 .pie h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-bottom:14px}
 .pie ul{list-style:none;display:grid;gap:9px}
@@ -228,7 +225,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
   .contenedor{width:calc(100% - 28px)}
   .cab__in{grid-template-columns:auto 1fr auto;height:64px;gap:8px}
   .cab__nav{display:none}
-  .logo{justify-self:start}.logo svg{width:34px;height:34px}.logo__nombre{font-size:25px}
+  .logo{justify-self:start}.logo__img{height:42px}.pie .logo__img{height:48px}
   .grilla{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 12px}
   .tarj__nombre{font-size:19px}.precio b{font-size:16px}.tarj__rapida{display:none}
   .corazon{width:34px;height:34px;top:30%}

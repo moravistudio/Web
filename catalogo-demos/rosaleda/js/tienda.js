@@ -16,16 +16,10 @@
     corazon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4.2 4.2 0 0 1 7-3 4.2 4.2 0 0 1 7 3c0 5.6-7 10-7 10z"/></svg>'
   };
 
-  // logo: rosa de seis pétalos + nombre
-  function emblema() {
-    var a = '', b = '', i;
-    for (i = 0; i < 6; i++) a += '<ellipse cx="24" cy="12" rx="7" ry="11" fill="#C2407A" opacity="' + (i % 2 ? '.7' : '.95') + '" transform="rotate(' + (i * 60) + ' 24 24)"/>';
-    for (i = 0; i < 6; i++) b += '<ellipse cx="24" cy="17" rx="4.6" ry="7" fill="#E7A8BC" transform="rotate(' + (30 + i * 60) + ' 24 24)"/>';
-    return '<svg viewBox="0 0 48 48" aria-hidden="true">' + a + b + '<circle cx="24" cy="24" r="4" fill="#C7A25B"/></svg>';
-  }
-  function logo() { return '<a class="logo" href="index.html" aria-label="' + M.nombre + ', inicio">' + emblema() + '<span class="logo__txt"><span class="logo__nombre">' + M.nombre + '</span><span class="logo__sub">' + M.apellido + '</span></span></a>'; }
+  // logo: imagen PNG con fondo transparente (img/logo/); en el pie oscuro se usa la versión clara
+  function logo(claro) { return '<a class="logo" href="index.html" aria-label="' + M.nombre + ', inicio"><img class="logo__img" src="img/logo/' + (claro ? 'logo-rosaleda-claro.png' : 'logo-rosaleda-recortado.png') + '" alt="' + M.nombre + ', perfumes y belleza"></a>'; }
 
-  w.Tienda = { emblema: emblema };
+  w.Tienda = {};
 
   function cabecera(conBusca) {
     var cat = U.param('cat') || '';
@@ -38,7 +32,7 @@
   }
   function pie() {
     $('#pie').innerHTML = '<footer class="pie"><div class="contenedor"><div class="pie__cols">' +
-      '<div>' + logo() + '<p style="margin-top:14px;max-width:290px">Perfumes y cuidado personal para acompañarte todos los días.</p></div>' +
+      '<div>' + logo(true) + '<p style="margin-top:14px;max-width:290px">Perfumes y cuidado personal para acompañarte todos los días.</p></div>' +
       '<div><h4>Tienda</h4><ul><li><a href="index.html?cat=perfumes#catalogo">Perfumes</a></li><li><a href="index.html?cat=cuerpo#catalogo">Cuerpo</a></li><li><a href="index.html?cat=rostro#catalogo">Rostro</a></li><li><a href="index.html?cat=regalos#catalogo">Regalos</a></li></ul></div>' +
       '<div><h4>Ayuda</h4><ul><li>Envíos y entregas</li><li>Cambios y devoluciones</li><li>Cuidado de tus fragancias</li></ul></div>' +
       '<div><h4>Paga como prefieras</h4><div class="medios"><span>Tarjeta</span><span>Yape</span><span>Plin</span></div><p style="margin-top:14px">Compra segura: tus datos de pago no pasan por nuestro catálogo.</p></div>' +
