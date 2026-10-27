@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rosaleda · Perfumes y belleza (muestra de catálogo)</title>
+  <link rel="icon" type="image/png" href="img/logo/favicon-rosaleda.png">
+  <meta name="description" content="Catálogo de ejemplo de Moravi Studio: cuadrícula con ventana central de producto, carrito y pago en la página.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <script src="../nucleo/idioma.js"></script>
+  <script src="../nucleo/en-comun.js"></script>
+  <script src="js/en.js"></script>
+  <script src="../nucleo/barra-muestra.js" data-nombre="Rosaleda"></script>
+  <div id="cabecera"></div>
+
+  <main>
+    <section class="portada">
+      <img class="portada__foto" src="img/portada-rosaleda.webp" alt="Perfumes y cuidado personal Rosaleda: perfume Rosa Nocturna, bruma corporal, sérum y crema de manos" fetchpriority="high">
+      <div class="contenedor portada__in">
+        <div class="portada__texto">
+          <span class="portada__ey">Nueva colección</span>
+          <h1>Fragancias que <em>te acompañan</em></h1>
+          <p>Perfumes y cuidado personal con notas suaves, elegantes y de larga duración, para cada momento del día.</p>
+          <div class="portada__acc">
+            <a class="btn btn--marca" href="index.html?cat=perfumes#catalogo">Ver perfumes</a>
+            <a class="btn btn--linea" href="index.html?cat=regalos#catalogo">Ideas de regalo</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="franja" aria-label="Beneficios">
+      <div class="contenedor franja__in">
+        <span>Envío a todo el Perú</span><span>Muestra de regalo en tu primer pedido</span><span>Paga con tarjeta, Yape o Plin</span>
+      </div>
+    </section>
+
+    <section class="categorias" id="catalogo">
+      <div class="contenedor">
+        <h2>Nuestro catálogo</h2>
+        <div class="tabs" id="tabs" role="group" aria-label="Filtrar por categoría"></div>
+        <p class="conteo" id="conteo" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="contenedor"><div class="grilla" id="grilla"></div></div>
+  </main>
+
+  <div id="pie"></div>
+
+  <script src="../nucleo/util.js"></script>
+  <script src="../nucleo/carrito.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/arte.js"></script>
+  <script src="js/tienda.js"></script>
+</body>
+</html>

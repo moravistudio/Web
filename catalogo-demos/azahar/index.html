@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Azahar · Carteras y calzado de cuero (muestra de catálogo)</title>
+  <link rel="icon" type="image/png" href="img/logo/favicon-azahar.png">
+  <meta name="description" content="Catálogo de ejemplo de Moravi Studio: cuadrícula clásica con página completa de producto, carrito y pago en la página.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <script src="../nucleo/idioma.js"></script>
+  <script src="../nucleo/en-comun.js"></script>
+  <script src="js/en.js"></script>
+  <script src="../nucleo/barra-muestra.js" data-nombre="Azahar"></script>
+  <div id="cabecera"></div>
+
+  <main>
+    <section class="portada">
+      <img class="portada__foto" src="img/portada-azahar.webp" alt="Tote, botines y clutch de cuero sobre pedestales de yeso, con una rama de azahar" fetchpriority="high">
+      <div class="contenedor portada__in">
+        <div>
+          <span class="portada__ey">Colección otoño</span>
+          <h1>Cuero que acompaña <em>tus pasos</em></h1>
+          <p>Carteras y calzado hechos para el día a día: cómodos, resistentes y con el detalle justo para que se vean bien en cualquier ocasión.</p>
+          <div class="portada__acc">
+            <a class="btn btn--marca" href="#catalogo">Ver la colección</a>
+            <a class="btn btn--linea" href="index.html?cat=ofertas#catalogo">Ofertas</a>
+          </div>
+          <div class="pilares"><span>Envío a todo el Perú</span><span>Cambios en 7 días</span><span>Paga con Yape o Plin</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="categorias" id="catalogo">
+      <div class="contenedor">
+        <div class="categorias__fila">
+          <h2>Nuestro catálogo</h2>
+          <div class="chips" id="chips" role="group" aria-label="Filtrar por categoría"></div>
+        </div>
+        <p class="conteo" id="conteo" aria-live="polite"></p>
+      </div>
+    </section>
+
+    <div class="contenedor"><div class="grilla" id="grilla"></div></div>
+  </main>
+
+  <div id="pie"></div>
+
+  <script src="../nucleo/util.js"></script>
+  <script src="../nucleo/carrito.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/arte.js"></script>
+  <script src="js/tienda.js"></script>
+</body>
+</html>

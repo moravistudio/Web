@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catálogos para tu negocio — Moravi Studio</title>
+  <meta name="description" content="Tres catálogos de ejemplo de Moravi Studio, cada uno armado de otra manera. Ábrelos y recorre el pedido como lo haría un cliente tuyo.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/footer-sitio.css?v=2">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
+    .wrap{width:min(1180px,calc(100vw - 48px));margin:0 auto;padding:36px 0 70px}
+    .back{color:#1E8CFF;text-decoration:none;font-weight:600;font-size:14px}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:14px}
+    .idioma{display:flex;gap:2px;background:#fff;border:1px solid #dde5f0;border-radius:99px;padding:3px}
+    .idioma button{border:0;background:transparent;font:600 13px 'Inter',sans-serif;color:#41506a;border-radius:99px;padding:6px 13px;cursor:pointer;min-width:42px}
+    .idioma button.on{background:#1E8CFF;color:#fff}
+    .idioma button:focus-visible{outline:2px solid #1E8CFF;outline-offset:2px}
+    h1{font:700 clamp(30px,4vw,48px)/1.12 'Poppins',sans-serif;margin-top:18px;letter-spacing:-.01em;max-width:820px}
+    h1 em{font-style:normal;color:#1E8CFF}
+    .lead{margin-top:14px;color:#5C6A7E;font-size:18px;max-width:700px;line-height:1.55}
+    .note{margin-top:10px;color:#5C6A7E;font-size:15px;max-width:700px;line-height:1.5}
+    h2{font:700 clamp(22px,2.6vw,30px)/1.2 'Poppins',sans-serif;margin:54px 0 0}
+    .grid + h2{margin-top:92px}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:22px}
+    .card{background:#fff;border:1px solid #dde5f0;border-radius:22px;padding:18px 18px 24px;box-shadow:0 8px 28px rgba(14,26,45,.07);display:flex;flex-direction:column}
+    .shot{display:block;border-radius:14px;overflow:hidden;border:1px solid #dde5f0;background:#EEF4FB}
+    .shot img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:top}
+    .card > *:not(.shot){margin-left:6px;margin-right:6px}
+    .tag{display:inline-block;align-self:flex-start;font-size:12px;font-weight:600;color:#1E8CFF;background:rgba(30,140,255,.1);padding:4px 10px;border-radius:99px;margin-top:18px}
+    .card h3{font:700 20px/1.2 'Poppins',sans-serif;margin-top:12px}
+    .card h3 small{display:block;margin-top:4px;font:500 14px/1.3 'Inter',sans-serif;color:#5C6A7E}
+    .card p{margin-top:10px;color:#5C6A7E;font-size:14.5px;line-height:1.5;flex:1}
+    .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+    .chips span{font-size:12px;font-weight:600;color:#0A1B3C;background:#EEF4FB;border-radius:99px;padding:4px 10px}
+    .btn{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 14.5px 'Inter',sans-serif;color:#fff;background:#1E8CFF;border-radius:99px;padding:12px 22px;text-decoration:none;transition:transform .2s}
+    .card .btn{align-self:flex-start}
+    .btn:hover{transform:translateY(-2px)}
+    .btn:focus-visible,.shot:focus-visible,.back:focus-visible{outline:2px solid #1E8CFF;outline-offset:3px}
+    .cta{margin-top:56px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:#fff;border:1px solid #dde5f0;border-radius:22px;padding:24px 28px}
+    .cta b{display:block;font:700 19px/1.25 'Poppins',sans-serif}
+    .cta p{margin-top:4px;color:#5C6A7E;font-size:15px}
+    .cta .btn{margin-top:0}
+    .pasos{list-style:none;counter-reset:p;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:22px}
+    .pasos li{counter-increment:p;background:#fff;border:1px solid #dde5f0;border-radius:20px;padding:22px;box-shadow:0 8px 28px rgba(14,26,45,.06)}
+    .pasos li::before{content:counter(p);display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#1E8CFF;color:#fff;font:700 15px 'Poppins',sans-serif;margin-bottom:12px}
+    .pasos b{display:block;font:700 16px/1.3 'Poppins',sans-serif}
+    .pasos span{display:block;margin-top:6px;color:#5C6A7E;font-size:14px;line-height:1.5}
+    .faq{margin-top:20px;max-width:860px}
+    .faq details{background:#fff;border:1px solid #dde5f0;border-radius:16px;margin-top:10px;overflow:hidden}
+    .faq summary{cursor:pointer;list-style:none;padding:17px 52px 17px 20px;font:600 15.5px/1.4 'Inter',sans-serif;position:relative}
+    .faq summary::-webkit-details-marker{display:none}
+    .faq summary::after{content:'+';position:absolute;right:20px;top:50%;transform:translateY(-50%);font:600 22px/1 'Poppins',sans-serif;color:#1E8CFF}
+    .faq details[open] summary::after{content:'–'}
+    .faq summary:focus-visible{outline:2px solid #1E8CFF;outline-offset:-2px}
+    .faq details p{padding:0 20px 18px;color:#5C6A7E;font-size:14.5px;line-height:1.6}
+    .arriba{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}.arriba .btn{margin-top:0}.arriba span{color:#5C6A7E;font-size:14px}
+    .card p.ideal{flex:none;margin-top:10px;color:#0A1B3C;font-size:13.5px}.card p.ideal b{color:#1E8CFF}
+    .incluye{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+    .incluye li{background:#fff;border:1px solid #dde5f0;border-radius:16px;padding:16px 18px 16px 48px;position:relative;font-size:14.5px;line-height:1.45;color:#0E1A2D;box-shadow:0 6px 20px rgba(14,26,45,.05)}
+    .incluye li::before{content:'✓';position:absolute;left:16px;top:15px;width:22px;height:22px;border-radius:50%;background:rgba(30,140,255,.12);color:#1E8CFF;display:grid;place-items:center;font-weight:700;font-size:13px}
+    .incluye li b{display:block;font:700 15px/1.3 'Poppins',sans-serif;margin-bottom:2px}.incluye li span{color:#5C6A7E;font-size:13.5px}
+    @media (max-width:1000px){.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}.incluye{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.wrap{width:calc(100vw - 32px)}.cta{padding:22px}}
+    @media (max-width:768px){.footer__bottom{padding-bottom:84px}}
+    @media (max-width:560px){.pasos,.incluye{grid-template-columns:1fr}}
+    @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="top"><a class="back" href="../">← Volver a Moravi Studio</a><div id="idioma-slot"></div></div>
+    <h1>Elige cómo quieres <em>mostrar tus productos</em></h1>
+    <p class="lead">Tres catálogos de ejemplo, cada uno armado de otra manera. Ábrelos, busca un producto, agrégalo al pedido y llega hasta el pago, como lo haría un cliente tuyo.</p>
+    <p class="note">Los negocios y los productos de estos ejemplos son inventados. El pago es una simulación: no se cobra nada y no se envía nada a nadie.</p>
+    <div class="arriba"><a class="btn" href="https://wa.me/51940284018?text=Hola%20Moravi%20Studio%2C%20quiero%20un%20cat%C3%A1logo%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer">Quiero mi catálogo</a><span>o mira las muestras aquí abajo</span></div>
+
+    <h2>Tres maneras de ordenar un catálogo</h2>
+    <div class="grid">
+      <article class="card">
+        <a class="shot" href="azahar/" target="_blank" rel="noopener" aria-label="Abrir la muestra Azahar" tabindex="-1"><img src="img/azahar.webp" width="960" height="600" loading="lazy" alt="Vista de la muestra Azahar: portada con un bolso y botines de cuero, y debajo el catálogo en cuadrícula"></a>
+        <span class="tag">Cuadrícula y página de producto</span>
+        <h3>Azahar <small>Carteras y calzado</small></h3>
+        <p>Fotos grandes en cuadrícula. Al tocar un producto se abre su página completa, con colores, tallas y productos parecidos.</p>
+        <p class="ideal"><b>Ideal para:</b> moda, calzado y accesorios con varios colores y tallas.</p>
+        <div class="chips"><span>Color y talla</span><span>Página por producto</span><span>Carrito lateral</span></div>
+        <a class="btn" href="azahar/" target="_blank" rel="noopener">Ver muestra</a>
+      </article>
+      <article class="card">
+        <a class="shot" href="rosaleda/" target="_blank" rel="noopener" aria-label="Abrir la muestra Rosaleda" tabindex="-1"><img src="img/rosaleda.webp" width="960" height="600" loading="lazy" alt="Vista de la muestra Rosaleda: portada con frascos de perfume rosados y debajo el catálogo"></a>
+        <span class="tag">Cuadrícula y ventana central</span>
+        <h3>Rosaleda <small>Perfumes y belleza</small></h3>
+        <p>El cliente no sale de la pantalla: el producto se abre en una ventana al centro, con su tamaño, la cantidad y la opción de guardarlo en favoritos.</p>
+        <p class="ideal"><b>Ideal para:</b> perfumería, belleza y regalos, donde la presentación importa.</p>
+        <div class="chips"><span>Ventana de producto</span><span>Tamaños y precios</span><span>Favoritos</span></div>
+        <a class="btn" href="rosaleda/" target="_blank" rel="noopener">Ver muestra</a>
+      </article>
+      <article class="card">
+        <a class="shot" href="casa-firme/" target="_blank" rel="noopener" aria-label="Abrir la muestra Casa Firme" tabindex="-1"><img src="img/casa-firme.webp" width="960" height="600" loading="lazy" alt="Vista de la muestra Casa Firme: lista de productos con foto, precio y botón de agregar, y el pedido a la derecha"></a>
+        <span class="tag">Lista de pedido rápido</span>
+        <h3>Casa Firme <small>Ferretería y hogar</small></h3>
+        <p>Para quien compra seguido y sabe lo que busca: un producto por fila, con su presentación y su cantidad, y el pedido siempre a la vista.</p>
+        <p class="ideal"><b>Ideal para:</b> ferreterías y tiendas con muchos productos y clientes que compran seguido.</p>
+        <div class="chips"><span>Búsqueda por código</span><span>Pedido siempre visible</span><span>Envío gratis desde S/ 300</span></div>
+        <a class="btn" href="casa-firme/" target="_blank" rel="noopener">Ver muestra</a>
+      </article>
+    </div>
+
+    <h2>Todos los catálogos incluyen</h2>
+    <ul class="incluye">
+      <li><b>Carrito de compras</b><span>El cliente arma su pedido y ve el total al instante.</span></li>
+      <li><b>Detalle de cada producto</b><span>Fotos, descripción, ficha técnica y opciones.</span></li>
+      <li><b>Pago dentro del catálogo</b><span>Sin salir de tu página, con una pasarela de pagos.</span></li>
+      <li><b>Hecho para el celular</b><span>Se ve y se usa bien en teléfono, tableta y computadora.</span></li>
+      <li><b>Buscador y categorías</b><span>Tus clientes encuentran rápido lo que buscan.</span></li>
+      <li><b>Tu marca, tus fotos</b><span>Tu logo, tus colores y tus textos, no los del ejemplo.</span></li>
+    </ul>
+
+    <h2>De tus productos a tu catálogo en 4 pasos</h2>
+    <ol class="pasos">
+      <li><b>Eliges el que más se parece</b><span>Nos dices cuál de los ejemplos te gusta y qué le cambiarías.</span></li>
+      <li><b>Nos envías tus productos</b><span>Fotos, nombres, precios y presentaciones, tal como los tengas.</span></li>
+      <li><b>Lo armamos con tu marca</b><span>Con tus colores, tu logo y tus textos. Te damos un enlace privado para que lo pruebes y pidas cambios.</span></li>
+      <li><b>Lo instalamos en tu web</b><span>Con tu aprobación queda dentro de tu página, vendiendo a cualquier hora.</span></li>
+    </ol>
+
+    <h2>Preguntas frecuentes</h2>
+    <div class="faq">
+      <details><summary>¿Necesito tener una página web?</summary><p>El catálogo vive dentro de la página de tu negocio. Si todavía no tienes una, también hacemos páginas web.</p></details>
+      <details><summary>¿Se puede adaptar a mi marca?</summary><p>Sí, y lo hacemos nosotros. Armamos el catálogo con tu logo, tus colores, tus fotos y tus textos; tú no tocas código ni necesitas ningún programa. Lo que elijas de los ejemplos es la forma de recorrerlo.</p></details>
+      <details><summary>¿Mis clientes pueden pagar dentro del catálogo?</summary><p>Las muestras simulan el recorrido completo: pedido, datos de entrega y pago. En tu catálogo el pago se conecta a una pasarela de pagos, con tarjeta y las billeteras que esa pasarela acepte en tu país. Lo vemos contigo antes de empezar.</p></details>
+      <details><summary>¿Funciona bien en el celular?</summary><p>Sí. Los tres ejemplos se adaptan al celular, a la tableta y a la computadora. Ábrelos desde tu teléfono para verlo.</p></details>
+      <details><summary>¿Quién actualiza los productos y los precios?</summary><p>Nos escribes y lo actualizamos por ti, sin que tengas que aprender ningún panel. Es un servicio de mantenimiento con un costo que acordamos contigo desde la cotización, para que sepas de antemano cómo funciona.</p></details>
+      <details><summary>¿Qué necesito para empezar?</summary><p>Las fotos de tus productos, sus nombres, sus precios y, si las tienen, sus presentaciones: tallas, tamaños o colores.</p></details>
+      <details><summary>¿Y si no tengo buenas fotos de mis productos?</summary><p>Cuéntanoslo: también hacemos fotografía de productos, como un servicio aparte que se cotiza, así que no necesitas llegar con todo listo.</p></details>
+      <details><summary>¿Puedo verlo antes de que se publique?</summary><p>Sí. Te damos un enlace privado para que lo pruebes y nos pidas los cambios antes de publicarlo.</p></details>
+      <details><summary>¿Cuánto cuesta y cuánto tarda?</summary><p>Se cotiza según la cantidad de productos y las funciones que necesites. Escríbenos y te respondemos con una propuesta; el tiempo depende de cuándo nos envíes tus productos y fotos.</p></details>
+    </div>
+
+    <div class="cta">
+      <div><b>¿Tu negocio es otro?</b><p>Cuéntanos qué vendes y te mostramos cómo se vería con tus productos.</p></div>
+      <a class="btn" href="https://wa.me/51940284018?text=Hola%20Moravi%20Studio%2C%20quiero%20un%20cat%C3%A1logo%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer">Cuéntanos tu caso</a>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo-wrap">
+          <img src="../assets/img/logo-ms-footer.webp" alt="MS" class="footer__logo-ms">
+          <img src="../assets/img/logo-texto-footer.webp" alt="Moravi Studio" class="footer__logo-texto">
+        </div>
+        <p class="footer__tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
+      </div>
+
+      <div class="footer__center">
+        <nav class="footer__nav">
+          <a href="../" class="footer__nav-link">Inicio</a>
+          <a href="../#proyectos" class="footer__nav-link">Proyectos</a>
+          <a href="../#servicios" class="footer__nav-link">Servicios</a>
+          <a href="../productos/" class="footer__nav-link">Productos</a>
+          <a href="../#contacto" class="footer__nav-link">Contacto</a>
+        </nav>
+        <div class="footer__legal">
+          <div class="footer__legal-row">
+            <a href="../privacidad.html" class="footer__privacy-link">Política de privacidad</a>
+            <a href="../terminos.html" class="footer__privacy-link">Términos y condiciones</a>
+            <a href="../suscripciones.html" class="footer__privacy-link">Suscripciones y reembolsos</a>
+          </div>
+          <div class="footer__legal-row">
+            <a href="../catalogo-condiciones.html" class="footer__privacy-link">Condiciones de Catálogo Online</a>
+            <a href="../video-downloader-condiciones.html" class="footer__privacy-link">Condiciones de MS Video Downloader</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__aside">
+        <div class="footer__social">
+          <a href="https://www.instagram.com/moravistudiolab" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--instagram" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.3" cy="6.7" r="0.6" fill="white" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/51940284018" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--whatsapp" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.94 14.47L2 22l5.66-1.48A10 10 0 1 0 12 2zm5.29 14.34c-.22.62-1.09 1.14-1.79 1.29-.49.1-1.12.18-3.26-.7-2.73-1.13-4.49-3.9-4.63-4.08-.14-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.94-2.25.24-.27.53-.34.71-.34h.5c.16 0 .38-.02.58.44.22.5.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.15-.28.33-.4.45-.13.13-.27.27-.12.53.16.27.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.19 1.36.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.87.27.13.45.2.51.31.07.11.07.62-.15 1.24z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p>© 2026 Moravi Studio. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  <script src="nucleo/idioma.js"></script>
+  <script src="en-portafolio.js"></script>
+</body>
+</html>
