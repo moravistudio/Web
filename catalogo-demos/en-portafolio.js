@@ -68,6 +68,8 @@
   document.addEventListener('DOMContentLoaded', function () {
     var slot = document.getElementById('idioma-slot'); if (slot) { slot.innerHTML = I.selector('idioma'); I.enlazar(slot); }
     if (!en) return;
+    // las capturas de las tarjetas son imágenes: en inglés se usan las capturas de las muestras en inglés (nombre-en.webp)
+    [].forEach.call(document.querySelectorAll('.shot img'), function (im) { im.setAttribute('src', im.getAttribute('src').replace(/\.webp$/, '-en.webp')); });
     [].forEach.call(document.querySelectorAll('a[href]'), function (a) {
       var h = a.getAttribute('href'); if (H[h]) a.setAttribute('href', H[h]);
       if (h.indexOf('wa.me/') >= 0 && h.indexOf('text=') >= 0) a.setAttribute('href', h.replace(/text=[^&]*/, 'text=' + WA.en));

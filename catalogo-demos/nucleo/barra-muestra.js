@@ -5,6 +5,7 @@
  */
 (function () {
   'use strict';
+  if (/[?&]sinbarra(?:=|&|$)/.test(location.search)) return; // para tomar las capturas de las tarjetas sin la franja
   var s = document.currentScript, nombre = (s && s.getAttribute('data-nombre')) || 'esta muestra';
   var I = window.Idioma, en = !!I && I.actual() === 'en';
   var msg = encodeURIComponent(en

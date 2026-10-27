@@ -65,7 +65,10 @@
       if (t.p) P = P.concat(t.p); if (t.t) Tt = Tt.concat(t.t);
       if (en && document.readyState !== 'loading') todo();
     },
-    cambiar: function (l) { l = l === 'en' ? 'en' : 'es'; if (l === actual) return; try { localStorage.setItem(KEY, l); } catch (e) { /* sin almacenamiento */ } location.reload(); },
+    cambiar: function (l) { l = l === 'en' ? 'en' : 'es'; if (l === actual) return; try { localStorage.setItem(KEY, l); } catch (e) { /* sin almacenamiento */ }
+      // si el enlace traía ?lang=..., se quita para que no deshaga la elección al recargar
+      try { var u = new URL(location.href); u.searchParams.delete('lang'); history.replaceState(null, '', u.pathname + u.search + u.hash); } catch (e) { /* sin historial */ }
+      location.reload(); },
     selector: function (clase) {
       return '<div class="' + (clase || 'idioma') + '" role="group" aria-label="Idioma"><button type="button" data-lang="es" class="' + (en ? '' : 'on') + '" aria-pressed="' + (!en) + '">ES</button><button type="button" data-lang="en" class="' + (en ? 'on' : '') + '" aria-pressed="' + en + '">EN</button></div>';
     },
