@@ -240,3 +240,6 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
   .prod__acc .btn{flex-basis:100%}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* tableta en vertical (721–900 px): la cabecera necesita ~760 px, así que se compactan logo, espacios y menú */
+@media (min-width:720.5px) and (max-width:900px){.logo__img{height:46px}.cab__in{gap:12px}.cab__nav{margin-left:4px}.cab__nav a{padding:8px 10px}}
