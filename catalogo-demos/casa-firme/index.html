@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Casa Firme · Ferretería y hogar (muestra de catálogo)</title>
+  <meta name="description" content="Catálogo de ejemplo de Moravi Studio: lista de productos con pedido rápido, cantidades en la misma fila y pago en la página.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+  <div id="cabecera"></div>
+
+  <main class="contenedor tablero">
+    <nav class="cats" id="cats" aria-label="Categorías"></nav>
+
+    <section class="centro" aria-label="Lista de productos">
+      <div class="lista-cab">
+        <div><h1>Catálogo de productos</h1><p class="conteo" id="conteo" aria-live="polite"></p></div>
+        <label class="orden"><span>Ordenar por</span>
+          <select id="orden"><option value="rel">Más pedidos</option><option value="menor">Precio: menor a mayor</option><option value="mayor">Precio: mayor a menor</option></select>
+        </label>
+      </div>
+      <div class="lista" id="lista"></div>
+    </section>
+
+    <aside class="pedido" id="pedido" aria-label="Tu pedido"></aside>
+  </main>
+
+  <div id="pie"></div>
+
+  <script src="../nucleo/util.js"></script>
+  <script src="../nucleo/carrito.js"></script>
+  <script src="js/datos.js"></script>
+  <script src="js/arte.js"></script>
+  <script src="js/tienda.js"></script>
+</body>
+</html>
