@@ -29,10 +29,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .cab{position:sticky;top:0;z-index:30;background:var(--carbon);color:#fff}
 .cab__in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:28px;height:var(--alto-cab)}
 .logo{display:flex;align-items:center;gap:11px}
-.logo svg{width:42px;height:42px}
-.logo__txt{display:flex;flex-direction:column;line-height:1}
-.logo__nombre{font-family:var(--titulo);font-weight:700;font-size:28px;letter-spacing:.04em;text-transform:uppercase}
-.logo__sub{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#B8C2C9;margin-top:4px}
+.logo__img{display:block;height:50px;width:auto}
 .busca{position:relative;width:100%;max-width:640px;justify-self:center}
 .busca svg{position:absolute;left:15px;top:50%;transform:translateY(-50%);width:20px;height:20px;color:var(--suave);pointer-events:none}
 .busca input{width:100%;height:44px;border:2px solid transparent;border-radius:10px;padding:0 16px 0 46px;font:inherit;font-size:15.5px;background:#fff;color:var(--carbon)}
@@ -146,7 +143,7 @@ a.pl__nombre:hover{text-decoration:underline}
 .servicios b{display:block;font-size:15px;line-height:1.2}
 .servicios span{display:block;font-size:13px;color:var(--suave);margin-top:2px}
 .pie{background:var(--carbon);color:#C9D1D6;padding:38px 0 0;font-size:14.5px}
-.pie .logo__nombre{color:#fff}
+.pie .logo__img{height:52px}
 .pie__in{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:34px;padding-bottom:30px}
 .pie__marca p{margin-top:14px;max-width:320px}
 .pie h4{color:var(--amarillo);font-family:var(--titulo);font-size:19px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
@@ -263,7 +260,7 @@ a.pl__nombre:hover{text-decoration:underline}
   .contenedor{width:calc(100% - 28px)}
   .cab__in{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:'logo der' 'busca busca';gap:10px 12px;height:var(--alto-cab);padding:10px 0;align-content:center}
   .cab__in .logo{grid-area:logo}.cab__in .busca,.cab__in .cab__vol{grid-area:busca;max-width:none}.cab__in .cab__der{grid-area:der}
-  .logo svg{width:38px;height:38px}.logo__nombre{font-size:25px}.logo__sub{font-size:10px}
+  .logo__img{height:40px}.pie .logo__img{height:46px}
   .btn-ped span{display:none}.btn-ped{padding:0 12px}
   .lista-cab h1{font-size:32px}
   .fila{grid-template-columns:84px minmax(0,1fr);padding:14px;gap:10px 14px}

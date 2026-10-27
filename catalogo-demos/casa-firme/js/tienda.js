@@ -19,13 +19,10 @@
     mayor: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v4H4zM6 12v8h12v-8M12 8v12"/></svg>'
   };
 
-  // logo: casa dentro de un cuadrado amarillo + nombre
-  function emblema() {
-    return '<svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="11" fill="#F2B705"/><path d="M10 25 24 12l14 13" fill="none" stroke="#1F2A30" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 22v14h16V22" fill="none" stroke="#1F2A30" stroke-width="3.6" stroke-linejoin="round"/><rect x="21" y="28" width="6" height="8" fill="#1F2A30"/></svg>';
-  }
-  function logo() { return '<a class="logo" href="index.html" aria-label="' + M.nombre + ', inicio">' + emblema() + '<span class="logo__txt"><span class="logo__nombre">' + M.nombre + '</span><span class="logo__sub">' + M.apellido + '</span></span></a>'; }
+  // logo: imagen PNG con fondo transparente (img/logo/); la cabecera y el pie son oscuros, así que se usa la versión clara
+  function logo() { return '<a class="logo" href="index.html" aria-label="' + M.nombre + ', inicio"><img class="logo__img" src="img/logo/logo-casafirme-claro.png" alt="' + M.nombre + ', ferretería y hogar"></a>'; }
 
-  w.Tienda = { carrito: carrito, emblema: emblema };
+  w.Tienda = { carrito: carrito };
   w.Tienda.total = function () { return carrito.lineas().reduce(function (s, l) { return s + l.cant * D.precioLinea(l); }, 0); };
   w.Tienda.arteLinea = function (l) { return Arte.producto(D.producto(l.id)); };
   w.Tienda.detalle = function (l) { var p = D.producto(l.id); return p && p.tam.length > 1 ? l.talla : ''; };

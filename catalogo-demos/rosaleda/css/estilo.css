@@ -34,7 +34,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
 .cab__nav a:hover{color:var(--marca)}
 .cab__nav a.on{color:var(--marca);border-color:var(--marca);font-weight:700}
 .logo{display:flex;align-items:center;gap:11px;justify-self:center}
-.logo__img{display:block;height:54px;width:auto}
+.logo__img{display:block;height:62px;width:auto}
 .cab__der{display:flex;gap:8px;justify-content:flex-end}
 .btn-icono{position:relative;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:var(--tinta);transition:background .2s,color .2s}
 .btn-icono:hover{background:var(--blush);color:var(--marca)}
@@ -225,7 +225,7 @@ button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
   .contenedor{width:calc(100% - 28px)}
   .cab__in{grid-template-columns:auto 1fr auto;height:64px;gap:8px}
   .cab__nav{display:none}
-  .logo{justify-self:start}.logo__img{height:42px}.pie .logo__img{height:48px}
+  .logo{justify-self:start}.logo__img{height:44px}.pie .logo__img{height:50px}
   .grilla{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 12px}
   .tarj__nombre{font-size:19px}.precio b{font-size:16px}.tarj__rapida{display:none}
   .corazon{width:34px;height:34px;top:30%}
