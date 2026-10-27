@@ -93,7 +93,6 @@
   function inicio() {
     var g = $('#grilla'); if (!g) return;
     var cat = U.param('cat') || 'todo', q = '';
-    $('#portada-arte').innerHTML = '<img src="img/hero-coleccion-otono.png" alt="Tote, botines y clutch de cuero con una rama de azahar">';
     var chips = $('#chips'); chips.innerHTML = M.categorias.map(function (c) { return '<button class="chip' + (c.id === cat ? ' on' : '') + '" type="button" data-cat="' + c.id + '">' + c.nombre + '</button>'; }).join('');
     function lista() { return D.productos.filter(function (p) { return (cat === 'todo' || (cat === 'ofertas' ? !!p.antes : p.cat === cat)) && (!q || (p.nombre + ' ' + p.cat + ' ' + p.tipo).toLowerCase().indexOf(q) >= 0); }); }
     function pintar() {
