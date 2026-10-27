@@ -34,7 +34,7 @@
     $('#pie').innerHTML = '<footer class="pie"><div class="contenedor"><div class="pie__cols">' +
       '<div>' + logo() + '<p style="margin-top:14px;max-width:290px">Perfumes y cuidado personal para acompañarte todos los días.</p></div>' +
       '<div><h4>Tienda</h4><ul><li><a href="index.html?cat=perfumes#catalogo">Perfumes</a></li><li><a href="index.html?cat=cuerpo#catalogo">Cuerpo</a></li><li><a href="index.html?cat=rostro#catalogo">Rostro</a></li><li><a href="index.html?cat=regalos#catalogo">Regalos</a></li></ul></div>' +
-      '<div><h4>Ayuda</h4><ul><li>Envíos y entregas</li><li>Cambios y devoluciones</li><li>Cuidado de tus fragancias</li></ul></div>' +
+      '<div><h4>Información</h4><ul><li>Envío a todo el Perú en 2 a 5 días</li><li>Muestra de regalo en tu primer pedido</li><li>Notas y tamaños en cada producto</li></ul></div>' +
       '<div><h4>Paga como prefieras</h4><div class="medios"><span>Tarjeta</span><span>Yape</span><span>Plin</span></div><p style="margin-top:14px">Compra segura: tus datos de pago no pasan por nuestro catálogo.</p></div>' +
       '</div><div class="pie__fin"><span>© 2026 ' + M.nombre + ' · Catálogo de ejemplo hecho por Moravi Studio. Marca y productos inventados.</span><span>Muestra 2 · Cuadrícula con ventana de producto</span></div></div></footer>';
   }
@@ -117,7 +117,7 @@
       '<button class="modal__x" type="button" data-cerrar aria-label="Cerrar">×</button>' +
       '<div class="modal__foto">' + Arte.producto(p) + (p.etiqueta ? '<span class="etiqueta">' + p.etiqueta + '</span>' : '') + '' + (p.foto ? '' : '<span class="galeria__nota">Fotos provisionales</span>') + '</div>' +
       '<div class="modal__info"><p class="tarj__tipo">' + p.tipoTxt + ' · ' + D.categoriaNombre(p.cat) + '</p><h2 id="m-nombre">' + U.esc(p.nombre) + '</h2>' +
-      '<div class="estrellas"><i>★★★★★</i><span>4,9 · 41 opiniones</span></div>' +
+      '' +
       '<p class="precio"><b>' + U.dinero(t.precio) + '</b>' + (t.antes ? '<s>' + U.dinero(t.antes) + '</s>' : '') + '</p>' +
       '<p class="modal__desc">' + U.esc(p.desc) + '</p>' + notas + tams +
       '<div class="modal__acc"><div class="cant"><button type="button" data-q="-1" aria-label="Menos">−</button><span>' + estado.cant + '</span><button type="button" data-q="1" aria-label="Más">+</button></div>' +

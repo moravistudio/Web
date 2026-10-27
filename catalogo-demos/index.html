@@ -52,10 +52,16 @@
     .faq details[open] summary::after{content:'–'}
     .faq summary:focus-visible{outline:2px solid #1E8CFF;outline-offset:-2px}
     .faq details p{padding:0 20px 18px;color:#5C6A7E;font-size:14.5px;line-height:1.6}
-    @media (max-width:1000px){.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+    .arriba{margin-top:22px;display:flex;flex-wrap:wrap;align-items:center;gap:14px}.arriba .btn{margin-top:0}.arriba span{color:#5C6A7E;font-size:14px}
+    .card p.ideal{flex:none;margin-top:10px;color:#0A1B3C;font-size:13.5px}.card p.ideal b{color:#1E8CFF}
+    .incluye{list-style:none;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+    .incluye li{background:#fff;border:1px solid #dde5f0;border-radius:16px;padding:16px 18px 16px 48px;position:relative;font-size:14.5px;line-height:1.45;color:#0E1A2D;box-shadow:0 6px 20px rgba(14,26,45,.05)}
+    .incluye li::before{content:'✓';position:absolute;left:16px;top:15px;width:22px;height:22px;border-radius:50%;background:rgba(30,140,255,.12);color:#1E8CFF;display:grid;place-items:center;font-weight:700;font-size:13px}
+    .incluye li b{display:block;font:700 15px/1.3 'Poppins',sans-serif;margin-bottom:2px}.incluye li span{color:#5C6A7E;font-size:13.5px}
+    @media (max-width:1000px){.pasos{grid-template-columns:repeat(2,minmax(0,1fr))}.incluye{grid-template-columns:repeat(2,minmax(0,1fr))}}
     @media (max-width:900px){.grid{grid-template-columns:1fr}.wrap{width:calc(100vw - 32px)}.cta{padding:22px}}
     @media (max-width:768px){.footer__bottom{padding-bottom:84px}}
-    @media (max-width:560px){.pasos{grid-template-columns:1fr}}
+    @media (max-width:560px){.pasos,.incluye{grid-template-columns:1fr}}
     @media (prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
   </style>
 </head>
@@ -65,6 +71,7 @@
     <h1>Elige cómo quieres <em>mostrar tus productos</em></h1>
     <p class="lead">Tres catálogos de ejemplo, cada uno armado de otra manera. Ábrelos, busca un producto, agrégalo al pedido y llega hasta el pago, como lo haría un cliente tuyo.</p>
     <p class="note">Los negocios y los productos de estos ejemplos son inventados. El pago es una simulación: no se cobra nada y no se envía nada a nadie.</p>
+    <div class="arriba"><a class="btn" href="https://wa.me/51940284018?text=Hola%20Moravi%20Studio%2C%20quiero%20un%20cat%C3%A1logo%20para%20mi%20negocio" target="_blank" rel="noopener noreferrer">Quiero mi catálogo</a><span>o mira las muestras aquí abajo</span></div>
 
     <h2>Tres maneras de ordenar un catálogo</h2>
     <div class="grid">
@@ -73,6 +80,7 @@
         <span class="tag">Cuadrícula y página de producto</span>
         <h3>Azahar <small>Carteras y calzado</small></h3>
         <p>Fotos grandes en cuadrícula. Al tocar un producto se abre su página completa, con colores, tallas y productos parecidos.</p>
+        <p class="ideal"><b>Ideal para:</b> moda, calzado y accesorios con varios colores y tallas.</p>
         <div class="chips"><span>Color y talla</span><span>Página por producto</span><span>Carrito lateral</span></div>
         <a class="btn" href="azahar/" target="_blank" rel="noopener">Ver muestra</a>
       </article>
@@ -81,6 +89,7 @@
         <span class="tag">Cuadrícula y ventana central</span>
         <h3>Rosaleda <small>Perfumes y belleza</small></h3>
         <p>El cliente no sale de la pantalla: el producto se abre en una ventana al centro, con su tamaño, la cantidad y la opción de guardarlo en favoritos.</p>
+        <p class="ideal"><b>Ideal para:</b> perfumería, belleza y regalos, donde la presentación importa.</p>
         <div class="chips"><span>Ventana de producto</span><span>Tamaños y precios</span><span>Favoritos</span></div>
         <a class="btn" href="rosaleda/" target="_blank" rel="noopener">Ver muestra</a>
       </article>
@@ -89,10 +98,21 @@
         <span class="tag">Lista de pedido rápido</span>
         <h3>Casa Firme <small>Ferretería y hogar</small></h3>
         <p>Para quien compra seguido y sabe lo que busca: un producto por fila, con su presentación y su cantidad, y el pedido siempre a la vista.</p>
+        <p class="ideal"><b>Ideal para:</b> ferreterías y tiendas con muchos productos y clientes que compran seguido.</p>
         <div class="chips"><span>Búsqueda por código</span><span>Pedido siempre visible</span><span>Envío gratis desde S/ 300</span></div>
         <a class="btn" href="casa-firme/" target="_blank" rel="noopener">Ver muestra</a>
       </article>
     </div>
+
+    <h2>Todos los catálogos incluyen</h2>
+    <ul class="incluye">
+      <li><b>Carrito de compras</b><span>El cliente arma su pedido y ve el total al instante.</span></li>
+      <li><b>Detalle de cada producto</b><span>Fotos, descripción, ficha técnica y opciones.</span></li>
+      <li><b>Pago dentro del catálogo</b><span>Sin salir de tu página, con una pasarela de pagos.</span></li>
+      <li><b>Hecho para el celular</b><span>Se ve y se usa bien en teléfono, tableta y computadora.</span></li>
+      <li><b>Buscador y categorías</b><span>Tus clientes encuentran rápido lo que buscan.</span></li>
+      <li><b>Tu marca, tus fotos</b><span>Tu logo, tus colores y tus textos, no los del ejemplo.</span></li>
+    </ul>
 
     <h2>De tus productos a tu catálogo en 4 pasos</h2>
     <ol class="pasos">
@@ -107,8 +127,12 @@
       <details><summary>¿Necesito tener una página web?</summary><p>El catálogo vive dentro de la página de tu negocio. Si todavía no tienes una, también hacemos páginas web.</p></details>
       <details><summary>¿Se puede adaptar a mi marca?</summary><p>Sí, y lo hacemos nosotros. Armamos el catálogo con tu logo, tus colores, tus fotos y tus textos; tú no tocas código ni necesitas ningún programa. Lo que elijas de los ejemplos es la forma de recorrerlo.</p></details>
       <details><summary>¿Mis clientes pueden pagar dentro del catálogo?</summary><p>Las muestras simulan el recorrido completo: pedido, datos de entrega y pago. En tu catálogo el pago se conecta a una pasarela de pagos, con tarjeta y las billeteras que esa pasarela acepte en tu país. Lo vemos contigo antes de empezar.</p></details>
+      <details><summary>¿Funciona bien en el celular?</summary><p>Sí. Los tres ejemplos se adaptan al celular, a la tableta y a la computadora. Ábrelos desde tu teléfono para verlo.</p></details>
       <details><summary>¿Quién actualiza los productos y los precios?</summary><p>Nos escribes y lo actualizamos por ti. No tienes que aprender ningún panel.</p></details>
-      <details><summary>¿Qué necesito para empezar?</summary><p>Las fotos de tus productos, sus nombres, sus precios y, si las tienen, sus presentaciones: tallas, tamaños o colores. Si aún no tienes buenas fotos, cuéntanos y lo conversamos.</p></details>
+      <details><summary>¿Qué necesito para empezar?</summary><p>Las fotos de tus productos, sus nombres, sus precios y, si las tienen, sus presentaciones: tallas, tamaños o colores.</p></details>
+      <details><summary>¿Y si no tengo buenas fotos de mis productos?</summary><p>Cuéntanoslo: también hacemos fotografía de productos, así que no necesitas llegar con todo listo.</p></details>
+      <details><summary>¿Puedo verlo antes de que se publique?</summary><p>Sí. Te damos un enlace privado para que lo pruebes y nos pidas los cambios antes de publicarlo.</p></details>
+      <details><summary>¿Cuánto cuesta y cuánto tarda?</summary><p>Se cotiza según la cantidad de productos y las funciones que necesites. Escríbenos y te respondemos con una propuesta; el tiempo depende de cuándo nos envíes tus productos y fotos.</p></details>
     </div>
 
     <div class="cta">

@@ -16,5 +16,11 @@
   U.oscuro = function (h, t) { return U.mezcla(h, '#000000', t); };
   U.claro = function (h, t) { return U.mezcla(h, '#ffffff', t); };
   U.param = function (nombre) { return new URLSearchParams(location.search).get(nombre); };
+  // aviso breve en la parte baja de la pantalla (lo usan los enlaces de ejemplo)
+  U.aviso = function (msg) {
+    var a = document.getElementById('u-aviso');
+    if (!a) { a = document.createElement('div'); a.id = 'u-aviso'; a.setAttribute('role', 'status'); a.style.cssText = 'position:fixed;left:50%;bottom:22px;transform:translateX(-50%);max-width:min(92vw,460px);background:#1c1c1c;color:#fff;font:500 14px/1.4 system-ui,sans-serif;padding:12px 18px;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.3);z-index:2147483000;text-align:center;opacity:0;transition:opacity .2s;pointer-events:none'; document.body.appendChild(a); }
+    a.textContent = msg; a.style.opacity = '1'; clearTimeout(a._t); a._t = setTimeout(function () { a.style.opacity = '0'; }, 3400);
+  };
   w.U = U;
 })(window);

@@ -41,13 +41,16 @@
     var s = function (ico, t, d) { return '<li>' + ico + '<div><b>' + t + '</b><span>' + d + '</span></div></li>'; };
     $('#pie').innerHTML = '<section class="servicios" aria-label="Servicios"><div class="contenedor"><ul>' +
       s(ICON.camion, 'Despacho en 24 horas', 'En Lima, con seguimiento') + s(ICON.escudo, 'Garantía en herramientas', 'Cambio directo por falla de fábrica') +
-      s(ICON.tarjeta, 'Tarjeta, Yape o Plin', 'Pagas aquí mismo, sin salir del catálogo') + s(ICON.mayor, 'Compras por mayor', 'Pide tu cotización con descuento') + '</ul></div></section>' +
+      s(ICON.tarjeta, 'Tarjeta, Yape o Plin', 'Pagas aquí mismo, sin salir del catálogo') + s(ICON.mayor, 'Compras por mayor', '<a href="#" data-demo="cotizacion">Pide tu cotización con descuento →</a>') + '</ul></div></section>' +
       '<footer class="pie"><div class="contenedor pie__in">' +
       '<div class="pie__marca">' + logo() + '<p>Todo para tu obra y tu hogar, con atención de lunes a sábado.</p></div>' +
       '<div class="pie__tienda"><h4>Visítanos</h4><p>Av. Los Constructores 450, Ate, Lima</p><p>' + M.horario + '</p></div>' +
-      '<div class="pie__tienda"><h4>Pedidos y cotizaciones</h4><p>WhatsApp 900 000 000</p><p>ventas@casafirme.example</p></div>' +
+      '<div class="pie__tienda"><h4>Pedidos y cotizaciones</h4><p><a href="#" data-demo="whatsapp">WhatsApp 900 000 000</a></p><p><a href="#" data-demo="correo">ventas@casafirme.example</a></p></div>' +
       '</div><div class="contenedor pie__fin"><nav aria-label="Categorías"><a href="index.html?cat=herramientas">Herramientas</a><a href="index.html?cat=electricidad">Electricidad</a><a href="index.html?cat=pinturas">Pinturas</a><a href="index.html?cat=plomeria">Plomería y jardín</a><a href="index.html?cat=ofertas">Ofertas</a></nav>' +
       '<span>© 2026 ' + M.nombre + ' · Catálogo de ejemplo hecho por Moravi Studio. Marca, dirección y productos inventados.</span></div></footer>';
+    // los datos de contacto son inventados: el enlace avisa qué haría en un catálogo real
+    var DEMO = { whatsapp: 'Ejemplo: en tu catálogo este enlace abre el WhatsApp de tu negocio.', correo: 'Ejemplo: en tu catálogo este enlace escribe al correo de tu negocio.', cotizacion: 'Ejemplo: en tu catálogo este botón abre un mensaje de cotización a tu negocio.' };
+    $('#pie').addEventListener('click', function (e) { var d = e.target.closest('[data-demo]'); if (!d) return; e.preventDefault(); U.aviso(DEMO[d.getAttribute('data-demo')]); });
   }
 
   // ---------- Tu pedido (panel fijo a la derecha; en celular, hoja inferior) ----------

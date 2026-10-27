@@ -27,7 +27,7 @@
     $('#pie').innerHTML = '<footer class="pie"><div class="contenedor"><div class="pie__cols">' +
       '<div>' + logo(true) + '<p style="margin-top:14px;max-width:290px">Carteras y calzado de cuero, hechos para acompañarte todos los días.</p></div>' +
       '<div><h4>Tienda</h4><ul><li><a href="index.html?cat=carteras#catalogo">Carteras</a></li><li><a href="index.html?cat=calzado#catalogo">Calzado</a></li><li><a href="index.html?cat=ofertas#catalogo">Ofertas</a></li></ul></div>' +
-      '<div><h4>Ayuda</h4><ul><li>Envíos y entregas</li><li>Cambios y devoluciones</li><li>Guía de tallas</li></ul></div>' +
+      '<div><h4>Información</h4><ul><li>Envío a todo el Perú en 2 a 5 días</li><li>Cambios y devoluciones hasta 7 días</li><li>Medidas y cuidados en cada producto</li></ul></div>' +
       '<div><h4>Paga como prefieras</h4><div class="medios"><span>Tarjeta</span><span>Yape</span><span>Plin</span></div><p style="margin-top:14px">Compra segura: tus datos de pago no pasan por nuestro catálogo.</p></div>' +
       '</div><div class="pie__fin"><span>© 2026 ' + M.nombre + ' · Catálogo de ejemplo hecho por Moravi Studio. Marca y productos inventados.</span><span>Muestra 1 · Cuadrícula clásica</span></div></div></footer>';
   }
@@ -67,12 +67,17 @@
     pieC.innerHTML = '<div class="sub"><span>Subtotal</span><span>' + U.dinero(carrito.total(D.precio)) + '</span></div><p class="nota">El envío se calcula al pagar.</p><a class="btn btn--marca btn--bloque" href="pago.html">Ir a pagar</a>';
   }
 
+  // favoritos: se guardan en el navegador de la persona (sin cuenta)
+  var FAV = 'azahar-favoritos', favs = [];
+  try { favs = JSON.parse(localStorage.getItem(FAV) || '[]'); } catch (e) { favs = []; }
+  function guardarFavs() { try { localStorage.setItem(FAV, JSON.stringify(favs)); } catch (e) { /* sin almacenamiento: duran lo que dure la página */ } }
+
   // tarjetas de producto
   function tarjeta(p) {
     var c0 = D.colores[p.colores[0]].hex, calz = !!p.tallas;
     var puntos = p.colores.map(function (k) { return '<span class="punto" title="' + D.colores[k].nombre + '" style="background:' + D.colores[k].hex + '"></span>'; }).join('');
     return '<article class="tarjeta"><a class="tarjeta__foto" href="producto.html?id=' + p.id + '" aria-label="Ver ' + U.esc(p.nombre) + '" style="background:' + Arte.fondo(c0, 0) + '">' + Arte.imagen(p, p.colores[0], c0, 0, p.nombre) +
-      (p.etiqueta ? '<span class="etiqueta">' + p.etiqueta + '</span>' : '') + '<button class="corazon" type="button" aria-label="Guardar ' + U.esc(p.nombre) + ' en favoritos" data-fav="' + p.id + '">' + ICON.corazon + '</button></a>' +
+      (p.etiqueta ? '<span class="etiqueta">' + p.etiqueta + '</span>' : '') + '<button class="corazon' + (favs.indexOf(p.id) >= 0 ? ' on' : '') + '" type="button" aria-pressed="' + (favs.indexOf(p.id) >= 0) + '" aria-label="Guardar ' + U.esc(p.nombre) + ' en favoritos" data-fav="' + p.id + '">' + ICON.corazon + '</button></a>' +
       '<div class="tarjeta__info"><p class="tarjeta__cat">' + (p.cat === 'carteras' ? 'Carteras' : 'Calzado') + '</p><h3 class="tarjeta__nombre"><a href="producto.html?id=' + p.id + '">' + U.esc(p.nombre) + '</a></h3>' +
       '<p class="precio"><b>' + U.dinero(p.precio) + '</b>' + (p.antes ? '<s>' + U.dinero(p.antes) + '</s>' : '') + '</p><div class="puntos">' + puntos + '</div></div>' +
       (calz ? '<a class="btn btn--linea tarjeta__btn" href="producto.html?id=' + p.id + '">Elegir talla</a>' : '<button class="btn btn--marca tarjeta__btn" type="button" data-add="' + p.id + '">Agregar al carrito</button>') + '</article>';
@@ -81,7 +86,7 @@
   w.Tienda.enlazarTarjetas = function (raiz) {
     raiz.addEventListener('click', function (e) {
       var a = e.target.closest('[data-add]'); if (a) { var p = D.producto(a.getAttribute('data-add')); carrito.agregar(p.id, { color: p.colores[0], talla: 'Única' }, 1); abrirCarrito(); return; }
-      var f = e.target.closest('[data-fav]'); if (f) { e.preventDefault(); f.classList.toggle('on'); }
+      var f = e.target.closest('[data-fav]'); if (f) { e.preventDefault(); var id = f.getAttribute('data-fav'), i = favs.indexOf(id); if (i >= 0) favs.splice(i, 1); else favs.push(id); guardarFavs(); [].forEach.call(document.querySelectorAll('[data-fav="' + id + '"]'), function (b) { var on = favs.indexOf(id) >= 0; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); }); }
     });
   };
 

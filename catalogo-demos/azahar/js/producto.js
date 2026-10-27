@@ -20,7 +20,7 @@
       $('#prod').innerHTML =
         '<div class="galeria"><div class="galeria__mini">' + minis + '</div><div class="galeria__grande">' + vista(estado.vista, hex) + '' + (conFoto ? '' : '<span class="galeria__nota">Fotos provisionales</span>') + '</div></div>' +
         '<div><p class="prod__cat">' + (p.cat === 'carteras' ? 'Carteras' : 'Calzado') + '</p><h1>' + U.esc(p.nombre) + '</h1>' +
-        '<div class="estrellas"><i>★★★★★</i><span>4,8 · 23 opiniones</span></div>' +
+        '' +
         '<p class="precio"><b>' + U.dinero(p.precio) + '</b>' + (p.antes ? '<s>' + U.dinero(p.antes) + '</s>' : '') + '</p>' +
         '<p class="prod__desc">' + U.esc(p.desc) + '</p>' +
         '<div class="opc"><div class="opc__tit">Color <span>· ' + c.nombre + '</span></div><div class="muestras">' + muestras + '</div></div>' + tallas +
