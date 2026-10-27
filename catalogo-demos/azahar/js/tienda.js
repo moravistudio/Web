@@ -11,13 +11,9 @@
     corazon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-10a4.2 4.2 0 0 1 7-3 4.2 4.2 0 0 1 7 3c0 5.6-7 10-7 10z"/></svg>'
   };
 
-  // logo: flor de azahar (cinco pétalos) + nombre
-  function emblema() {
-    var p = ''; for (var i = 0; i < 5; i++) p += '<ellipse cx="24" cy="13" rx="6.6" ry="10.5" fill="#B4532A" opacity="' + (i % 2 ? '.78' : '.95') + '" transform="rotate(' + (i * 72) + ' 24 24)"/>';
-    return '<svg viewBox="0 0 48 48" aria-hidden="true">' + p + '<circle cx="24" cy="24" r="5.6" fill="#C99A52"/><circle cx="24" cy="24" r="2" fill="#8F3E1D"/></svg>';
-  }
-  w.Tienda = { emblema: emblema };
-  function logo() { return '<a class="logo" href="index.html" aria-label="' + M.nombre + ', inicio">' + emblema() + '<span class="logo__txt"><span class="logo__nombre">' + M.nombre + '</span><span class="logo__sub">' + M.apellido + '</span></span></a>'; }
+  // logo: imagen PNG con fondo transparente (img/logo/); en el pie oscuro se usa la versión clara
+  w.Tienda = {};
+  function logo(claro) { return '<a class="logo" href="index.html" aria-label="' + M.nombre + ', inicio"><img class="logo__img" src="img/logo/' + (claro ? 'logo-azahar-claro.png' : 'logo-azahar-recortado.png') + '" alt="' + M.nombre + ', cuero y calzado"></a>'; }
 
   function cabecera() {
     var cat = U.param('cat') || '';
@@ -29,7 +25,7 @@
   }
   function pie() {
     $('#pie').innerHTML = '<footer class="pie"><div class="contenedor"><div class="pie__cols">' +
-      '<div>' + logo() + '<p style="margin-top:14px;max-width:290px">Carteras y calzado de cuero, hechos para acompañarte todos los días.</p></div>' +
+      '<div>' + logo(true) + '<p style="margin-top:14px;max-width:290px">Carteras y calzado de cuero, hechos para acompañarte todos los días.</p></div>' +
       '<div><h4>Tienda</h4><ul><li><a href="index.html?cat=carteras#catalogo">Carteras</a></li><li><a href="index.html?cat=calzado#catalogo">Calzado</a></li><li><a href="index.html?cat=ofertas#catalogo">Ofertas</a></li></ul></div>' +
       '<div><h4>Ayuda</h4><ul><li>Envíos y entregas</li><li>Cambios y devoluciones</li><li>Guía de tallas</li></ul></div>' +
       '<div><h4>Paga como prefieras</h4><div class="medios"><span>Tarjeta</span><span>Yape</span><span>Plin</span></div><p style="margin-top:14px">Compra segura: tus datos de pago no pasan por nuestro catálogo.</p></div>' +
