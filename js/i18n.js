@@ -81,6 +81,18 @@
         verProyecto: 'Ver proyecto',
         verTodos: 'Ver todos los proyectos'
       },
+      portafolio: {
+        title: { lead: 'Proyectos que ayudan a las marcas a', accent: 'destacar' },
+        filter: { todo: 'Todo', landing: 'Landing Pages', sitios: 'Sitios Web', tiendas: 'Tiendas Online' },
+        card: {
+          synapse: 'Landing page para plataforma de inteligencia artificial.',
+          serum: 'Landing page de venta de sérum facial.',
+          dulce: 'Landing page para negocio de pastelería artesanal.',
+          veda: 'Tienda online de venta de ropa.',
+          lumen: 'Studio de Fotografía Profesional.',
+          chispita: 'Landing page para lavandería con recojo y entrega a domicilio.'
+        }
+      },
       services: {
         eyebrow: '• Servicios •',
         title: {
@@ -254,6 +266,18 @@
         },
         verProyecto: 'View project',
         verTodos: 'View all projects'
+      },
+      portafolio: {
+        title: { lead: 'Projects that help brands', accent: 'stand out' },
+        filter: { todo: 'All', landing: 'Landing Pages', sitios: 'Websites', tiendas: 'Online Stores' },
+        card: {
+          synapse: 'Landing page for an artificial intelligence platform.',
+          serum: 'Landing page selling a facial serum.',
+          dulce: 'Landing page for an artisan bakery business.',
+          veda: 'Online clothing store.',
+          lumen: 'Professional photography studio.',
+          chispita: 'Landing page for a laundry service with home pickup and delivery.'
+        }
       },
       services: {
         eyebrow: '• Services •',

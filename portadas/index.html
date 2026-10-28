@@ -15,6 +15,11 @@
     body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
     .wrap{width:min(1560px,calc(100vw - 64px));margin:0 auto;padding:40px 0 90px}
     .back{color:#1E8CFF;text-decoration:none;font-weight:600;font-size:14px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .lang-selector{display:flex;align-items:center;gap:2px;border:1px solid #dde5f0;background:#fff;border-radius:999px;padding:3px;flex-shrink:0}
+    .lang-btn{border:none;background:none;cursor:pointer;font:600 13px 'Inter',system-ui,sans-serif;color:#5C6A7E;padding:5px 11px;border-radius:999px;transition:background .2s ease,color .2s ease}
+    .lang-btn:hover{color:#1E8CFF}
+    .lang-btn--active,.lang-btn--active:hover{background:#1E8CFF;color:#fff}
     h1{font:700 clamp(30px,4vw,48px)/1.12 'Poppins',sans-serif;margin-top:18px;letter-spacing:-.01em}
     h1 em{font-style:normal;color:#1E8CFF}
     .lead{margin-top:12px;color:#5C6A7E;font-size:18px;max-width:720px;line-height:1.5}
@@ -34,7 +39,13 @@
 </head>
 <body>
   <div class="wrap" data-idioma>
-    <a class="back" href="../">← Volver a Moravi Studio</a>
+    <div class="topbar">
+      <a class="back" href="../">← Volver a Moravi Studio</a>
+      <div class="lang-selector" role="group" aria-label="Seleccionar idioma">
+        <button type="button" class="lang-btn lang-btn--active" data-lang="es" aria-pressed="true">ES</button>
+        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+    </div>
     <h1>Catálogo de portadas <em>interactivas</em></h1>
     <p class="lead">La primera pantalla de un negocio, con vida propia. Cada portada se mueve: pasa el cursor o tócala, y abre la que quieras ver completa.</p>
     <div class="grid" id="grid"></div>
@@ -64,6 +75,29 @@
         PortadasAnchas.mount(slot, p.key);
       });
       if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) setTimeout(function () { t.scrollIntoView({ block: 'center' }); }, 300); }
+    })();
+  </script>
+  <script>
+    (function () {
+      var KEY = 'moravi-site-lang';
+      var btns = [].slice.call(document.querySelectorAll('.lang-btn'));
+      function marcar() {
+        var en = document.documentElement.getAttribute('lang') === 'en';
+        btns.forEach(function (b) {
+          var on = b.getAttribute('data-lang') === (en ? 'en' : 'es');
+          b.classList.toggle('lang-btn--active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+      }
+      btns.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var lang = b.getAttribute('data-lang');
+          try { localStorage.setItem(KEY, lang); } catch (e) { /* sin almacenamiento: solo cambia en esta visita */ }
+          document.documentElement.setAttribute('lang', lang);
+          marcar();
+        });
+      });
+      marcar();
     })();
   </script>
 </body>
