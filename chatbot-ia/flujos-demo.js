@@ -32,8 +32,12 @@
     pie: 'Ejemplo de Moravi Studio: negocio y precios inventados. No se envía nada a nadie.',
     inicio: 'inicio', libre: false,
     nodos: {
-      inicio: { t: '¡Hola! 👋 Soy el asistente de la Pastelería de ejemplo.\n¿Qué quieres pedir?', b: [
-        { l: 'Tortas', ir: 'tortas' }, { l: 'Cupcakes y postres', ir: 'postres' }] },
+      inicio: { t: '¡Hola! 👋 Soy el asistente de la Pastelería de ejemplo.\n¿Qué quieres pedir o consultar?', b: [
+        { l: 'Tortas', ir: 'tortas' }, { l: 'Cupcakes y postres', ir: 'postres' }, { l: 'Ver precios', ir: 'precios' },
+        { l: 'Horario y dirección', ir: 'horario' }, { l: 'Zonas de envío', ir: 'envios' }] },
+      precios: { t: 'Nuestros precios (inventados para la demostración):\n• Tortas: S/ 75 (8 porciones), S/ 120 (15 porciones) y S/ 185 (25 porciones)\n• Cupcakes, caja de 6: S/ 36\n• Cheesecake de fresa entero: S/ 70\n• Alfajores, caja de 12: S/ 30', b: [{ l: 'Pedir una torta', ir: 'tortas' }, MENU] },
+      horario: { t: '🕘 Atendemos de lunes a sábado, de 9:00 a 19:00. Domingos cerrado.\n\n📍 Av. Ejemplo 123, Lima (dirección inventada).', b: [{ l: 'Pedir una torta', ir: 'tortas' }, MENU] },
+      envios: { t: 'Entregamos a domicilio en Miraflores, San Isidro, Surco y San Borja (zonas inventadas). También puedes recoger tu pedido en la pastelería.', b: [{ l: 'Pedir una torta', ir: 'tortas' }, MENU] },
       tortas: { t: 'Nuestras tortas (se hornean por encargo). ¿De qué sabor?', b: [
         { l: 'Chocolate', set: { producto: 'Torta de chocolate' }, ir: 'tamano' },
         { l: 'Vainilla con fresas', set: { producto: 'Torta de vainilla con fresas' }, ir: 'tamano' },

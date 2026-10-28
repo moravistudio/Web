@@ -47,6 +47,7 @@
     .card p{margin-top:8px;color:#5C6A7E;font-size:14.5px;line-height:1.5;flex:1}
     .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
     .chips span{font-size:12px;font-weight:600;color:#0A1B3C;background:#EEF4FB;border-radius:99px;padding:4px 10px}
+    .chips span.inc{background:#0A1B3C;color:#fff}
     .btn{margin-top:18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;cursor:pointer;font:600 14.5px 'Inter',sans-serif;color:#fff;background:linear-gradient(135deg,#0A1B3C,#15356C);border-radius:99px;padding:12px 22px;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 10px 24px rgba(10,27,60,.25)}
     .btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(10,27,60,.32)}
     .btn--light{background:#fff;color:#0A1B3C;box-shadow:none;margin-top:0;flex:none}
@@ -122,15 +123,15 @@
       <article class="card">
         <span class="tag">Nivel 2 · Con pedido</span>
         <h3>Pastelería</h3>
-        <p>El cliente escoge la torta o el postre, el tamaño, la fecha y la forma de entrega, y el bot le muestra el pedido completo, listo para confirmar.</p>
-        <div class="chips"><span>Tortas y postres</span><span>Tamaño y fecha de entrega</span><span>Resumen del pedido</span></div>
+        <p>El cliente elige torta o postre, tamaño, fecha y entrega, y el bot arma el pedido completo, listo para confirmar.</p>
+        <div class="chips"><span class="inc">Incluye todo el Nivel 1</span><span>Tortas y postres</span><span>Fecha de entrega</span><span>Resumen del pedido</span></div>
         <button class="btn" type="button" data-flujo="pasteleria">Probar</button>
       </article>
       <article class="card">
         <span class="tag">Nivel 3 · Conversacional</span>
         <h3>Lavandería a domicilio</h3>
         <p>Entiende frases cortas como «¿cuánto cuesta?», avisa si el local está abierto y recibe la solicitud de recojo con distrito y día.</p>
-        <div class="chips"><span>Reconoce palabras</span><span>Estado del local</span><span>Recojo programado</span></div>
+        <div class="chips"><span class="inc">Incluye todo el Nivel 2</span><span>Reconoce palabras</span><span>Estado del local</span><span>Recojo programado</span></div>
         <button class="btn" type="button" data-flujo="lavanderia">Probar</button>
       </article>
     </div>
