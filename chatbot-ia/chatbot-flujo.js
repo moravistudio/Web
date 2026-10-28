@@ -12,6 +12,17 @@
   'use strict';
   function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
   function norm(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
+  // Palabras sueltas de un texto, sin tildes ni signos: «¿Cuántos días?» → ['cuantos', 'dias']
+  function palabrasDe(s) { return norm(s).split(/[^a-z0-9]+/).filter(Boolean); }
+  // ¿Aparece la clave como palabra COMPLETA (o frase de palabras seguidas)? «hora» está en «a qué hora», no en «ahora».
+  function contiene(palabras, clave) {
+    var kp = palabrasDe(clave); if (!kp.length) return false;
+    for (var a = 0; a + kp.length <= palabras.length; a++) {
+      var ok = true; for (var b = 0; b < kp.length; b++) { if (palabras[a + b] !== kp[b]) { ok = false; break; } }
+      if (ok) return true;
+    }
+    return false;
+  }
 
   // ¿Abierto ahora? según el horario del flujo, en hora de Lima
   function abiertoAhora(h, ui) {
@@ -70,8 +81,8 @@
     if (form) {
       form.addEventListener('submit', function (e) {
         e.preventDefault(); var v = input.value.trim(); if (!v || busy) return; input.value = ''; limpiarBotones(); addMe(v);
-        var q = norm(v), destino = null;
-        (f.palabras || []).some(function (p) { return p.k.some(function (k) { if (q.indexOf(norm(k)) >= 0) { destino = p.ir; return true; } return false; }); });
+        var q = palabrasDe(v), destino = null;
+        (f.palabras || []).some(function (p) { return p.k.some(function (k) { if (contiene(q, k)) { destino = p.ir; return true; } return false; }); });
         mostrar(destino || 'noentendi');
       });
       input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
