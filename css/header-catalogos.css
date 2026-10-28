@@ -25,6 +25,9 @@
 .hero-cat .row {margin-top:26px;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .hero-cat .hc-btn {display:inline-flex;align-items:center;gap:8px;font:600 15.5px/1 'Poppins',sans-serif;color:#fff;background:var(--brand);padding:16px 28px;border-radius:99px;text-decoration:none;box-shadow:0 10px 26px -8px var(--brand);transition:background-color .5s,box-shadow .25s,transform .2s}
 .hero-cat .hc-btn:hover {transform:translateY(-2px);box-shadow:0 14px 34px -6px var(--brand),0 0 0 6px color-mix(in srgb,var(--brand) 18%,transparent)}
+/* Botón sólido de Catálogo Online: azul marino de la web, igual que los demás botones sólidos (el de «a tu medida» sigue con el color del cliente) */
+.hero-cat .pane--a .hc-btn {background:linear-gradient(135deg,#0A1B3C,#15356C);box-shadow:0 10px 24px rgba(10,27,60,.25)}
+.hero-cat .pane--a .hc-btn:hover {box-shadow:0 14px 30px rgba(10,27,60,.32)}
 .hero-cat .live {display:inline-flex;align-items:center;gap:8px;font:600 14.5px/1 'Poppins',sans-serif;color:var(--brand);text-decoration:none;padding:10px 4px;border-bottom:2px solid transparent;transition:border-color .2s}
 .hero-cat .live:hover {border-bottom-color:var(--brand)}
 .hero-cat .price {margin-top:12px;font-size:13.5px;color:#5C6A7E}
