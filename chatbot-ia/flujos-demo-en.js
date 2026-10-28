@@ -33,8 +33,12 @@
     pie: 'Moravi Studio example: made-up business and prices. Nothing is sent to anyone.',
     inicio: 'inicio', libre: false,
     nodos: {
-      inicio: { t: 'Hi! 👋 I\'m the assistant of the example bakery.\nWhat would you like to order?', b: [
-        { l: 'Cakes', ir: 'tortas' }, { l: 'Cupcakes and desserts', ir: 'postres' }] },
+      inicio: { t: 'Hi! 👋 I\'m the assistant of the example bakery.\nWhat would you like to order or ask about?', b: [
+        { l: 'Cakes', ir: 'tortas' }, { l: 'Cupcakes and desserts', ir: 'postres' }, { l: 'See prices', ir: 'precios' },
+        { l: 'Hours and address', ir: 'horario' }, { l: 'Delivery areas', ir: 'envios' }] },
+      precios: { t: 'Our prices (made up for the demonstration):\n• Cakes: S/ 75 (8 servings), S/ 120 (15 servings) and S/ 185 (25 servings)\n• Cupcakes, box of 6: S/ 36\n• Whole strawberry cheesecake: S/ 70\n• Alfajores, box of 12: S/ 30', b: [{ l: 'Order a cake', ir: 'tortas' }, MENU] },
+      horario: { t: '🕘 We\'re open Monday to Saturday, 9:00 to 19:00. Closed on Sundays.\n\n📍 123 Example Ave., Lima (made-up address).', b: [{ l: 'Order a cake', ir: 'tortas' }, MENU] },
+      envios: { t: 'We deliver to your door in Miraflores, San Isidro, Surco and San Borja (made-up areas). You can also pick up your order at the bakery.', b: [{ l: 'Order a cake', ir: 'tortas' }, MENU] },
       tortas: { t: 'Our cakes (baked to order). Which flavor?', b: [
         { l: 'Chocolate', set: { producto: 'Chocolate cake' }, ir: 'tamano' },
         { l: 'Vanilla with strawberries', set: { producto: 'Vanilla cake with strawberries' }, ir: 'tamano' },
