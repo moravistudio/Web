@@ -27,30 +27,33 @@
   };
 
   // Nivel 2 · Con pedido: el cliente elige y el bot arma el resumen
-  var ropa = {
-    titulo: 'Boutique de ropa de ejemplo', sub: 'Chatbot con botones · arma el pedido',
+  var pasteleria = {
+    titulo: 'Pastelería de ejemplo', sub: 'Chatbot con botones · arma el pedido',
     pie: 'Ejemplo de Moravi Studio: negocio y precios inventados. No se envía nada a nadie.',
     inicio: 'inicio', libre: false,
     nodos: {
-      inicio: { t: '¡Hola! 👋 Soy el asistente de la Boutique de ropa de ejemplo.\n¿Qué prenda te interesa?', b: [
-        { l: 'Polos', ir: 'polos' }, { l: 'Pantalones', ir: 'pantalones' }, { l: 'Casacas', ir: 'casacas' }] },
-      polos: { t: 'Polos disponibles:', b: [
-        { l: 'Polo básico · S/ 39', set: { prenda: 'Polo básico', precio: 'S/ 39' }, ir: 'talla' },
-        { l: 'Polo estampado · S/ 49', set: { prenda: 'Polo estampado', precio: 'S/ 49' }, ir: 'talla' }, MENU] },
-      pantalones: { t: 'Pantalones disponibles:', b: [
-        { l: 'Jean clásico · S/ 119', set: { prenda: 'Jean clásico', precio: 'S/ 119' }, ir: 'talla' },
-        { l: 'Jogger · S/ 89', set: { prenda: 'Jogger', precio: 'S/ 89' }, ir: 'talla' }, MENU] },
-      casacas: { t: 'Casacas disponibles:', b: [
-        { l: 'Casaca de jean · S/ 159', set: { prenda: 'Casaca de jean', precio: 'S/ 159' }, ir: 'talla' },
-        { l: 'Casaca cortaviento · S/ 129', set: { prenda: 'Casaca cortaviento', precio: 'S/ 129' }, ir: 'talla' }, MENU] },
-      talla: { t: 'Elegiste: {{prenda}} ({{precio}}).\n¿En qué talla la quieres?', b: [
-        { l: 'S', set: { talla: 'S' }, ir: 'entrega' }, { l: 'M', set: { talla: 'M' }, ir: 'entrega' },
-        { l: 'L', set: { talla: 'L' }, ir: 'entrega' }, { l: 'XL', set: { talla: 'XL' }, ir: 'entrega' }] },
+      inicio: { t: '¡Hola! 👋 Soy el asistente de la Pastelería de ejemplo.\n¿Qué quieres pedir?', b: [
+        { l: 'Tortas', ir: 'tortas' }, { l: 'Cupcakes y postres', ir: 'postres' }] },
+      tortas: { t: 'Nuestras tortas (se hornean por encargo). ¿De qué sabor?', b: [
+        { l: 'Chocolate', set: { producto: 'Torta de chocolate' }, ir: 'tamano' },
+        { l: 'Vainilla con fresas', set: { producto: 'Torta de vainilla con fresas' }, ir: 'tamano' },
+        { l: 'Tres leches', set: { producto: 'Torta tres leches' }, ir: 'tamano' }, MENU] },
+      tamano: { t: 'Elegiste: {{producto}}.\n¿De qué tamaño la quieres?', b: [
+        { l: 'Pequeña (8 porciones) · S/ 75', set: { tam: 'Pequeña (8 porciones)', precio: 'S/ 75' }, ir: 'fecha' },
+        { l: 'Mediana (15 porciones) · S/ 120', set: { tam: 'Mediana (15 porciones)', precio: 'S/ 120' }, ir: 'fecha' },
+        { l: 'Grande (25 porciones) · S/ 185', set: { tam: 'Grande (25 porciones)', precio: 'S/ 185' }, ir: 'fecha' }] },
+      postres: { t: 'Cupcakes y postres disponibles:', b: [
+        { l: 'Cupcakes, caja de 6 · S/ 36', set: { producto: 'Cupcakes', tam: 'Caja de 6', precio: 'S/ 36' }, ir: 'fecha' },
+        { l: 'Cheesecake de fresa · S/ 70', set: { producto: 'Cheesecake de fresa', tam: 'Entero (10 porciones)', precio: 'S/ 70' }, ir: 'fecha' },
+        { l: 'Alfajores, caja de 12 · S/ 30', set: { producto: 'Alfajores', tam: 'Caja de 12', precio: 'S/ 30' }, ir: 'fecha' }, MENU] },
+      fecha: { t: '¿Para cuándo lo necesitas?\nTodo se prepara por encargo, con 24 horas de anticipación.', b: [
+        { l: 'Mañana', set: { fecha: 'Mañana' }, ir: 'entrega' }, { l: 'En 2 días', set: { fecha: 'En 2 días' }, ir: 'entrega' },
+        { l: 'En 3 días o más', set: { fecha: 'En 3 días o más' }, ir: 'entrega' }] },
       entrega: { t: '¿Cómo te lo hacemos llegar?', b: [
-        { l: 'Envío a domicilio', set: { entrega: 'Envío a domicilio' }, ir: 'resumen' }, { l: 'Lo recojo en la tienda', set: { entrega: 'Recojo en tienda' }, ir: 'resumen' }] },
-      resumen: { t: 'Listo, así quedó tu pedido:', caja: 'Tu pedido', cajaT: 'Prenda: {{prenda}}\nTalla: {{talla}}\nPrecio: {{precio}}\nEntrega: {{entrega}}', b: [
+        { l: 'Envío a domicilio', set: { entrega: 'Envío a domicilio' }, ir: 'resumen' }, { l: 'Lo recojo en la pastelería', set: { entrega: 'Recojo en la pastelería' }, ir: 'resumen' }] },
+      resumen: { t: 'Listo, así quedó tu pedido:', caja: 'Tu pedido', cajaT: 'Pedido: {{producto}}\nTamaño: {{tam}}\nPrecio: {{precio}}\nPara: {{fecha}}\nEntrega: {{entrega}}', b: [
         { l: 'Confirmar pedido', ir: 'confirmado' }, { l: 'Empezar de nuevo', ir: 'inicio' }] },
-      confirmado: { t: '✅ ¡Pedido anotado!\n\nEs un ejemplo: no se envió a nadie. En una tienda real, el dueño recibiría el pedido completo y no tendría que preguntarte nada más.', b: [{ l: 'Armar otro pedido', ir: 'inicio' }] }
+      confirmado: { t: '✅ ¡Pedido anotado!\n\nEs un ejemplo: no se envió a nadie. En una pastelería real, el negocio recibiría el pedido completo, con la fecha de entrega, y no tendría que preguntarte nada más.', b: [{ l: 'Armar otro pedido', ir: 'inicio' }] }
     }
   };
 
@@ -90,5 +93,5 @@
     }
   };
 
-  global.FLUJOS_DEMO = { belleza: belleza, ropa: ropa, lavanderia: lavanderia };
+  global.FLUJOS_DEMO = { belleza: belleza, pasteleria: pasteleria, lavanderia: lavanderia };
 })(window);
