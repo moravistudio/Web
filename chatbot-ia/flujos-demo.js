@@ -67,12 +67,12 @@
     pie: 'Ejemplo de Moravi Studio: negocio y precios inventados. No se envía nada a nadie.',
     inicio: 'inicio', libre: true, horario: { dias: [1, 2, 3, 4, 5, 6], desde: 8, hasta: 20 },
     palabras: [
-      { k: ['precio', 'cuesta', 'cuanto', 'tarifa', 'costo', 'valor'], ir: 'precios' },
-      { k: ['horario', 'hora', 'abierto', 'atienden', 'abren', 'cierran'], ir: 'horario' },
-      { k: ['recojo', 'recoger', 'recogen', 'domicilio', 'delivery', 'pedido', 'pedir', 'servicio'], ir: 'servicio' },
-      { k: ['distrito', 'zona', 'cobertura', 'llegan', 'donde'], ir: 'cobertura' },
-      { k: ['hola', 'buenas', 'buenos dias', 'buenas tardes'], ir: 'inicio' },
-      { k: ['zapatilla', 'edredon', 'cortina', 'casaca', 'abrigo'], ir: 'especiales' }
+      { k: ['precio', 'precios', 'cuesta', 'cuestan', 'cuanto cuesta', 'cuanto cobran', 'cuanto sale', 'cuanto vale', 'tarifa', 'tarifas', 'costo', 'costos', 'valor'], ir: 'precios' },
+      { k: ['horario', 'horarios', 'hora', 'horas', 'abierto', 'abiertos', 'atienden', 'atencion', 'abren', 'abre', 'cierran', 'cierra'], ir: 'horario' },
+      { k: ['recojo', 'recojos', 'recoger', 'recogen', 'recojan', 'recoja', 'domicilio', 'delivery', 'pedido', 'pedidos', 'pedir', 'servicio', 'servicios'], ir: 'servicio' },
+      { k: ['distrito', 'distritos', 'zona', 'zonas', 'cobertura', 'llegan', 'llegar', 'donde'], ir: 'cobertura' },
+      { k: ['hola', 'buenas', 'buenos dias', 'buenas tardes', 'buenas noches'], ir: 'inicio' },
+      { k: ['zapatilla', 'zapatillas', 'edredon', 'edredones', 'cortina', 'cortinas', 'casaca', 'casacas', 'abrigo', 'abrigos'], ir: 'especiales' }
     ],
     nodos: {
       inicio: { t: '¡Hola! 👋 Soy el asistente de la Lavandería de ejemplo.\n{{abierto}}\nElige una opción o escríbeme tu pregunta (por ejemplo: «¿cuánto cuesta?» o «¿hasta qué hora atienden?»).', b: [

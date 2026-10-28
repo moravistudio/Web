@@ -68,12 +68,12 @@
     pie: 'Moravi Studio example: made-up business and prices. Nothing is sent to anyone.',
     inicio: 'inicio', libre: true, horario: { dias: [1, 2, 3, 4, 5, 6], desde: 8, hasta: 20 },
     palabras: [
-      { k: ['price', 'prices', 'cost', 'how much', 'rate', 'fee', 'precio', 'cuesta', 'cuanto'], ir: 'precios' },
-      { k: ['hours', 'open', 'close', 'closing', 'schedule', 'what time', 'horario', 'abierto'], ir: 'horario' },
-      { k: ['pickup', 'pick up', 'pick-up', 'collect', 'delivery', 'order', 'book', 'service', 'recojo', 'pedir'], ir: 'servicio' },
-      { k: ['district', 'area', 'zone', 'coverage', 'where', 'distrito', 'zona', 'cobertura'], ir: 'cobertura' },
+      { k: ['price', 'prices', 'cost', 'costs', 'how much', 'rate', 'rates', 'fee', 'fees', 'precio', 'cuesta'], ir: 'precios' },
+      { k: ['hours', 'hour', 'open', 'opens', 'opening', 'close', 'closes', 'closing', 'closed', 'schedule', 'what time', 'horario', 'abierto'], ir: 'horario' },
+      { k: ['pickup', 'pick up', 'collect', 'delivery', 'deliver', 'order', 'orders', 'book', 'booking', 'service', 'services', 'recojo', 'pedir'], ir: 'servicio' },
+      { k: ['district', 'districts', 'area', 'areas', 'zone', 'zones', 'coverage', 'where', 'distrito', 'zona', 'cobertura'], ir: 'cobertura' },
       { k: ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'hola', 'buenas'], ir: 'inicio' },
-      { k: ['sneaker', 'shoes', 'duvet', 'comforter', 'curtain', 'coat', 'jacket', 'zapatilla', 'edredon'], ir: 'especiales' }
+      { k: ['sneaker', 'sneakers', 'shoes', 'shoe', 'duvet', 'duvets', 'comforter', 'comforters', 'curtain', 'curtains', 'coat', 'coats', 'jacket', 'jackets', 'zapatilla', 'edredon'], ir: 'especiales' }
     ],
     nodos: {
       inicio: { t: 'Hi! 👋 I\'m the assistant of the example laundry service.\n{{abierto}}\nPick an option or type your question (for example: “how much does it cost?” or “what time do you close?”).', b: [
