@@ -28,30 +28,33 @@
   };
 
   // Level 2 · With orders: the customer chooses and the bot builds the summary
-  var ropa = {
-    ui: UI, titulo: 'Example clothing boutique', sub: 'Button chatbot · builds the order',
+  var pasteleria = {
+    ui: UI, titulo: 'Example bakery', sub: 'Button chatbot · builds the order',
     pie: 'Moravi Studio example: made-up business and prices. Nothing is sent to anyone.',
     inicio: 'inicio', libre: false,
     nodos: {
-      inicio: { t: 'Hi! 👋 I\'m the assistant of the example clothing boutique.\nWhat are you interested in?', b: [
-        { l: 'T-shirts', ir: 'polos' }, { l: 'Pants', ir: 'pantalones' }, { l: 'Jackets', ir: 'casacas' }] },
-      polos: { t: 'Available T-shirts:', b: [
-        { l: 'Basic tee · S/ 39', set: { prenda: 'Basic tee', precio: 'S/ 39' }, ir: 'talla' },
-        { l: 'Printed tee · S/ 49', set: { prenda: 'Printed tee', precio: 'S/ 49' }, ir: 'talla' }, MENU] },
-      pantalones: { t: 'Available pants:', b: [
-        { l: 'Classic jeans · S/ 119', set: { prenda: 'Classic jeans', precio: 'S/ 119' }, ir: 'talla' },
-        { l: 'Joggers · S/ 89', set: { prenda: 'Joggers', precio: 'S/ 89' }, ir: 'talla' }, MENU] },
-      casacas: { t: 'Available jackets:', b: [
-        { l: 'Denim jacket · S/ 159', set: { prenda: 'Denim jacket', precio: 'S/ 159' }, ir: 'talla' },
-        { l: 'Windbreaker · S/ 129', set: { prenda: 'Windbreaker', precio: 'S/ 129' }, ir: 'talla' }, MENU] },
-      talla: { t: 'You chose: {{prenda}} ({{precio}}).\nWhat size do you want?', b: [
-        { l: 'S', set: { talla: 'S' }, ir: 'entrega' }, { l: 'M', set: { talla: 'M' }, ir: 'entrega' },
-        { l: 'L', set: { talla: 'L' }, ir: 'entrega' }, { l: 'XL', set: { talla: 'XL' }, ir: 'entrega' }] },
+      inicio: { t: 'Hi! 👋 I\'m the assistant of the example bakery.\nWhat would you like to order?', b: [
+        { l: 'Cakes', ir: 'tortas' }, { l: 'Cupcakes and desserts', ir: 'postres' }] },
+      tortas: { t: 'Our cakes (baked to order). Which flavor?', b: [
+        { l: 'Chocolate', set: { producto: 'Chocolate cake' }, ir: 'tamano' },
+        { l: 'Vanilla with strawberries', set: { producto: 'Vanilla cake with strawberries' }, ir: 'tamano' },
+        { l: 'Tres leches', set: { producto: 'Tres leches cake' }, ir: 'tamano' }, MENU] },
+      tamano: { t: 'You chose: {{producto}}.\nWhat size do you want?', b: [
+        { l: 'Small (8 servings) · S/ 75', set: { tam: 'Small (8 servings)', precio: 'S/ 75' }, ir: 'fecha' },
+        { l: 'Medium (15 servings) · S/ 120', set: { tam: 'Medium (15 servings)', precio: 'S/ 120' }, ir: 'fecha' },
+        { l: 'Large (25 servings) · S/ 185', set: { tam: 'Large (25 servings)', precio: 'S/ 185' }, ir: 'fecha' }] },
+      postres: { t: 'Available cupcakes and desserts:', b: [
+        { l: 'Cupcakes, box of 6 · S/ 36', set: { producto: 'Cupcakes', tam: 'Box of 6', precio: 'S/ 36' }, ir: 'fecha' },
+        { l: 'Strawberry cheesecake · S/ 70', set: { producto: 'Strawberry cheesecake', tam: 'Whole (10 servings)', precio: 'S/ 70' }, ir: 'fecha' },
+        { l: 'Alfajores, box of 12 · S/ 30', set: { producto: 'Alfajores', tam: 'Box of 12', precio: 'S/ 30' }, ir: 'fecha' }, MENU] },
+      fecha: { t: 'When do you need it?\nEverything is made to order, with 24 hours\' notice.', b: [
+        { l: 'Tomorrow', set: { fecha: 'Tomorrow' }, ir: 'entrega' }, { l: 'In 2 days', set: { fecha: 'In 2 days' }, ir: 'entrega' },
+        { l: 'In 3 days or more', set: { fecha: 'In 3 days or more' }, ir: 'entrega' }] },
       entrega: { t: 'How should we get it to you?', b: [
-        { l: 'Home delivery', set: { entrega: 'Home delivery' }, ir: 'resumen' }, { l: 'I\'ll pick it up at the store', set: { entrega: 'Store pickup' }, ir: 'resumen' }] },
-      resumen: { t: 'Done, here\'s your order:', caja: 'Your order', cajaT: 'Item: {{prenda}}\nSize: {{talla}}\nPrice: {{precio}}\nDelivery: {{entrega}}', b: [
+        { l: 'Home delivery', set: { entrega: 'Home delivery' }, ir: 'resumen' }, { l: 'I\'ll pick it up at the bakery', set: { entrega: 'Bakery pickup' }, ir: 'resumen' }] },
+      resumen: { t: 'Done, here\'s your order:', caja: 'Your order', cajaT: 'Order: {{producto}}\nSize: {{tam}}\nPrice: {{precio}}\nFor: {{fecha}}\nDelivery: {{entrega}}', b: [
         { l: 'Confirm order', ir: 'confirmado' }, { l: 'Start over', ir: 'inicio' }] },
-      confirmado: { t: '✅ Order noted!\n\nThis is an example: nothing was sent to anyone. In a real store, the owner would receive the complete order and wouldn\'t have to ask you anything else.', b: [{ l: 'Build another order', ir: 'inicio' }] }
+      confirmado: { t: '✅ Order noted!\n\nThis is an example: nothing was sent to anyone. In a real bakery, the business would receive the complete order, with the delivery date, and wouldn\'t have to ask you anything else.', b: [{ l: 'Build another order', ir: 'inicio' }] }
     }
   };
 
@@ -91,5 +94,5 @@
     }
   };
 
-  global.FLUJOS_DEMO_EN = { belleza: belleza, ropa: ropa, lavanderia: lavanderia };
+  global.FLUJOS_DEMO_EN = { belleza: belleza, pasteleria: pasteleria, lavanderia: lavanderia };
 })(window);
