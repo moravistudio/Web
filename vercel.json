@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/mensajes", "destination": "https://moravi-chatbots-production.up.railway.app/panel/" },
+    { "source": "/mensajes/", "destination": "https://moravi-chatbots-production.up.railway.app/panel/" },
+    { "source": "/api/panel/:path*", "destination": "https://moravi-chatbots-production.up.railway.app/api/panel/:path*" }
+  ]
+}

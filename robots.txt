@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /mensajes
 
 Sitemap: https://www.moravistudio.com/sitemap.xml
