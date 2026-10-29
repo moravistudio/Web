@@ -75,7 +75,7 @@
         },
         card: {
           lashAtelier: 'Landing page moderna para negocio de pestañas y laminado de cejas.',
-          paginaUno: 'Tienda online de libros seleccionados para cada tipo de lector.',
+          paginaUno: 'Tienda online de libros con carrito, favoritos y pago con tarjeta, PayPal o WhatsApp.',
           libraica: 'Sitio web de libros con recomendaciones literarias'
         },
         verProyecto: 'Ver proyecto',
@@ -90,7 +90,8 @@
           dulce: 'Landing page para negocio de pastelería artesanal.',
           veda: 'Tienda online de venta de ropa.',
           lumen: 'Studio de Fotografía Profesional.',
-          chispita: 'Landing page para lavandería con recojo y entrega a domicilio.'
+          chispita: 'Landing page para lavandería con recojo y entrega a domicilio.',
+          merengue: 'Tienda online de pastelería artesanal con carrito, pedido y WhatsApp.'
         }
       },
       services: {
@@ -261,7 +262,7 @@
         },
         card: {
           lashAtelier: 'Modern landing page for a lash and brow lamination business.',
-          paginaUno: 'Online bookstore with curated titles for every type of reader.',
+          paginaUno: 'Online bookstore with cart, favorites and payment by card, PayPal or WhatsApp.',
           libraica: 'Book website with literary recommendations'
         },
         verProyecto: 'View project',
@@ -276,7 +277,8 @@
           dulce: 'Landing page for an artisan bakery business.',
           veda: 'Online clothing store.',
           lumen: 'Professional photography studio.',
-          chispita: 'Landing page for a laundry service with home pickup and delivery.'
+          chispita: 'Landing page for a laundry service with home pickup and delivery.',
+          merengue: 'Online store for an artisan bakery with cart, ordering and WhatsApp.'
         }
       },
       services: {
