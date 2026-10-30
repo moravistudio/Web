@@ -25,6 +25,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../css/styles.css?v=4">
+  <link rel="stylesheet" href="../css/menu-servicios.css?v=1">
   <style>
     .nav__salir-btn {
       display: none; /* auth-gate.js lo revela si hay sesión activa */
@@ -59,7 +60,15 @@
         <nav class="nav">
           <a href="../index.html" class="nav__link" data-i18n="nav.inicio">Inicio</a>
           <a href="../index.html#proyectos" class="nav__link" data-i18n="nav.proyectos">Proyectos</a>
-          <a href="../index.html#servicios" class="nav__link" data-i18n="nav.servicios">Servicios</a>
+          <div class="nav__item">
+            <a href="../index.html#servicios" class="nav__link" data-i18n="nav.servicios">Servicios</a>
+            <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-submenu" aria-label="Mostrar servicios"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 4 6 8 10 4"></polyline></svg></button>
+            <div class="nav__submenu" id="nav-submenu">
+              <a href="../portafolio.html" class="nav__sublink" data-i18n="nav.servDiseno">Diseño web</a>
+              <a href="../catalogo-demos/" class="nav__sublink" data-i18n="nav.servCatalogos">Catálogos para tu negocio</a>
+              <a href="../chatbots/" class="nav__sublink" data-i18n="nav.servChatbots">Chatbots</a>
+            </div>
+          </div>
           <a href="./" class="nav__link nav__link--active" data-i18n="nav.productos">Productos</a>
           <a href="../index.html#contacto" class="nav__link" data-i18n="nav.contacto">Contacto</a>
         </nav>
@@ -357,8 +366,9 @@
     </div>
   </dialog>
 
-  <script src="../js/i18n.js?v=2" defer></script>
+  <script src="../js/i18n.js?v=3" defer></script>
   <script src="../js/menu-mobile.js" defer></script>
+  <script src="../js/menu-servicios.js" defer></script>
   <!-- Chatbot con IA (el mismo de la portada y el portafolio: mismo servidor y misma ficha) -->
   <script src="../chatbot-ia/chatbot-ia.js?v=3" data-cliente="moravi-studio" data-api="https://moravi-chatbots-production.up.railway.app" data-privacidad="../privacidad.html" data-privacidad-en="../privacy-policy.html" data-titulo="Asistente de Moravi Studio" data-titulo-en="Moravi Studio Assistant" data-whatsapp="https://wa.me/51940284018" defer></script>
   <script src="../js/auth-gate.js" defer></script>

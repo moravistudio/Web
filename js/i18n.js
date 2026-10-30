@@ -8,6 +8,9 @@
         inicio: 'Inicio',
         proyectos: 'Proyectos',
         servicios: 'Servicios',
+        servDiseno: 'Diseño web',
+        servCatalogos: 'Catálogos para tu negocio',
+        servChatbots: 'Chatbots',
         productos: 'Productos',
         contacto: 'Contacto'
       },
@@ -196,6 +199,9 @@
         inicio: 'Home',
         proyectos: 'Projects',
         servicios: 'Services',
+        servDiseno: 'Web design',
+        servCatalogos: 'Catalogs for your business',
+        servChatbots: 'Chatbots',
         productos: 'Products',
         contacto: 'Contact'
       },
