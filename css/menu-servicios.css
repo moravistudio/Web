@@ -1,0 +1,149 @@
+/*
+ * Menú desplegable de «Servicios» en la barra de navegación.
+ * - PC: al poner el mouse sobre «Servicios» (o tocar la flechita) se abre un cuadro con Diseño web, Catálogos y Chatbots.
+ *   Hacer clic en la palabra «Servicios» sigue bajando a la sección, como siempre.
+ * - Celular (≤ 768 px): dentro del menú de la hamburguesa, la flechita abre y cierra la lista con un toque.
+ * Todo está limitado a .nav__item; no cambia ninguna regla existente de .nav ni .nav__link.
+ */
+.nav__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav__caret {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  margin: 0 0 8px 2px;          /* 8px = el padding-bottom de .nav__link, para que flecha y texto queden a la misma altura */
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--heading);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.2s ease;
+}
+.nav__caret svg {
+  width: 11px;
+  height: 11px;
+  transition: transform 0.2s ease;
+}
+.nav__caret:hover,
+.nav__item.is-open .nav__caret { color: var(--brand-blue); }
+.nav__item.is-open .nav__caret svg { transform: rotate(180deg); }
+.nav__caret:focus-visible { outline: 2px solid var(--brand-blue); outline-offset: 2px; }
+
+/* ---------- Cuadro desplegable (PC) ---------- */
+.nav__submenu {
+  position: absolute;
+  top: calc(100% - 2px);
+  left: 50%;
+  min-width: 200px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #fff;
+  border: 1px solid rgba(15, 30, 70, 0.08);
+  border-radius: 14px;
+  box-shadow: 0 14px 34px rgba(15, 30, 70, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -6px);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s linear 0.18s;
+  z-index: 20;
+}
+/* Puente invisible entre «Servicios» y el cuadro: el mouse puede bajar sin que se cierre */
+.nav__submenu::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -16px;
+  height: 16px;
+}
+.nav__item.is-open .nav__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+  transition-delay: 0s;
+}
+@media (hover: hover) and (min-width: 769px) {
+  .nav__item:hover .nav__submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, 0);
+    transition-delay: 0s;
+  }
+  .nav__item:hover .nav__caret { color: var(--brand-blue); }
+  .nav__item:hover .nav__caret svg { transform: rotate(180deg); }
+  .nav__item:hover > .nav__link { color: var(--brand-blue); }
+}
+
+.nav__sublink {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 9px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--heading);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.nav__sublink:hover,
+.nav__sublink:focus-visible {
+  background: rgba(30, 140, 255, 0.1);
+  color: var(--brand-blue);
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__submenu, .nav__caret svg { transition: none; }
+}
+
+/* ---------- Celular: dentro del menú oscuro de la hamburguesa ---------- */
+@media (max-width: 768px) {
+  .nav__item {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+  .nav__item > .nav__link { flex: 1 1 auto; width: auto; }
+  .nav__caret {
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 0;
+  }
+  .nav__caret svg { width: 14px; height: 14px; }
+  .nav__submenu {
+    position: static;
+    display: none;
+    width: 100%;
+    min-width: 0;
+    padding: 4px 0 8px 14px;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: none;
+  }
+  .nav__submenu::before { display: none; }
+  .nav__item.is-open .nav__submenu { display: flex; transform: none; }
+  .nav__sublink {
+    color: #fff;
+    padding: 11px 8px;
+    border-radius: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+  .nav__sublink:hover, .nav__sublink:focus-visible { background: transparent; color: #7DB8FF; }
+}
