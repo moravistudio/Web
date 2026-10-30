@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="css/servicios-efecto.css?v=4">
 </head>
 <body>
-  <script>try{if(!sessionStorage.getItem('moravi-intro-visto'))document.documentElement.classList.add('intro-on','scene-wait');}catch(e){document.documentElement.classList.add('intro-on','scene-wait');}</script>
+  <script>try{if(location.hash.length>1)sessionStorage.setItem('moravi-intro-visto','1');if(!sessionStorage.getItem('moravi-intro-visto'))document.documentElement.classList.add('intro-on','scene-wait');}catch(e){if(location.hash.length<2)document.documentElement.classList.add('intro-on','scene-wait');}</script>
 
   <!-- ============ PANTALLA DE ENTRADA (a pantalla completa; una vez por visita) ============ -->
   <section class="intro" id="intro" aria-label="Introducción">

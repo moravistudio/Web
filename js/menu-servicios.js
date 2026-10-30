@@ -5,6 +5,18 @@
  * - mantener aria-expanded al día para lectores de pantalla.
  * Si algo falla, el enlace «Servicios» sigue funcionando igual que antes.
  */
+/* Al llegar desde otra página con #seccion (p. ej. «Servicios» desde el portafolio), la portada se quedaba arriba porque el navegador salta
+   a la sección antes de que termine de armarse. Una vez cargada, si sigue arriba, baja a la sección. */
+window.addEventListener('load', function () {
+  var h = location.hash, t = null;
+  if (h.length < 2) return;
+  try { t = document.querySelector(h); } catch (e) { return; }
+  if (!t) return;
+  setTimeout(function () {
+    if (window.scrollY < 50 && !document.documentElement.classList.contains('intro-on')) t.scrollIntoView({ behavior: 'instant' });
+  }, 200);
+});
+
 (function () {
   var items = document.querySelectorAll('.nav__item');
   if (!items.length) return;
