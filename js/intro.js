@@ -1,7 +1,7 @@
 /*
  * Pantalla de entrada: pantalla completa con un fluido de luz que reacciona al cursor (js/intro-fluido.js, WebGL2); si el aparato no lo
- * soporta, una red de puntos en 3D (canvas 2D, sin librerías ni imágenes). Se muestra una sola vez por visita (sessionStorage) y se cierra con el botón, la rueda del mouse,
- * deslizando hacia arriba, o Escape. Los textos y el selector ES/EN los maneja js/i18n.js.
+ * soporta, una red de puntos en 3D (canvas 2D, sin librerías ni imágenes). Se muestra una sola vez por visita (sessionStorage) y se cierra con el botón, la rueda del mouse o Escape.
+ * En celular SOLO se entra con el botón «Conoce Moravi Studio»: el dedo únicamente juega con la tinta de luz (deslizar hacia arriba ya no cierra la entrada). Los textos y el selector ES/EN los maneja js/i18n.js.
  * Cuidado de rendimiento: solo anima mientras se ve; se pausa con la pestaña oculta; resolución limitada
  * (DPR máx. 2); menos puntos en pantallas chicas; red estática si el aparato pide «reducir movimiento».
  * Al cerrarse, el elemento se elimina del documento y la animación se detiene por completo.
@@ -107,11 +107,8 @@
 
   btn.addEventListener('click', enter);
   box.addEventListener('wheel', function (e) { if (e.deltaY > 25) enter(); }, { passive: true });
-  var y0 = null;
-  box.addEventListener('touchstart', function (e) { y0 = e.touches[0].clientY; }, { passive: true });
   box.addEventListener('touchmove', function (e) {
     if (e.touches[0]) setPointer(e.touches[0].clientX, e.touches[0].clientY);
-    if (y0 !== null && y0 - e.touches[0].clientY > 90) enter();
   }, { passive: true });
   box.addEventListener('pointermove', function (e) { setPointer(e.clientX, e.clientY); }, { passive: true });
   box.addEventListener('pointerleave', function () { pointer.tx = 0; pointer.ty = 0; });
