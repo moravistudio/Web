@@ -95,7 +95,8 @@
           lumen: 'Studio de Fotografía Profesional.',
           chispita: 'Landing page para lavandería con recojo y entrega a domicilio.',
           merengue: 'Tienda online de pastelería artesanal con carrito, pedido y WhatsApp.',
-          velluto: 'Landing page para pastelería de alta repostería, con carta y pedidos por WhatsApp.'
+          velluto: 'Landing page para pastelería de alta repostería, con carta y pedidos por WhatsApp.',
+          velmora: 'Sitio web de pastelería con productos, carrito de compra y pedidos por WhatsApp.'
         }
       },
       services: {
@@ -286,7 +287,8 @@
           lumen: 'Professional photography studio.',
           chispita: 'Landing page for a laundry service with home pickup and delivery.',
           merengue: 'Online store for an artisan bakery with cart, ordering and WhatsApp.',
-          velluto: 'Landing page for a high-end patisserie, with a menu and ordering by WhatsApp.'
+          velluto: 'Landing page for a high-end patisserie, with a menu and ordering by WhatsApp.',
+          velmora: 'Bakery website with products, a shopping cart and ordering by WhatsApp.'
         }
       },
       services: {
