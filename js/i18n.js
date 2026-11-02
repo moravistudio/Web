@@ -70,7 +70,7 @@
       },
       projects: {
         title: { lead: 'Proyectos', accent: 'destacados' },
-        subtitle: 'Algunas muestras y demos de sitios web diseñados para diferentes tipos de negocios.',
+        subtitle: 'Algunas muestras de sitios web y demos diseñados para diferentes tipos de negocios.',
         badge: {
           landing: 'Landing Page',
           tienda: 'Tienda Online',
@@ -262,7 +262,7 @@
       },
       projects: {
         title: { lead: 'Featured', accent: 'projects' },
-        subtitle: 'Some samples and demos of websites designed for different types of businesses.',
+        subtitle: 'Some samples of websites and demos designed for different types of businesses.',
         badge: {
           landing: 'Landing Page',
           tienda: 'Online Store',
