@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <base href="../">
+  <meta name="robots" content="noindex,nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moravi Studio — Diseño Web que convierte visitantes en clientes</title>
+  <meta name="description" content="Landing Pages, sitios web y tiendas online diseñadas para ayudarte a destacar y vender más.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css?v=6">
+
+  <style>
+    /* ===== DEMO portada con vida ===== */
+    .hero__net{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:none}
+    .hero__net--front{z-index:1}
+    .hero__dust{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;display:none}
+    @keyframes fxIn{from{opacity:0;translate:0 38px;scale:.96}to{opacity:1;translate:0 0;scale:1}}
+    @keyframes fxSweep{0%{-webkit-mask-position:100% 0;mask-position:100% 0}55%,100%{-webkit-mask-position:0% 0;mask-position:0% 0}}
+    .hero__sheen{pointer-events:none;filter:brightness(1.9) saturate(.4);opacity:.65;
+      -webkit-mask-image:linear-gradient(100deg,transparent 44%,#000 50%,transparent 56%);mask-image:linear-gradient(100deg,transparent 44%,#000 50%,transparent 56%);
+      -webkit-mask-size:300% 100%;mask-size:300% 100%;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+      -webkit-mask-position:100% 0;mask-position:100% 0;animation:fxSweep 6s ease-in-out 1.6s infinite}
+    @media (min-width:1025px){
+      .hero__net{display:block}
+      .hero.fx-on .hero__devices:not(.hero__sheen){animation:fxIn 1.1s cubic-bezier(.2,.7,.2,1) both}
+    }
+    @media (min-width:769px) and (max-width:1024px){.hero__sheen{display:none}}
+    @media (max-width:768px){
+      .hero__dust{display:block}
+      .hero__devices-mobile.hero__sheen{position:absolute;left:0;top:0}
+      .hero.fx-on .hero__devices-mobile:not(.hero__sheen){animation:fxIn 1.1s cubic-bezier(.2,.7,.2,1) both}
+    }
+    @media (prefers-reduced-motion:reduce){.hero__sheen{animation:none;opacity:0}.hero.fx-on .hero__devices,.hero.fx-on .hero__devices-mobile{animation:none}}
+  </style>
+</head>
+<body>
+  
+  
+  <!-- ============ HEADER ============ -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="header__brand">
+        <img src="assets/img/logo-ms-azul.png" alt="" class="header__mark" width="685" height="314">
+        <img src="assets/img/logo-moravi-studio-azul.png" alt="Moravi Studio" class="header__word" width="891" height="168">
+      </a>
+      <div class="header__right">
+        <nav class="nav">
+          <a href="#" class="nav__link nav__link--active" data-i18n="nav.inicio">Inicio</a>
+          <a href="#proyectos" class="nav__link" data-i18n="nav.proyectos">Proyectos</a>
+          <a href="#servicios" class="nav__link" data-i18n="nav.servicios">Servicios</a>
+          <a href="productos/" class="nav__link" data-i18n="nav.productos">Productos</a>
+          <a href="#contacto" class="nav__link" data-i18n="nav.contacto">Contacto</a>
+        </nav>
+        <div class="lang-selector" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn lang-btn--active" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="container hero__inner">
+      <div class="hero__content">
+        <h1 class="hero__title">
+          <span class="hero__title-lead" data-i18n="hero.title.lead">Diseño Web que</span><br>
+          <span class="accent" data-i18n="hero.title.accent">convierte</span> <span data-i18n="hero.title.mid">visitantes</span><br>
+          <span data-i18n="hero.title.end">en clientes.</span>
+        </h1>
+        <p class="hero__subtitle" data-i18n="hero.subtitle">
+          Landing Pages, sitios web y tiendas&nbsp;online
+          diseñadas para ayudarte a destacar y
+          vender&nbsp;más.
+        </p>
+        <div class="hero__mobile-visual">
+          <img src="assets/img/hero-devices-mobile.webp" alt="Dispositivos Moravi Studio" class="hero__devices-mobile">
+          <a href="#contacto" class="hero__talk">
+            <span data-i18n="hero.btnSecondary">Hablemos</span>
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+        <div class="hero__actions">
+          <a href="#proyectos" class="btn btn--primary">
+            <span data-i18n="hero.btnPrimary">Ver proyectos</span>
+            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href="#contacto" class="btn btn--secondary">
+            <span data-i18n="hero.btnSecondary">Hablemos</span>
+            <svg class="btn__arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <img src="assets/img/hero-devices.webp"
+             alt="Sitios web diseñados por Moravi Studio en laptop, tablet y celular"
+             class="hero__devices">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRODUCTOS (acceso directo; mismas tarjetas y mismo acceso que en /productos) ============ -->
+  <section class="projects home-products" id="productos-inicio">
+    <div class="container">
+      <div class="projects__header">
+        <h2 class="projects__title"><span data-i18n="homeProducts.title.lead">Productos</span> <span class="accent" data-i18n="homeProducts.title.accent">listos para usar</span></h2>
+        <p class="projects__subtitle" data-i18n="homeProducts.subtitle">Creadas por Moravi Studio. Entra con tu cuenta de Google y empieza hoy.</p>
+      </div>
+
+      <div class="projects__grid home-products__grid">
+        <article class="projects__card">
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="productos.badge.negocios">Herramienta para negocios</span></span>
+          <div class="projects__media">
+            <a href="#" data-product-url="https://catalogonline.moravistudio.com/api/auth/moravi-session">
+              <img src="assets/img/catalogo-online-mockup.webp" alt="Interfaz del Catálogo Online de Moravi Studio" class="projects__media-img" loading="lazy">
+            </a>
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__card-title" data-i18n="productos.catalogo.title">Catálogo Online</h3>
+            <div class="projects__card-row">
+              <p class="projects__card-text" data-i18n="productos.catalogo.text">Publica tu catálogo de productos y recibe pedidos directo por WhatsApp, sin comisiones.</p>
+              <a href="#" class="projects__link" data-product-url="https://catalogonline.moravistudio.com/api/auth/moravi-session" data-i18n="productos.usarHerramienta">Usar herramienta →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="projects__card">
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="productos.badge.digital">Herramienta digital</span></span>
+          <div class="projects__media">
+            <a href="#" data-product-url="https://downloader.moravistudio.com/auth/moravi-session">
+              <img src="assets/img/ms-video-downloader-mockup.svg" alt="Interfaz de MS Video Downloader de Moravi Studio" class="projects__media-img" loading="lazy">
+            </a>
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__card-title" data-i18n="productos.videoDownloader.title">MS Video Downloader</h3>
+            <div class="projects__card-row">
+              <p class="projects__card-text" data-i18n="productos.videoDownloader.text">Descarga vídeos desde URLs compatibles y elige entre los formatos y calidades disponibles.</p>
+              <a href="#" class="projects__link" data-product-url="https://downloader.moravistudio.com/auth/moravi-session" data-i18n="productos.usarHerramienta">Usar herramienta →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="projects__card">
+          <span class="projects__badge"><span class="projects__badge-dot"></span><span data-i18n="productos.badge.negocios">Herramienta para negocios</span></span>
+          <div class="projects__media">
+            <img src="assets/img/menu-digital-qr-mockup.svg" alt="Menú Digital QR de Moravi Studio" class="projects__media-img" loading="lazy">
+          </div>
+          <div class="projects__body">
+            <h3 class="projects__card-title" data-i18n="productos.menuDigitalQr.title">Menú Digital QR</h3>
+            <div class="projects__card-row">
+              <p class="projects__card-text" data-i18n="productos.menuDigitalQr.text">Crea un menú digital accesible mediante QR y permite a tus clientes consultarlo desde cualquier dispositivo.</p>
+              <span class="projects__link projects__link--disabled" data-i18n="productos.proximamente">Próximamente</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="home-products__dots" role="group" aria-label="Productos"></div>
+
+      <div class="projects__cta">
+        <a href="productos/" class="projects__btn-all">
+          <span data-i18n="homeProducts.verTodos">Ver todos los productos</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROYECTOS ============ -->
+  <section class="projects" id="proyectos">
+    <div class="container">
+      <div class="projects__header">
+        <h2 class="projects__title"><span data-i18n="projects.title.lead">Proyectos</span> <span class="accent" data-i18n="projects.title.accent">destacados</span></h2>
+        <p class="projects__subtitle" data-i18n="projects.subtitle">Algunas muestras de sitios web diseñados para diferentes tipos de negocios.</p>
+      </div>
+
+      <div class="projects-ring" id="proyectos-anillo" aria-label="Proyectos destacados">
+        <div class="projects-ring__spin">
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/lash-atelier-hero.webp" alt="Captura del sitio web de Lash Atelier" width="1082" height="676" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/pagina-uno-hero.webp" alt="Captura del sitio web de Página Uno" width="1037" height="648" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/libraica-hero.webp" alt="Captura del sitio web de Libraica" width="1066" height="666" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/synapse-ai-hero.webp" alt="Captura del sitio web de Synapse AI" width="1280" height="800" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/landing-serum-hero.webp" alt="Captura del sitio web de Landing Serum" width="1280" height="800" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/maison-dulce-hero.webp" alt="Captura del sitio web de Maison Dulce" width="1280" height="800" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/maison-veda-hero.webp" alt="Captura del sitio web de MAISON VEDA" width="1280" height="800" loading="lazy" draggable="false"></a>
+          <a class="projects-ring__item" href="portafolio.html" draggable="false"><img src="assets/img/lumen-studio-hero.webp" alt="Captura del sitio web de Lumen Studio" width="1280" height="800" loading="lazy" draggable="false"></a>
+        </div>
+      </div>
+
+      <div class="projects__cta">
+        <a href="portafolio.html" class="projects__btn-all">
+          <span data-i18n="projects.verTodos">Ver todos los proyectos</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="services__header">
+        <span class="services__eyebrow" data-i18n="services.eyebrow">• Servicios •</span>
+        <h2 class="services__title"><span data-i18n="services.title.lead">Soluciones digitales pensadas</span> <br><span data-i18n="services.title.mid">para</span> <span class="accent" data-i18n="services.title.accent">hacer crecer</span> <span data-i18n="services.title.end">tu negocio</span></h2>
+        <p class="services__subtitle" data-i18n="services.subtitle">Más que una página web: combinamos diseño, estrategia y tecnología para construir una presencia digital coherente y lista para crecer.</p>
+      </div>
+
+      <div class="services__grid">
+        <article class="services__card">
+          <img class="services__card-full" src="assets/img/services-card-01.webp" data-img-es="assets/img/services-card-01.webp" data-img-en="assets/img/services-card-01-en.webp" alt="01. Diseño web: landing pages, sitios corporativos y tiendas online diseñados para transmitir confianza y generar resultados." loading="lazy">
+        </article>
+
+        <article class="services__card">
+          <img class="services__card-full" src="assets/img/services-card-02.webp" data-img-es="assets/img/services-card-02.webp" data-img-en="assets/img/services-card-02-en.webp" alt="02. Fotografía de productos: imágenes profesionales que realzan la presentación de tus productos." loading="lazy">
+        </article>
+
+        <article class="services__card">
+          <img class="services__card-full" src="assets/img/services-card-03.webp" data-img-es="assets/img/services-card-03.webp" data-img-en="assets/img/services-card-03-en.webp" alt="03. Optimización con IA: mejora visual y creación de recursos utilizando herramientas avanzadas." loading="lazy">
+        </article>
+
+        <article class="services__card">
+          <img class="services__card-full" src="assets/img/services-card-04.webp" data-img-es="assets/img/services-card-04.webp" data-img-en="assets/img/services-card-04-en.webp" alt="04. Identidad y contenido visual: logotipos, piezas gráficas y recursos visuales para construir una imagen sólida y coherente." loading="lazy">
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO ============ -->
+  <section class="contact" id="contacto">
+    <div class="container contact__inner">
+      <div class="contact__content">
+        <span class="contact__eyebrow" data-i18n="contact.eyebrow">• Contacto •</span>
+        <h2 class="contact__title"><span data-i18n="contact.title.lead">Hagamos que</span><br><span data-i18n="contact.title.mid">tu negocio</span><br><span class="accent" data-i18n="contact.title.accent">destaque.</span></h2>
+        <p class="contact__text" data-i18n="contact.text">Diseñamos sitios web modernos y experiencias digitales que transmiten confianza, destacan tu marca y ayudan a hacer crecer tu negocio.</p>
+        <a href="portafolio.html" class="contact__btn">
+          <span data-i18n="hero.btnPrimary">Ver proyectos</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+
+      <form class="contact__form" action="https://formspree.io/f/mykqqgad" method="POST">
+        <h3 class="contact__form-title"><span data-i18n="contact.form.title">Cuéntame sobre tu proyecto</span><i class="contact__form-line" aria-hidden="true"></i></h3>
+        <label class="contact__field">
+          <input type="text" name="nombre" placeholder="Nombre" data-i18n-placeholder="contact.form.name" required>
+        </label>
+        <label class="contact__field">
+          <input type="email" name="correo" placeholder="Correo electrónico" data-i18n-placeholder="contact.form.email" required>
+        </label>
+        <label class="contact__field">
+          <textarea name="mensaje" rows="4" placeholder="Cuéntame sobre tu proyecto" data-i18n-placeholder="contact.form.title" required></textarea>
+        </label>
+        <button type="submit" class="contact__submit">
+          <span data-i18n="contact.form.submit">Enviar mensaje</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo-wrap">
+          <img src="assets/img/logo-ms-footer.webp" alt="MS" class="footer__logo-ms">
+          <img src="assets/img/logo-texto-footer.webp" alt="Moravi Studio" class="footer__logo-texto">
+        </div>
+        <p class="footer__tagline" data-i18n="footer.tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
+      </div>
+
+      <div class="footer__center">
+        <nav class="footer__nav">
+          <a href="#" class="footer__nav-link" data-i18n="nav.inicio">Inicio</a>
+          <a href="#proyectos" class="footer__nav-link" data-i18n="nav.proyectos">Proyectos</a>
+          <a href="#servicios" class="footer__nav-link" data-i18n="nav.servicios">Servicios</a>
+          <a href="productos/" class="footer__nav-link" data-i18n="nav.productos">Productos</a>
+          <a href="#contacto" class="footer__nav-link" data-i18n="nav.contacto">Contacto</a>
+        </nav>
+        <div class="footer__legal">
+          <a href="privacidad.html" data-href-en="privacy-policy.html" class="footer__privacy-link" data-i18n="footer.privacy">Política de privacidad</a>
+          <a href="terminos.html" data-href-en="terms-and-conditions.html" class="footer__privacy-link" data-i18n="footer.terms">Términos y condiciones</a>
+          <a href="suscripciones.html" data-href-en="subscriptions-and-refunds.html" class="footer__privacy-link" data-i18n="footer.subs">Suscripciones y reembolsos</a>
+          <a href="catalogo-condiciones.html" data-href-en="online-catalog-terms.html" class="footer__privacy-link" data-i18n="footer.catalogTerms">Condiciones de Catálogo Online</a>
+          <a href="video-downloader-condiciones.html" data-href-en="video-downloader-terms.html" class="footer__privacy-link" data-i18n="footer.videoTerms">Condiciones de MS Video Downloader</a>
+        </div>
+      </div>
+
+      <div class="footer__aside">
+        <div class="footer__social">
+          <a href="https://www.instagram.com/moravistudiolab" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--instagram" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.3" cy="6.7" r="0.6" fill="white" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/51940284018" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--whatsapp" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.94 14.47L2 22l5.66-1.48A10 10 0 1 0 12 2zm5.29 14.34c-.22.62-1.09 1.14-1.79 1.29-.49.1-1.12.18-3.26-.7-2.73-1.13-4.49-3.9-4.63-4.08-.14-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.94-2.25.24-.27.53-.34.71-.34h.5c.16 0 .38-.02.58.44.22.5.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.15-.28.33-.4.45-.13.13-.27.27-.12.53.16.27.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.19 1.36.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.87.27.13.45.2.51.31.07.11.07.62-.15 1.24z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p data-i18n="footer.copyright">© 2026 Moravi Studio. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── AUTH MODAL ──────────────────────────────────────────────────────────── -->
+  <style>
+    .auth-modal__modes {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      margin-bottom: 4px;
+    }
+    .auth-modal__mode {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 2px solid transparent;
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: left;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+      color: rgba(255,255,255,0.65);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      line-height: 1.4;
+      user-select: none;
+    }
+    .auth-modal__mode strong {
+      display: block;
+      margin-bottom: 3px;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-heading);
+    }
+    .auth-modal__mode:hover { background: rgba(255,255,255,0.12); }
+    .auth-modal__mode--active {
+      background: rgba(30,140,255,0.18);
+      border-color: #1E8CFF;
+      color: rgba(255,255,255,0.9);
+    }
+    .auth-modal__mode--active strong { color: #fff; }
+  </style>
+
+  <dialog id="moravi-auth-modal" class="auth-modal" aria-modal="true" aria-labelledby="moravi-auth-modal-title">
+    <div class="auth-modal__card">
+      <button id="moravi-auth-btn-close" class="auth-modal__close" aria-label="Cerrar">&#x2715;</button>
+      <h2 id="moravi-auth-modal-title" class="auth-modal__title">Acceder al Catálogo</h2>
+      <p class="auth-modal__subtitle">¿Cómo quieres continuar?</p>
+
+      <!-- Selección de modo: login o registro -->
+      <div class="auth-modal__modes" role="radiogroup" aria-label="Tipo de acceso">
+        <div class="auth-modal__mode auth-modal__mode--active"
+             id="auth-mode-login" role="radio" aria-checked="true" tabindex="0" data-mode="login">
+          <strong>Ya tengo cuenta</strong>
+          <span id="auth-mode-login-desc">Acceder a mi catálogo existente.</span>
+        </div>
+        <div class="auth-modal__mode"
+             id="auth-mode-register" role="radio" aria-checked="false" tabindex="0" data-mode="register">
+          <strong>Soy nuevo</strong>
+          <span id="auth-mode-register-desc">Crear mi catálogo con Google.</span>
+        </div>
+      </div>
+
+      <a id="moravi-auth-btn-google" href="#" class="auth-modal__btn-google">
+        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" focusable="false">
+          <path fill="#fff" fill-opacity=".9" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908C16.657 14.233 17.64 11.925 17.64 9.2z"/>
+          <path fill="#fff" fill-opacity=".9" d="M9 18c2.43 0 4.467-.806 5.956-2.184l-2.908-2.258c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 0 0 9 18z"/>
+          <path fill="#fff" fill-opacity=".9" d="M3.964 10.707A5.41 5.41 0 0 1 3.682 9c0-.593.102-1.17.282-1.707V4.961H.957A8.996 8.996 0 0 0 0 9c0 1.452.348 2.827.957 4.039l3.007-2.332z"/>
+          <path fill="#fff" fill-opacity=".9" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 0 0 .957 4.96L3.964 7.293C4.672 5.163 6.656 3.58 9 3.58z"/>
+        </svg>
+        <span id="moravi-auth-btn-text">Iniciar sesión con Google</span>
+      </a>
+      <p class="auth-modal__footer">Tu información se mantendrá segura y privada.</p>
+    </div>
+  </dialog>
+
+  <script src="js/i18n.js" defer></script>
+  <script src="js/menu-mobile.js" defer></script>
+  <script src="js/auth-gate.js" defer></script>
+  <script src="js/productos-carrusel.js" defer></script>
+  <script src="js/tarjetas-efecto.js" defer></script>
+  <script src="js/proyectos-anillo.js" defer></script>
+
+  <!-- Chatbot -->
+  <button class="chatbot__toggle" aria-label="Abrir chat" aria-expanded="false">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" fill="white"/>
+    </svg>
+  </button>
+
+  <div class="chatbot__window" role="dialog" aria-label="Chat de Moravi Studio">
+    <div class="chatbot__header">
+      <p class="chatbot__title">Moravi Studio 💬</p>
+      <button class="chatbot__close" aria-label="Cerrar chat">✕</button>
+    </div>
+    <div class="chatbot__body"></div>
+  </div>
+
+  <script src="js/chatbot.js" defer></script>
+  <script src="laboratorio/portada-efectos.js"></script>
+</body>
+</html>
