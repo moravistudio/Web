@@ -6,7 +6,7 @@
     es: {
       nav: {
         inicio: 'Inicio',
-        proyectos: 'Proyectos',
+        proyectos: 'Portafolio',
         servicios: 'Servicios',
         servDiseno: 'Diseño web',
         servCatalogos: 'Catálogos para tu negocio',
@@ -22,7 +22,7 @@
           end: 'en clientes.'
         },
         subtitle: 'Landing Pages, sitios web y tiendas online diseñadas para ayudarte a destacar y vender más.',
-        btnPrimary: 'Ver proyectos',
+        btnPrimary: 'Ver portafolio',
         btnSecondary: 'Hablemos',
         intro: {
           lead: 'Páginas que',
@@ -69,7 +69,7 @@
         verTodos: 'Ver todos los productos'
       },
       projects: {
-        title: { lead: 'Proyectos', accent: 'destacados' },
+        title: { lead: 'Trabajos', accent: 'destacados' },
         subtitle: 'Algunas muestras de sitios web y demos diseñados para diferentes tipos de negocios.',
         badge: {
           landing: 'Landing Page',
@@ -82,10 +82,10 @@
           libraica: 'Sitio web de libros con recomendaciones literarias'
         },
         verProyecto: 'Ver proyecto',
-        verTodos: 'Ver todos los proyectos'
+        verTodos: 'Ver el portafolio completo'
       },
       portafolio: {
-        title: { lead: 'Proyectos que ayudan a las marcas a', accent: 'destacar' },
+        title: { lead: 'Páginas web para que tu negocio', accent: 'destaque' },
         filter: { todo: 'Todo', landing: 'Landing Pages', sitios: 'Sitios Web', tiendas: 'Tiendas Online' },
         card: {
           synapse: 'Landing page para plataforma de inteligencia artificial.',
@@ -199,7 +199,7 @@
     en: {
       nav: {
         inicio: 'Home',
-        proyectos: 'Projects',
+        proyectos: 'Portfolio',
         servicios: 'Services',
         servDiseno: 'Web design',
         servCatalogos: 'Catalogs for your business',
@@ -215,7 +215,7 @@
           end: 'into customers.'
         },
         subtitle: 'Landing pages, websites, and online stores designed to help you stand out and sell more.',
-        btnPrimary: 'View projects',
+        btnPrimary: 'View portfolio',
         btnSecondary: "Let's talk",
         intro: {
           lead: 'Websites that',
@@ -262,7 +262,7 @@
         verTodos: 'View all products'
       },
       projects: {
-        title: { lead: 'Featured', accent: 'projects' },
+        title: { lead: 'Featured', accent: 'work' },
         subtitle: 'Some samples of websites and demos designed for different types of businesses.',
         badge: {
           landing: 'Landing Page',
@@ -275,10 +275,10 @@
           libraica: 'Book website with literary recommendations'
         },
         verProyecto: 'View project',
-        verTodos: 'View all projects'
+        verTodos: 'View the full portfolio'
       },
       portafolio: {
-        title: { lead: 'Projects that help brands', accent: 'stand out' },
+        title: { lead: 'Websites that help your business', accent: 'stand out' },
         filter: { todo: 'All', landing: 'Landing Pages', sitios: 'Websites', tiendas: 'Online Stores' },
         card: {
           synapse: 'Landing page for an artificial intelligence platform.',

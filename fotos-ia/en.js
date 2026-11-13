@@ -106,7 +106,7 @@
       "S/ 8.63 por foto": "S/ 8.63 per photo",
       "Diseño web y landing pages pensadas para ayudarte a destacar y vender más.": "Web design and landing pages built to help you stand out and sell more.",
       "Inicio": "Home",
-      "Proyectos": "Projects",
+      "Portafolio": "Portfolio",
       "Servicios": "Services",
       "Productos": "Products",
       "Contacto": "Contact",
