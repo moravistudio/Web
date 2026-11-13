@@ -11,6 +11,7 @@
         servDiseno: 'Diseño web',
         servCatalogos: 'Catálogos para tu negocio',
         servChatbots: 'Chatbots',
+        servPortadas: 'Portadas interactivas',
         productos: 'Productos',
         contacto: 'Contacto'
       },
@@ -204,6 +205,7 @@
         servDiseno: 'Web design',
         servCatalogos: 'Catalogs for your business',
         servChatbots: 'Chatbots',
+        servPortadas: 'Interactive covers',
         productos: 'Products',
         contacto: 'Contact'
       },

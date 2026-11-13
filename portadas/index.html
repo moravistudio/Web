@@ -12,18 +12,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,300;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css?v=3">
+  <link rel="stylesheet" href="../css/menu-servicios.css?v=1">
   <link rel="stylesheet" href="../css/portadas.css?v=8">
   <link rel="stylesheet" href="../css/portadas-wide.css?v=34">
   <style>
     *{box-sizing:border-box;margin:0;padding:0}
     body{background:#F3F6FB;color:#0E1A2D;font-family:'Inter',system-ui,sans-serif}
-    .wrap{width:min(1560px,calc(100vw - 64px));margin:0 auto;padding:40px 0 90px}
-    .back{color:#1E8CFF;text-decoration:none;font-weight:600;font-size:14px}
-    .topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .lang-selector{display:flex;align-items:center;gap:2px;border:1px solid #dde5f0;background:#fff;border-radius:999px;padding:3px;flex-shrink:0}
-    .lang-btn{border:none;background:none;cursor:pointer;font:600 13px 'Inter',system-ui,sans-serif;color:#5C6A7E;padding:5px 11px;border-radius:999px;transition:background .2s ease,color .2s ease}
-    .lang-btn:hover{color:#1E8CFF}
-    .lang-btn--active,.lang-btn--active:hover{background:#1E8CFF;color:#fff}
+    .wrap{width:min(1560px,calc(100% - 2 * clamp(24px,4.5vw,80px)));margin:0 auto;padding:110px 0 90px}
     h1{font:700 clamp(30px,4vw,48px)/1.12 'Poppins',sans-serif;margin-top:18px;letter-spacing:-.01em}
     h1 em{font-style:normal;color:#1E8CFF}
     .lead{margin-top:12px;color:#5C6A7E;font-size:18px;max-width:720px;line-height:1.5}
@@ -42,19 +38,100 @@
   </style>
 </head>
 <body>
-  <div class="wrap" data-idioma>
-    <div class="topbar">
-      <a class="back" href="../">← Volver a Moravi Studio</a>
-      <div class="lang-selector" role="group" aria-label="Seleccionar idioma">
-        <button type="button" class="lang-btn lang-btn--active" data-lang="es" aria-pressed="true">ES</button>
-        <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../" class="header__brand">
+        <img src="../assets/img/logo-ms-azul.webp" alt="" class="header__mark" width="685" height="314">
+        <img src="../assets/img/logo-moravi-studio-azul.webp" alt="Moravi Studio" class="header__word" width="891" height="168">
+      </a>
+      <div class="header__right">
+        <nav class="nav">
+          <a href="../" class="nav__link" data-i18n="nav.inicio">Inicio</a>
+          <a href="../#proyectos" class="nav__link" data-i18n="nav.proyectos">Portafolio</a>
+          <div class="nav__item">
+            <a href="../#servicios" class="nav__link nav__link--active" data-i18n="nav.servicios">Servicios</a>
+            <button type="button" class="nav__caret" aria-expanded="false" aria-controls="nav-submenu" aria-label="Mostrar servicios"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="2 4 6 8 10 4"></polyline></svg></button>
+            <div class="nav__submenu" id="nav-submenu">
+              <a href="../portafolio.html" class="nav__sublink" data-i18n="nav.servDiseno">Diseño web</a>
+              <a href="../catalogo-demos/" class="nav__sublink" data-i18n="nav.servCatalogos">Catálogos para tu negocio</a>
+              <a href="../chatbots/" class="nav__sublink" data-i18n="nav.servChatbots">Chatbots</a>
+              <a href="./" class="nav__sublink" data-i18n="nav.servPortadas">Portadas interactivas</a>
+            </div>
+          </div>
+          <a href="../productos/" class="nav__link" data-i18n="nav.productos">Productos</a>
+          <a href="../#contacto" class="nav__link" data-i18n="nav.contacto">Contacto</a>
+        </nav>
+        <div class="lang-selector" role="group" aria-label="Seleccionar idioma">
+          <button type="button" class="lang-btn lang-btn--active" data-lang="es" aria-pressed="true">ES</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="hamburger" id="hamburger-btn" aria-label="Abrir menú" aria-expanded="false">☰</button>
       </div>
     </div>
+  </header>
+
+  <div class="wrap" data-idioma>
     <h1>Catálogo de portadas <em>interactivas</em></h1>
     <p class="lead">La primera pantalla de un negocio, con vida propia. Cada portada se mueve: pasa el cursor o tócala, y abre la que quieras ver completa.</p>
     <div class="grid" id="grid"></div>
     <p class="soon">Pronto habrá más portadas.</p>
   </div>
+
+  <footer class="footer">
+    <div class="container footer__top">
+      <div class="footer__brand">
+        <div class="footer__logo-wrap">
+          <img src="../assets/img/logo-ms-footer.webp" alt="MS" class="footer__logo-ms">
+          <img src="../assets/img/logo-texto-footer.webp" alt="Moravi Studio" class="footer__logo-texto">
+        </div>
+        <p class="footer__tagline" data-i18n="footer.tagline">Diseño web y landing pages pensadas para ayudarte a destacar y vender más.</p>
+      </div>
+
+      <div class="footer__center">
+        <nav class="footer__nav">
+          <a href="../" class="footer__nav-link" data-i18n="nav.inicio">Inicio</a>
+          <a href="../#proyectos" class="footer__nav-link" data-i18n="nav.proyectos">Portafolio</a>
+          <a href="../#servicios" class="footer__nav-link" data-i18n="nav.servicios">Servicios</a>
+          <a href="../productos/" class="footer__nav-link" data-i18n="nav.productos">Productos</a>
+          <a href="../#contacto" class="footer__nav-link" data-i18n="nav.contacto">Contacto</a>
+        </nav>
+        <div class="footer__legal">
+          <div class="footer__legal-row">
+            <a href="../privacidad.html" data-href-en="../privacy-policy.html" class="footer__privacy-link" data-i18n="footer.privacy">Política de privacidad</a>
+            <a href="../terminos.html" data-href-en="../terms-and-conditions.html" class="footer__privacy-link" data-i18n="footer.terms">Términos y condiciones</a>
+            <a href="../suscripciones.html" data-href-en="../subscriptions-and-refunds.html" class="footer__privacy-link" data-i18n="footer.subs">Suscripciones y reembolsos</a>
+          </div>
+          <div class="footer__legal-row">
+            <a href="../catalogo-condiciones.html" data-href-en="../online-catalog-terms.html" class="footer__privacy-link" data-i18n="footer.catalogTerms">Condiciones de Catálogo Online</a>
+            <a href="../video-downloader-condiciones.html" data-href-en="../video-downloader-terms.html" class="footer__privacy-link" data-i18n="footer.videoTerms">Condiciones de MS Video Downloader</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__aside">
+        <div class="footer__social">
+          <a href="https://www.instagram.com/moravistudiolab" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--instagram" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.3" cy="6.7" r="0.6" fill="white" stroke="none"/>
+            </svg>
+          </a>
+          <a href="https://wa.me/51940284018" target="_blank" rel="noopener noreferrer" class="footer__social-icon footer__social-icon--whatsapp" aria-label="WhatsApp">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="white"><path d="M12 2a10 10 0 0 0-8.94 14.47L2 22l5.66-1.48A10 10 0 1 0 12 2zm5.29 14.34c-.22.62-1.09 1.14-1.79 1.29-.49.1-1.12.18-3.26-.7-2.73-1.13-4.49-3.9-4.63-4.08-.14-.18-1.1-1.46-1.1-2.79 0-1.33.7-1.98.94-2.25.24-.27.53-.34.71-.34h.5c.16 0 .38-.02.58.44.22.5.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.45-.13.15-.28.33-.4.45-.13.13-.27.27-.12.53.16.27.7 1.16 1.51 1.88 1.04.93 1.92 1.22 2.19 1.36.27.13.43.11.59-.07.16-.18.68-.79.86-1.06.18-.27.36-.22.6-.13.24.09 1.55.73 1.82.87.27.13.45.2.51.31.07.11.07.62-.15 1.24z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="container footer__bottom-inner">
+        <p data-i18n="footer.copyright">© 2026 Moravi Studio. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
   <script src="../js/portadas/idioma.js?v=2"></script>
   <script src="../js/portadas/brasa-burger.js?v=4"></script>
   <script src="../js/portadas/luna-gelato.js?v=12"></script>
@@ -81,28 +158,8 @@
       if (location.hash) { var t = document.getElementById(location.hash.slice(1)); if (t) setTimeout(function () { t.scrollIntoView({ block: 'center' }); }, 300); }
     })();
   </script>
-  <script>
-    (function () {
-      var KEY = 'moravi-site-lang';
-      var btns = [].slice.call(document.querySelectorAll('.lang-btn'));
-      function marcar() {
-        var en = document.documentElement.getAttribute('lang') === 'en';
-        btns.forEach(function (b) {
-          var on = b.getAttribute('data-lang') === (en ? 'en' : 'es');
-          b.classList.toggle('lang-btn--active', on);
-          b.setAttribute('aria-pressed', on ? 'true' : 'false');
-        });
-      }
-      btns.forEach(function (b) {
-        b.addEventListener('click', function () {
-          var lang = b.getAttribute('data-lang');
-          try { localStorage.setItem(KEY, lang); } catch (e) { /* sin almacenamiento: solo cambia en esta visita */ }
-          document.documentElement.setAttribute('lang', lang);
-          marcar();
-        });
-      });
-      marcar();
-    })();
-  </script>
+  <script src="../js/i18n.js?v=10" defer></script>
+  <script src="../js/menu-mobile.js" defer></script>
+  <script src="../js/menu-servicios.js" defer></script>
 </body>
 </html>
