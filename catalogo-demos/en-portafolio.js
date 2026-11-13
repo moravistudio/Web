@@ -55,7 +55,7 @@
       '¿Cuánto cuesta y cuánto tarda?': "How much does it cost and how long does it take?", 'Se cotiza según la cantidad de productos y las funciones que necesites. Escríbenos y te respondemos con una propuesta; el tiempo depende de cuándo nos envíes tus productos y fotos.': "It is quoted according to the number of products and the features you need. Message us and we will reply with a proposal; the timing depends on when you send us your products and photos.",
       '¿Tu negocio es otro?': "Is your business different?", 'Cuéntanos qué vendes y te mostramos cómo se vería con tus productos.': "Tell us what you sell and we will show you how it would look with your products.", 'Cuéntanos tu caso': "Tell us your case",
       'Diseño web y landing pages pensadas para ayudarte a destacar y vender más.': "Web design and landing pages built to help you stand out and sell more.",
-      'Inicio': "Home", 'Proyectos': "Projects", 'Servicios': "Services", 'Productos': "Products", 'Contacto': "Contact",
+      'Inicio': "Home", 'Portafolio': "Portfolio", 'Servicios': "Services", 'Productos': "Products", 'Contacto': "Contact",
       'Política de privacidad': "Privacy policy", 'Términos y condiciones': "Terms and conditions", 'Suscripciones y reembolsos': "Subscriptions and refunds",
       'Condiciones de Catálogo Online': "Online Catalog terms", 'Condiciones de MS Video Downloader': "MS Video Downloader terms",
       '© 2026 Moravi Studio. Todos los derechos reservados.': "© 2026 Moravi Studio. All rights reserved.",

@@ -92,7 +92,7 @@
     'Cuéntanos tu caso': 'Tell us about your case',
     // pie del sitio (mismas palabras que el resto del sitio)
     'Diseño web y landing pages pensadas para ayudarte a destacar y vender más.': 'Web design and landing pages built to help you stand out and sell more.',
-    'Inicio': 'Home', 'Proyectos': 'Projects', 'Servicios': 'Services', 'Productos': 'Products', 'Contacto': 'Contact',
+    'Inicio': 'Home', 'Portafolio': 'Portfolio', 'Servicios': 'Services', 'Productos': 'Products', 'Contacto': 'Contact',
     'Política de privacidad': 'Privacy policy', 'Términos y condiciones': 'Terms and conditions', 'Suscripciones y reembolsos': 'Subscriptions and refunds',
     'Condiciones de Catálogo Online': 'Online Catalog terms', 'Condiciones de MS Video Downloader': 'MS Video Downloader terms',
     '© 2026 Moravi Studio. Todos los derechos reservados.': '© 2026 Moravi Studio. All rights reserved.'
