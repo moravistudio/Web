@@ -27,7 +27,7 @@
   <link rel="stylesheet" href="css/styles.css?v=12">
   <link rel="stylesheet" href="css/menu-servicios.css?v=1">
   <link rel="stylesheet" href="css/header2.css?v=7">
-  <link rel="stylesheet" href="css/header-catalogos.css?v=11">
+  <link rel="stylesheet" href="css/header-catalogos.css?v=14">
   <link rel="stylesheet" href="css/servicios-efecto.css?v=4">
 </head>
 <body>
@@ -125,9 +125,9 @@
   </section>
 
   <!-- ---- Header 2: Catálogo Online y Catálogo a tu medida (una pantalla de dos partes que se corre como una ventana) ---- -->
-  <section class="hero-cat" aria-label="Catálogo Online y catálogo a tu medida">
+  <section class="hero-cat hero-cat--a" aria-label="Catálogo Online">
     <div class="hero-cat__inner">
-      <div class="h3 anim" id="hc">
+      <div class="h3" id="hc-a">
 
         <article class="pane pane--a" id="hc-pa">
           <div class="pane__in">
@@ -154,12 +154,15 @@
               </div>
             </div>
           </div>
-          <button type="button" class="strip strip--a" id="hc-sa" aria-label="Ver Catálogo Online" style="opacity:0;pointer-events:none">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"></polyline></svg>
-            <span class="strip__lbl" data-i18n="hcat.a.strip">Catálogo online</span>
-            <span class="grip"><i></i><i></i><i></i></span>
-          </button>
         </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-cat hero-cat--b" aria-label="Catálogo a tu medida">
+    <div class="hero-cat__inner">
+      <div class="h3" id="hc-b">
 
         <article class="pane pane--b" id="hc-pb">
           <div class="pane__in">
@@ -175,27 +178,22 @@
               <div class="row"><a class="hc-btn" href="#contacto" data-i18n="hcat.b.btn">Cotiza el tuyo</a>
                 <div class="dots" role="group" aria-label="Elige un color">
                   <span data-i18n="hcat.b.color">Elige un color:</span>
-                  <button type="button" class="dot on" style="--c:#2F8F5B" data-b="#2F8F5B" data-s="#E4F3EA" data-bg="#F3FAF6" aria-label="Verde"></button>
-                  <button type="button" class="dot" style="--c:#2F6FED" data-b="#2F6FED" data-s="#E3EBFD" data-bg="#F2F6FE" aria-label="Azul"></button>
+                  <button type="button" class="dot on" style="--c:#2F6FED" data-b="#2F6FED" data-s="#E3EBFD" data-bg="#F2F6FE" aria-label="Azul"></button>
+                  <button type="button" class="dot" style="--c:#2F8F5B" data-b="#2F8F5B" data-s="#E4F3EA" data-bg="#F3FAF6" aria-label="Verde"></button>
                   <button type="button" class="dot" style="--c:#E8579A" data-b="#E8579A" data-s="#FBE3EE" data-bg="#FEF4F8" aria-label="Rosado"></button>
                   <button type="button" class="dot" style="--c:#D93636" data-b="#D93636" data-s="#FBE2E2" data-bg="#FEF3F3" aria-label="Rojo"></button>
                 </div>
               </div>
             </div>
-            <div class="vis" aria-hidden="true">
-              <div class="dev3 dev3--laptop" data-dev="laptop"><div class="dev3__in"><div class="dev3__scr"><div class="mc mc--lap" data-mc="clothes"></div></div><img class="dev3__img" src="assets/img/dev-laptop-vacio.webp" alt="" loading="lazy"></div></div>
-              <div class="fl fl--pill" data-i18n="hcat.b.pill">Diseño único para tu marca</div>
-              <div class="dev3 dev3--tablet" data-dev="tablet">
+            <div class="vis">
+              <div class="dev3 dev3--laptop" data-dev="laptop" aria-hidden="true"><div class="dev3__in"><div class="dev3__scr"><div class="mc mc--lap" data-mc="clothes"></div></div><img class="dev3__img" src="assets/img/dev-laptop-vacio.webp" alt="" loading="lazy"></div></div>
+              <a class="fl fl--pill" href="catalogo-demos/" data-i18n="hcat.b.pill">Diseño único para tu marca</a>
+              <div class="dev3 dev3--tablet" data-dev="tablet" aria-hidden="true">
                 <div class="fl fl--dom"><span class="fl__ic" style="background:var(--brand);color:#fff;font:800 15px/1 Poppins,sans-serif">T</span><div><b data-i18n="hcat.b.logo1">Tu logo</b><small data-i18n="hcat.b.logo2">y tus colores</small></div></div>
                 <div class="dev3__in"><div class="dev3__scr"><div class="mc mc--tab" data-mc="clothes"></div></div><img class="dev3__img" src="assets/img/dev-tablet-vacio.webp" alt="" loading="lazy"></div>
               </div>
             </div>
           </div>
-          <button type="button" class="strip strip--b" id="hc-sb" aria-label="Ver Catálogo a tu medida">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 5 8 12 15 19"></polyline></svg>
-            <span class="strip__lbl" data-i18n="hcat.b.strip">Catálogo a tu medida</span>
-            <span class="grip"><i></i><i></i><i></i></span>
-          </button>
         </article>
 
       </div>
@@ -503,8 +501,8 @@
   <script src="js/portada-escena.js?v=1" defer></script>
   <script src="js/menu-mobile.js" defer></script>
   <script src="js/menu-servicios.js" defer></script>
-  <script src="js/header-catalogos.js?v=1" defer></script>
-  <script src="js/header2.js?v=4" defer></script>
+  <script src="js/header-catalogos.js?v=2" defer></script>
+  <script src="js/header2.js?v=5" defer></script>
   <script src="js/auth-gate.js" defer></script>
   <script src="js/productos-carrusel.js" defer></script>
   <script src="js/tarjetas-efecto.js" defer></script>
