@@ -1,14 +1,15 @@
-/* ===== Header 2 del inicio: «Catálogo Online» y «Catálogo a tu medida» en una sola pantalla de dos partes que se corre como una ventana =====
-   Va entre el Header 1 (laptop/tablet/celular) y las portadas interactivas (ahora el Header 3). Ocupa el mismo bloque que los otros dos.
+/* ===== Headers 2 y 3 del inicio: «Catálogo Online» (Header 2) y «Catálogo a tu medida» (Header 3), cada uno en su propia pantalla =====
+   Van entre el Header 1 (laptop/tablet/celular) y se alternan con un fundido; cada uno ocupa el mismo bloque que el Header 1.
+   (Antes eran una sola pantalla de dos partes que se corrían con unas franjas; el 2026-11-13 se separaron.)
    Todos los selectores viven dentro de .hero-cat para no afectar nada del resto del sitio. */
 .hero-cat { display: none; position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; overflow: hidden; font-family: 'Inter', system-ui, sans-serif; color: #0E1A2D; }
-.hero-slides.has-cat > .hero-cat { display: block; }
-.hero-slides.is-cat > .hero-cat { opacity: 1; }
-.hero-slides:not(.is-cat) > .hero-cat { pointer-events: none; }
-.hero-slides.is-cat > .hero { opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s; }
+.hero-slides.has-cat > .hero-cat--a, .hero-slides.has-catb > .hero-cat--b { display: block; }
+.hero-slides.is-cat > .hero-cat--a, .hero-slides.is-catb > .hero-cat--b { opacity: 1; }
+.hero-slides:not(.is-cat) > .hero-cat--a, .hero-slides:not(.is-catb) > .hero-cat--b { pointer-events: none; }
+.hero-slides.is-cat > .hero, .hero-slides.is-catb > .hero { opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s; }
 .hero-cat__inner { position: absolute; inset: 104px clamp(24px, 4.5vw, 96px) 76px; }
 .hero-cat img { max-width: none; }
-.hero-cat .h3 { --s: 64px; position: relative; width: min(100%, 1900px); height: 100%; margin: 0 auto; border-radius: 24px; overflow: hidden; background: #fff; isolation: isolate; }
+.hero-cat .h3 { --s: 0px; position: relative; width: min(100%, 1900px); height: 100%; margin: 0 auto; border-radius: 24px; overflow: hidden; background: #fff; isolation: isolate; }
 @media (max-width: 768px) { .hero-cat__inner { inset: 76px 12px 8px; } }
 .hero-cat *, .hero-cat *::before, .hero-cat *::after {box-sizing:border-box;margin:0;padding:0}
 .hero-cat .pane {position:absolute;top:0;left:0;height:100%;width:calc(100% - var(--s));touch-action:pan-y;will-change:transform}
@@ -32,10 +33,10 @@
 .hero-cat .live:hover {border-bottom-color:var(--brand)}
 .hero-cat .price {margin-top:12px;font-size:13.5px;color:#5C6A7E}
 .hero-cat .price b {color:#0E1A2D;font-weight:600}
-/* 3A: Catálogo Online (suscripción), siempre con el azul de Moravi */
-.hero-cat .pane--a {--brand:#1E8CFF;--soft:rgba(30,140,255,.1);background:linear-gradient(135deg,#ffffff 0%,#f2f7ff 100%)}
-/* 3B: Catálogo a tu medida (cambia de marca al elegir un color) */
-.hero-cat .pane--b {--brand:#2F8F5B;--soft:#E4F3EA;--bg:#F3FAF6;background:var(--bg);transition:background-color .5s}
+/* 3A: Catálogo Online (suscripción), siempre con el azul de Moravi. Fondo liso del mismo color que el de la página y el Header 1 (antes era un degradado celeste que se notaba al quitar la franja) */
+.hero-cat .pane--a {--brand:#1E8CFF;--soft:rgba(30,140,255,.1);background:var(--bg,#FBFCFE)}
+/* 3B: Catálogo a tu medida (cambia de marca al elegir un color; el primero es el azul) */
+.hero-cat .pane--b {--brand:#2F6FED;--soft:#E3EBFD;--bg:#F2F6FE;background:var(--bg);transition:background-color .5s}
 .hero-cat .dots {display:flex;align-items:center;gap:9px}
 .hero-cat .dots span {font:500 13.5px/1 'Inter',sans-serif;color:#5C6A7E;margin-right:2px}
 .hero-cat .dot {width:28px;height:28px;border-radius:50%;border:3px solid #fff;box-shadow:0 0 0 1px rgba(14,26,45,.15);cursor:pointer;background:var(--c);transition:transform .2s,box-shadow .2s}
@@ -117,6 +118,10 @@
 .hero-cat .fl--dom {color:var(--brand)}
 .hero-cat .dev3--tablet .fl--dom {left:15.6%;right:auto;bottom:100%;top:auto}
 .hero-cat .fl--pill {left:8%;top:3%;background:var(--brand);color:#fff;border-radius:99px;padding:9px 15px;font:700 13px/1 'Poppins',sans-serif;box-shadow:0 12px 26px -8px var(--brand);transform:rotate(-4deg);transition:background-color .5s,box-shadow .5s}
+/* «Diseño único para tu marca» es un enlace a la página de catálogos de muestra */
+.hero-cat a.fl--pill {text-decoration:none;cursor:pointer}
+.hero-cat a.fl--pill:hover, .hero-cat a.fl--pill:focus-visible {filter:brightness(1.08);box-shadow:0 16px 32px -8px var(--brand)}
+.hero-cat a.fl--pill:focus-visible {outline:3px solid #fff;outline-offset:2px}
 .hero-cat .fl--dom .fl__ic {background:var(--soft);transition:background-color .5s}
 .hero-cat .fl--dom b {color:#0E1A2D}
 .hero-cat .fl--off {right:3%;top:2%;width:78px;height:78px;border-radius:50%;padding:0;justify-content:center;flex-direction:column;gap:0;background:var(--brand);color:#fff;transform:rotate(8deg);box-shadow:0 14px 30px -8px var(--brand);transition:background-color .5s,box-shadow .5s}
@@ -124,25 +129,6 @@
 .hero-cat .fl--off em {font:600 10.5px/1 'Inter',sans-serif;font-style:normal;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
 .hero-cat .fl--logo {left:46%;top:2%}
 .hero-cat .fl--logo .fl__ic {background:var(--brand);color:#fff;font:800 15px/1 'Poppins',sans-serif;transition:background-color .5s}
-/* franjas verticales: la pantalla que no se ve queda como una franja con su nombre; se agarra y se corre */
-.hero-cat .strip {position:absolute;top:0;bottom:0;width:var(--s);border:0;padding:0;color:#fff;cursor:grab;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;overflow:hidden;touch-action:pan-y;z-index:5;font-family:'Poppins',sans-serif}
-.hero-cat .h3.anim .strip {transition:opacity .65s ease}
-.hero-cat .strip:active {cursor:grabbing}
-.hero-cat .strip--a {right:0;background:linear-gradient(180deg,#2d9bff,#0a62d6)}
-.hero-cat .strip--b {left:0;background:var(--brand);transition:background-color .5s}
-.hero-cat .h3.anim .strip--b {transition:opacity .65s ease,background-color .5s}
-.hero-cat .strip__lbl {writing-mode:vertical-rl;font-weight:700;font-size:13.5px;letter-spacing:.22em;text-transform:uppercase;white-space:nowrap}
-.hero-cat .strip--a .strip__lbl {transform:rotate(180deg)}
-.hero-cat .strip svg {flex:none;animation:hcNudge 5s ease-in-out infinite}
-.hero-cat .strip--a svg {animation-name:hcNudgeR}
-@keyframes hcNudge {0%,72%,100%{transform:translateX(0)}82%{transform:translateX(5px)}91%{transform:translateX(0)}}
-@keyframes hcNudgeR {0%,72%,100%{transform:translateX(0)}82%{transform:translateX(-5px)}91%{transform:translateX(0)}}
-.hero-cat .strip::after {content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(255,255,255,.38) 50%,transparent 70%);transform:translateY(-130%);animation:hcShim 5s ease-in-out infinite;pointer-events:none}
-@keyframes hcShim {0%,70%{transform:translateY(-130%)}100%{transform:translateY(130%)}}
-.hero-cat .strip:hover, .hero-cat .strip:focus-visible {filter:brightness(1.08)}
-.hero-cat .strip:focus-visible {outline:3px solid #fff;outline-offset:-5px}
-.hero-cat .grip {display:grid;gap:4px}
-.hero-cat .grip i {width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.75);display:block}
 @media (max-width:768px) {
 .hero-cat .pane__in {grid-template-columns:1fr;align-items:start;padding:24px 20px 0}
 .hero-cat .vis {position:absolute;left:12px;right:12px;bottom:-4px;height:230px}
@@ -153,7 +139,6 @@
 .hero-cat .ul li {font-size:14px}
 .hero-cat .row {margin-top:16px;gap:12px}
 .hero-cat .hc-btn {padding:13px 20px;font-size:14px}
-.hero-cat .strip__lbl {font-size:11.5px;letter-spacing:.16em}
 }
 @media (prefers-reduced-motion:reduce) {
 .hero-cat *, .hero-cat *::before, .hero-cat *::after {transition:none!important;animation:none!important}
@@ -162,7 +147,6 @@
 /* Celular: el bloque del header es bajo y vertical (como el del Header 1). El texto va arriba, compacto, y los aparatos ocupan TODO el espacio que sobra:
    su tamaño sale del alto y del ancho de ese espacio (container queries), así nunca se cortan, en cualquier celular. */
 @media (max-width: 900px) {
-  .hero-cat .h3 { --s: 44px; }
   .hero-cat .pane__in { display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start; gap: 0; padding: 14px 16px 6px; }
   .hero-cat .txt { flex: none; max-width: none; }
   .hero-cat .eyebrow { margin-bottom: 6px; font-size: 11px; }
