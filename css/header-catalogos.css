@@ -3,10 +3,10 @@
    (Antes eran una sola pantalla de dos partes que se corrían con unas franjas; el 2026-11-13 se separaron.)
    Todos los selectores viven dentro de .hero-cat para no afectar nada del resto del sitio. */
 .hero-cat { display: none; position: absolute; inset: 0; opacity: 0; transition: opacity .7s ease; overflow: hidden; font-family: 'Inter', system-ui, sans-serif; color: #0E1A2D; }
-.hero-slides.has-cat > .hero-cat--a, .hero-slides.has-catb > .hero-cat--b { display: block; }
-.hero-slides.is-cat > .hero-cat--a, .hero-slides.is-catb > .hero-cat--b { opacity: 1; }
-.hero-slides:not(.is-cat) > .hero-cat--a, .hero-slides:not(.is-catb) > .hero-cat--b { pointer-events: none; }
-.hero-slides.is-cat > .hero, .hero-slides.is-catb > .hero { opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s; }
+.hero-slides.has-cat > .hero-cat--a, .hero-slides.has-catb > .hero-cat--b, .hero-slides.has-catc > .hero-cat--c { display: block; }
+.hero-slides.is-cat > .hero-cat--a, .hero-slides.is-catb > .hero-cat--b, .hero-slides.is-catc > .hero-cat--c { opacity: 1; }
+.hero-slides:not(.is-cat) > .hero-cat--a, .hero-slides:not(.is-catb) > .hero-cat--b, .hero-slides:not(.is-catc) > .hero-cat--c { pointer-events: none; }
+.hero-slides.is-cat > .hero, .hero-slides.is-catb > .hero, .hero-slides.is-catc > .hero { opacity: 0; pointer-events: none; visibility: hidden; transition: opacity .7s ease, visibility 0s linear .7s; }
 .hero-cat__inner { position: absolute; inset: 104px clamp(24px, 4.5vw, 96px) 76px; }
 .hero-cat img { max-width: none; }
 .hero-cat .h3 { --s: 0px; position: relative; width: min(100%, 1900px); height: 100%; margin: 0 auto; border-radius: 24px; overflow: hidden; background: #fff; isolation: isolate; }
@@ -27,14 +27,14 @@
 .hero-cat .hc-btn {display:inline-flex;align-items:center;gap:8px;font:600 15.5px/1 'Poppins',sans-serif;color:#fff;background:var(--brand);padding:16px 28px;border-radius:99px;text-decoration:none;box-shadow:0 10px 26px -8px var(--brand);transition:background-color .5s,box-shadow .25s,transform .2s}
 .hero-cat .hc-btn:hover {transform:translateY(-2px);box-shadow:0 14px 34px -6px var(--brand),0 0 0 6px color-mix(in srgb,var(--brand) 18%,transparent)}
 /* Botón sólido de Catálogo Online: azul marino de la web, igual que los demás botones sólidos (el de «a tu medida» sigue con el color del cliente) */
-.hero-cat .pane--a .hc-btn {background:linear-gradient(135deg,#0A1B3C,#15356C);box-shadow:0 10px 24px rgba(10,27,60,.25)}
-.hero-cat .pane--a .hc-btn:hover {box-shadow:0 14px 30px rgba(10,27,60,.32)}
+.hero-cat .pane--a .hc-btn, .hero-cat .pane--c .hc-btn {background:linear-gradient(135deg,#0A1B3C,#15356C);box-shadow:0 10px 24px rgba(10,27,60,.25)}
+.hero-cat .pane--a .hc-btn:hover, .hero-cat .pane--c .hc-btn:hover {box-shadow:0 14px 30px rgba(10,27,60,.32)}
 .hero-cat .live {display:inline-flex;align-items:center;gap:8px;font:600 14.5px/1 'Poppins',sans-serif;color:var(--brand);text-decoration:none;padding:10px 4px;border-bottom:2px solid transparent;transition:border-color .2s}
 .hero-cat .live:hover {border-bottom-color:var(--brand)}
 .hero-cat .price {margin-top:12px;font-size:13.5px;color:#5C6A7E}
 .hero-cat .price b {color:#0E1A2D;font-weight:600}
 /* 3A: Catálogo Online (suscripción), siempre con el azul de Moravi. Fondo liso del mismo color que el de la página y el Header 1 (antes era un degradado celeste que se notaba al quitar la franja) */
-.hero-cat .pane--a {--brand:#1E8CFF;--soft:rgba(30,140,255,.1);background:var(--bg,#FBFCFE)}
+.hero-cat .pane--a, .hero-cat .pane--c {--brand:#1E8CFF;--soft:rgba(30,140,255,.1);background:var(--bg,#FBFCFE)}
 /* 3B: Catálogo a tu medida (cambia de marca al elegir un color; el primero es el azul) */
 .hero-cat .pane--b {--brand:#2F6FED;--soft:#E3EBFD;--bg:#F2F6FE;background:var(--bg);transition:background-color .5s}
 .hero-cat .dots {display:flex;align-items:center;gap:9px}
@@ -190,4 +190,50 @@
 @media (max-width: 900px) {
   .hero-cat .pane--b .dev3--laptop,
   .hero-cat .pane--b .dev3--tablet { bottom: max(0px, calc((100cqh - min(48cqw, 75cqh) - 44px) / 2 - 3px)); }
+}
+
+/* ===== Header 4: Chatbots. Un celular con una conversación de ejemplo que se escribe sola (se dibuja con JavaScript dentro de .cb) ===== */
+.hero-cat--c .vis { container-type: size; height: min(100%, 520px); }
+.hero-cat--c .dev3--phone { height: 90cqh; width: auto; left: 50.2%; bottom: 7cqh; transform: translateX(-50%); --ar: 1024/1536; z-index: 2; }
+/* las esquinas de la pantalla del chat son redondeadas, como las del celular */
+.hero-cat--c .dev3__scr, .hero-cat--a .dev3--phone .dev3__scr { border-radius: 82px; }
+.hero-cat .fl--c1 { left: max(0px, calc(50.2% - 30cqh - 192px)); top: 24%; }
+.hero-cat .fl--c2 { left: max(0px, calc(50.2% - 30cqh - 224px)); bottom: 20%; }
+.hero-cat .fl--c2 b { white-space: pre-line; }
+.hero-cat .fl--c3 { left: min(calc(50.2% + 30cqh + 2px), calc(100% - 190px)); top: 45%; }
+.hero-cat .fl--c1 .fl__ic, .hero-cat .fl--c2 .fl__ic, .hero-cat .fl--c3 .fl__ic { background: var(--brand); }
+.hero-cat .cb { container-type: inline-size; width: 100%; height: 100%; display: flex; flex-direction: column; background: #EEF3FA; font-family: 'Inter', sans-serif; color: #0E1A2D; overflow: hidden; }
+.hero-cat .cb__bar { flex: none; display: flex; align-items: center; gap: 3.4cqw; padding: 13cqw 5cqw 4.4cqw; background: linear-gradient(135deg, #1E8CFF, #0A62D6); color: #fff; }
+.hero-cat .cb__av { flex: none; width: 11.5cqw; height: 11.5cqw; border-radius: 50%; background: #fff; display: grid; place-items: center; }
+.hero-cat .cb__av svg { width: 8cqw; height: 8cqw; }
+.hero-cat .cb__bar b { display: block; font: 700 5.6cqw/1.1 'Poppins', sans-serif; }
+.hero-cat .cb__bar small { display: flex; align-items: center; gap: 1.6cqw; margin-top: 1.2cqw; font: 500 3.8cqw/1 'Inter', sans-serif; opacity: .92; }
+.hero-cat .cb__bar small::before { content: ''; width: 2.2cqw; height: 2.2cqw; border-radius: 50%; background: #5CF2A6; }
+.hero-cat .cb__msgs { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 3.6cqw; padding: 5cqw 4.4cqw; overflow: hidden; }
+.hero-cat .cb__m { max-width: 82%; padding: 3.4cqw 4.2cqw; border-radius: 4.6cqw; font: 500 5.1cqw/1.3 'Inter', sans-serif; opacity: 0; transform: translateY(2.4cqw) scale(.97); transition: opacity .35s ease, transform .35s ease; }
+.hero-cat .cb__m.in { opacity: 1; transform: none; }
+.hero-cat .cb__m--me { align-self: flex-end; background: var(--brand); color: #fff; border-bottom-right-radius: 1.2cqw; }
+.hero-cat .cb__m--bot { align-self: flex-start; background: #fff; border-bottom-left-radius: 1.2cqw; box-shadow: 0 .6cqw 1.8cqw rgba(14, 26, 45, .09); }
+.hero-cat .cb__m--typing { display: flex; gap: 1.8cqw; padding: 4.2cqw 4.6cqw; }
+.hero-cat .cb__m--typing i { width: 2.4cqw; height: 2.4cqw; border-radius: 50%; background: #9aa8bd; animation: hcTyp 1s ease-in-out infinite; }
+.hero-cat .cb__m--typing i:nth-child(2) { animation-delay: .15s; }
+.hero-cat .cb__m--typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes hcTyp { 0%, 60%, 100% { transform: translateY(0); opacity: .5; } 30% { transform: translateY(-1.6cqw); opacity: 1; } }
+.hero-cat .cb__opts { display: flex; flex-wrap: wrap; gap: 2cqw; margin-top: 2.8cqw; }
+.hero-cat .cb__chip { padding: 1.8cqw 3.6cqw; border-radius: 99px; border: .5cqw solid var(--brand); color: var(--brand); font: 600 4.5cqw/1 'Inter', sans-serif; transition: background-color .25s, color .25s; }
+.hero-cat .cb__chip.on { background: var(--brand); color: #fff; }
+.hero-cat .cb__m--card { align-self: flex-start; display: flex; align-items: center; gap: 3.4cqw; max-width: 88%; padding: 3.6cqw 4.2cqw; background: #fff; border: .5cqw solid color-mix(in srgb, var(--brand) 40%, #fff); }
+.hero-cat .cb__ok { flex: none; width: 10cqw; height: 10cqw; border-radius: 50%; background: var(--brand); display: grid; place-items: center; }
+.hero-cat .cb__ok svg { width: 6cqw; height: 6cqw; }
+.hero-cat .cb__m--card b { display: block; font: 700 5cqw/1.15 'Poppins', sans-serif; }
+.hero-cat .cb__m--card span { display: block; margin-top: 1cqw; font: 500 4.2cqw/1.25 'Inter', sans-serif; color: #5C6A7E; }
+.hero-cat .cb__in { flex: none; display: flex; align-items: center; gap: 3cqw; padding: 3.4cqw 4.4cqw 8cqw; background: #fff; }
+.hero-cat .cb__in span { flex: 1; padding: 3.2cqw 4.4cqw; border-radius: 99px; background: #EEF3FA; color: #8794a8; font: 500 4.6cqw/1 'Inter', sans-serif; }
+.hero-cat .cb__send { flex: none; width: 10.5cqw; height: 10.5cqw; border-radius: 50%; background: var(--brand); display: grid; place-items: center; }
+.hero-cat .cb__send svg { width: 5.4cqw; height: 5.4cqw; }
+/* Celular: el texto va arriba y el celular ocupa el espacio de abajo, centrado */
+@media (max-width: 900px) {
+  .hero-cat--c .vis { height: auto; }
+  .hero-cat--c .dev3--phone { height: 94cqh; left: 50%; bottom: 3cqh; }
+  .hero-cat .fl--c1, .hero-cat .fl--c2, .hero-cat .fl--c3 { display: none; }
 }
