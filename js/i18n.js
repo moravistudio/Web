@@ -97,6 +97,7 @@
         card: {
           synapse: 'Landing page para plataforma de inteligencia artificial.',
           serum: 'Landing page de venta de sérum facial.',
+          petsana: 'Landing page de una veterinaria, con servicios, planes y citas en línea.',
           dulce: 'Landing page para negocio de pastelería artesanal.',
           veda: 'Tienda online de ropa con catálogo, carrito, pago simulado y pedidos por WhatsApp.',
           lumen: 'Studio de Fotografía Profesional.',
@@ -297,6 +298,7 @@
         card: {
           synapse: 'Landing page for an artificial intelligence platform.',
           serum: 'Landing page selling a facial serum.',
+          petsana: 'Landing page for a veterinary clinic, with services, plans and online appointments.',
           dulce: 'Landing page for an artisan bakery business.',
           veda: 'Online clothing store with a catalog, shopping cart, simulated checkout and ordering by WhatsApp.',
           lumen: 'Professional photography studio.',
