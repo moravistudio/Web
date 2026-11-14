@@ -62,6 +62,12 @@
           b1: 'Un catálogo diseñado para tu negocio', b2: 'Funciones adaptadas a tu forma de vender', b3: 'Soporte para mantenerlo siempre al día',
           btn: 'Cotiza el tuyo', color: 'Elige un color:', pill: 'Diseño único para tu marca',
           logo1: 'Tu logo', logo2: 'y tus colores', strip: 'Catálogo a tu medida'
+        },
+        c: {
+          eyebrow: 'Chatbots', h1: 'Atiende a tus clientes', h2: 'a cualquier hora',
+          sub: 'Un chatbot en tu web que responde preguntas y recibe pedidos por ti.',
+          b1: 'Responde las preguntas más frecuentes al instante', b2: 'Recibe pedidos y solicitudes', b3: 'Con tu marca y la información de tu negocio',
+          btn: 'Ver ejemplos', card1: 'Atiende 24 horas', card1s: 'Responde al instante', card2: 'Pedido armado', card2s: 'Listo para confirmar', card3: 'Varios clientes\na la vez', card3s: 'Sin hacerlos esperar'
         }
       },
       homeProducts: {
@@ -256,6 +262,12 @@
           b1: 'A catalog designed for your business', b2: 'Features tailored to how you sell', b3: 'Support to keep it always up to date',
           btn: 'Get a quote', color: 'Choose a color:', pill: 'One-of-a-kind brand design',
           logo1: 'Your logo', logo2: 'and your colors', strip: 'Custom catalog'
+        },
+        c: {
+          eyebrow: 'Chatbots', h1: 'Serve your customers', h2: 'around the clock',
+          sub: 'A chatbot on your website that answers questions and takes orders for you.',
+          b1: 'Answers frequently asked questions instantly', b2: 'Takes orders and requests', b3: 'With your brand and your business information',
+          btn: 'See examples', card1: 'Open 24 hours', card1s: 'Replies instantly', card2: 'Order ready', card2s: 'Ready to confirm', card3: 'Many customers\nat once', card3s: 'No one has to wait'
         }
       },
       homeProducts: {
