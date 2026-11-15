@@ -22,9 +22,16 @@
   scene.classList.add('is-3d');
 
   function layout() {
+    spin.style.removeProperty('--cw');
     var w = items[0].offsetWidth || 240;
     // Radio para que las tarjetas queden casi pegadas: (w/2) / tan(π/n), con un pequeño aire
-    var radius = Math.round((w / 2) / Math.tan(Math.PI / n) * 1.12);
+    var r0 = (w / 2) / Math.tan(Math.PI / n) * 1.12;
+    // Nitidez: la perspectiva agranda la tarjeta de frente (P / (P - r0) veces) y el navegador la dibuja pequeña y luego la estira.
+    // Se construye ya a ese tamaño y se aleja el anillo (translateZ negativo en el CSS): se ve igual, pero la tarjeta de frente queda a 1:1.
+    var persp = parseFloat(getComputedStyle(scene).perspective) || 1400;
+    var k = persp / (persp - r0);
+    var radius = Math.round(r0 * k);
+    spin.style.setProperty('--cw', Math.round(w * k) + 'px');
     spin.style.setProperty('--radius', radius + 'px');
     spin.style.setProperty('--step', step + 'deg');
     Array.prototype.forEach.call(items, function (it, i) { it.style.setProperty('--i', i); });

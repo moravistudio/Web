@@ -2100,10 +2100,12 @@ html.intro-on .intro.is-leaving { opacity: 0; visibility: hidden; pointer-events
 .projects-ring.is-3d.is-drag { cursor: grabbing; }
 .projects-ring.is-3d .projects-ring__spin {
   display: block; overflow: visible; padding: 0; scroll-snap-type: none;
-  position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d; transform: rotateY(var(--rot, 0deg));
+  position: absolute; left: 50%; top: 50%; width: 0; height: 0; transform-style: preserve-3d;
+  /* La tarjeta de frente queda en el plano z=0 (sin que la perspectiva la agrande): así se dibuja a su tamaño real y se ve nítida */
+  transform: translateZ(calc(var(--radius, 0px) * -1)) rotateY(var(--rot, 0deg));
 }
 .projects-ring.is-3d .projects-ring__item {
-  position: absolute; width: var(--item-w); left: calc(var(--item-w) / -2); top: calc(var(--item-w) * -.31);
+  position: absolute; width: var(--cw, var(--item-w)); left: calc(var(--cw, var(--item-w)) / -2); top: calc(var(--cw, var(--item-w)) * -.31);
   transform: rotateY(calc(var(--i) * var(--step))) translateZ(var(--radius));
   backface-visibility: hidden; box-shadow: 0 16px 36px rgba(14, 26, 45, .22);
 }
