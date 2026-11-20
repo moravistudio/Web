@@ -107,6 +107,8 @@
           velluto: 'Landing de repostería fina con pedidos por WhatsApp.',
           ambarcafe: 'Landing de cafetería con carta filtrable y suscripción.',
           casanogal: 'Sitio de muebles con tienda y fichas de producto.',
+
+          marianarivas: 'Sitio de fotógrafa de bodas con galerías y paquetes.',
           velmora: 'Sitio de pastelería con carrito y WhatsApp.',
           selene: 'Landing para hotel boutique y spa, con suites y reservas.'
         }
@@ -311,6 +313,8 @@
           velluto: 'Fine patisserie landing with WhatsApp orders.',
           ambarcafe: 'Coffee shop landing with a filterable menu and signup.',
           casanogal: 'Furniture site with a shop and product pages.',
+
+          marianarivas: 'Wedding photographer site with galleries and packages.',
           velmora: 'Bakery site with cart and WhatsApp ordering.',
           selene: 'Boutique hotel and spa landing with booking.'
         }
