@@ -84,8 +84,8 @@
           sitio: 'Sitio Web'
         },
         card: {
-          lashAtelier: 'Landing page moderna para negocio de pestañas y laminado de cejas.',
-          paginaUno: 'Tienda online de libros con carrito, favoritos y pago con tarjeta, PayPal o WhatsApp.',
+          lashAtelier: 'Landing para pestañas y laminado de cejas.',
+          paginaUno: 'Tienda de libros con carrito y pago online.',
           libraica: 'Sitio web de libros con recomendaciones literarias'
         },
         verProyecto: 'Ver proyecto',
@@ -95,20 +95,20 @@
         title: { lead: 'Páginas web para que tu negocio', accent: 'destaque' },
         filter: { todo: 'Todo', landing: 'Landing Pages', sitios: 'Sitios Web', tiendas: 'Tiendas Online' },
         card: {
-          synapse: 'Landing page para plataforma de inteligencia artificial.',
+          synapse: 'Landing para plataforma de inteligencia artificial.',
           serum: 'Landing page de venta de sérum facial.',
-          petsana: 'Landing page de una veterinaria, con servicios, planes y citas en línea.',
-          zenith: 'Landing page para un gimnasio, con clases, horarios, planes y prueba gratis.',
-          dulce: 'Landing page para negocio de pastelería artesanal.',
-          veda: 'Tienda online de ropa con catálogo, carrito, pago simulado y pedidos por WhatsApp.',
+          petsana: 'Landing de veterinaria con servicios y citas en línea.',
+          zenith: 'Landing para gimnasio con clases y prueba gratis.',
+          dulce: 'Landing para negocio de pastelería artesanal.',
+          veda: 'Tienda de ropa con carrito y pedidos por WhatsApp.',
           lumen: 'Studio de Fotografía Profesional.',
-          chispita: 'Landing page para lavandería con recojo y entrega a domicilio.',
-          merengue: 'Tienda online de pastelería artesanal con carrito, pedido y WhatsApp.',
-          velluto: 'Landing page para pastelería de alta repostería, con carta y pedidos por WhatsApp.',
-          ambarcafe: 'Landing page de una cafetería, con carta filtrable, carrito de muestra y suscripción.',
-          casanogal: 'Sitio web de muebles y decoración, con tienda con filtros, fichas de producto y colecciones.',
-          velmora: 'Sitio web de pastelería con productos, carrito de compra y pedidos por WhatsApp.',
-          selene: 'Landing page para hotel boutique y spa, con suites, spa y reservas.'
+          chispita: 'Landing de lavandería con recojo y entrega a domicilio.',
+          merengue: 'Tienda de pastelería con carrito y WhatsApp.',
+          velluto: 'Landing de repostería fina con pedidos por WhatsApp.',
+          ambarcafe: 'Landing de cafetería con carta filtrable y suscripción.',
+          casanogal: 'Sitio de muebles con tienda y fichas de producto.',
+          velmora: 'Sitio de pastelería con carrito y WhatsApp.',
+          selene: 'Landing para hotel boutique y spa, con suites y reservas.'
         }
       },
       services: {
@@ -288,8 +288,8 @@
           sitio: 'Website'
         },
         card: {
-          lashAtelier: 'Modern landing page for a lash and brow lamination business.',
-          paginaUno: 'Online bookstore with cart, favorites and payment by card, PayPal or WhatsApp.',
+          lashAtelier: 'Landing for lashes and brow lamination.',
+          paginaUno: 'Online bookstore with cart and online payment.',
           libraica: 'Book website with literary recommendations'
         },
         verProyecto: 'View project',
@@ -299,20 +299,20 @@
         title: { lead: 'Websites that help your business', accent: 'stand out' },
         filter: { todo: 'All', landing: 'Landing Pages', sitios: 'Websites', tiendas: 'Online Stores' },
         card: {
-          synapse: 'Landing page for an artificial intelligence platform.',
+          synapse: 'Landing for an artificial intelligence platform.',
           serum: 'Landing page selling a facial serum.',
-          petsana: 'Landing page for a veterinary clinic, with services, plans and online appointments.',
-          zenith: 'Landing page for a gym, with classes, schedules, plans and a free trial.',
-          dulce: 'Landing page for an artisan bakery business.',
-          veda: 'Online clothing store with a catalog, shopping cart, simulated checkout and ordering by WhatsApp.',
+          petsana: 'Veterinary landing with services and online booking.',
+          zenith: 'Gym landing with classes and a free trial.',
+          dulce: 'Landing for an artisan bakery business.',
+          veda: 'Clothing store with cart and ordering by WhatsApp.',
           lumen: 'Professional photography studio.',
-          chispita: 'Landing page for a laundry service with home pickup and delivery.',
-          merengue: 'Online store for an artisan bakery with cart, ordering and WhatsApp.',
-          velluto: 'Landing page for a high-end patisserie, with a menu and ordering by WhatsApp.',
-          ambarcafe: 'Landing page for a coffee shop, with a filterable menu, a sample cart and email signup.',
-          casanogal: 'Furniture and decor website, with a filterable shop, product detail views and collections.',
-          velmora: 'Bakery website with products, a shopping cart and ordering by WhatsApp.',
-          selene: 'Landing page for a boutique hotel and spa, with suites, spa and booking.'
+          chispita: 'Laundry landing with home pickup and delivery.',
+          merengue: 'Bakery store with cart and WhatsApp ordering.',
+          velluto: 'Fine patisserie landing with WhatsApp orders.',
+          ambarcafe: 'Coffee shop landing with a filterable menu and signup.',
+          casanogal: 'Furniture site with a shop and product pages.',
+          velmora: 'Bakery site with cart and WhatsApp ordering.',
+          selene: 'Boutique hotel and spa landing with booking.'
         }
       },
       services: {

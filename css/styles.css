@@ -1501,10 +1501,18 @@ img {
 @media (min-width: 1101px) {
   #portfolio-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   #portfolio-grid .projects__card { display: flex; flex-direction: column; }
+  /* Los filtros ocultan tarjetas con .is-hidden; esta regla (por id) no debe pisar ese ocultamiento */
+  #portfolio-grid .projects__card.is-hidden { display: none; }
   #portfolio-grid .projects__body { flex: 1; display: flex; flex-direction: column; }
   #portfolio-grid .projects__card-row { flex: 1; flex-direction: column; align-items: flex-start; gap: 14px; }
   #portfolio-grid .projects__card-text { flex: 0 1 auto; }
   #portfolio-grid .projects__link { margin-top: auto; }
+}
+
+/* Celular: el texto ocupa todo el ancho de la tarjeta (el botón pasa debajo), así las descripciones
+   caben en 2 líneas incluso en pantallas de 360 px. */
+@media (max-width: 640px) {
+  #portfolio-grid .projects__card-row { flex-direction: column; align-items: flex-start; gap: 12px; }
 }
 
 .portfolio-grid {
