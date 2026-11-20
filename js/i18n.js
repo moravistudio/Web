@@ -105,6 +105,7 @@
           chispita: 'Landing page para lavandería con recojo y entrega a domicilio.',
           merengue: 'Tienda online de pastelería artesanal con carrito, pedido y WhatsApp.',
           velluto: 'Landing page para pastelería de alta repostería, con carta y pedidos por WhatsApp.',
+          ambarcafe: 'Landing page de una cafetería, con carta filtrable, carrito de muestra y suscripción.',
           casanogal: 'Sitio web de muebles y decoración, con tienda con filtros, fichas de producto y colecciones.',
           velmora: 'Sitio web de pastelería con productos, carrito de compra y pedidos por WhatsApp.',
           selene: 'Landing page para hotel boutique y spa, con suites, spa y reservas.'
@@ -308,6 +309,7 @@
           chispita: 'Landing page for a laundry service with home pickup and delivery.',
           merengue: 'Online store for an artisan bakery with cart, ordering and WhatsApp.',
           velluto: 'Landing page for a high-end patisserie, with a menu and ordering by WhatsApp.',
+          ambarcafe: 'Landing page for a coffee shop, with a filterable menu, a sample cart and email signup.',
           casanogal: 'Furniture and decor website, with a filterable shop, product detail views and collections.',
           velmora: 'Bakery website with products, a shopping cart and ordering by WhatsApp.',
           selene: 'Landing page for a boutique hotel and spa, with suites, spa and booking.'
