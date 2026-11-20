@@ -1495,6 +1495,18 @@ img {
   margin-top: clamp(28px, 3.5vw, 36px);
 }
 
+/* Portafolio: 4 tarjetas por fila en pantallas anchas (solo portafolio.html; el inicio sigue con 3).
+   Con 4 columnas el texto y el botón no caben uno al lado del otro: el botón pasa debajo del texto
+   y queda alineado abajo en todas las tarjetas de la fila. */
+@media (min-width: 1101px) {
+  #portfolio-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  #portfolio-grid .projects__card { display: flex; flex-direction: column; }
+  #portfolio-grid .projects__body { flex: 1; display: flex; flex-direction: column; }
+  #portfolio-grid .projects__card-row { flex: 1; flex-direction: column; align-items: flex-start; gap: 14px; }
+  #portfolio-grid .projects__card-text { flex: 0 1 auto; }
+  #portfolio-grid .projects__link { margin-top: auto; }
+}
+
 .portfolio-grid {
   padding: 0 0 clamp(59.5px, 8.5vh, 102px);
 }
