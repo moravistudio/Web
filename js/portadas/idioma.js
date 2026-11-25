@@ -56,6 +56,11 @@
     'Lavado profesional, secado y planchado, con recojo y entrega a domicilio.': 'Professional washing, drying and ironing, with home pickup and delivery.',
     'Pide tu servicio ahora': 'Order your service now', 'Recojo y entrega a domicilio': 'Home pickup and delivery', 'Lavado profesional y seguro': 'Safe, professional washing', 'Prendas limpias y bien cuidadas': 'Clean, well-cared-for clothes',
     'Una ola de agua gira sin parar alrededor de la ropa. Las burbujas flotan y revientan cuando pasas el cursor o el dedo.': 'A wave of water swirls around the clothes. Bubbles float and pop when your cursor or finger passes over them.',
+    // Valeria Montes (fotografía de moda)
+    'FOTÓGRAFA DE MODA': 'FASHION PHOTOGRAPHER', 'Fotografía de moda': 'Fashion photography', 'Portafolio': 'Portfolio', 'Sobre mí': 'About me',
+    'Moda': 'Fashion', 'en Imágenes': 'in Pictures', 'Fotografía editorial y comercial': 'Editorial and commercial photography', 'para marcas que inspiran': 'for brands that inspire',
+    'Ver Portafolio': 'View Portfolio', 'Entrar': 'Enter',
+    'Tres disparos seguidos revelan la foto. Haz clic o tócala para repetir la ráfaga con sonido.': 'Three quick shots reveal the photo. Click or tap it to repeat the burst with sound.',
     // Páginas del catálogo de portadas
     'Catálogo de portadas': 'Interactive covers', 'interactivas': 'catalog',
     'La primera pantalla de un negocio, con vida propia. Cada portada se mueve: pasa el cursor o tócala, y abre la que quieras ver completa.': 'A business’s first screen, alive. Every cover moves: hover or tap it, and open the one you want to see in full.',
