@@ -9,9 +9,8 @@
   var LIST = [
     { key: 'burger', name: 'Brasa Burger', tag: 'Hamburguesería', kind: 'direct', cls: 'cv cv-burger', api: 'BrasaBurger', layout: 'simetrica', cx: 0.5, kh: 0.68, dy: 0.005,
       about: 'La hamburguesa se arma sola y se abre con el cursor. Las llamas de «fuego» se inclinan hacia donde lo mueves.' },
-    { key: 'gelato', name: 'Polar Gelato', tag: 'Heladería', kind: 'wide', layout: 'salpicon', variant: 'f', kh: 0.78, dy: 0.164, tilt: -12, cls: 'cv cv-gelato', api: 'LunaGelato', theme: 'polar',
-      brand: '<b>POLAR</b> GELATO', links: ['Sabores', 'Locales', 'Pedidos'], navBtn: 'Pedir', h: 'Toca una bola,<br>salpica el <em>sabor</em>', p: 'Cada toque cambia el sabor<br>y salpica toda la portada.', btn: 'Elegir sabor',
-      about: 'Toca las bolas para cambiar el sabor y salpicar la portada.' },
+    { key: 'moda', name: 'Valeria Montes', tag: 'Fotografía de moda', kind: 'direct', cls: 'cv cv-moda', api: 'ModaRafaga',
+      about: 'Tres disparos seguidos revelan la foto. Haz clic o tócala para repetir la ráfaga con sonido.' },
     { key: 'cafe', name: 'Origen Café', tag: 'Cafetería', kind: 'wide', cls: 'cv cv-cafe', api: 'OrigenCafe', theme: 'cafe',
       brand: '<b>ORIGEN</b> CAFÉ', links: ['Menú', 'Granos', 'Suscripción', 'Visítanos'], navBtn: 'Reservar', cart: true, cx: 0.74, usc: 0.84, h: 'Despierta<br><em>tus sentidos</em>', p: 'Café de origen, tostado cada mañana.<br>Haz clic y mira caer un grano.', btn: 'Pedir ahora',
       about: 'El vapor se aparta cuando pasas el cursor, los granos flotan con profundidad y cada clic hace caer un grano en el café.' },
@@ -26,7 +25,10 @@
     { key: 'flora', name: 'Flora', tag: 'Florería', kind: 'direct', layout: 'durazno', cls: 'cv cv-ramo', api: 'Ramo',
       about: 'Toca las flores y arma tu ramo.' },
     { key: 'chispita', name: 'Chispita Clean', tag: 'Lavandería', kind: 'direct', cls: 'cv cv-chispita', api: 'ChispitaClean',
-      about: 'Una ola de agua gira sin parar alrededor de la ropa. Las burbujas flotan y revientan cuando pasas el cursor o el dedo.' }
+      about: 'Una ola de agua gira sin parar alrededor de la ropa. Las burbujas flotan y revientan cuando pasas el cursor o el dedo.' },
+    { key: 'gelato', name: 'Polar Gelato', tag: 'Heladería', kind: 'wide', layout: 'salpicon', variant: 'f', kh: 0.78, dy: 0.164, tilt: -12, cls: 'cv cv-gelato', api: 'LunaGelato', theme: 'polar',
+      brand: '<b>POLAR</b> GELATO', links: ['Sabores', 'Locales', 'Pedidos'], navBtn: 'Pedir', h: 'Toca una bola,<br>salpica el <em>sabor</em>', p: 'Cada toque cambia el sabor<br>y salpica toda la portada.', btn: 'Elegir sabor',
+      about: 'Toca las bolas para cambiar el sabor y salpicar la portada.' }
   ];
   var CART = '<span class="pw__cart" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="20" r="1.4"/><circle cx="18" cy="20" r="1.4"/><path d="M2 3h3l2.6 12.2a1.6 1.6 0 0 0 1.6 1.3h8.4a1.6 1.6 0 0 0 1.6-1.2L21 8H6"/></svg><i>0</i></span>';
   var BY = {}; LIST.forEach(function (p) { BY[p.key] = p; });
@@ -144,7 +146,7 @@
       box.style.transition = 'transform .16s ease'; box.style.transformOrigin = '50% 85%'; box.style.transform = 'scale(1.03)'; setTimeout(function () { box.style.transform = ''; }, 170);
     });
   }
-  function mount(el, key) {
+  function mount(el, key, opts) {
     var p = BY[key]; if (!el || !p) return null;
     var frame = document.createElement('div');
     frame.className = 'pw ' + (p.kind === 'direct' ? 'pw--direct' : 'pw--' + p.theme) + (p.layout ? ' pw--' + p.layout : '') + (p.variant ? ' pw--v-' + p.variant : '');
@@ -182,6 +184,7 @@
     el.appendChild(frame);
     if (p.variant === 'f') frame.insertAdjacentHTML('beforeend', '<div class="pw__extra pw__extra--bs pw__extra--bs2"><img class="w1" src="' + BASE + 'assets/portadas/luna-gelato/galleta-izq.webp" alt=""><img class="w2" src="' + BASE + 'assets/portadas/luna-gelato/galleta-der.webp" alt=""><img class="bs" src="' + BASE + 'assets/portadas/luna-gelato/banana-split-sin-galletas.webp" alt=""></div>');
     var piece = frame.querySelector('.cv');
+    if (opts && opts.gate) piece.setAttribute('data-gate', '1');
     if (p.cx) piece.setAttribute('data-cx', p.cx);
     if (p.usc) piece.setAttribute('data-usc', p.usc);
     if (p.kh) piece.setAttribute('data-kh', p.kh);
